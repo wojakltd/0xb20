@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 Laboratory: a public experiment on Base, documented through logs, specimens, hosts, and research in progress.">
+  <meta name="b20-root" content="./">
   <title>0XB20 Laboratory</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
 </head>
 <body>
 
-<div id="boot-screen">
-  <pre id="boot-text">
-Connecting to B20 Laboratory...
-Loading organism...
-Access granted.
-  </pre>
+<noscript>
+  <style>#boot-screen{display:none}</style>
+</noscript>
+
+<div id="boot-screen" aria-label="B20 Laboratory boot sequence">
+  <pre id="boot-text" aria-live="polite"></pre>
 </div>
 
-<header class="hero">
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="#top">0XB20</a>
+  <div class="nav-links">
+    <a href="#scanner" data-module-route="/scanner">Scanner</a>
+    <a href="#console" data-module-route="/console">Console</a>
+    <a href="logs/index.html" data-module-route="/logs">Logs</a>
+    <a href="#specimens" data-module-route="/specimens">Specimens</a>
+    <a href="#laboratory" data-module-route="/laboratory">Laboratory</a>
+  </div>
+</nav>
+
+<header id="top" class="hero">
   <div class="overlay"></div>
   <div class="hero-content">
     <span class="tag">B20 LAB TERMINAL</span>
@@ -26,118 +43,189 @@ Access granted.
       The experiment survived another day.
     </p>
 
-    <div class="status-grid">
-      <div class="card">
+    <div class="status-grid" aria-label="Laboratory snapshot">
+      <div class="card" data-reveal>
         <h3>Status</h3>
-        <p>BUILDING</p>
+        <p>ONLINE</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-reveal>
         <h3>Current Hosts</h3>
         <p>100+</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-reveal>
         <h3>Experiment</h3>
         <p>#001</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-reveal>
         <h3>Network</h3>
         <p>BASE</p>
       </div>
     </div>
 
     <div class="buttons">
-      <a href="https://launch.o1.exchange/token/0xb200000000000000000000B63a00ad02F2A9c101?chain=8453&ref=0xb9F5fB4E152ae5c261DfCdDb1D1124ACA37EF920" target="_blank">Buy</a>
-      <a href="https://x.com/0xb20meme" target="_blank">X</a>
-      <a href="https://t.me/meme0xb20tg" target="_blank">Telegram</a>
-      <a href="https://opensea.io/collection/0xb20-genesis-onchain-parasites" target="_blank">Genesis NFTs</a>
+      <a href="#scanner">Scan Host</a>
+      <a href="#console">Open Console</a>
+      <a href="logs/index.html">Logs</a>
+      <a href="https://launch.o1.exchange/token/0xb200000000000000000000B63a00ad02F2A9c101?chain=8453&ref=0xb9F5fB4E152ae5c261DfCdDb1D1124ACA37EF920" target="_blank" rel="noreferrer">Buy</a>
+      <a href="https://x.com/0xb20meme" target="_blank" rel="noreferrer">X</a>
+      <a href="https://t.me/meme0xb20tg" target="_blank" rel="noreferrer">Telegram</a>
+      <a href="https://opensea.io/collection/0xb20-genesis-onchain-parasites" target="_blank" rel="noreferrer">Genesis NFTs</a>
     </div>
   </div>
 </header>
 
-<main>
+<main id="laboratory" class="lab-layout">
+  <div class="lab-main">
+    <section id="scanner" class="section scanner-section" data-reveal>
+      <div class="scanner-shell" data-scanner-panel>
+        <div class="scanner-header">
+          <span class="eyebrow">Experiment #001</span>
+          <h2 class="scanner-title">B20 Host Scanner</h2>
+          <p class="scanner-description">
+            Analyze any EVM host for signs of parasite activity.
+          </p>
+        </div>
 
-<section class="section">
-<h2>Latest Laboratory Log</h2>
+        <form class="scanner-form" data-scanner-form>
+          <label for="host-input">Host DNA</label>
+          <div class="scanner-controls">
+            <input id="host-input" data-scanner-input type="text" autocomplete="off" spellcheck="false" placeholder="0x host signature">
+            <button class="scanner-button" data-scanner-button type="submit">Scan Host</button>
+          </div>
+        </form>
 
-<article class="log">
-<h3>LOG #005</h3>
+        <div class="scanner-progress" aria-hidden="true">
+          <span data-scanner-progress></span>
+        </div>
 
-<p>
-The experiment reached 100+ hosts.<br>
-Experiment #001 is now active.<br>
-The organism keeps spreading.
-</p>
+        <div class="scanner-terminal" data-scanner-terminal aria-live="polite">
+          <p>&gt; Scanner idle. Awaiting host DNA.</p>
+        </div>
 
-</article>
-</section>
+        <div class="scanner-report" data-scanner-report hidden></div>
+      </div>
+    </section>
 
-<section class="section">
+    <section id="console" class="section console-section" data-reveal>
+      <div class="console-shell" data-console-panel>
+        <div class="console-header">
+          <div>
+            <span class="eyebrow">Laboratory Console</span>
+            <h2>Command Terminal</h2>
+          </div>
+          <span class="console-state">INTERACTIVE</span>
+        </div>
 
-<h2>About The Experiment</h2>
+        <div class="console-output" data-console-output aria-live="polite"></div>
 
-<p>
-0XB20 isn't trying to become another generic memecoin.
-The goal is simple:
-build everything in public,
-document every success,
-every mistake,
-and every strange idea.
-</p>
+        <form class="console-form" data-console-form>
+          <label class="console-prompt" for="console-input">LAB&gt;</label>
+          <input id="console-input" data-console-input type="text" autocomplete="off" spellcheck="false" aria-label="Laboratory command input">
+          <span class="console-cursor" aria-hidden="true"></span>
+        </form>
+      </div>
+    </section>
 
-</section>
+    <section id="laboratory-log" class="section" data-reveal>
+      <div class="section-heading">
+        <span class="eyebrow">Laboratory Logs</span>
+        <h2>Latest Laboratory Log</h2>
+      </div>
 
-<section class="section">
+      <article class="log" data-latest-log>
+        <span class="log-kicker">Loading log archive...</span>
+        <p class="log-body">Synchronizing laboratory records.</p>
+      </article>
+    </section>
 
-<h2>Current Experiment</h2>
+    <section class="section" data-reveal>
+      <div class="section-heading">
+        <span class="eyebrow">Manifest</span>
+        <h2>About The Experiment</h2>
+      </div>
 
-<div class="coming">
+      <p>
+        0XB20 isn't trying to become another generic memecoin.
+        The goal is simple:
+        build everything in public,
+        document every success,
+        every mistake,
+        and every strange idea.
+      </p>
+    </section>
 
-<h3>Blockchain Infection Scanner</h3>
+    <section id="specimens" class="section" data-reveal>
+      <div class="section-heading">
+        <span class="eyebrow">Specimens</span>
+        <h2>Genesis Parasites</h2>
+      </div>
 
-<p>
-Coming Soon...
+      <p>
+        22 unique specimens discovered.
+        More entities will emerge as the organism evolves.
+        The collection remains currently under observation.
+      </p>
+    </section>
+  </div>
 
-Paste any EVM wallet and check its infection status.
-</p>
+  <aside class="lab-side" aria-label="Laboratory telemetry">
+    <section class="terminal-panel status-panel" data-reveal>
+      <div class="section-heading compact">
+        <span class="eyebrow">Telemetry</span>
+        <h2>System Status</h2>
+      </div>
+      <div class="status-list" data-system-status>
+        <p class="panel-loading">Calibrating status monitor...</p>
+      </div>
+    </section>
 
-</div>
+    <section class="terminal-panel activity-panel" data-reveal>
+      <div class="section-heading compact">
+        <span class="eyebrow">Live Trace</span>
+        <h2>Activity Feed</h2>
+      </div>
+      <div class="activity-feed" data-activity-feed>
+        <p class="panel-loading">Listening for laboratory activity...</p>
+      </div>
+    </section>
 
-</section>
-
-<section class="section">
-
-<h2>Genesis Parasites</h2>
-
-<p>
-11 unique specimens discovered.
-
-More entities will emerge as the organism evolves.
-</p>
-
-</section>
-
+    <section class="terminal-panel live-terminal-panel" data-reveal>
+      <div class="section-heading compact">
+        <span class="eyebrow">Process Monitor</span>
+        <h2>Laboratory Terminal</h2>
+      </div>
+      <div class="live-terminal" data-live-terminal aria-live="polite">
+        <p class="panel-loading">Terminal process warming up...</p>
+      </div>
+    </section>
+  </aside>
 </main>
 
 <footer>
+  <p>
+    CA:
+    <br>
+    0xb200000000000000000000B63a00ad02F2A9c101
+  </p>
 
-<p>
-CA:
-<br>
-0xb200000000000000000000B63a00ad02F2A9c101
-</p>
-
-<p>
-Built in public.
-Still experimenting.
-🔵
-</p>
-
+  <p>
+    Built in public.
+    Still experimenting.
+    🔵
+  </p>
 </footer>
 
-<script src="script.js"></script>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/data-loader.js" defer></script>
+<script src="assets/js/ui.js" defer></script>
+<script src="assets/js/live-terminal.js" defer></script>
+<script src="assets/js/scanner.js" defer></script>
+<script src="assets/js/terminal.js" defer></script>
+<script src="assets/js/interactions.js" defer></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>

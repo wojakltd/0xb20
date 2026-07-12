@@ -1,2 +1,32 @@
-# 0xb20
-0xb20
+# 0XB20 Laboratory
+
+Static laboratory terminal for the 0XB20 public experiment.
+
+## Structure
+
+- `index.html` is the stable shell and should stay lightweight.
+- `logs/index.html` is the fixed-height Laboratory Archive page.
+- `data/logs.json` is the source of truth for Laboratory Logs.
+- `data/activity.json` drives the Activity Feed.
+- `data/status.json` drives the System Status panel.
+- `data/scanner.json` drives the simulated Host Scanner.
+- `data/terminal-events.json` feeds the permanent Laboratory Terminal.
+- `assets/css/` contains visual modules loaded directly by `index.html`.
+- `assets/js/` contains small browser modules loaded before `script.js`.
+- `assets/js/terminal.js` owns the Laboratory Console command registry.
+- `assets/js/logs-page.js` owns archive search, filters, and expansion.
+- `style.css` and `script.js` remain root compatibility entry points.
+
+## Updating The Lab
+
+Add a new Laboratory Log by appending an object to `data/logs.json`.
+The newest log is selected automatically by `date`, then by `id`.
+
+Tune scanner outcomes in `data/scanner.json` and passive system events in
+`data/terminal-events.json`.
+
+Use a local static server for full JSON loading during development:
+
+```bash
+python -m http.server 4173
+```

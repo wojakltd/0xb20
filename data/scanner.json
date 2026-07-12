@@ -1,0 +1,70 @@
+{
+  "steps": [
+    "Connecting to Base...",
+    "Loading parasite database...",
+    "Reading host DNA...",
+    "Scanning transaction fingerprints...",
+    "Searching mutation archive...",
+    "Synchronizing laboratory...",
+    "Analyzing neural patterns...",
+    "Finalizing report..."
+  ],
+  "hostStatuses": [
+    "Clean",
+    "Observed",
+    "Minimal Exposure",
+    "Infected",
+    "Highly Infected",
+    "Unknown",
+    "Mutation Detected",
+    "Unclassified"
+  ],
+  "hostStability": [
+    "Excellent",
+    "Stable",
+    "Questionable",
+    "Critical"
+  ],
+  "riskLevels": [
+    "Low",
+    "Medium",
+    "High",
+    "Extreme"
+  ],
+  "recommendations": [
+    "Observe",
+    "Monitor",
+    "Recruit",
+    "Archive",
+    "Study",
+    "Ignore"
+  ],
+  "rareMessages": [
+    "This specimen deserves further research.",
+    "Interesting mutation detected.",
+    "This host already knows about B20.",
+    "Possible Genesis candidate.",
+    "No known cure."
+  ],
+  "easterEggs": {
+    "parasite": [
+      "Parasite vocabulary detected in host input."
+    ],
+    "b20": [
+      "B20 resonance detected."
+    ],
+    "infect": [
+      "Voluntary infection phrase archived."
+    ],
+    "genesis": [
+      "Genesis trace requested."
+    ],
+    "host": [
+      "Host naming pattern acknowledged."
+    ]
+  },
+  "rareSecrets": [
+    "ACCESS LEVEL INCREASED",
+    "UNKNOWN ENTITY DETECTED"
+  ]
+}

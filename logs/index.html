@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 Laboratory Archive: searchable logs from the B20 Laboratory.">
+  <meta name="b20-root" content="../">
+  <title>0XB20 Laboratory Archive</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/effects.css">
+</head>
+<body class="archive-body">
+
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="../index.html">0XB20</a>
+  <div class="nav-links">
+    <a href="../index.html#scanner" data-module-route="/scanner">Scanner</a>
+    <a href="../index.html#console" data-module-route="/console">Console</a>
+    <a href="index.html" data-module-route="/logs" aria-current="page">Logs</a>
+    <a href="../index.html#specimens" data-module-route="/specimens">Specimens</a>
+    <a href="../index.html#laboratory" data-module-route="/laboratory">Laboratory</a>
+  </div>
+</nav>
+
+<main class="archive-page">
+  <section class="archive-shell" data-reveal>
+    <div class="archive-header">
+      <div>
+        <span class="eyebrow">Laboratory Archive</span>
+        <h1>Logs</h1>
+      </div>
+      <a class="archive-return" href="../index.html">Return to Laboratory</a>
+    </div>
+
+    <div class="archive-controls" aria-label="Laboratory Archive controls">
+      <label class="archive-search-label" for="archive-search">Search Archive</label>
+      <input id="archive-search" data-log-search type="search" autocomplete="off" spellcheck="false" placeholder="Search title, content, tags">
+
+      <div class="archive-filters" data-log-filters aria-label="Log filters">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="deployment">Deployment</button>
+        <button type="button" data-filter="research">Research</button>
+        <button type="button" data-filter="incident">Incident</button>
+        <button type="button" data-filter="website">Website</button>
+        <button type="button" data-filter="scanner">Scanner</button>
+        <button type="button" data-filter="nft">NFT</button>
+        <button type="button" data-filter="console">Console</button>
+      </div>
+    </div>
+
+    <div class="archive-list" data-log-list aria-live="polite">
+      <p class="panel-loading">Loading Laboratory Archive...</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>
+    Built in public.
+    Archive remains under observation.
+  </p>
+</footer>
+
+<script src="../assets/js/config.js" defer></script>
+<script src="../assets/js/data-loader.js" defer></script>
+<script src="../assets/js/ui.js" defer></script>
+<script src="../assets/js/logs-page.js" defer></script>
+
+</body>
+</html>

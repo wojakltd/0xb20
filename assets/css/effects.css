@@ -1,0 +1,186 @@
+#boot-screen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#02040a;
+    z-index:999;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+#boot-screen.is-finished{
+    opacity:0;
+    visibility:hidden;
+}
+
+#boot-text{
+    max-width:min(760px,calc(100vw - 40px));
+    color:var(--blue2);
+    font-family:Consolas,monospace;
+    font-size:18px;
+    min-height:210px;
+    text-shadow:0 0 8px var(--blue);
+    white-space:pre-wrap;
+}
+
+.boot-cursor::after{
+    animation:cursorBlink 1s steps(2,end) infinite;
+    content:"_";
+}
+
+.js [data-reveal]{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+
+.js [data-reveal].is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover,
+.log:hover,
+.observation:hover,
+.terminal-panel:hover,
+.scanner-shell:hover,
+.console-shell:hover,
+.archive-shell:hover,
+.archive-card:hover{
+    border-color:var(--line-hot);
+    box-shadow:var(--shadow);
+    transform:translateY(-3px);
+}
+
+.buttons a,
+.scanner-button{
+    animation:buttonPulse 3.4s ease-in-out infinite;
+}
+
+.buttons a:hover,
+.scanner-button:hover{
+    animation-play-state:paused;
+    border-color:rgba(128,215,255,.45);
+    box-shadow:0 0 24px rgba(59,130,246,.38);
+    transform:translateY(-3px);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+}
+
+.archive-return:hover,
+.log-link:hover,
+.archive-filters button:hover{
+    border-color:rgba(128,215,255,.5);
+    box-shadow:0 0 18px rgba(59,130,246,.2);
+    transform:translateY(-2px);
+}
+
+.lab-reactive{
+    position:relative;
+    overflow:hidden;
+}
+
+.lab-reactive::before{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:radial-gradient(circle at var(--cursor-x,50%) var(--cursor-y,50%),rgba(128,215,255,.18),transparent 36%);
+    content:"";
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+}
+
+.lab-reactive:hover::before{
+    opacity:1;
+}
+
+.lab-reactive>*{
+    position:relative;
+    z-index:1;
+}
+
+.scanner-shake{
+    animation:scannerShake .42s ease;
+}
+
+.console-cursor{
+    animation:cursorBlink 1s steps(2,end) infinite;
+}
+
+@keyframes buttonPulse{
+    0%,100%{
+        box-shadow:0 0 0 rgba(59,130,246,0);
+    }
+    50%{
+        box-shadow:0 0 18px rgba(59,130,246,.22);
+    }
+}
+
+@keyframes cursorBlink{
+    0%,45%{
+        opacity:1;
+    }
+    46%,100%{
+        opacity:0;
+    }
+}
+
+@keyframes scanSweep{
+    0%{
+        transform:translateX(-120%);
+    }
+    100%{
+        transform:translateX(120%);
+    }
+}
+
+@keyframes reportIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes terminalIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes scannerShake{
+    0%,100%{
+        transform:translateX(0);
+    }
+    25%{
+        transform:translateX(-6px);
+    }
+    50%{
+        transform:translateX(6px);
+    }
+    75%{
+        transform:translateX(-3px);
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+    }
+}
