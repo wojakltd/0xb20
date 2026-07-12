@@ -1,449 +1,290 @@
 [
   {
-    "id": 29,
-    "logNumber": "029",
-    "title": "X Archive Integrated",
-    "date": "2026-07-12",
+    "id": 1,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Origin Signal Verified",
+    "date": "2026-07-09",
     "type": "deployment",
-    "summary": "The first public X history was cleaned, classified, and moved into the Laboratory Archive.",
-    "content": "The early X feed contained everything: origin signals, noisy launch language, duplicate posts, CA drops, holder updates, failed plans, NFT discoveries, website work, and real machine incidents. The archive now keeps the useful signal and removes the disposable noise. Future Hosts can read the project as a build record instead of a feed full of hashtags.",
-    "tags": [
-      "archive",
-      "logs",
-      "deployment",
-      "history"
-    ],
-    "featured": true
-  },
-  {
-    "id": 28,
-    "logNumber": "028",
-    "title": "Laboratory Console Activated",
-    "date": "2026-07-12",
-    "type": "console",
-    "summary": "Visitors can now communicate with the Laboratory through an in-universe command terminal.",
-    "content": "The first interactive terminal entered production. The Laboratory now accepts commands, returns archive data, and responds like a system that is actively being used. This is not a developer console. It is an interface for Hosts who want to test the organism.",
-    "tags": [
-      "console",
-      "website",
-      "deployment"
-    ],
+    "summary": "The project began as a Base-native meme sparked by a public post and verified on X.",
+    "content": "A public post sparked the idea. That idea became a token on Base, then the account received X verification. The first public identity was noisy, but the core signal was already there: built on Base, no presale, no VC layer, and a community experiment forming in public.",
+    "tags": ["origin", "base", "verification"],
     "featured": false
   },
   {
-    "id": 27,
-    "logNumber": "027",
-    "title": "B20 Host Scanner Online",
-    "date": "2026-07-12",
-    "type": "scanner",
-    "summary": "The scanner became the primary interactive experiment inside the Laboratory.",
-    "content": "The Host Scanner now simulates Base synchronization, parasite database loading, transaction fingerprint analysis, and randomized Host reports. No backend is required. The effect is fictional, but the interface is real enough to invite experimentation.",
-    "tags": [
-      "scanner",
-      "host",
-      "experiment"
-    ],
+    "id": 2,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "First Awake Hosts",
+    "date": "2026-07-09",
+    "type": "research",
+    "summary": "The first morning posts framed 0XB20 as something early Hosts could discover before the feed noticed.",
+    "content": "The first morning signal was simple: most people were still sleeping while the organism was already live. The archive removes the pressure language and keeps the useful part: discovery was happening before the project had structure.",
+    "tags": ["hosts", "origin", "base"],
     "featured": false
   },
   {
-    "id": 26,
-    "logNumber": "026",
-    "title": "Laboratory Terminal Attached",
-    "date": "2026-07-12",
-    "type": "website",
-    "summary": "Passive system events began streaming into the Laboratory interface.",
-    "content": "The Laboratory no longer waits for visitors to act. It prints fictional activity, updates traces, and keeps the operating system feeling alive even when no Host is touching the scanner.",
-    "tags": [
-      "terminal",
-      "activity",
-      "website"
-    ],
+    "id": 3,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Native Standard Signal",
+    "date": "2026-07-09",
+    "type": "research",
+    "summary": "Base described the B20 Native Token Standard, and 0XB20 attached itself to that cultural signal.",
+    "content": "Base explained native B20 tokens. The cleaned record is simple: Base had a native token standard, and 0XB20 became the unofficial organism growing around that standard.",
+    "tags": ["base", "b20", "origin"],
     "featured": false
   },
   {
-    "id": 25,
-    "logNumber": "025",
-    "title": "Architecture Split",
-    "date": "2026-07-12",
+    "id": 4,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Early Roadmap Fossil",
+    "date": "2026-07-09",
+    "type": "research",
+    "summary": "The first roadmap thread is preserved as a fossil, not as a promise.",
+    "content": "An early roadmap draft listed community plans, recognition targets, and an unrealistic final phase. The current Laboratory does not use that style. The archive keeps it as evidence that the project moved away from generic launch noise and toward honest build logs.",
+    "tags": ["roadmap", "history"],
+    "featured": false
+  },
+  {
+    "id": 5,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Community Hub Opened",
+    "date": "2026-07-09",
     "type": "deployment",
-    "summary": "The website moved from a single page prototype into a modular static system.",
-    "content": "CSS, JavaScript, and data were split into focused modules. The root files remain stable entry points, while expandable behavior now lives under assets and data. Future updates should touch JSON first and HTML only when a new module shell is required.",
-    "tags": [
-      "architecture",
-      "deployment",
-      "maintenance"
-    ],
+    "summary": "The first Telegram hub gave early Hosts a place to gather.",
+    "content": "The community chat and update channel opened on day one. The original announcement was loud. The useful event was practical: the project gained a public room.",
+    "tags": ["community", "telegram"],
     "featured": false
   },
   {
-    "id": 24,
-    "logNumber": "024",
-    "title": "Driver Booster Incident",
-    "date": "2026-07-12",
-    "type": "incident",
-    "summary": "The Laboratory almost died because the only machine in the village stopped working.",
-    "content": "Today's parasite was not B20. It was Driver Booster. One laptop, one village, one dead Windows installation, and the entire project paused with it. Five hours later the machine came back online. The Laboratory survived another day.",
-    "tags": [
-      "incident",
-      "windows",
-      "recovery",
-      "founder"
-    ],
-    "featured": false
-  },
-  {
-    "id": 23,
-    "logNumber": "023",
-    "title": "Windows Failure Detected",
-    "date": "2026-07-12",
-    "type": "incident",
-    "summary": "Windows failed, but the Laboratory did not stop being alive.",
-    "content": "A short emergency signal was posted when Windows died. The message was not polished because the situation was not polished. The important part was simple: the machine failed, the Laboratory did not.",
-    "tags": [
-      "incident",
-      "windows",
-      "build-in-public"
-    ],
-    "featured": false
-  },
-  {
-    "id": 22,
-    "logNumber": "022",
-    "title": "Orbit Fuel Incident",
-    "date": "2026-07-11",
+    "id": 6,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Day One Recap",
+    "date": "2026-07-09",
     "type": "research",
-    "summary": "A real-world signal was archived as fictional laboratory evidence.",
-    "content": "Cosmic fuel was delivered to orbit. No B20 parasites were detected in the real world yet. The post marked the point where outside events started being absorbed into the Laboratory language instead of treated as ordinary social content.",
-    "tags": [
-      "research",
-      "lore",
-      "base"
-    ],
+    "summary": "Day one closed with the token live, X verified, Telegram open, and 22 early Hosts.",
+    "content": "The first recap recorded a live Base token, verified X account, open Telegram community, early planning, and 22 Hosts. The post was noisy, but the project was already documenting its own survival.",
+    "tags": ["day-one", "hosts", "community"],
     "featured": false
   },
   {
-    "id": 21,
-    "logNumber": "021",
-    "title": "Still Alive",
-    "date": "2026-07-11",
+    "id": 7,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "First Metrics Observed",
+    "date": "2026-07-09",
     "type": "research",
-    "summary": "The project survived the night and returned to building after real-world interruptions.",
-    "content": "Website survived the night. Price survived the night. The founder survived the night. A few real-world side quests interrupted the build, but new ideas were still cooking and the Laboratory remained operational.",
-    "tags": [
-      "survival",
-      "founder",
-      "research"
-    ],
+    "summary": "The first market and Host signals were recorded without keeping the hype language.",
+    "content": "Early posts tracked price movement, holder count, immutable contract status, and visible wallets. The archive removes the pressure language and keeps the part that matters: the organism had started producing measurable signals.",
+    "tags": ["hosts", "metrics", "base"],
     "featured": false
   },
   {
-    "id": 20,
-    "logNumber": "020",
-    "title": "Day Two Complete",
-    "date": "2026-07-11",
-    "type": "research",
-    "summary": "The website survived launch, 22 Specimens were documented, and the experiment remained active.",
-    "content": "Day two closed with 111 Hosts, a surviving website, and 22 documented Specimens. It was not a polished operation, but it was still moving. For a meme born from one post, survival itself became useful data.",
-    "tags": [
-      "hosts",
-      "website",
-      "specimens",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 19,
-    "logNumber": "019",
-    "title": "Red Event Mutation",
-    "date": "2026-07-11",
-    "type": "nft",
-    "summary": "The Genesis Colony mutated and the Red Event became part of the Specimen archive.",
-    "content": "The colony mutated. Eleven new Specimens were documented, bringing the archive to 22. The Red Event introduced a second visual branch and confirmed that the NFT collection would behave like a living catalog, not a static product shelf.",
-    "tags": [
-      "nft",
-      "specimens",
-      "red-event",
-      "mutation"
-    ],
-    "featured": false
-  },
-  {
-    "id": 18,
-    "logNumber": "018",
-    "title": "Second Website Launched",
-    "date": "2026-07-10",
-    "type": "website",
-    "summary": "The second website went live after the first one failed almost immediately.",
-    "content": "The founder launched a second website. The first one had been compromised in roughly 15 minutes. The new site was not perfect, but it existed, and existence mattered. The Laboratory had a public surface again.",
-    "tags": [
-      "website",
-      "incident",
-      "deployment"
-    ],
-    "featured": false
-  },
-  {
-    "id": 17,
-    "logNumber": "017",
-    "title": "Experiment #001 Opened",
+    "id": 8,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Day Two Notebook",
     "date": "2026-07-10",
     "type": "research",
-    "summary": "The project reached 100 Hosts and opened its first public participation experiment.",
-    "content": "Somehow, the project reached 100 Hosts. It was not elegant, but it worked. Experiment #001 asked people to interact publicly, drop EVM wallets, and become part of a strange distribution test with no forms, no whitelist, and no polished corporate process.",
-    "tags": [
-      "experiment",
-      "hosts",
-      "distribution",
-      "research"
-    ],
+    "summary": "The founder sketched possible next moves before the Laboratory language fully formed.",
+    "content": "The early notebook mentioned NFTs, airdrops, active members, community roles, and ecosystem outreach. Some wording belonged to launch culture. The useful signal remained: the founder was trying to turn a token into a living public experiment.",
+    "tags": ["planning", "community"],
     "featured": false
   },
   {
-    "id": 16,
-    "logNumber": "016",
-    "title": "Token Finds Hosts",
-    "date": "2026-07-10",
-    "type": "research",
-    "summary": "A simple growth experiment was written down: if people do not find the token, the token finds people.",
-    "content": "The earliest growth idea was blunt and strange. If people would not find the token, the token would find people. It became the seed for Experiment #001 and the later Host language.",
-    "tags": [
-      "experiment",
-      "hosts",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 15,
-    "logNumber": "015",
-    "title": "Reason To Return",
-    "date": "2026-07-10",
-    "type": "research",
-    "summary": "The project shifted from chart attention toward daily visible building.",
-    "content": "The founder wrote down the real problem: anyone can launch a memecoin, but very few build anything after that. The target changed. Visitors should not come back because of a chart. They should come back because something new exists every day.",
-    "tags": [
-      "philosophy",
-      "build-in-public",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 14,
-    "logNumber": "014",
-    "title": "Cold Pillow Host Signal",
-    "date": "2026-07-10",
-    "type": "research",
-    "summary": "A small purchase became the first funny Host signal in the archive.",
-    "content": "Someone bought roughly 35 dollars of 0XB20. It was the largest observed purchase of that moment. The archive keeps it because small human signals matter more to this project than inflated launch theater.",
-    "tags": [
-      "hosts",
-      "community",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 13,
-    "logNumber": "013",
-    "title": "Survived Another Day",
-    "date": "2026-07-10",
-    "type": "research",
-    "summary": "The founder woke up, the project still existed, and the first honest build log appeared.",
-    "content": "The project survived another day. That alone was progress. Instead of chasing market noise, the founder started asking what the organism should become. A few ideas were stupid. One of them might work.",
-    "tags": [
-      "build-in-public",
-      "founder",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 12,
-    "logNumber": "012",
-    "title": "Laboratory Home Begins",
-    "date": "2026-07-10",
-    "type": "website",
-    "summary": "Work began on the official website because the 0XB20 universe needed a home.",
-    "content": "By day two, the token had 50+ Hosts, the Genesis collection was live, and the community was active enough to need a permanent interface. The first website work began. The Laboratory needed a place to exist outside the feed.",
-    "tags": [
-      "website",
-      "deployment",
-      "hosts"
-    ],
-    "featured": false
-  },
-  {
-    "id": 11,
-    "logNumber": "011",
-    "title": "Genesis Colony Catalogued",
+    "id": 9,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Genesis Parasites Discovered",
     "date": "2026-07-10",
     "type": "nft",
-    "summary": "The first 11 Genesis Specimens received names, numbers, and roles.",
-    "content": "The Genesis Colony was catalogued: Spore, Seed, Fork, Relay, Cache, Hook, Gasling, Beacon, Immutable, Zero, and Keeper. The list turned the collection from images into a specimen database.",
-    "tags": [
-      "nft",
-      "genesis",
-      "specimens",
-      "catalog"
-    ],
+    "summary": "The first NFT collection entered the universe as discovered digital organisms.",
+    "content": "Something was living on Base. The Genesis Onchain Parasites were introduced as 11 Specimens born from blocks, gas, data, and unexplained corners of the network. They were not framed as ordinary products. They were documented as discovered organisms.",
+    "tags": ["genesis", "specimens", "base"],
     "featured": false
   },
   {
     "id": 10,
-    "logNumber": "010",
+    "logNumber": null,
+    "entryLabel": "NOTE",
     "title": "Funding Without Treasury",
     "date": "2026-07-10",
     "type": "nft",
     "summary": "The Genesis NFTs were framed as the project development engine.",
     "content": "0XB20 had no VC, no team allocation, and no treasury. Genesis NFTs became the practical way to fund tools, content, experiments, and growth. Early collectors were recorded as people who found the parasites first.",
-    "tags": [
-      "nft",
-      "funding",
-      "genesis",
-      "community"
-    ],
+    "tags": ["genesis", "funding", "community"],
     "featured": false
   },
   {
-    "id": 9,
-    "logNumber": "009",
-    "title": "Genesis Parasites Discovered",
+    "id": 11,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Genesis Colony Catalogued",
     "date": "2026-07-10",
     "type": "nft",
-    "summary": "The first NFT collection entered the 0XB20 universe as discovered digital organisms.",
-    "content": "Something was living on Base. The Genesis Onchain Parasites were introduced as 11 Specimens born from blocks, gas, data, and unexplained corners of the network. They were not described as minted products. They were documented as discovered organisms.",
-    "tags": [
-      "nft",
-      "genesis",
-      "specimens",
-      "base"
-    ],
+    "summary": "The first 11 Genesis Specimens received names, numbers, and roles.",
+    "content": "The Genesis Colony was catalogued: Spore, Seed, Fork, Relay, Cache, Hook, Gasling, Beacon, Immutable, Zero, and Keeper. The list turned the collection from images into a specimen database.",
+    "tags": ["genesis", "specimens", "catalog"],
     "featured": false
   },
   {
-    "id": 8,
-    "logNumber": "008",
-    "title": "Day Two Notebook",
+    "id": 12,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Laboratory Home Begins",
+    "date": "2026-07-10",
+    "type": "website",
+    "summary": "Work began on the official website because the 0XB20 universe needed a home.",
+    "content": "By day two, the token had 50+ Hosts, the Genesis collection was live, and the community was active enough to need a permanent interface. The first website work began. The Laboratory needed a place to exist outside the feed.",
+    "tags": ["website", "hosts"],
+    "featured": false
+  },
+  {
+    "id": 13,
+    "logNumber": "002",
+    "entryLabel": "LOG #002",
+    "title": "Survived Another Day",
     "date": "2026-07-10",
     "type": "research",
-    "summary": "The founder sketched possible next moves, then the project later refined them into stricter laboratory language.",
-    "content": "The early notebook mentioned NFTs, airdrops, community roles, contributor rewards, and ecosystem outreach. Some of the wording was too launch-thread shaped. The useful signal remained: the founder was trying to turn a token into a living public experiment.",
-    "tags": [
-      "research",
-      "planning",
-      "community"
-    ],
+    "summary": "The founder woke up, the project still existed, and the first honest build log appeared.",
+    "content": "Woke up. Survived another day. That alone was progress. Instead of chasing market noise, the founder started asking what the organism should become. A few ideas were stupid. One of them might work.",
+    "tags": ["build-in-public", "founder"],
     "featured": false
   },
   {
-    "id": 7,
-    "logNumber": "007",
-    "title": "First Metrics Observed",
-    "date": "2026-07-09",
-    "type": "research",
-    "summary": "The first market and Host signals were recorded without keeping the hype language.",
-    "content": "Early public posts tracked price movement, holder count, immutable contract status, and visible wallets. The archive removes the pressure language and keeps the part that matters: the organism had started producing measurable signals.",
-    "tags": [
-      "hosts",
-      "metrics",
-      "research",
-      "base"
-    ],
-    "featured": false
-  },
-  {
-    "id": 6,
-    "logNumber": "006",
-    "title": "Day One Recap",
-    "date": "2026-07-09",
-    "type": "research",
-    "summary": "Day one closed with the token live, X verified, Telegram open, and 22 early Hosts.",
-    "content": "The first recap recorded a live Base token, verified X account, open Telegram community, early roadmap thinking, and 22 Hosts. The post was noisy, but the project was already documenting its own survival.",
-    "tags": [
-      "day-one",
-      "hosts",
-      "community",
-      "research"
-    ],
-    "featured": false
-  },
-  {
-    "id": 5,
-    "logNumber": "005",
-    "title": "Community Hub Opened",
-    "date": "2026-07-09",
-    "type": "deployment",
-    "summary": "The first Telegram hub went live and gave early Hosts a place to gather.",
-    "content": "The community chat and update channel opened on day one. The original announcement used launch noise. The cleaned archive records the practical event: the project gained a public room.",
-    "tags": [
-      "community",
-      "telegram",
-      "deployment"
-    ],
-    "featured": false
-  },
-  {
-    "id": 4,
-    "logNumber": "004",
-    "title": "Early Roadmap Draft Archived",
-    "date": "2026-07-09",
-    "type": "research",
-    "summary": "The first roadmap thread was preserved as evidence of the chaotic launch layer, not as a promise.",
-    "content": "An early roadmap draft listed awakening, community, recognition, and an unrealistic final phase. The current Laboratory does not use that style. The archive keeps it as a fossil: proof that the project moved away from generic hype and toward honest build logs.",
-    "tags": [
-      "roadmap",
-      "research",
-      "history"
-    ],
-    "featured": false
-  },
-  {
-    "id": 3,
+    "id": 14,
     "logNumber": "003",
-    "title": "Native Standard Signal",
-    "date": "2026-07-09",
+    "entryLabel": "LOG #003",
+    "title": "Cold Pillow Host Signal",
+    "date": "2026-07-10",
     "type": "research",
-    "summary": "Base described the B20 Native Token Standard, and 0XB20 attached itself to that cultural signal.",
-    "content": "The early account reacted to Base explaining native B20 tokens. The cleaned record is simple: Base had a native token standard, and 0XB20 became the unofficial organism growing around that standard.",
-    "tags": [
-      "base",
-      "b20",
-      "origin",
-      "research"
-    ],
+    "summary": "A small purchase became the first funny Host signal in the archive.",
+    "content": "Someone bought roughly 35 dollars of 0XB20. It was the largest observed purchase of that moment. The archive keeps it because small human signals matter more to this project than inflated launch theater.",
+    "tags": ["hosts", "community"],
     "featured": false
   },
   {
-    "id": 2,
-    "logNumber": "002",
-    "title": "First Awake Hosts",
-    "date": "2026-07-09",
+    "id": 15,
+    "logNumber": "003",
+    "entryLabel": "LOG #003",
+    "title": "Reason To Return",
+    "date": "2026-07-10",
     "type": "research",
-    "summary": "The first morning posts framed 0XB20 as something early Hosts could discover before the feed noticed.",
-    "content": "The account posted a morning signal about people still sleeping while the token was already live. The archive removes the pressure tactics and keeps the useful part: discovery was happening before the project had structure.",
-    "tags": [
-      "hosts",
-      "origin",
-      "base"
-    ],
+    "summary": "The project shifted from chart attention toward daily visible building.",
+    "content": "Anyone can launch a memecoin. Very few build anything after that. The target changed: visitors should not come back because of a chart. They should come back because something new exists every day.",
+    "tags": ["philosophy", "build-in-public"],
     "featured": false
   },
   {
-    "id": 1,
-    "logNumber": "001",
-    "title": "Origin Signal Verified",
-    "date": "2026-07-09",
-    "type": "deployment",
-    "summary": "The project began as a Base-native meme sparked by a public post and verified on X.",
-    "content": "A post from Jesse Pollak sparked the idea. That idea became a token on Base, then the account received X verification. The first public identity was noisy, but the core signal was already there: built on Base, no presale, no VC layer, and a community experiment forming in public.",
-    "tags": [
-      "origin",
-      "base",
-      "verification",
-      "deployment"
-    ],
+    "id": 16,
+    "logNumber": "004",
+    "entryLabel": "LOG #004",
+    "title": "Token Finds Hosts",
+    "date": "2026-07-10",
+    "type": "research",
+    "summary": "A simple growth experiment was written down: if people do not find the token, the token finds people.",
+    "content": "If people would not find the token, the token would find people. It became the seed for Experiment #001 and the later Host language.",
+    "tags": ["experiment", "hosts"],
     "featured": false
+  },
+  {
+    "id": 17,
+    "logNumber": "005",
+    "entryLabel": "LOG #005",
+    "title": "Experiment #001 Opened",
+    "date": "2026-07-10",
+    "type": "research",
+    "summary": "The project reached 100 Hosts and opened its first public participation experiment.",
+    "content": "Somehow, the project reached 100 Hosts. It was not elegant, but it worked. Experiment #001 asked people to interact publicly, drop EVM wallets, and become part of a strange distribution test with no forms, no whitelist, and no polished corporate process.",
+    "tags": ["experiment", "hosts", "distribution"],
+    "featured": false
+  },
+  {
+    "id": 18,
+    "logNumber": "006",
+    "entryLabel": "LOG #006",
+    "title": "Second Website Launched",
+    "date": "2026-07-10",
+    "type": "website",
+    "summary": "The second website went live after the first one failed almost immediately.",
+    "content": "The founder launched a second website. The first one had been compromised in roughly 15 minutes. The new site was not perfect, but it existed, and existence mattered. The Laboratory had a public surface again.",
+    "tags": ["website", "incident"],
+    "featured": false
+  },
+  {
+    "id": 19,
+    "logNumber": "007",
+    "entryLabel": "LOG #007",
+    "title": "Red Event Mutation",
+    "date": "2026-07-11",
+    "type": "nft",
+    "summary": "The Genesis Colony mutated and the Red Event became part of the Specimen archive.",
+    "content": "The colony mutated. Eleven new Specimens were documented, bringing the archive to 22. The Red Event introduced a second visual branch and confirmed that the NFT collection would behave like a living catalog, not a static product shelf.",
+    "tags": ["specimens", "red-event", "mutation"],
+    "featured": false
+  },
+  {
+    "id": 20,
+    "logNumber": "008",
+    "entryLabel": "LOG #008",
+    "title": "Day Two Complete",
+    "date": "2026-07-11",
+    "type": "research",
+    "summary": "The website survived launch, 22 Specimens were documented, and the experiment remained active.",
+    "content": "Day two closed with 111 Hosts, a surviving website, and 22 documented Specimens. It was not a polished operation, but it was still moving. For a meme born from one post, survival itself became useful data.",
+    "tags": ["hosts", "website", "specimens"],
+    "featured": false
+  },
+  {
+    "id": 21,
+    "logNumber": null,
+    "entryLabel": "NOTE",
+    "title": "Still Alive",
+    "date": "2026-07-11",
+    "type": "research",
+    "summary": "The project survived the night and returned to building after real-world interruptions.",
+    "content": "Website survived the night. Price survived the night. The founder survived the night. A few real-world side quests interrupted the build, but new ideas were still cooking and the Laboratory remained operational.",
+    "tags": ["survival", "founder"],
+    "featured": false
+  },
+  {
+    "id": 22,
+    "logNumber": "009",
+    "entryLabel": "LOG #009",
+    "title": "Orbit Fuel Incident",
+    "date": "2026-07-11",
+    "type": "research",
+    "summary": "A real-world signal was archived as fictional laboratory evidence.",
+    "content": "Cosmic fuel was delivered to orbit. No B20 parasites were detected in the real world yet. The post marked the point where outside events started being absorbed into the Laboratory language instead of treated as ordinary social content.",
+    "tags": ["lore", "base"],
+    "featured": false
+  },
+  {
+    "id": 23,
+    "logNumber": "010",
+    "entryLabel": "LOG #010",
+    "title": "Windows Failure Detected",
+    "date": "2026-07-12",
+    "type": "incident",
+    "summary": "Windows failed, but the Laboratory did not stop being alive.",
+    "content": "A short emergency signal was posted when Windows died. The message was not polished because the situation was not polished. The important part was simple: the machine failed, the Laboratory did not.",
+    "tags": ["windows", "incident"],
+    "featured": false
+  },
+  {
+    "id": 24,
+    "logNumber": "011",
+    "entryLabel": "LOG #011",
+    "title": "Driver Booster Incident",
+    "date": "2026-07-12",
+    "type": "incident",
+    "summary": "The Laboratory almost died because the only machine in the village stopped working.",
+    "content": "Today's parasite was not B20. It was Driver Booster. One laptop, one village, one dead Windows installation, and the entire project paused with it. Five hours later the machine came back online. The Laboratory survived another day.",
+    "tags": ["windows", "recovery", "founder"],
+    "featured": true
   }
 ]

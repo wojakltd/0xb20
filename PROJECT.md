@@ -162,7 +162,7 @@ Never use:
 4. Set `featured: true` if it should appear on the homepage.
 5. Set older featured logs to `false` when needed.
 
-The homepage, archive page, search, filters, and console `logs` command update automatically.
+The homepage, archive page, and console `logs` command update automatically.
 
 ## How To Add New Activity
 

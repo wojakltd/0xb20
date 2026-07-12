@@ -129,7 +129,7 @@
 
     const header = createElement('div', 'log-header');
     const titleGroup = createElement('div');
-    const kicker = createElement('span', 'log-kicker', `LOG #${log.logNumber} / ${log.type}`);
+    const kicker = createElement('span', 'log-kicker', `${log.entryLabel} / ${log.type}`);
     const title = createElement('h3', '', log.title);
     const date = createElement('time', 'log-date', formatDate(log.date));
     const body = createElement('p', 'log-body', log.summary);

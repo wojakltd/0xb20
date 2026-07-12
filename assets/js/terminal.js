@@ -79,8 +79,8 @@
           return ['Laboratory Archive unavailable.'];
         }
 
-        return context.logs.slice(0, 5).flatMap((log) => [
-          `LOG #${log.logNumber} - ${log.title}`,
+        return context.logs.slice(-5).reverse().flatMap((log) => [
+          `${log.entryLabel} - ${log.title}`,
           log.date || 'Date unknown',
           log.summary,
           ''

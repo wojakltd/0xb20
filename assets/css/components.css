@@ -332,6 +332,59 @@ h1{
     text-shadow:0 0 24px rgba(103,179,255,.28);
 }
 
+.archive-terminal{
+    height:min(680px,calc(100vh - 280px));
+    min-height:430px;
+    overflow-y:auto;
+    border:1px solid rgba(103,179,255,.24);
+    border-radius:var(--radius);
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(103,179,255,.035),
+            rgba(103,179,255,.035) 1px,
+            transparent 1px,
+            transparent 28px
+        ),
+        rgba(2,5,12,.82);
+    box-shadow:inset 0 0 28px rgba(59,130,246,.08);
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    padding:22px;
+    scroll-behavior:smooth;
+}
+
+.archive-terminal-entry{
+    border-bottom:1px solid rgba(103,179,255,.16);
+    padding:0 0 22px;
+    margin-bottom:22px;
+}
+
+.archive-terminal-entry:last-child{
+    border-bottom:0;
+    margin-bottom:0;
+}
+
+.archive-terminal-meta{
+    color:var(--cyan);
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.archive-terminal-entry h2{
+    color:var(--text);
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    font-size:24px;
+    line-height:1.2;
+    margin-bottom:10px;
+}
+
+.archive-terminal-body{
+    color:var(--muted-strong);
+    font-size:16px;
+    white-space:pre-wrap;
+}
+
 .archive-return,
 .log-link{
     border:1px solid rgba(103,179,255,.32);
@@ -732,9 +785,13 @@ h1{
         font-size:42px;
     }
 
-    .archive-list{
-        height:min(600px,calc(100vh - 360px));
+    .archive-terminal{
+        height:min(620px,calc(100vh - 280px));
         min-height:340px;
-        padding-right:0;
+        padding:16px;
+    }
+
+    .archive-terminal-entry h2{
+        font-size:20px;
     }
 }

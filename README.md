@@ -14,7 +14,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `assets/css/` contains visual modules loaded directly by `index.html`.
 - `assets/js/` contains small browser modules loaded before `script.js`.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
-- `assets/js/logs-page.js` owns archive search, filters, and expansion.
+- `assets/js/logs-page.js` renders the simple scrolling Laboratory Archive terminal.
 - `style.css` and `script.js` remain root compatibility entry points.
 
 ## Updating The Lab
