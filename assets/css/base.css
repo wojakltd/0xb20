@@ -6,6 +6,39 @@
 
 html{
     scroll-behavior:smooth;
+    scrollbar-color:var(--blue) rgba(2,5,12,.9);
+    scrollbar-width:thin;
+    scrollbar-gutter:stable;
+}
+
+*{
+    scrollbar-color:var(--blue) rgba(2,5,12,.86);
+    scrollbar-width:thin;
+}
+
+*::-webkit-scrollbar{
+    width:12px;
+    height:12px;
+}
+
+*::-webkit-scrollbar-track{
+    background:rgba(2,5,12,.9);
+    border-left:1px solid rgba(103,179,255,.12);
+}
+
+*::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg,var(--cyan),var(--blue));
+    border:3px solid rgba(2,5,12,.9);
+    border-radius:999px;
+    box-shadow:0 0 16px rgba(103,179,255,.28);
+}
+
+*::-webkit-scrollbar-thumb:hover{
+    background:linear-gradient(180deg,var(--blue2),var(--line-hot));
+}
+
+*::-webkit-scrollbar-corner{
+    background:rgba(2,5,12,.9);
 }
 
 body{
