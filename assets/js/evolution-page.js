@@ -1,6 +1,5 @@
 (function (global) {
   const terminalLineDelay = 170;
-  const terminalCharacterDelay = 12;
   let expandedPhase = null;
 
   function createElement(tagName, className, text) {
@@ -105,15 +104,42 @@
     const button = card.querySelector('.evolution-phase-toggle');
     const content = card.querySelector('.evolution-phase-panel');
 
-    card.classList.toggle('is-expanded', shouldExpand);
-
     if (button) {
       button.setAttribute('aria-expanded', String(shouldExpand));
     }
 
-    if (content) {
-      content.style.maxHeight = shouldExpand ? `${content.scrollHeight}px` : '0px';
+    if (!content) {
+      card.classList.toggle('is-expanded', shouldExpand);
+      return;
     }
+
+    if (shouldExpand) {
+      card.classList.add('is-expanded');
+      content.style.maxHeight = `${content.scrollHeight + 40}px`;
+
+      content.addEventListener('transitionend', function unlockHeight(event) {
+        if (event.propertyName !== 'max-height') {
+          return;
+        }
+
+        if (card.classList.contains('is-expanded')) {
+          content.style.maxHeight = 'none';
+        }
+      }, { once: true });
+
+      return;
+    }
+
+    if (content.style.maxHeight === 'none') {
+      content.style.maxHeight = `${content.scrollHeight}px`;
+    }
+
+    content.getBoundingClientRect();
+    card.classList.remove('is-expanded');
+
+    requestAnimationFrame(() => {
+      content.style.maxHeight = '0px';
+    });
   }
 
   function expandOnly(card) {
@@ -191,14 +217,8 @@
       return;
     }
 
-    const header = createElement('div', 'evolution-tree-header');
     const tree = createElement('div', 'evolution-tree');
     const cards = phases.map(renderPhase);
-
-    header.append(
-      createElement('span', 'eyebrow', 'Research Tree'),
-      createElement('h2', '', 'WE ARE HERE')
-    );
 
     cards.forEach((card, index) => {
       tree.append(card);
@@ -208,7 +228,7 @@
       }
     });
 
-    target.replaceChildren(header, tree);
+    target.replaceChildren(tree);
 
     const currentCard = cards.find((card) => card.classList.contains('is-current')) || cards[0];
 
@@ -263,21 +283,12 @@
 
     for (const line of lines) {
       const row = createElement('p', 'terminal-line');
+      row.textContent = `> ${line}`;
       target.append(row);
 
-      if (reducedMotion) {
-        row.textContent = `> ${line}`;
-        continue;
+      if (!reducedMotion) {
+        await sleep(terminalLineDelay);
       }
-
-      row.textContent = '> ';
-
-      for (const character of String(line)) {
-        row.textContent += character;
-        await sleep(terminalCharacterDelay);
-      }
-
-      await sleep(terminalLineDelay);
     }
 
     target.append(createElement('span', 'console-cursor evolution-terminal-cursor'));
@@ -305,7 +316,6 @@
   async function init() {
     const data = global.B20Data;
     const ui = global.B20UI;
-    const interactions = global.B20Interactions;
 
     if (ui) {
       ui.initReveal();
@@ -330,10 +340,6 @@
 
     if (ui) {
       ui.initReveal();
-    }
-
-    if (interactions) {
-      interactions.initReactivePanels();
     }
   }
 

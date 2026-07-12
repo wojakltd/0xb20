@@ -48,11 +48,6 @@
 .console-shell:hover,
 .archive-shell:hover,
 .archive-card:hover,
-.evolution-hero:hover,
-.evolution-phase:hover,
-.evolution-tree-shell:hover,
-.evolution-telemetry:hover,
-.evolution-terminal-panel:hover,
 .protocol-hero:hover,
 .protocol-phase:hover,
 .protocol-intro:hover,
@@ -61,6 +56,18 @@
     border-color:var(--line-hot);
     box-shadow:var(--shadow);
     transform:translateY(-3px);
+}
+
+.evolution-phase:hover{
+    border-color:rgba(128,215,255,.5);
+}
+
+.evolution-tree-shell:hover,
+.evolution-telemetry:hover,
+.evolution-terminal-panel:hover,
+.evolution-hero:hover{
+    border-color:var(--line-hot);
+    box-shadow:var(--shadow);
 }
 
 .buttons a,
