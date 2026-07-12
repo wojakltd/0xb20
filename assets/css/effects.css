@@ -48,6 +48,11 @@
 .console-shell:hover,
 .archive-shell:hover,
 .archive-card:hover,
+.evolution-hero:hover,
+.evolution-phase:hover,
+.evolution-tree-shell:hover,
+.evolution-telemetry:hover,
+.evolution-terminal-panel:hover,
 .protocol-hero:hover,
 .protocol-phase:hover,
 .protocol-intro:hover,
@@ -120,11 +125,13 @@ input:focus-visible{
 }
 
 .protocol-status::before,
-.protocol-phase.is-current .protocol-phase-node{
+.protocol-phase.is-current .protocol-phase-node,
+.evolution-phase.is-current .evolution-phase-marker{
     animation:protocolPulse 2.8s ease-in-out infinite;
 }
 
-.protocol-progress-fill{
+.protocol-progress-fill,
+.evolution-progress-fill{
     animation:protocolProgressIn 1.4s ease forwards;
 }
 
@@ -150,7 +157,7 @@ input:focus-visible{
 
 @keyframes protocolProgressIn{
     to{
-        width:var(--protocol-progress,0%);
+        width:var(--protocol-progress,var(--evolution-progress,0%));
     }
 }
 

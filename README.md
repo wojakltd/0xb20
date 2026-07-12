@@ -6,9 +6,10 @@ Static laboratory terminal for the 0XB20 public experiment.
 
 - `index.html` is the stable shell and should stay lightweight.
 - `logs/index.html` is the fixed-height Laboratory Archive page.
-- `protocol/index.html` is the Laboratory Evolution Protocol page.
+- `evolution/index.html` is the Laboratory Evolution Tree page.
+- `protocol/index.html` redirects old links to Evolution.
 - `data/logs.json` is the source of truth for Laboratory Logs.
-- `data/protocol.json` drives the Protocol page.
+- `data/evolution.json` drives the Evolution page.
 - `data/activity.json` drives the Activity Feed.
 - `data/status.json` drives the System Status panel.
 - `data/scanner.json` drives the simulated Host Scanner.
@@ -17,7 +18,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `assets/js/` contains small browser modules loaded before `script.js`.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the simple scrolling Laboratory Archive terminal.
-- `assets/js/protocol-page.js` renders the Protocol from JSON.
+- `assets/js/evolution-page.js` renders the Evolution tree from JSON.
 - `style.css` and `script.js` remain root compatibility entry points.
 
 ## Updating The Lab
@@ -25,7 +26,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 Add a new Laboratory Log by appending an object to `data/logs.json`.
 The homepage uses the first `featured: true` log, or the newest JSON entry if none is featured.
 
-Update the Laboratory Evolution Protocol by editing `data/protocol.json`.
+Update the Laboratory Evolution tree by editing `data/evolution.json`.
 Future phases should be added to the `phases` array only.
 
 Tune scanner outcomes in `data/scanner.json` and passive system events in

@@ -67,10 +67,10 @@
       return markUnavailable([]);
     },
 
-    async loadProtocol() {
-      const result = await fetchJson(config.dataPaths.protocol, config.fallback.protocol);
-      const protocol = result.data;
-      return protocol && typeof protocol === 'object' ? protocol : null;
+    async loadEvolution() {
+      const result = await fetchJson(config.dataPaths.evolution, config.fallback.evolution);
+      const evolution = result.data;
+      return evolution && typeof evolution === 'object' ? evolution : null;
     },
 
     async loadActivity() {

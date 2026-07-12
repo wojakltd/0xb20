@@ -37,7 +37,8 @@ HTML should define module shells only. Expandable content should come from `data
 
 - `index.html` is the main Laboratory Operating System shell.
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
-- `protocol/index.html` is the Laboratory Evolution Protocol page at `/protocol/`.
+- `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
+- `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
 - `script.js` is the homepage bootstrapper.
 - `assets/css/` contains design tokens, layout, components, and effects.
@@ -110,18 +111,15 @@ Drives scanner steps, report outcomes, rare messages, and easter eggs.
 
 Feeds the passive Laboratory Terminal process monitor.
 
-### `data/protocol.json`
+### `data/evolution.json`
 
-Drives the Laboratory Evolution Protocol. This is internal research documentation, not a roadmap.
+Drives the Laboratory Evolution Tree. This is a visual research map, not a roadmap or documentation page.
 
 Top-level sections:
 
 - `hero`
-- `introduction`
 - `telemetry`
-- `timeline`
 - `phases`
-- `principles`
 - `terminal`
 
 Each phase supports:
@@ -183,7 +181,7 @@ Never use:
 - `assets/js/live-terminal.js` streams activity and passive terminal lines.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the `/logs/` archive.
-- `assets/js/protocol-page.js` renders `/protocol/` from `data/protocol.json`.
+- `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Log
@@ -242,15 +240,15 @@ example: {
 
 Edit `data/status.json`. If the visual shape changes, update `renderStatus` in `assets/js/ui.js`.
 
-## How To Update The Protocol
+## How To Update Evolution
 
-Edit `data/protocol.json`.
+Edit `data/evolution.json`.
 
-- Change `telemetry.progress` to update the Protocol progress bar.
+- Change `hero.progress` and `telemetry.progress` to update progress bars.
 - Add future phases to `phases`.
-- Set only one phase to `current: true`.
-- Use `completed: true` only for phases already proven by shipped work.
-- Never describe Protocol phases as a roadmap or promise.
+- Use `state: "completed"`, `state: "current"`, or `state: "future"`.
+- Keep phase copy short enough to scan in seconds.
+- Never describe Evolution phases as a roadmap or promise.
 
 ## Future Modules
 

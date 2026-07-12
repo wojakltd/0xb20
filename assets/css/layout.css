@@ -104,22 +104,22 @@
     padding:72px 20px 90px;
 }
 
-.protocol-page{
+.evolution-page{
     width:100%;
-    max-width:var(--max-width);
+    max-width:1180px;
     margin:0 auto;
-    padding:72px 20px 90px;
+    padding:52px 20px 72px;
 }
 
-.protocol-layout{
+.evolution-dashboard{
     display:grid;
     grid-template-columns:minmax(0,1fr) 330px;
     gap:28px;
     align-items:start;
-    margin:28px 0;
+    margin:22px 0;
 }
 
-.protocol-telemetry{
+.evolution-telemetry{
     position:sticky;
     top:82px;
 }
@@ -144,7 +144,7 @@ footer p+p{
         grid-template-columns:1fr;
     }
 
-    .protocol-layout{
+    .evolution-dashboard{
         grid-template-columns:1fr;
     }
 
@@ -152,7 +152,7 @@ footer p+p{
         position:static;
     }
 
-    .protocol-telemetry{
+    .evolution-telemetry{
         position:static;
     }
 }
@@ -180,7 +180,7 @@ footer p+p{
         padding-top:42px;
     }
 
-    .protocol-page{
+    .evolution-page{
         padding-top:42px;
     }
 }

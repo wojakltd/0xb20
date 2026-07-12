@@ -41,6 +41,11 @@ h1{
 .console-shell,
 .archive-shell,
 .archive-card,
+.evolution-hero,
+.evolution-tree-shell,
+.evolution-phase,
+.evolution-telemetry,
+.evolution-terminal-panel,
 .protocol-hero,
 .protocol-intro,
 .protocol-phase,
@@ -550,6 +555,282 @@ h1{
     background:rgba(2,5,12,.78);
     color:var(--muted-strong);
     padding:18px;
+}
+
+.evolution-hero{
+    position:relative;
+    overflow:hidden;
+    padding:34px 28px;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 0,rgba(59,130,246,.22),transparent 42%),
+        linear-gradient(160deg,rgba(10,22,44,.84),rgba(3,7,16,.96)),
+        var(--panel-deep);
+    box-shadow:0 0 0 1px rgba(103,179,255,.05),var(--shadow);
+}
+
+.evolution-hero h1{
+    color:var(--blue2);
+    font-size:64px;
+    line-height:1;
+    text-shadow:0 0 24px rgba(103,179,255,.32);
+}
+
+.evolution-subtitle{
+    color:var(--text);
+    font-size:20px;
+    margin-top:16px;
+}
+
+.evolution-secondary{
+    color:var(--muted);
+    font-family:Consolas,monospace;
+    margin-top:2px;
+}
+
+.evolution-hero-progress{
+    display:inline-grid;
+    grid-template-columns:auto auto minmax(130px,190px);
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+}
+
+.evolution-hero-progress strong{
+    color:var(--cyan);
+    text-shadow:0 0 12px rgba(128,215,255,.34);
+}
+
+.evolution-progress-shell{
+    min-width:160px;
+}
+
+.evolution-tree-shell{
+    padding:22px;
+    background:
+        linear-gradient(160deg,rgba(12,24,48,.78),rgba(3,7,16,.96)),
+        var(--panel-deep);
+    box-shadow:0 0 0 1px rgba(103,179,255,.04),var(--shadow);
+}
+
+.evolution-tree-header{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:14px;
+}
+
+.evolution-tree-header h2{
+    color:var(--blue2);
+    font-size:28px;
+    line-height:1;
+}
+
+.evolution-tree{
+    display:grid;
+    justify-items:center;
+}
+
+.evolution-phase{
+    position:relative;
+    overflow:hidden;
+    width:min(100%,560px);
+    background:rgba(6,13,28,.78);
+    transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease,opacity .25s ease;
+}
+
+.evolution-phase.is-completed{
+    border-color:rgba(90,242,155,.34);
+    box-shadow:0 0 18px rgba(90,242,155,.12);
+}
+
+.evolution-phase.is-current{
+    border-color:rgba(128,215,255,.72);
+    box-shadow:0 0 34px rgba(103,179,255,.26);
+}
+
+.evolution-phase.is-future{
+    border-color:rgba(103,179,255,.14);
+    opacity:.58;
+}
+
+.evolution-phase-toggle{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    min-height:58px;
+    border:0;
+    background:transparent;
+    color:inherit;
+    padding:13px 16px;
+    text-align:left;
+}
+
+.evolution-phase-marker{
+    display:grid;
+    width:34px;
+    height:34px;
+    place-items:center;
+    border:1px solid rgba(103,179,255,.24);
+    border-radius:999px;
+    background:rgba(2,5,12,.86);
+    color:var(--muted);
+    flex:0 0 auto;
+    font-family:Consolas,monospace;
+    font-weight:800;
+}
+
+.evolution-phase.is-completed .evolution-phase-marker{
+    border-color:rgba(90,242,155,.5);
+    color:var(--green);
+    box-shadow:0 0 16px rgba(90,242,155,.25);
+}
+
+.evolution-phase.is-current .evolution-phase-marker{
+    border-color:rgba(128,215,255,.72);
+    color:var(--cyan);
+    box-shadow:0 0 22px rgba(128,215,255,.44);
+}
+
+.evolution-phase-text{
+    display:grid;
+    gap:2px;
+}
+
+.evolution-phase-title{
+    color:var(--text);
+    font-size:20px;
+    font-weight:850;
+    line-height:1.05;
+}
+
+.evolution-phase-summary{
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    font-size:13px;
+}
+
+.evolution-connector{
+    color:rgba(128,215,255,.56);
+    font-family:Consolas,monospace;
+    font-size:24px;
+    line-height:1;
+    padding:4px 0;
+    text-shadow:0 0 14px rgba(128,215,255,.28);
+}
+
+.evolution-phase-panel{
+    max-height:0;
+    overflow:hidden;
+    border-top:1px solid rgba(103,179,255,.14);
+    transition:max-height .32s ease,padding .32s ease;
+}
+
+.evolution-phase.is-expanded .evolution-phase-panel{
+    padding:14px 16px 16px 64px;
+}
+
+.evolution-phase-block+.evolution-phase-block{
+    margin-top:12px;
+}
+
+.evolution-panel-label{
+    color:var(--cyan);
+    display:block;
+    font-family:Consolas,monospace;
+    font-size:12px;
+    margin-bottom:4px;
+    text-transform:uppercase;
+}
+
+.evolution-phase-panel p{
+    color:var(--muted-strong);
+}
+
+.evolution-objectives{
+    display:grid;
+    gap:5px;
+    list-style:none;
+}
+
+.evolution-objective{
+    display:flex;
+    gap:9px;
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    font-size:13px;
+}
+
+.evolution-objective.is-active{
+    color:var(--text);
+}
+
+.evolution-objective-marker{
+    color:var(--cyan);
+}
+
+.evolution-telemetry{
+    padding:22px;
+    background:
+        linear-gradient(180deg,rgba(15,22,40,.86),rgba(4,8,18,.94)),
+        var(--panel-deep);
+    box-shadow:0 0 0 1px rgba(103,179,255,.04),var(--shadow);
+}
+
+.evolution-telemetry h2{
+    color:var(--blue2);
+    font-size:24px;
+}
+
+.evolution-progress-fill{
+    width:0;
+}
+
+.evolution-terminal-panel{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    gap:22px;
+    align-items:start;
+    margin-top:22px;
+    padding:20px 22px;
+    background:
+        linear-gradient(160deg,rgba(12,24,48,.74),rgba(3,7,16,.96)),
+        var(--panel-deep);
+    box-shadow:0 0 0 1px rgba(103,179,255,.04),var(--shadow);
+}
+
+.evolution-terminal-heading h2{
+    color:var(--blue2);
+    font-size:24px;
+    white-space:nowrap;
+}
+
+.evolution-terminal-output{
+    min-height:122px;
+    border:1px solid rgba(103,179,255,.18);
+    border-radius:var(--radius);
+    background:rgba(2,5,12,.78);
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    font-size:14px;
+    padding:14px;
+}
+
+.evolution-terminal-output p{
+    color:var(--muted-strong);
+    min-height:20px;
+}
+
+.evolution-terminal-cursor{
+    margin-top:5px;
+}
+
+.evolution-unavailable{
+    margin-bottom:28px;
 }
 
 .protocol-hero{
@@ -1071,6 +1352,50 @@ h1{
 
     .archive-header h1{
         font-size:42px;
+    }
+
+    .evolution-hero{
+        padding:28px 18px;
+    }
+
+    .evolution-hero h1{
+        font-size:40px;
+    }
+
+    .evolution-hero-progress{
+        grid-template-columns:auto auto;
+    }
+
+    .evolution-progress-shell{
+        grid-column:1/-1;
+        min-width:100%;
+    }
+
+    .evolution-tree-shell,
+    .evolution-telemetry,
+    .evolution-terminal-panel{
+        padding:18px;
+    }
+
+    .evolution-tree-header,
+    .evolution-terminal-panel{
+        display:block;
+    }
+
+    .evolution-phase{
+        width:100%;
+    }
+
+    .evolution-phase-title{
+        font-size:17px;
+    }
+
+    .evolution-phase.is-expanded .evolution-phase-panel{
+        padding:13px 14px 15px;
+    }
+
+    .evolution-terminal-output{
+        margin-top:12px;
     }
 
     .protocol-hero{

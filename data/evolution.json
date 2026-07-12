@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "title": "LABORATORY EVOLUTION",
+    "subtitle": "The experiment grows through public research.",
+    "secondary": "Research never ends.",
+    "progressLabel": "Current Progress",
+    "progress": 18
+  },
+  "telemetry": {
+    "title": "LAB STATUS",
+    "progress": 18,
+    "fields": [
+      {
+        "label": "Research",
+        "value": "ACTIVE",
+        "state": "online"
+      },
+      {
+        "label": "Current Phase",
+        "value": "Signal Detection"
+      },
+      {
+        "label": "Current Objective",
+        "value": "Build Base Signal Monitor"
+      },
+      {
+        "label": "Progress",
+        "value": "18%",
+        "progress": true
+      },
+      {
+        "label": "Hosts",
+        "value": "100+"
+      },
+      {
+        "label": "Network",
+        "value": "BASE"
+      },
+      {
+        "label": "Experiment",
+        "value": "#001"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": 0,
+      "title": "ORIGIN SIGNAL",
+      "summary": "Experiment initialized.",
+      "state": "completed",
+      "goal": "Bring the organism into public view.",
+      "objectives": [
+        { "text": "Experiment initialized", "done": true },
+        { "text": "Native B20 deployed on Base", "done": true },
+        { "text": "First Hosts detected", "done": true },
+        { "text": "Laboratory awakened", "done": true }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "FOUNDATION",
+      "summary": "Core Laboratory online.",
+      "state": "completed",
+      "goal": "Make the experiment usable.",
+      "objectives": [
+        { "text": "Official Laboratory interface", "done": true },
+        { "text": "Genesis Specimens archived", "done": true },
+        { "text": "Laboratory Logs connected", "done": true },
+        { "text": "Host Scanner online", "done": true },
+        { "text": "Console online", "done": true }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "SIGNAL DETECTION",
+      "summary": "Current Phase",
+      "state": "current",
+      "goal": "Observe Base ecosystem activity.",
+      "objectives": [
+        { "text": "Build Base Signal Monitor", "active": true },
+        { "text": "Jesse Activity Monitor", "done": false },
+        { "text": "Ecosystem Event Feed", "done": false },
+        { "text": "Telegram Alerts", "done": false }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "HOST OBSERVATION",
+      "summary": "Study Host behavior.",
+      "state": "future",
+      "goal": "Understand how Hosts interact with the Laboratory.",
+      "objectives": [
+        { "text": "Visitor Memory", "done": false },
+        { "text": "Host Profiles", "done": false },
+        { "text": "Session History", "done": false },
+        { "text": "Hidden Discoveries", "done": false }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "RESEARCH EXPANSION",
+      "summary": "Expand the research surface.",
+      "state": "future",
+      "goal": "Turn collected signals into useful Laboratory systems.",
+      "objectives": [
+        { "text": "Specimen Database", "done": false },
+        { "text": "Interactive Archive", "done": false },
+        { "text": "Laboratory Statistics", "done": false },
+        { "text": "Community Experiments", "done": false }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "AUTONOMOUS RESEARCH",
+      "summary": "First researcher wakes up.",
+      "state": "future",
+      "goal": "Give the Laboratory memory, context, and adaptive research behavior.",
+      "objectives": [
+        { "text": "AI Researcher", "done": false },
+        { "text": "Living Conversations", "done": false },
+        { "text": "Context Memory", "done": false },
+        { "text": "Research Recommendations", "done": false }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "ECOSYSTEM",
+      "summary": "Laboratory becomes infrastructure.",
+      "state": "future",
+      "goal": "Let research decide what the Laboratory becomes.",
+      "objectives": [
+        { "text": "Community Tools", "done": false },
+        { "text": "Developer Utilities", "done": false },
+        { "text": "Ecosystem Integrations", "done": false },
+        { "text": "Unknown Experiments", "done": false }
+      ]
+    }
+  ],
+  "terminal": {
+    "title": "STATUS REPORT",
+    "lines": [
+      "Experiment #001",
+      "Foundation Complete",
+      "Research Active",
+      "Current Phase:",
+      "Signal Detection",
+      "No deadlines.",
+      "No promises.",
+      "Research continues."
+    ]
+  }
+}
