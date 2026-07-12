@@ -67,6 +67,12 @@
       return markUnavailable([]);
     },
 
+    async loadProtocol() {
+      const result = await fetchJson(config.dataPaths.protocol, config.fallback.protocol);
+      const protocol = result.data;
+      return protocol && typeof protocol === 'object' ? protocol : null;
+    },
+
     async loadActivity() {
       const result = await fetchJson(config.dataPaths.activity, config.fallback.activity);
       return asArray(result.data, config.fallback.activity);

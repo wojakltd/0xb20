@@ -10,10 +10,12 @@
 
   global.B20LabConfig = {
     routes: {
-      logs: fromRoot('logs/index.html')
+      logs: fromRoot('logs/index.html'),
+      protocol: fromRoot('protocol/index.html')
     },
     dataPaths: {
       logs: fromRoot('data/logs.json'),
+      protocol: fromRoot('data/protocol.json'),
       activity: fromRoot('data/activity.json'),
       status: fromRoot('data/status.json'),
       terminalEvents: fromRoot('data/terminal-events.json'),
@@ -145,7 +147,8 @@
         currentNetwork: 'BASE',
         currentHosts: '100+',
         lastUpdate: 'auto'
-      }
+      },
+      protocol: null
     }
   };
 })(window);

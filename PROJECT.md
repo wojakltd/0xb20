@@ -37,6 +37,7 @@ HTML should define module shells only. Expandable content should come from `data
 
 - `index.html` is the main Laboratory Operating System shell.
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
+- `protocol/index.html` is the Laboratory Evolution Protocol page at `/protocol/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
 - `script.js` is the homepage bootstrapper.
 - `assets/css/` contains design tokens, layout, components, and effects.
@@ -109,6 +110,36 @@ Drives scanner steps, report outcomes, rare messages, and easter eggs.
 
 Feeds the passive Laboratory Terminal process monitor.
 
+### `data/protocol.json`
+
+Drives the Laboratory Evolution Protocol. This is internal research documentation, not a roadmap.
+
+Top-level sections:
+
+- `hero`
+- `introduction`
+- `telemetry`
+- `timeline`
+- `phases`
+- `principles`
+- `terminal`
+
+Each phase supports:
+
+```json
+{
+  "id": 2,
+  "title": "SIGNAL DETECTION",
+  "subtitle": "The Laboratory begins observing the ecosystem.",
+  "description": "The next research layer studies public ecosystem signals.",
+  "status": "PLANNED",
+  "completed": false,
+  "current": false,
+  "objectives": ["Base Signal Monitor"],
+  "notes": "Research determines what survives."
+}
+```
+
 ## Terminology
 
 - Use `Host`, not user wallet.
@@ -152,6 +183,7 @@ Never use:
 - `assets/js/live-terminal.js` streams activity and passive terminal lines.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the `/logs/` archive.
+- `assets/js/protocol-page.js` renders `/protocol/` from `data/protocol.json`.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Log
@@ -209,6 +241,16 @@ example: {
 ## How To Add New Status
 
 Edit `data/status.json`. If the visual shape changes, update `renderStatus` in `assets/js/ui.js`.
+
+## How To Update The Protocol
+
+Edit `data/protocol.json`.
+
+- Change `telemetry.progress` to update the Protocol progress bar.
+- Add future phases to `phases`.
+- Set only one phase to `current: true`.
+- Use `completed: true` only for phases already proven by shipped work.
+- Never describe Protocol phases as a roadmap or promise.
 
 ## Future Modules
 

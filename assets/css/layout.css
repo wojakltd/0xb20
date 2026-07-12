@@ -104,6 +104,26 @@
     padding:72px 20px 90px;
 }
 
+.protocol-page{
+    width:100%;
+    max-width:var(--max-width);
+    margin:0 auto;
+    padding:72px 20px 90px;
+}
+
+.protocol-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 330px;
+    gap:28px;
+    align-items:start;
+    margin:28px 0;
+}
+
+.protocol-telemetry{
+    position:sticky;
+    top:82px;
+}
+
 footer{
     border-top:1px solid var(--line);
     text-align:center;
@@ -124,7 +144,15 @@ footer p+p{
         grid-template-columns:1fr;
     }
 
+    .protocol-layout{
+        grid-template-columns:1fr;
+    }
+
     .lab-side{
+        position:static;
+    }
+
+    .protocol-telemetry{
         position:static;
     }
 }
@@ -149,6 +177,10 @@ footer p+p{
     }
 
     .archive-page{
+        padding-top:42px;
+    }
+
+    .protocol-page{
         padding-top:42px;
     }
 }
