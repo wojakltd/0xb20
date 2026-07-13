@@ -46,15 +46,28 @@
   function renderLogs(logs) {
     if (logs.unavailable) {
       listTarget.replaceChildren(createElement('p', 'archive-empty', 'Laboratory Archive unavailable.'));
+      listTarget.classList.remove('is-positioning');
       return;
     }
 
     if (!logs.length) {
       listTarget.replaceChildren(createElement('p', 'archive-empty', 'No laboratory records found.'));
+      listTarget.classList.remove('is-positioning');
       return;
     }
 
     listTarget.replaceChildren(...logs.map(renderEntry));
+    scrollToNewestLog();
+  }
+
+  function scrollToNewestLog() {
+    requestAnimationFrame(() => {
+      listTarget.scrollTop = listTarget.scrollHeight;
+
+      requestAnimationFrame(() => {
+        listTarget.classList.remove('is-positioning');
+      });
+    });
   }
 
   async function init() {
@@ -71,6 +84,7 @@
       ui.initReveal();
     }
 
+    listTarget.classList.add('is-positioning');
     renderLogs(await data.loadLogs());
   }
 

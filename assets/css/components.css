@@ -366,6 +366,11 @@ h1{
     scroll-behavior:smooth;
 }
 
+.archive-terminal.is-positioning{
+    opacity:0;
+    scroll-behavior:auto;
+}
+
 .archive-terminal::-webkit-scrollbar{
     width:12px;
 }

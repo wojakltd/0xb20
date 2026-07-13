@@ -297,6 +297,18 @@
     "summary": "The Laboratory survived a critical workstation failure and continued evolving.",
     "content": "Today almost became the end of the experiment.\n\nA broken driver nearly destroyed the only workstation running the Laboratory.\n\nSeveral hours were spent inside Windows recovery mode manually repairing Driver Store packages, removing broken OEM drivers, and bringing the system back online.\n\nThe workstation survived.\n\nDevelopment resumed immediately.\n\nToday's deployment introduced the first fully interactive Laboratory experience.\n\nNew systems now online:\n\n• B20 Host Scanner\n• Interactive Laboratory Console\n• Dynamic Activity Feed\n• Live Laboratory Terminal\n• Laboratory Archive\n• Automatic Laboratory Logs\n\nThe Laboratory is no longer a static website.\n\nIt has become a living system that grows together with the experiment.\n\nResearch continues.",
     "tags": ["deployment", "website", "windows", "console", "scanner", "laboratory"],
+    "featured": false
+  },
+  {
+    "id": 26,
+    "logNumber": "012",
+    "entryLabel": "LOG #012",
+    "title": "Primary X Host Infected",
+    "date": "2026-07-13",
+    "type": "incident",
+    "summary": "The primary X host was infected, forcing transmissions through a temporary relay.",
+    "content": "Unusual parasite activity was detected inside the Laboratory's primary X host.\n\nThe infection resulted in the suspension of the original communication channel.\n\nRecovery procedures were initiated immediately.\n\nRather than waiting in silence, the Laboratory deployed a temporary relay and resumed transmissions.\n\nThe parasites adapted.\n\nSo did we.\n\nResearch never ends.",
+    "tags": ["incident", "x", "relay", "communications", "parasite"],
     "featured": true
   }
 ]
