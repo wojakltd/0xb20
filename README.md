@@ -11,7 +11,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `protocol/index.html` redirects old links to Evolution.
 - `data/logs.json` is the source of truth for Laboratory Logs.
 - `data/evolution.json` drives the Evolution page.
-- `research/backend/cache/feed.json` drives the Research feed.
+- `research/backend/cache/feed.json` drives the Research feed and status metadata.
 - `data/activity.json` drives the Activity Feed.
 - `data/status.json` drives the System Status panel.
 - `data/scanner.json` drives the simulated Host Scanner.
@@ -45,6 +45,7 @@ npm run fetch
 ```
 
 The browser frontend still downloads only `research/backend/cache/feed.json`.
+Open `/research/?debug=1` to inspect provider/cache diagnostics during development.
 
 Use a local static server for full JSON loading during development:
 

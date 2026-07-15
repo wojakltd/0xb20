@@ -1,7 +1,20 @@
 [
-  { "username": "base", "category": "official", "network": "BASE" },
-  { "username": "buildonbase", "category": "official", "network": "BASE" },
-  { "username": "jessepollak", "category": "team", "network": "BASE" },
+  {
+    "username": "0xb20lol",
+    "displayName": "0XB20 Laboratory",
+    "category": "laboratory",
+    "network": "BASE",
+    "priority": 3,
+    "favorite": true,
+    "description": "Primary Laboratory relay and public experiment log.",
+    "website": "https://0xb20.lol",
+    "logo": "",
+    "partner": false,
+    "partnerName": ""
+  },
+  { "username": "base", "category": "official", "network": "BASE", "priority": 2 },
+  { "username": "buildonbase", "category": "official", "network": "BASE", "priority": 2 },
+  { "username": "jessepollak", "category": "team", "network": "BASE", "priority": 1 },
   { "username": "brad_or_bradley", "category": "team", "network": "BASE" },
   { "username": "therymac", "category": "team", "network": "BASE" },
   { "username": "HorinekPM", "category": "team", "network": "BASE" },

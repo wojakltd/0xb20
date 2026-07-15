@@ -24,12 +24,35 @@ This is not a social network, not an X client, and not a news page. The frontend
 - `backend/fetcher/index.js` updates `backend/cache/feed.json`.
 - `backend/cache/feed.json` is the public cache consumed by the frontend.
 
-## Frontend Contract
+## Feed Format
 
 The frontend only fetches:
 
 ```txt
 research/backend/cache/feed.json
+```
+
+The cache is an object. The old array-only format is still supported by the frontend for compatibility.
+
+```json
+{
+  "metadata": {
+    "version": 2,
+    "provider": "reader",
+    "generatedAt": "2026-07-15T02:05:03.598Z",
+    "durationMs": 99322,
+    "accounts": 36,
+    "accountsScanned": 36,
+    "posts": 299,
+    "postsCollected": 289,
+    "latestObservationAt": "2026-07-14T19:27:31.886Z",
+    "refreshIntervalMinutes": 10,
+    "networks": ["BASE"],
+    "categories": ["laboratory", "official"],
+    "failures": []
+  },
+  "posts": []
+}
 ```
 
 Every post supports:
@@ -57,9 +80,13 @@ Every post supports:
   "network": "BASE",
   "partner": false,
   "partner_label": "",
+  "priority": 0,
+  "favorite": false,
   "source": "reader"
 }
 ```
+
+Laboratory posts receive a small time-window priority boost during sorting. They are not pinned permanently.
 
 ## Provider Chain
 
@@ -108,12 +135,21 @@ Edit `backend/config/accounts.json`.
 {
   "username": "base",
   "category": "official",
-  "network": "BASE"
+  "network": "BASE",
+  "partner": false,
+  "partnerName": "",
+  "priority": 0,
+  "favorite": false,
+  "hidden": false,
+  "description": "",
+  "website": "",
+  "logo": ""
 }
 ```
 
 Supported categories today:
 
+- `laboratory`
 - `official`
 - `team`
 - `community`
@@ -123,6 +159,22 @@ Supported categories today:
 - `partners`
 
 More categories can be added without changing the renderer.
+
+Supported networks are plain strings. Current data uses `BASE`, but the model is ready for `ETHEREUM`, `SOLANA`, `ARBITRUM`, `OPTIMISM`, and `BITCOIN`.
+
+## Debug Mode
+
+Open `/research/?debug=1` to show cache diagnostics:
+
+- provider
+- fetch duration
+- last update
+- provider failures
+- accounts scanned
+- posts collected
+- cache age
+
+Debug output is hidden during normal usage.
 
 ## Run Fetcher
 

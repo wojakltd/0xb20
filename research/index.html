@@ -57,10 +57,48 @@
     </div>
   </section>
 
+  <section class="research-status-panel" data-research-status data-reveal>
+    <div>
+      <span class="eyebrow">Live Research</span>
+      <h2>Observation Status</h2>
+    </div>
+    <dl class="research-status-grid">
+      <div>
+        <dt>Status</dt>
+        <dd data-status-value="status">Synchronizing</dd>
+      </div>
+      <div>
+        <dt>Provider</dt>
+        <dd data-status-value="provider">Unknown</dd>
+      </div>
+      <div>
+        <dt>Latest observation</dt>
+        <dd data-status-value="latest">Unknown</dd>
+      </div>
+      <div>
+        <dt>Accounts monitored</dt>
+        <dd data-status-value="accounts">0</dd>
+      </div>
+      <div>
+        <dt>Observations</dt>
+        <dd data-status-value="posts">0</dd>
+      </div>
+      <div>
+        <dt>Refresh</dt>
+        <dd data-status-value="refresh">Every 10 minutes</dd>
+      </div>
+    </dl>
+  </section>
+
   <section class="research-controls" data-reveal>
     <label class="research-search-label" for="research-search">Search observations</label>
-    <input id="research-search" data-research-search type="search" autocomplete="off" spellcheck="false" placeholder="Search username, text, category">
+    <input id="research-search" data-research-search type="search" autocomplete="off" spellcheck="false" placeholder="Search username, display name, text, category">
     <div class="research-filters" data-research-filters aria-label="Research category filters"></div>
+  </section>
+
+  <section class="research-debug" data-research-debug hidden>
+    <span class="eyebrow">Diagnostics</span>
+    <pre data-research-debug-output>Debug mode waiting for cache...</pre>
   </section>
 
   <section class="research-shell" data-reveal>
@@ -80,6 +118,11 @@
   </section>
   </div>
 </main>
+
+<div class="research-modal" data-research-modal hidden>
+  <button class="research-modal-close" type="button" data-research-modal-close aria-label="Close media preview">×</button>
+  <img data-research-modal-image alt="Research media preview">
+</div>
 
 <footer>
   <p>

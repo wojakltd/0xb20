@@ -149,28 +149,43 @@ Drives the Research module. The frontend consumes this cache only and does not k
 
 ```json
 {
-  "id": "stable-post-id",
-  "author": "Base",
-  "displayName": "Base",
-  "username": "base",
-  "avatar": "",
-  "verified": false,
-  "text": "Post text",
-  "created_at": "2026-07-15T00:00:00.000Z",
-  "createdAt": "2026-07-15T00:00:00.000Z",
-  "relative_time": "4h ago",
-  "images": [],
-  "video": "",
-  "post_url": "https://x.com/base/status/...",
-  "url": "https://x.com/base/status/...",
-  "likes": 0,
-  "replies": 0,
-  "reposts": 0,
-  "category": "official",
-  "network": "BASE",
-  "partner": false,
-  "partner_label": "",
-  "source": "reader"
+  "metadata": {
+    "version": 2,
+    "provider": "reader",
+    "generatedAt": "2026-07-15T02:05:03.598Z",
+    "durationMs": 99322,
+    "accounts": 36,
+    "posts": 299,
+    "latestObservationAt": "2026-07-14T19:27:31.886Z",
+    "refreshIntervalMinutes": 10,
+    "networks": ["BASE"],
+    "categories": ["laboratory", "official"],
+    "failures": []
+  },
+  "posts": [
+    {
+      "id": "stable-post-id",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "",
+      "verified": false,
+      "text": "Post text",
+      "created_at": "2026-07-15T00:00:00.000Z",
+      "createdAt": "2026-07-15T00:00:00.000Z",
+      "images": [],
+      "video": "",
+      "post_url": "https://x.com/base/status/...",
+      "url": "https://x.com/base/status/...",
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "source": "reader"
+    }
+  ]
 }
 ```
 
@@ -291,10 +306,13 @@ Edit `data/evolution.json`.
 ## How To Update Research
 
 - Add or remove observed accounts in `research/backend/config/accounts.json`.
+- Accounts support `partner`, `partnerName`, `priority`, `favorite`, `hidden`, `description`, `website`, and `logo`.
 - Change provider settings in `research/backend/config/provider.json`.
 - Keep provider-specific logic inside `research/backend/providers/`.
 - Provider order is `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
 - `sample` exists only as a development fallback and is removed automatically once real provider data exists.
+- The `laboratory` category is reserved for 0XB20's own observation source and receives a small sorting boost only when posts are close in time.
+- Future networks are represented by the `network` string. Do not hardcode Base-only assumptions into new providers.
 - Never make the frontend depend on a provider.
 - Refresh cache with `cd research/backend && npm run fetch`.
 - The GitHub Action `.github/workflows/research-fetch.yml` refreshes `research/backend/cache/feed.json` every 10 minutes.

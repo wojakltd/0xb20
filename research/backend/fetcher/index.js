@@ -33,7 +33,36 @@ function normalizeAccount(account, providerConfig) {
     ...account,
     username: String(account.username || '').replace(/^@/, ''),
     category: account.category || 'community',
-    network: account.network || providerConfig.defaultNetwork || 'BASE'
+    network: account.network || providerConfig.defaultNetwork || 'BASE',
+    priority: Number(account.priority) || 0,
+    partner: Boolean(account.partner),
+    favorite: Boolean(account.favorite),
+    hidden: Boolean(account.hidden),
+    partnerName: account.partnerName || account.partnerLabel || '',
+    description: account.description || '',
+    website: account.website || '',
+    logo: account.logo || ''
+  };
+}
+
+function normalizeCache(cache) {
+  if (Array.isArray(cache)) {
+    return {
+      metadata: null,
+      posts: cache
+    };
+  }
+
+  if (cache && typeof cache === 'object') {
+    return {
+      metadata: cache.metadata || null,
+      posts: Array.isArray(cache.posts) ? cache.posts : []
+    };
+  }
+
+  return {
+    metadata: null,
+    posts: []
   };
 }
 
@@ -89,9 +118,81 @@ function mergePosts(previousPosts, nextPosts, maxItems, options = {}) {
     }
   }
 
-  return Array.from(postsById.values())
-    .sort((first, second) => new Date(second.created_at).getTime() - new Date(first.created_at).getTime())
+  return sortPosts(Array.from(postsById.values()))
     .slice(0, maxItems);
+}
+
+function getPostTime(post) {
+  const time = new Date(post && post.created_at).getTime();
+  return Number.isFinite(time) ? time : 0;
+}
+
+function getPriorityWindowMs(post) {
+  return post && post.category === 'laboratory' ? 15 * 60 * 1000 : 0;
+}
+
+function sortPosts(posts) {
+  return posts.sort((first, second) => {
+    const firstScore = getPostTime(first) + getPriorityWindowMs(first);
+    const secondScore = getPostTime(second) + getPriorityWindowMs(second);
+
+    if (secondScore !== firstScore) {
+      return secondScore - firstScore;
+    }
+
+    return getPostTime(second) - getPostTime(first);
+  });
+}
+
+function getLatestObservation(posts) {
+  const latest = sortPosts([...posts])[0];
+  return latest ? latest.created_at : null;
+}
+
+function sanitizeFailureMessage(message) {
+  return String(message || 'Unknown provider failure.')
+    .replace(/[A-Z]:\\[^\n]+/g, '[local-path]')
+    .replace(/╔[\s\S]*?╝/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+    .slice(0, 320);
+}
+
+function sanitizeFailures(failures) {
+  return (Array.isArray(failures) ? failures : []).map((failure) => ({
+    provider: failure.provider || 'unknown',
+    username: failure.username || undefined,
+    message: sanitizeFailureMessage(failure.message)
+  }));
+}
+
+function createMetadata({
+  providerConfig,
+  selected,
+  accounts,
+  posts,
+  startedAt,
+  durationMs,
+  previousMetadata
+}) {
+  return {
+    version: 2,
+    provider: selected.providerName,
+    providerOrder: getProviderOrder(providerConfig),
+    generatedAt: new Date().toISOString(),
+    durationMs,
+    accounts: accounts.length,
+    accountsScanned: accounts.length,
+    posts: posts.length,
+    postsCollected: selected.posts.length,
+    latestObservationAt: getLatestObservation(posts),
+    refreshIntervalMinutes: Number(providerConfig.refreshIntervalMinutes) || 10,
+    networks: Array.from(new Set(accounts.map((account) => account.network))).sort(),
+    categories: Array.from(new Set(accounts.map((account) => account.category))).sort(),
+    failures: sanitizeFailures(selected.failures),
+    startedAt: startedAt.toISOString(),
+    previousGeneratedAt: previousMetadata && previousMetadata.generatedAt ? previousMetadata.generatedAt : null
+  };
 }
 
 function logProviderErrors(providerName, errors) {
@@ -194,9 +295,12 @@ async function runOnce() {
   ]);
 
   const accounts = Array.isArray(accountsConfig)
-    ? accountsConfig.map((account) => normalizeAccount(account, providerConfig)).filter((account) => account.username)
+    ? accountsConfig
+      .map((account) => normalizeAccount(account, providerConfig))
+      .filter((account) => account.username && !account.hidden)
     : [];
-  const previousPosts = Array.isArray(previousCache) ? previousCache : [];
+  const normalizedPreviousCache = normalizeCache(previousCache);
+  const previousPosts = normalizedPreviousCache.posts;
   const maxCacheItems = Number(providerConfig.maxCacheItems) || 400;
   const startedAt = new Date();
 
@@ -217,10 +321,26 @@ async function runOnce() {
     throw new Error('Research feed generation failed and no fallback produced posts.');
   }
 
-  await writeJson(cachePath, nextCache);
+  const durationMs = Date.now() - startedAt.getTime();
+  const metadata = createMetadata({
+    providerConfig,
+    selected,
+    accounts,
+    posts: nextCache,
+    startedAt,
+    durationMs,
+    previousMetadata: normalizedPreviousCache.metadata
+  });
+  const cachePayload = {
+    metadata,
+    posts: nextCache
+  };
+
+  await writeJson(cachePath, cachePayload);
 
   console.log(`[research] selected provider: ${selected.providerName}`);
   console.log(`[research] cache size: ${nextCache.length}`);
+  console.log(`[research] duration: ${durationMs}ms`);
 
   if (selected.failures.length) {
     console.log('[research] fallback diagnostics:');
@@ -229,7 +349,7 @@ async function runOnce() {
     });
   }
 
-  return nextCache;
+  return cachePayload;
 }
 
 async function run() {

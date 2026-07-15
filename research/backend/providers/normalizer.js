@@ -104,7 +104,12 @@ function normalizePost(source, account = {}, provider = 'unknown') {
     category: String(source.category || account.category || 'community').toLowerCase(),
     network: String(source.network || account.network || 'BASE').toUpperCase(),
     partner: Boolean(source.partner || account.partner),
-    partner_label: String(source.partner_label || source.partnerLabel || account.partnerLabel || ''),
+    partner_label: String(source.partner_label || source.partnerLabel || account.partnerName || account.partnerLabel || ''),
+    priority: Number(source.priority ?? account.priority ?? 0) || 0,
+    favorite: Boolean(source.favorite || account.favorite),
+    description: String(source.description || account.description || ''),
+    website: String(source.website || account.website || ''),
+    logo: String(source.logo || account.logo || ''),
     source: provider
   };
 }
