@@ -36,7 +36,15 @@ Tune scanner outcomes in `data/scanner.json` and passive system events in
 `data/terminal-events.json`.
 
 Update Research accounts in `research/backend/config/accounts.json`.
-Run `node research/backend/fetcher/index.js` to refresh `research/backend/cache/feed.json`.
+Run the provider chain to refresh `research/backend/cache/feed.json`:
+
+```bash
+cd research/backend
+npm ci
+npm run fetch
+```
+
+The browser frontend still downloads only `research/backend/cache/feed.json`.
 
 Use a local static server for full JSON loading during development:
 

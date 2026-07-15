@@ -10,6 +10,10 @@
   },
   "scripts": {
     "fetch": "node fetcher/index.js",
-    "watch": "node fetcher/index.js --watch"
+    "watch": "node fetcher/index.js --watch",
+    "install-browsers": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
   }
 }

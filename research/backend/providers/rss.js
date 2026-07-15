@@ -42,24 +42,33 @@ async function fetchAccountFeed(account, config) {
   const urls = buildUrls(account, config);
   const timeoutMs = (config.rss && config.rss.timeoutMs) || 15000;
   const retries = (config.rss && config.rss.retries) || 1;
-  let lastError;
+  const failures = [];
 
   for (const url of urls) {
     for (let attempt = 0; attempt <= retries; attempt += 1) {
       try {
         const xml = await fetchWithTimeout(url, timeoutMs);
-        return parseFeed(xml, account);
+        const posts = parseFeed(xml, account);
+
+        if (!posts.length) {
+          throw new Error('RSS document contained no parseable items.');
+        }
+
+        return posts;
       } catch (error) {
-        lastError = error;
+        const message = `${url} attempt ${attempt + 1}/${retries + 1}: ${error.message}`;
+        failures.push(message);
+        console.log(`[research:rss] ${account.username}: ${message}`);
         await sleep(400 * (attempt + 1));
       }
     }
   }
 
-  throw lastError || new Error(`No RSS bridge URL configured for ${account.username}`);
+  throw new Error(failures.length ? failures.join(' | ') : `No RSS bridge URL configured for ${account.username}`);
 }
 
-async function getLatestPosts({ accounts, config }) {
+async function fetchPosts(accounts, context = {}) {
+  const config = context.config || {};
   const requestDelayMs = Number(config.requestDelayMs) || 1000;
   const maxPostsPerAccount = Number(config.maxPostsPerAccount) || 8;
   const posts = [];
@@ -69,8 +78,10 @@ async function getLatestPosts({ accounts, config }) {
     try {
       const accountPosts = await fetchAccountFeed(account, config);
       posts.push(...accountPosts.slice(0, maxPostsPerAccount));
+      console.log(`[research:rss] ${account.username}: ${accountPosts.length} posts`);
     } catch (error) {
       errors.push({
+        provider: 'rss',
         username: account.username,
         message: error.message
       });
@@ -86,5 +97,6 @@ async function getLatestPosts({ accounts, config }) {
 }
 
 module.exports = {
-  getLatestPosts
+  fetchPosts,
+  getLatestPosts: fetchPosts
 };

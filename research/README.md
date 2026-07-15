@@ -12,10 +12,14 @@ This is not a social network, not an X client, and not a news page. The frontend
 - `assets/css/research.css` contains page-specific styling.
 - `assets/js/research.js` renders search, filters, infinite scroll, lazy media, and auto-refresh.
 - `backend/config/accounts.json` is the source of truth for observed accounts.
-- `backend/config/provider.json` selects the active data provider and fetch settings.
-- `backend/providers/provider.js` creates the active provider.
-- `backend/providers/rss.js` is the current free RSS bridge provider.
+- `backend/config/provider.json` defines provider order, scraper timeouts, and cache settings.
+- `backend/providers/provider.js` is the provider registry.
+- `backend/providers/playwright.js` is the primary anonymous X scraper.
+- `backend/providers/reader.js` is the free open-reader fallback for public `twitter.com` profile pages.
+- `backend/providers/rss.js` is the RSS/Nitter bridge fallback.
 - `backend/providers/parser.js` normalizes RSS/Atom entries into Research posts.
+- `backend/providers/sample.js` generates development observations only when every real source fails and no cache exists.
+- `backend/providers/normalizer.js` keeps every provider on one feed schema.
 - `backend/providers/future_api.js` is the placeholder for a paid or private provider.
 - `backend/fetcher/index.js` updates `backend/cache/feed.json`.
 - `backend/cache/feed.json` is the public cache consumed by the frontend.
@@ -34,35 +38,48 @@ Every post supports:
 {
   "id": "stable-post-id",
   "author": "Base",
+  "displayName": "Base",
   "username": "base",
   "avatar": "",
   "verified": false,
   "text": "Post text",
   "created_at": "2026-07-15T00:00:00.000Z",
+  "createdAt": "2026-07-15T00:00:00.000Z",
   "relative_time": "4h ago",
   "images": [],
   "video": "",
   "post_url": "https://x.com/base/status/...",
+  "url": "https://x.com/base/status/...",
   "likes": 0,
   "replies": 0,
   "reposts": 0,
   "category": "official",
   "network": "BASE",
   "partner": false,
-  "partner_label": ""
+  "partner_label": "",
+  "source": "reader"
 }
 ```
 
-## Current Provider
+## Provider Chain
 
-The MVP uses a free RSS bridge provider.
+The frontend is provider-agnostic. The fetcher tries providers in this order:
 
-Default bridge order:
+1. `playwright`
+2. `reader`
+3. `rss`
+4. preserved `cache`
+5. `sample`
 
-1. `rsshub.app`
-2. `twitrss.me`
+`playwright` is the primary provider when Chromium is available. If X blocks anonymous browser access or Playwright cannot launch, the fetcher logs the reason and continues.
 
-These are intentionally isolated behind `backend/providers/rss.js`. If an RSS bridge stops working, replace `bridgeTemplates` in `backend/config/provider.json` or create a new provider without changing the frontend.
+`reader` currently provides the most reliable free fallback by reading public `twitter.com` profile pages through an open reader endpoint.
+
+`rss` tries Nitter, RSSHub, and TwitRSS bridges with short timeouts. These services are unstable by design, so failures are expected and logged.
+
+`cache` prevents a failed provider run from erasing a working feed.
+
+`sample` exists only for development safety. Sample observations are dropped automatically as soon as real provider data exists.
 
 ## Replace Provider
 
@@ -70,7 +87,7 @@ These are intentionally isolated behind `backend/providers/rss.js`. If an RSS br
 2. Export:
 
 ```js
-async function getLatestPosts({ accounts, config }) {
+async function fetchPosts(accounts, context) {
   return {
     posts: [],
     errors: []
@@ -79,7 +96,7 @@ async function getLatestPosts({ accounts, config }) {
 ```
 
 3. Register it in `backend/providers/provider.js`.
-4. Change `activeProvider` in `backend/config/provider.json`.
+4. Add its name to `providerOrder` in `backend/config/provider.json`.
 
 No frontend changes are required.
 
@@ -113,7 +130,15 @@ One-time fetch:
 
 ```bash
 cd research/backend
+npm ci
 npm run fetch
+```
+
+Install Chromium locally only when testing the Playwright provider:
+
+```bash
+cd research/backend
+npm run install-browsers
 ```
 
 Continuous local watcher:
@@ -129,16 +154,22 @@ The watcher uses `refreshIntervalMinutes` from `backend/config/provider.json`.
 
 The site remains static.
 
-The GitHub Action `.github/workflows/research-fetch.yml` runs every 10 minutes, updates `research/backend/cache/feed.json`, and commits cache changes when new observations are found.
+The GitHub Action `.github/workflows/research-fetch.yml` runs every 10 minutes, installs Node dependencies, installs Chromium for Playwright, updates `research/backend/cache/feed.json`, and commits cache changes when new observations are found.
 
 Vercel then redeploys the static site from the updated repository.
 
 ## Failure Behavior
 
-If every provider fails:
+If a provider fails:
+
+- The exact provider/account error is logged.
+- The fetcher continues to the next provider.
+
+If every real provider fails:
 
 - The fetcher keeps the previous cache.
-- The frontend shows `Research feed temporarily unavailable. Observation continues...` only if no cached observations exist.
+- If no cache exists, the sample provider generates 10 local development observations.
+- The frontend shows `Research feed temporarily unavailable. Observation continues...` only if `feed.json` cannot load at all.
 - The page never crashes.
 
 ## Future Expansion

@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const { normalizePost } = require('./normalizer');
 
 function decodeEntities(value) {
   return String(value || '')
@@ -43,41 +43,9 @@ function getEnclosures(block) {
   return Array.from(new Set(urls));
 }
 
-function getRelativeTime(dateString) {
-  const date = new Date(dateString);
-
-  if (Number.isNaN(date.getTime())) {
-    return 'time unknown';
-  }
-
-  const seconds = Math.max(1, Math.floor((Date.now() - date.getTime()) / 1000));
-  const units = [
-    ['y', 31536000],
-    ['mo', 2592000],
-    ['d', 86400],
-    ['h', 3600],
-    ['m', 60]
-  ];
-
-  for (const [label, size] of units) {
-    const amount = Math.floor(seconds / size);
-
-    if (amount >= 1) {
-      return `${amount}${label} ago`;
-    }
-  }
-
-  return `${seconds}s ago`;
-}
-
 function toIsoDate(dateString) {
   const date = new Date(dateString);
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
-}
-
-function createStableId(username, link, date, text) {
-  const source = `${username}|${link}|${date}|${text}`;
-  return crypto.createHash('sha1').update(source).digest('hex');
 }
 
 function toPost(item, account) {
@@ -92,18 +60,17 @@ function toPost(item, account) {
   const video = getEnclosures(item).find((url) => /\.(mp4|webm|mov)(\?|$)/i.test(url)) || '';
   const postUrl = /(?:x|twitter)\.com/i.test(link) ? link : link || `https://x.com/${account.username}`;
 
-  return {
-    id: guid || createStableId(account.username, postUrl, createdAt, text),
-    author: account.displayName || account.username,
+  return normalizePost({
+    id: guid,
+    displayName: account.displayName || account.username,
     username: account.username,
     avatar: account.avatar || '',
     verified: Boolean(account.verified),
     text,
-    created_at: normalizedDate,
-    relative_time: getRelativeTime(normalizedDate),
+    createdAt: normalizedDate,
     images,
     video,
-    post_url: postUrl,
+    url: postUrl,
     likes: 0,
     replies: 0,
     reposts: 0,
@@ -111,7 +78,7 @@ function toPost(item, account) {
     network: account.network || 'BASE',
     partner: Boolean(account.partner),
     partner_label: account.partnerLabel || ''
-  };
+  }, account, 'rss');
 }
 
 function parseFeed(xml, account) {

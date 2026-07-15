@@ -30,7 +30,7 @@ The site is static and must remain lightweight:
 - No runtime app backend for visitors
 - Node.js is allowed only for Research fetcher automation
 - No frameworks
-- No dependencies
+- No browser/frontend dependencies
 
 The public frontend must remain static. Research backend code only updates JSON cache files through cron or manual scripts.
 
@@ -151,20 +151,26 @@ Drives the Research module. The frontend consumes this cache only and does not k
 {
   "id": "stable-post-id",
   "author": "Base",
+  "displayName": "Base",
   "username": "base",
   "avatar": "",
   "verified": false,
   "text": "Post text",
   "created_at": "2026-07-15T00:00:00.000Z",
+  "createdAt": "2026-07-15T00:00:00.000Z",
   "relative_time": "4h ago",
   "images": [],
   "video": "",
   "post_url": "https://x.com/base/status/...",
+  "url": "https://x.com/base/status/...",
   "likes": 0,
   "replies": 0,
   "reposts": 0,
   "category": "official",
-  "network": "BASE"
+  "network": "BASE",
+  "partner": false,
+  "partner_label": "",
+  "source": "reader"
 }
 ```
 
@@ -199,7 +205,8 @@ Never use:
 - Use `textContent` for dynamic user-visible content.
 - Fetch failures must show in-universe fallback text.
 - Do not throw console errors for missing data.
-- Do not add dependencies.
+- Do not add browser/frontend dependencies.
+- Keep backend Research dependencies minimal and isolated inside `research/backend/`.
 - Preserve root compatibility files.
 
 ## Current JavaScript Modules
@@ -286,8 +293,11 @@ Edit `data/evolution.json`.
 - Add or remove observed accounts in `research/backend/config/accounts.json`.
 - Change provider settings in `research/backend/config/provider.json`.
 - Keep provider-specific logic inside `research/backend/providers/`.
+- Provider order is `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
+- `sample` exists only as a development fallback and is removed automatically once real provider data exists.
 - Never make the frontend depend on a provider.
-- Refresh cache with `node research/backend/fetcher/index.js`.
+- Refresh cache with `cd research/backend && npm run fetch`.
+- The GitHub Action `.github/workflows/research-fetch.yml` refreshes `research/backend/cache/feed.json` every 10 minutes.
 
 ## Future Modules
 

@@ -1,14 +1,29 @@
 {
-  "activeProvider": "rss",
+  "activeProvider": "playwright",
+  "providerOrder": ["playwright", "reader", "rss", "cache", "sample"],
   "refreshIntervalMinutes": 10,
-  "requestDelayMs": 1200,
-  "maxPostsPerAccount": 8,
+  "requestDelayMs": 900,
+  "maxPostsPerAccount": 10,
   "maxCacheItems": 400,
   "defaultNetwork": "BASE",
+  "playwright": {
+    "headless": true,
+    "navigationTimeoutMs": 16000,
+    "selectorTimeoutMs": 8000,
+    "scrollPasses": 4,
+    "failureLimitBeforeFallback": 3
+  },
+  "reader": {
+    "timeoutMs": 12000,
+    "requestDelayMs": 700
+  },
   "rss": {
-    "timeoutMs": 15000,
-    "retries": 2,
+    "timeoutMs": 6000,
+    "retries": 1,
     "bridgeTemplates": [
+      "https://nitter.net/{username}/rss",
+      "https://nitter.poast.org/{username}/rss",
+      "https://nitter.privacydev.net/{username}/rss",
       "https://rsshub.app/twitter/user/{username}",
       "https://twitrss.me/twitter_user_to_rss/?user={username}"
     ]

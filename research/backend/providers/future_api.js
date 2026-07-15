@@ -1,7 +1,8 @@
-async function getLatestPosts() {
+async function fetchPosts() {
   throw new Error('future_api provider is not configured yet.');
 }
 
 module.exports = {
-  getLatestPosts
+  fetchPosts,
+  getLatestPosts: fetchPosts
 };
