@@ -1,0 +1,36 @@
+name: Research Feed Fetch
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch research feed
+        run: node research/backend/fetcher/index.js
+
+      - name: Commit cache update
+        run: |
+          if git diff --quiet -- research/backend/cache/feed.json; then
+            echo "Research cache unchanged."
+            exit 0
+          fi
+          git config user.name "0XB20 Research Bot"
+          git config user.email "actions@github.com"
+          git add research/backend/cache/feed.json
+          git commit -m "Update research feed cache"
+          git push

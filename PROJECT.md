@@ -27,9 +27,12 @@ The site is static and must remain lightweight:
 - Pure CSS
 - Vanilla JavaScript
 - Static JSON data
-- No backend
+- No runtime app backend for visitors
+- Node.js is allowed only for Research fetcher automation
 - No frameworks
 - No dependencies
+
+The public frontend must remain static. Research backend code only updates JSON cache files through cron or manual scripts.
 
 HTML should define module shells only. Expandable content should come from `data/` whenever possible.
 
@@ -37,6 +40,7 @@ HTML should define module shells only. Expandable content should come from `data
 
 - `index.html` is the main Laboratory Operating System shell.
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
+- `research/index.html` is the Research observation terminal at `/research/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
@@ -44,6 +48,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `assets/css/` contains design tokens, layout, components, and effects.
 - `assets/js/` contains independent browser modules.
 - `data/` contains the editable source of truth for live content.
+- `research/backend/` contains the provider-agnostic Research fetcher.
 
 ## JSON Schemas
 
@@ -138,6 +143,31 @@ Each phase supports:
 }
 ```
 
+### `research/backend/cache/feed.json`
+
+Drives the Research module. The frontend consumes this cache only and does not know which provider created it.
+
+```json
+{
+  "id": "stable-post-id",
+  "author": "Base",
+  "username": "base",
+  "avatar": "",
+  "verified": false,
+  "text": "Post text",
+  "created_at": "2026-07-15T00:00:00.000Z",
+  "relative_time": "4h ago",
+  "images": [],
+  "video": "",
+  "post_url": "https://x.com/base/status/...",
+  "likes": 0,
+  "replies": 0,
+  "reposts": 0,
+  "category": "official",
+  "network": "BASE"
+}
+```
+
 ## Terminology
 
 - Use `Host`, not user wallet.
@@ -182,6 +212,7 @@ Never use:
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the `/logs/` archive.
 - `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
+- `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Log
@@ -249,6 +280,14 @@ Edit `data/evolution.json`.
 - Use `state: "completed"`, `state: "current"`, or `state: "future"`.
 - Keep phase copy short enough to scan in seconds.
 - Never describe Evolution phases as a roadmap or promise.
+
+## How To Update Research
+
+- Add or remove observed accounts in `research/backend/config/accounts.json`.
+- Change provider settings in `research/backend/config/provider.json`.
+- Keep provider-specific logic inside `research/backend/providers/`.
+- Never make the frontend depend on a provider.
+- Refresh cache with `node research/backend/fetcher/index.js`.
 
 ## Future Modules
 

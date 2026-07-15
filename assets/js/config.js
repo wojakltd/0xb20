@@ -11,6 +11,7 @@
   global.B20LabConfig = {
     routes: {
       logs: fromRoot('logs/index.html'),
+      research: fromRoot('research/index.html'),
       evolution: fromRoot('evolution/index.html')
     },
     dataPaths: {

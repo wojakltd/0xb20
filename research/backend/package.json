@@ -1,0 +1,15 @@
+{
+  "name": "0xb20-research-fetcher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Provider-agnostic Research feed fetcher for the 0XB20 Laboratory.",
+  "main": "fetcher/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "fetch": "node fetcher/index.js",
+    "watch": "node fetcher/index.js --watch"
+  }
+}

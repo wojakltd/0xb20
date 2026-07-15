@@ -1,0 +1,16 @@
+{
+  "activeProvider": "rss",
+  "refreshIntervalMinutes": 10,
+  "requestDelayMs": 1200,
+  "maxPostsPerAccount": 8,
+  "maxCacheItems": 400,
+  "defaultNetwork": "BASE",
+  "rss": {
+    "timeoutMs": 15000,
+    "retries": 2,
+    "bridgeTemplates": [
+      "https://rsshub.app/twitter/user/{username}",
+      "https://twitrss.me/twitter_user_to_rss/?user={username}"
+    ]
+  }
+}
