@@ -9,12 +9,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-15T11:02:07.706Z",
-    "durationMs": 203997,
+    "generatedAt": "2026-07-15T12:25:51.520Z",
+    "durationMs": 234406,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 397,
-    "postsCollected": 200,
+    "postsCollected": 203,
     "latestObservationAt": "2026-07-15T11:01:34.321Z",
     "refreshIntervalMinutes": 10,
     "networks": [
@@ -30,8 +30,8 @@
       "team"
     ],
     "failures": [],
-    "startedAt": "2026-07-15T10:58:43.708Z",
-    "previousGeneratedAt": "2026-07-15T09:03:07.524Z"
+    "startedAt": "2026-07-15T12:21:57.114Z",
+    "previousGeneratedAt": "2026-07-15T11:02:07.706Z"
   },
   "posts": [
     {
@@ -8456,6 +8456,37 @@
       "logo": ""
     },
     {
+      "id": "therymac-1895274968092680612",
+      "author": "therymac",
+      "displayName": "therymac",
+      "username": "therymac",
+      "avatar": "https://pbs.twimg.com/profile_images/1953646855474028544/ha2xhaqJ_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2025-02-27T21:00:00.000Z",
+      "createdAt": "2025-02-27T21:00:00.000Z",
+      "relative_time": "1s ago",
+      "images": [
+        "https://pbs.twimg.com/media/Gk1CF9QXIAA1FdR?format=webp&name=medium"
+      ],
+      "video": "",
+      "post_url": "https://x.com/therymac/status/1895274968092680612",
+      "url": "https://x.com/therymac/status/1895274968092680612",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "source": "playwright",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": ""
+    },
+    {
       "id": "therymac-1895508633510977992",
       "author": "therymac",
       "displayName": "therymac",
@@ -8480,37 +8511,6 @@
       "partner": false,
       "partner_label": "",
       "source": "playwright",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": ""
-    },
-    {
-      "id": "therymac-1895274968092680612",
-      "author": "Ryan MacDowell",
-      "displayName": "Ryan MacDowell",
-      "username": "therymac",
-      "avatar": "https://pbs.twimg.com/profile_images/1953646855474028544/ha2xhaqJ_400x400.jpg",
-      "verified": false,
-      "text": "The joy I exude handing out Base merch",
-      "created_at": "2025-02-27T21:00:00.000Z",
-      "createdAt": "2025-02-27T21:00:00.000Z",
-      "relative_time": "1y ago",
-      "images": [
-        "https://pbs.twimg.com/media/Gk1CF9QXIAA1FdR?format=webp&name=medium"
-      ],
-      "video": "",
-      "post_url": "https://x.com/therymac/status/1895274968092680612",
-      "url": "https://x.com/therymac/status/1895274968092680612",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "source": "reader",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -8612,15 +8612,15 @@
     },
     {
       "id": "therymac-1894536069317611741",
-      "author": "Ryan MacDowell",
-      "displayName": "Ryan MacDowell",
+      "author": "therymac",
+      "displayName": "therymac",
       "username": "therymac",
-      "avatar": "https://pbs.twimg.com/profile_images/1953646855474028544/ha2xhaqJ_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1953646855474028544/ha2xhaqJ_normal.jpg",
       "verified": false,
-      "text": "most based #ETHDenver yet, let’s go",
+      "text": "Observation captured without readable text.",
       "created_at": "2025-02-24T21:00:00.000Z",
       "createdAt": "2025-02-24T21:00:00.000Z",
-      "relative_time": "1y ago",
+      "relative_time": "1s ago",
       "images": [
         "https://pbs.twimg.com/media/Gkq-ffYWcAAytNc?format=webp&name=medium"
       ],
@@ -8634,7 +8634,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
