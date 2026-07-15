@@ -312,6 +312,9 @@ Edit `data/evolution.json`.
 - Provider order is `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
 - `sample` exists only as a development fallback and is removed automatically once real provider data exists.
 - The `laboratory` category is reserved for 0XB20's own observation source and receives a small sorting boost only when posts are close in time.
+- Research timestamps should prefer X Snowflake IDs over reader text labels.
+- `maxPostAgeDays` prevents stale posts from staying in the public feed.
+- Accounts can define `minCreatedAt` and `minPostId`; `0xb20lol` starts at status `2076659510803079325`.
 - Future networks are represented by the `network` string. Do not hardcode Base-only assumptions into new providers.
 - Never make the frontend depend on a provider.
 - Refresh cache with `cd research/backend && npm run fetch`.

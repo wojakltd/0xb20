@@ -5,6 +5,7 @@
   "requestDelayMs": 900,
   "maxPostsPerAccount": 10,
   "maxCacheItems": 400,
+  "maxPostAgeDays": 30,
   "defaultNetwork": "BASE",
   "playwright": {
     "headless": true,

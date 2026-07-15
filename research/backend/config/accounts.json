@@ -4,6 +4,8 @@
     "displayName": "0XB20 Laboratory",
     "category": "laboratory",
     "network": "BASE",
+    "minCreatedAt": "2026-07-13T13:26:00.000Z",
+    "minPostId": "2076659510803079325",
     "priority": 3,
     "favorite": true,
     "description": "Primary Laboratory relay and public experiment log.",

@@ -41,7 +41,9 @@ function normalizeAccount(account, providerConfig) {
     partnerName: account.partnerName || account.partnerLabel || '',
     description: account.description || '',
     website: account.website || '',
-    logo: account.logo || ''
+    logo: account.logo || '',
+    minCreatedAt: account.minCreatedAt || '',
+    minPostId: account.minPostId || ''
   };
 }
 
@@ -70,7 +72,82 @@ function accountMap(accounts) {
   return new Map(accounts.map((account) => [String(account.username).toLowerCase(), account]));
 }
 
-function normalizePosts(posts, accounts, providerName) {
+function getStatusId(post) {
+  const direct = String(post && post.id ? post.id : '').match(/(\d{12,})$/);
+
+  if (direct) {
+    return direct[1];
+  }
+
+  const url = String((post && (post.post_url || post.url)) || '');
+  const match = url.match(/\/status\/(\d+)/);
+  return match ? match[1] : '';
+}
+
+function compareSnowflakeIds(first, second) {
+  try {
+    const firstId = BigInt(first);
+    const secondId = BigInt(second);
+    return firstId === secondId ? 0 : firstId > secondId ? 1 : -1;
+  } catch (error) {
+    return 0;
+  }
+}
+
+function getPostTime(post) {
+  const time = new Date(post && post.created_at).getTime();
+  return Number.isFinite(time) ? time : 0;
+}
+
+function getMaxAgeCutoff(providerConfig) {
+  const maxAgeDays = Number(providerConfig.maxPostAgeDays) || 30;
+  return Date.now() - maxAgeDays * 24 * 60 * 60 * 1000;
+}
+
+function passesAccountStart(post, account) {
+  const minPostId = String(account.minPostId || '');
+  const statusId = getStatusId(post);
+
+  if (minPostId && statusId) {
+    return compareSnowflakeIds(statusId, minPostId) >= 0;
+  }
+
+  if (account.minCreatedAt) {
+    const minTime = new Date(account.minCreatedAt).getTime();
+    const postTime = getPostTime(post);
+
+    if (Number.isFinite(minTime) && postTime && postTime < minTime) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function passesFreshnessPolicy(post, account, providerConfig) {
+  const postTime = getPostTime(post);
+
+  if (!postTime) {
+    return false;
+  }
+
+  if (postTime < getMaxAgeCutoff(providerConfig)) {
+    return false;
+  }
+
+  return passesAccountStart(post, account);
+}
+
+function applyPostPolicy(posts, accounts, providerConfig) {
+  const accountsByUsername = accountMap(accounts);
+
+  return posts.filter((post) => {
+    const account = accountsByUsername.get(String(post.username).toLowerCase()) || {};
+    return passesFreshnessPolicy(post, account, providerConfig);
+  });
+}
+
+function normalizePosts(posts, accounts, providerName, providerConfig) {
   const accountsByUsername = accountMap(accounts);
 
   return (Array.isArray(posts) ? posts : [])
@@ -80,6 +157,10 @@ function normalizePosts(posts, accounts, providerName) {
       return normalizePost(post, account, post.source || providerName);
     })
     .filter((post) => post.username && post.text)
+    .filter((post) => {
+      const account = accountsByUsername.get(String(post.username).toLowerCase()) || {};
+      return passesFreshnessPolicy(post, account, providerConfig);
+    })
     .filter((post, index, allPosts) => allPosts.findIndex((candidate) => candidate.id === post.id) === index);
 }
 
@@ -120,11 +201,6 @@ function mergePosts(previousPosts, nextPosts, maxItems, options = {}) {
 
   return sortPosts(Array.from(postsById.values()))
     .slice(0, maxItems);
-}
-
-function getPostTime(post) {
-  const time = new Date(post && post.created_at).getTime();
-  return Number.isFinite(time) ? time : 0;
 }
 
 function getPriorityWindowMs(post) {
@@ -220,7 +296,7 @@ async function runExternalProvider(providerName, accounts, providerConfig, previ
     config: providerConfig,
     previousPosts
   });
-  const posts = normalizePosts(result && result.posts, accounts, providerName);
+  const posts = normalizePosts(result && result.posts, accounts, providerName, providerConfig);
   const elapsed = Date.now() - startedAt;
 
   logProviderErrors(providerName, result && result.errors);
@@ -300,7 +376,7 @@ async function runOnce() {
       .filter((account) => account.username && !account.hidden)
     : [];
   const normalizedPreviousCache = normalizeCache(previousCache);
-  const previousPosts = normalizedPreviousCache.posts;
+  const previousPosts = applyPostPolicy(normalizedPreviousCache.posts, accounts, providerConfig);
   const maxCacheItems = Number(providerConfig.maxCacheItems) || 400;
   const startedAt = new Date();
 

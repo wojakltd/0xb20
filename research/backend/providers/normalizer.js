@@ -14,8 +14,40 @@ function unique(values) {
 }
 
 function toIsoDate(value) {
-  const date = value ? new Date(value) : new Date();
-  return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
+  if (!value) {
+    return '';
+  }
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+}
+
+function getSnowflakeId(source) {
+  const direct = String(source && source.id ? source.id : '').match(/(\d{12,})$/);
+
+  if (direct) {
+    return direct[1];
+  }
+
+  const url = String(source && (source.post_url || source.url) ? source.post_url || source.url : '');
+  const match = url.match(/\/status\/(\d+)/);
+  return match ? match[1] : '';
+}
+
+function snowflakeToIsoDate(source) {
+  const id = getSnowflakeId(source);
+
+  if (!id) {
+    return '';
+  }
+
+  try {
+    const timestamp = (BigInt(id) >> 22n) + 1288834974657n;
+    const date = new Date(Number(timestamp));
+    return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+  } catch (error) {
+    return '';
+  }
 }
 
 function getRelativeTime(value) {
@@ -79,7 +111,7 @@ function createStableId(source) {
 function normalizePost(source, account = {}, provider = 'unknown') {
   const username = String(source.username || account.username || 'unknown').replace(/^@/, '');
   const displayName = String(source.displayName || source.author || account.displayName || username);
-  const createdAt = toIsoDate(source.created_at || source.createdAt || source.created_at_iso);
+  const createdAt = snowflakeToIsoDate(source) || toIsoDate(source.created_at || source.createdAt || source.created_at_iso);
   const postUrl = String(source.post_url || source.url || `https://x.com/${username}`);
   const text = cleanText(source.text || source.content || source.summary);
 

@@ -88,6 +88,15 @@ Every post supports:
 
 Laboratory posts receive a small time-window priority boost during sorting. They are not pinned permanently.
 
+Post timestamps are derived from X Snowflake status IDs whenever possible. Text dates from free readers are treated as hints only, because they may be localized, incomplete, or stale.
+
+Freshness policy:
+
+- Global feed keeps only posts newer than `maxPostAgeDays` in `backend/config/provider.json`.
+- Accounts can define `minCreatedAt` and `minPostId`.
+- The Laboratory account starts at `0xb20lol/status/2076659510803079325`.
+- Previous cache entries are re-filtered on every fetch, so stale posts cannot survive inside `feed.json`.
+
 ## Provider Chain
 
 The frontend is provider-agnostic. The fetcher tries providers in this order:
@@ -143,7 +152,9 @@ Edit `backend/config/accounts.json`.
   "hidden": false,
   "description": "",
   "website": "",
-  "logo": ""
+  "logo": "",
+  "minCreatedAt": "",
+  "minPostId": ""
 }
 ```
 
