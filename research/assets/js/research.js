@@ -202,7 +202,6 @@
     const network = createElement('span', 'research-network', post.network);
     const text = createElement('p', 'research-text', post.text);
     const actions = createElement('div', 'research-actions');
-    const stats = createElement('span', 'research-stats', `likes ${post.likes} / replies ${post.replies} / reposts ${post.reposts}`);
     const open = createElement('a', 'research-open', 'Open on X');
     const media = renderMedia(post);
 
@@ -218,7 +217,7 @@
     nameRow.append(username, badge, time, network);
     identity.append(nameRow);
     header.append(renderAvatar(post), identity);
-    actions.append(stats, open);
+    actions.append(open);
     card.append(header, text);
 
     if (media) {
