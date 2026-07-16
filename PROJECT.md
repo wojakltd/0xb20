@@ -58,15 +58,18 @@ Legacy manual Laboratory records live here. This file is now a preserved archive
 
 ```json
 {
-  "id": 15,
-  "logNumber": "015",
-  "title": "Laboratory Console Activated",
-  "date": "2026-07-12",
-  "type": "deployment",
-  "summary": "Visitors can now communicate with the Laboratory.",
-  "content": "Today the first interactive terminal entered production...",
-  "tags": ["console", "website", "deployment"],
-  "featured": true
+  "id": 27,
+  "logNumber": "013",
+  "entryLabel": "LOG #013",
+  "title": "Example Prototype Record",
+  "date": "2026-07-17",
+  "type": "archive",
+  "summary": "Short preserved archive summary.",
+  "content": "Full preserved archive text...",
+  "tags": ["archive", "research"],
+  "featured": false,
+  "link": "/research/",
+  "linkLabel": "→ Open Research Terminal"
 }
 ```
 

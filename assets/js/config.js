@@ -73,8 +73,8 @@
       },
       status: {
         laboratoryStatus: 'ONLINE',
-        currentExperiment: 'Blockchain Infection Scanner',
-        developmentProgress: 37,
+        currentExperiment: 'Research Infrastructure',
+        developmentProgress: 36,
         currentNetwork: 'BASE',
         currentHosts: '100+',
         lastUpdate: 'auto'
