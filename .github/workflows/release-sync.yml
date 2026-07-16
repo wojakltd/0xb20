@@ -20,15 +20,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Write release marker
         run: |
           mkdir -p data
-          node -e "const fs=require('fs'); const marker={sourceSha:process.env.GITHUB_SHA,generatedAt:new Date().toISOString(),purpose:'Force Vercel production sync for static Laboratory release assets.'}; fs.writeFileSync('data/deploy-version.json', JSON.stringify(marker, null, 2) + '\n');"
+          node -e "const fs=require('fs'); const marker={sourceSha:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,generatedAt:new Date().toISOString(),purpose:'Force Vercel production sync for static Laboratory release assets.'}; fs.writeFileSync('data/deploy-version.json', JSON.stringify(marker, null, 2) + '\n');"
 
       - name: Commit release marker
         run: |
-          if git diff --quiet -- data/deploy-version.json; then
+          if [ -z "$(git status --porcelain -- data/deploy-version.json)" ]; then
             echo "Release marker unchanged."
             exit 0
           fi
@@ -36,4 +39,4 @@ jobs:
           git config user.email "actions@github.com"
           git add data/deploy-version.json
           git commit -m "Sync production release [skip release sync]"
-          git push
+          git push origin HEAD:main
