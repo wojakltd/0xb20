@@ -19,8 +19,8 @@ jobs:
       - name: Trigger Vercel deploy hook
         run: |
           if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
-            echo "::warning::VERCEL_DEPLOY_HOOK_URL is missing. Create a Vercel Deploy Hook and save it as a GitHub secret with this exact name."
-            exit 0
+            echo "::error::VERCEL_DEPLOY_HOOK_URL is missing. Create a Vercel Deploy Hook and save it as a GitHub secret with this exact name."
+            exit 1
           fi
 
           curl --fail --show-error --silent --request POST "$VERCEL_DEPLOY_HOOK_URL"
