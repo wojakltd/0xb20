@@ -1,0 +1,39 @@
+name: Release Deploy Sync
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-deploy-sync
+  cancel-in-progress: true
+
+jobs:
+  marker:
+    if: github.actor != 'github-actions[bot]' && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip release sync]'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write release marker
+        run: |
+          mkdir -p data
+          node -e "const fs=require('fs'); const marker={sourceSha:process.env.GITHUB_SHA,generatedAt:new Date().toISOString(),purpose:'Force Vercel production sync for static Laboratory release assets.'}; fs.writeFileSync('data/deploy-version.json', JSON.stringify(marker, null, 2) + '\n');"
+
+      - name: Commit release marker
+        run: |
+          if git diff --quiet -- data/deploy-version.json; then
+            echo "Release marker unchanged."
+            exit 0
+          fi
+          git config user.name "0XB20 Release Bot"
+          git config user.email "actions@github.com"
+          git add data/deploy-version.json
+          git commit -m "Sync production release [skip release sync]"
+          git push
