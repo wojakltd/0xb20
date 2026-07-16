@@ -1,6 +1,7 @@
 (function () {
   const accessStorageKey = 'b20-research-access';
   const accessPassword = '0xb20.lol';
+  const isAccessGateEnabled = false;
   const cachePath = 'backend/cache/feed.json';
   const pageSize = 12;
   const refreshIntervalMs = 120000;
@@ -571,6 +572,19 @@
   }
 
   function initAccessGate() {
+    if (!isAccessGateEnabled) {
+      if (gateTarget) {
+        gateTarget.hidden = true;
+      }
+
+      if (protectedContent) {
+        protectedContent.hidden = false;
+      }
+
+      initResearch();
+      return;
+    }
+
     if (!gateTarget || !protectedContent || !gateForm || !passwordInput) {
       initResearch();
       return;
