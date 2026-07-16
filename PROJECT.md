@@ -15,7 +15,7 @@ Never add fake hype, fake urgency, fake partnerships, fake roadmaps, or generic 
 - B20 is treated like a digital organism.
 - Wallets are Hosts.
 - NFTs are Specimens.
-- Updates are Laboratory Logs.
+- Updates are Laboratory observations.
 - The website is the Laboratory Operating System.
 - The tone is honest, technical, weird, and in-universe.
 
@@ -54,7 +54,7 @@ HTML should define module shells only. Expandable content should come from `data
 
 ### `data/logs.json`
 
-All Laboratory Logs live here. Adding a log should only require editing this file.
+Legacy manual Laboratory records live here. This file is now a preserved archive of early experiments, not the source of future project history.
 
 ```json
 {
@@ -151,7 +151,8 @@ Drives the Research module. The frontend consumes this cache only and does not k
 {
   "metadata": {
     "version": 2,
-    "provider": "reader",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "generatedAt": "2026-07-15T02:05:03.598Z",
     "durationMs": 99322,
     "accounts": 36,
@@ -237,15 +238,19 @@ Never use:
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
-## How To Add A New Log
+## How To Add A New Legacy Record
+
+Manual Terminal Logs are discontinued for future project history.
+
+Only use this path for preserving or correcting early archive records:
 
 1. Open `data/logs.json`.
-2. Add a new object with the full log schema.
-3. Use a new `id` and `logNumber`.
-4. Set `featured: true` if it should appear on the homepage.
-5. Set older featured logs to `false` when needed.
+2. Add or edit an object with the full legacy log schema.
+3. Use a stable `id` and `logNumber`.
+4. Set `featured: true` only if the homepage should feature a preserved early record.
+5. Set older featured records to `false` when needed.
 
-The homepage, archive page, and console `logs` command update automatically.
+New official project history should be published through `@0xb20lol` and imported into Research.
 
 ## How To Add New Activity
 
@@ -309,7 +314,10 @@ Edit `data/evolution.json`.
 - Accounts support `partner`, `partnerName`, `priority`, `favorite`, `hidden`, `description`, `website`, and `logo`.
 - Change provider settings in `research/backend/config/provider.json`.
 - Keep provider-specific logic inside `research/backend/providers/`.
-- Provider order is `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
+- Provider order is `laboratory`, `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
+- `laboratory` is the only entry point for official 0XB20 history and currently delegates to `xapi`.
+- `xapi` uses official X API bearer-token auth and must never be called directly outside `laboratory.js`.
+- Laboratory sync cadence is 12 hours by default for API quota conservation.
 - `sample` exists only as a development fallback and is removed automatically once real provider data exists.
 - The `laboratory` category is reserved for 0XB20's own observation source and receives a small sorting boost only when posts are close in time.
 - Research timestamps should prefer X Snowflake IDs over reader text labels.

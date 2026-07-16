@@ -1,12 +1,23 @@
 {
   "activeProvider": "playwright",
-  "providerOrder": ["playwright", "reader", "rss", "cache", "sample"],
+  "providerOrder": ["laboratory", "playwright", "reader", "rss", "cache", "sample"],
   "refreshIntervalMinutes": 10,
   "requestDelayMs": 900,
   "maxPostsPerAccount": 80,
   "maxCacheItems": 2500,
   "maxPostAgeDays": 30,
   "defaultNetwork": "BASE",
+  "laboratory": {
+    "provider": "xapi",
+    "username": "0xb20lol",
+    "refreshIntervalMinutes": 720
+  },
+  "xapi": {
+    "baseUrl": "https://api.x.com/2",
+    "timeoutMs": 15000,
+    "maxResults": 100,
+    "maxPages": 4
+  },
   "playwright": {
     "headless": true,
     "navigationTimeoutMs": 18000,

@@ -228,6 +228,18 @@ function getAccountsByUsernames(accounts, usernames) {
   return accounts.filter((account) => wantedUsernames.has(String(account.username).toLowerCase()));
 }
 
+function isLaboratoryAccount(account) {
+  return String(account && account.category || '').toLowerCase() === 'laboratory'
+    || String(account && account.username || '').toLowerCase() === '0xb20lol';
+}
+
+function filterPostsForAccounts(posts, accounts) {
+  const usernames = new Set(accounts.map((account) => String(account.username).toLowerCase()));
+
+  return (Array.isArray(posts) ? posts : [])
+    .filter((post) => usernames.has(String(post.username).toLowerCase()));
+}
+
 function annotateCoverage(providerName, diagnostics) {
   const coverage = diagnostics && Array.isArray(diagnostics.coverage)
     ? diagnostics.coverage
@@ -287,9 +299,16 @@ function createMetadata({
   durationMs,
   previousMetadata
 }) {
+  const laboratoryDiagnostics = selected.diagnostics && selected.diagnostics.laboratory
+    ? selected.diagnostics.laboratory
+    : previousMetadata && previousMetadata.laboratory
+      ? previousMetadata.laboratory
+      : null;
+
   return {
     version: 2,
     provider: selected.providerName,
+    backendProvider: selected.providerName,
     providerOrder: getProviderOrder(providerConfig),
     generatedAt: new Date().toISOString(),
     durationMs,
@@ -305,6 +324,19 @@ function createMetadata({
     coverage: selected.diagnostics && Array.isArray(selected.diagnostics.coverage)
       ? selected.diagnostics.coverage
       : [],
+    laboratory: laboratoryDiagnostics,
+    laboratoryProvider: laboratoryDiagnostics && laboratoryDiagnostics.provider
+      ? laboratoryDiagnostics.provider
+      : 'laboratory',
+    apiStatus: laboratoryDiagnostics && laboratoryDiagnostics.apiStatus
+      ? laboratoryDiagnostics.apiStatus
+      : 'unknown',
+    lastLaboratorySyncAt: laboratoryDiagnostics && laboratoryDiagnostics.lastSyncAt
+      ? laboratoryDiagnostics.lastSyncAt
+      : null,
+    laboratoryImportedPosts: laboratoryDiagnostics && Number.isFinite(Number(laboratoryDiagnostics.importedPosts))
+      ? Number(laboratoryDiagnostics.importedPosts)
+      : 0,
     startedAt: startedAt.toISOString(),
     previousGeneratedAt: previousMetadata && previousMetadata.generatedAt ? previousMetadata.generatedAt : null
   };
@@ -321,7 +353,7 @@ function logProviderErrors(providerName, errors) {
   });
 }
 
-async function runExternalProvider(providerName, accounts, providerConfig, previousPosts) {
+async function runExternalProvider(providerName, accounts, providerConfig, previousPosts, previousMetadata) {
   const provider = getProvider(providerName);
   const fetchPosts = provider.fetchPosts || provider.getLatestPosts;
 
@@ -333,7 +365,8 @@ async function runExternalProvider(providerName, accounts, providerConfig, previ
   console.log(`[research] provider ${providerName}: start`);
   const result = await fetchPosts(accounts, {
     config: providerConfig,
-    previousPosts
+    previousPosts,
+    previousMetadata
   });
   const posts = normalizePosts(result && result.posts, accounts, providerName, providerConfig);
   const elapsed = Date.now() - startedAt;
@@ -349,7 +382,35 @@ async function runExternalProvider(providerName, accounts, providerConfig, previ
   };
 }
 
-async function selectPosts(accounts, providerConfig, previousPosts) {
+function mergeDiagnostics(selections) {
+  const coverage = [];
+  let laboratory = null;
+
+  selections.forEach((selection) => {
+    if (selection && selection.diagnostics && Array.isArray(selection.diagnostics.coverage)) {
+      coverage.push(...selection.diagnostics.coverage);
+    }
+
+    if (selection && selection.diagnostics && selection.diagnostics.laboratory) {
+      laboratory = selection.diagnostics.laboratory;
+    }
+  });
+
+  return {
+    coverage,
+    laboratory
+  };
+}
+
+function providerNameForSelections(selections) {
+  const names = selections
+    .map((selection) => selection && selection.providerName)
+    .filter((name) => name && name !== 'none');
+
+  return names.length ? names.join('+') : 'none';
+}
+
+async function selectPostsForAccounts(accounts, providerConfig, previousPosts, previousMetadata) {
   const providerOrder = getProviderOrder(providerConfig);
   const providerFailures = [];
   const collectedPosts = [];
@@ -389,7 +450,7 @@ async function selectPosts(accounts, providerConfig, previousPosts) {
       }
 
       console.log(`[research] provider ${providerName}: scanning ${accountsToFetch.length}/${accounts.length} accounts`);
-      const result = await runExternalProvider(providerName, accountsToFetch, providerConfig, previousPosts);
+      const result = await runExternalProvider(providerName, accountsToFetch, providerConfig, previousPosts, previousMetadata);
       providerFailures.push(...result.errors);
       coverage.push(...annotateCoverage(providerName, result.diagnostics));
       usernamesForFallback = new Set(
@@ -445,6 +506,57 @@ async function selectPosts(accounts, providerConfig, previousPosts) {
   };
 }
 
+async function selectPosts(accounts, providerConfig, previousPosts, previousMetadata) {
+  const providerOrder = getProviderOrder(providerConfig);
+
+  if (!providerOrder.includes('laboratory')) {
+    return selectPostsForAccounts(accounts, providerConfig, previousPosts, previousMetadata);
+  }
+
+  const laboratoryAccounts = accounts.filter(isLaboratoryAccount);
+  const ecosystemAccounts = accounts.filter((account) => !isLaboratoryAccount(account));
+  const selections = [];
+
+  if (laboratoryAccounts.length) {
+    const laboratoryConfig = {
+      ...providerConfig,
+      providerOrder: ['laboratory']
+    };
+    const laboratoryPreviousPosts = filterPostsForAccounts(previousPosts, laboratoryAccounts);
+    const laboratorySelection = await selectPostsForAccounts(
+      laboratoryAccounts,
+      laboratoryConfig,
+      laboratoryPreviousPosts,
+      previousMetadata
+    );
+
+    selections.push(laboratorySelection);
+  }
+
+  if (ecosystemAccounts.length) {
+    const ecosystemConfig = {
+      ...providerConfig,
+      providerOrder: providerOrder.filter((providerName) => providerName !== 'laboratory')
+    };
+    const ecosystemPreviousPosts = filterPostsForAccounts(previousPosts, ecosystemAccounts);
+    const ecosystemSelection = await selectPostsForAccounts(
+      ecosystemAccounts,
+      ecosystemConfig,
+      ecosystemPreviousPosts,
+      previousMetadata
+    );
+
+    selections.push(ecosystemSelection);
+  }
+
+  return {
+    providerName: providerNameForSelections(selections),
+    posts: mergeUniquePosts([], selections.flatMap((selection) => selection.posts || [])),
+    failures: selections.flatMap((selection) => selection.failures || []),
+    diagnostics: mergeDiagnostics(selections)
+  };
+}
+
 async function runOnce() {
   const [accountsConfig, providerConfig, previousCache] = await Promise.all([
     readJson(accountsPath, []),
@@ -466,7 +578,7 @@ async function runOnce() {
   console.log(`[research] accounts: ${accounts.length}`);
   console.log(`[research] previous cache size: ${previousPosts.length}`);
 
-  const selected = await selectPosts(accounts, providerConfig, previousPosts);
+  const selected = await selectPosts(accounts, providerConfig, previousPosts, normalizedPreviousCache.metadata);
   const isRealProvider = !['cache', 'sample', 'none'].includes(selected.providerName);
   const shouldDropSamplePrevious = isRealProvider;
   const nextCache = selected.providerName === 'cache'

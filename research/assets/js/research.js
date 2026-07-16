@@ -470,9 +470,14 @@
     const metadata = state.metadata || {};
     debugTarget.hidden = false;
     debugOutput.textContent = JSON.stringify({
+      currentLaboratoryProvider: metadata.laboratoryProvider || (metadata.laboratory && metadata.laboratory.provider) || 'unknown',
+      currentBackendProvider: metadata.backendProvider || metadata.provider || 'unknown',
       provider: metadata.provider || 'unknown',
       durationMs: metadata.durationMs || 0,
       lastUpdate: metadata.generatedAt || null,
+      lastSync: metadata.lastLaboratorySyncAt || (metadata.laboratory && metadata.laboratory.lastSyncAt) || null,
+      apiStatus: metadata.apiStatus || (metadata.laboratory && metadata.laboratory.apiStatus) || 'unknown',
+      importedPosts: metadata.laboratoryImportedPosts || (metadata.laboratory && metadata.laboratory.importedPosts) || 0,
       providerFailures: metadata.failures || [],
       coverage: metadata.coverage || [],
       accountsScanned: metadata.accountsScanned || metadata.accounts || 0,

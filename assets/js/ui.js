@@ -133,7 +133,7 @@
     const title = createElement('h3', '', log.title);
     const date = createElement('time', 'log-date', formatDate(log.date));
     const body = createElement('p', 'log-body', log.summary);
-    const archiveLink = createElement('a', 'log-link', 'Open Laboratory Archive');
+    const archiveLink = createElement('a', 'log-link', 'Open Legacy Archive');
 
     date.setAttribute('datetime', log.date);
     archiveLink.href = global.B20LabConfig && global.B20LabConfig.routes ? global.B20LabConfig.routes.logs : 'logs/';

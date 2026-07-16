@@ -3,8 +3,10 @@ const playwrightProvider = require('./playwright');
 const readerProvider = require('./reader');
 const sampleProvider = require('./sample');
 const futureApiProvider = require('./future_api');
+const laboratoryProvider = require('./laboratory');
 
 const providers = {
+  laboratory: laboratoryProvider,
   playwright: playwrightProvider,
   reader: readerProvider,
   rss: rssProvider,

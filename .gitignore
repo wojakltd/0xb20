@@ -1,5 +1,19 @@
 node_modules/
 research/backend/node_modules/
 .env
+.env.local
+.env.*
+*.env
+API X.txt
+*credentials*.txt
+*credential*.txt
+*secret*.txt
 .DS_Store
 npm-debug.log*
+.env.local
+.env.*
+*.env
+API X.txt
+*credentials*.txt
+*credential*.txt
+*secret*.txt

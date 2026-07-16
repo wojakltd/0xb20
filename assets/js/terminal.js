@@ -76,15 +76,20 @@
     logs: {
       handler(context) {
         if (!context.logs || context.logs.unavailable || context.logs.length === 0) {
-          return ['Laboratory Archive unavailable.'];
+          return ['Prototype Records unavailable.'];
         }
 
-        return context.logs.slice(-5).reverse().flatMap((log) => [
+        return [
+          'LEGACY ARCHIVE',
+          'Early manual records preserved.',
+          '',
+          ...context.logs.slice(-5).reverse().flatMap((log) => [
           `${log.entryLabel} - ${log.title}`,
           log.date || 'Date unknown',
           log.summary,
           ''
-        ]).slice(0, -1);
+          ]).slice(0, -1)
+        ];
       }
     },
     specimens: {
