@@ -2,7 +2,7 @@
   const accessStorageKey = 'b20-research-access';
   const accessPassword = '0xb20.lol';
   const isAccessGateEnabled = false;
-  const cachePath = 'backend/cache/feed.json';
+  const cachePath = '/research/backend/cache/feed.json';
   const pageSize = 12;
   const refreshIntervalMs = 120000;
   const laboratoryPriorityWindowMs = 15 * 60 * 1000;
