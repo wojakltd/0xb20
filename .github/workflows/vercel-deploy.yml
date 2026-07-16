@@ -1,0 +1,27 @@
+name: Vercel Production Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+    steps:
+      - name: Trigger Vercel deploy hook
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK_URL is missing. Create a Vercel Deploy Hook and save it as a GitHub secret with this exact name."
+            exit 0
+          fi
+
+          curl --fail --show-error --silent --request POST "$VERCEL_DEPLOY_HOOK_URL"
+          echo "Vercel production deploy hook triggered."
