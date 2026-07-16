@@ -80,18 +80,7 @@ Supported log filters:
 - `nft`
 - `console`
 
-The homepage renders the first log with `featured: true`. If none exists, it renders the newest log.
-
-### `data/activity.json`
-
-Drives the Activity Feed.
-
-```json
-{
-  "time": "23:11",
-  "title": "Windows resurrected"
-}
-```
+The homepage renders the newest Prototype Record. `featured` remains only as legacy compatibility metadata.
 
 ### `data/status.json`
 
@@ -100,8 +89,8 @@ Drives the System Status panel.
 ```json
 {
   "laboratoryStatus": "ONLINE",
-  "currentExperiment": "Blockchain Infection Scanner",
-  "developmentProgress": 37,
+  "currentExperiment": "Research Infrastructure",
+  "developmentProgress": 36,
   "currentNetwork": "BASE",
   "currentHosts": "100+",
   "lastUpdate": "auto"
@@ -231,7 +220,7 @@ Never use:
 - `assets/js/data-loader.js` loads and normalizes JSON.
 - `assets/js/ui.js` renders homepage UI modules.
 - `assets/js/scanner.js` runs the simulated Host Scanner.
-- `assets/js/live-terminal.js` streams activity and passive terminal lines.
+- `assets/js/live-terminal.js` streams Research-derived activity and passive terminal lines.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the `/logs/` archive.
 - `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
@@ -247,21 +236,9 @@ Only use this path for preserving or correcting early archive records:
 1. Open `data/logs.json`.
 2. Add or edit an object with the full legacy log schema.
 3. Use a stable `id` and `logNumber`.
-4. Set `featured: true` only if the homepage should feature a preserved early record.
-5. Set older featured records to `false` when needed.
+4. Keep `featured` for compatibility only; the homepage uses the newest record.
 
 New official project history should be published through `@0xb20lol` and imported into Research.
-
-## How To Add New Activity
-
-Add an object to `data/activity.json`:
-
-```json
-{
-  "time": "02:18",
-  "title": "Genesis specimen archived"
-}
-```
 
 ## How To Add A Scanner Result
 

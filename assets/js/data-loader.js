@@ -1,9 +1,14 @@
 (function (global) {
   const config = global.B20LabConfig;
 
+  function withCacheBust(path) {
+    const separator = path.includes('?') ? '&' : '?';
+    return `${path}${separator}v=${Date.now()}`;
+  }
+
   async function fetchJson(path, fallbackValue) {
     try {
-      const response = await fetch(path, { cache: 'no-cache' });
+      const response = await fetch(withCacheBust(path), { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error(`Request failed: ${response.status}`);
@@ -48,6 +53,38 @@
     return Array.isArray(value) ? value : fallbackValue;
   }
 
+  function normalizeResearchPayload(payload) {
+    const source = payload && typeof payload === 'object' ? payload : {};
+    return {
+      metadata: source.metadata && typeof source.metadata === 'object' ? source.metadata : null,
+      posts: asArray(source.posts, [])
+    };
+  }
+
+  function formatClock(value) {
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return '--:--';
+    }
+
+    return new Intl.DateTimeFormat('en', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).format(date);
+  }
+
+  function createResearchActivityEntry(post) {
+    const text = String(post.text || 'Observation archived.').replace(/\s+/g, ' ').trim();
+    const title = text.length > 76 ? `${text.slice(0, 73)}...` : text;
+
+    return {
+      time: formatClock(post.created_at || post.createdAt),
+      title: post.category === 'laboratory' ? `Laboratory: ${title}` : `Observation: ${title}`
+    };
+  }
+
   function markUnavailable(logs) {
     Object.defineProperty(logs, 'unavailable', {
       value: true,
@@ -75,11 +112,6 @@
       return evolution && typeof evolution === 'object' ? evolution : null;
     },
 
-    async loadActivity() {
-      const result = await fetchJson(config.dataPaths.activity, config.fallback.activity);
-      return asArray(result.data, config.fallback.activity);
-    },
-
     async loadTerminalEvents() {
       const result = await fetchJson(config.dataPaths.terminalEvents, config.fallback.terminalEvents);
       return asArray(result.data, config.fallback.terminalEvents);
@@ -97,6 +129,11 @@
       return status && typeof status === 'object' ? status : config.fallback.status;
     },
 
+    async loadResearchFeed() {
+      const result = await fetchJson(config.dataPaths.researchFeed, config.fallback.researchFeed);
+      return normalizeResearchPayload(result.data);
+    },
+
     getLatestLog(logs) {
       const safeLogs = asArray(logs, []);
       return safeLogs[safeLogs.length - 1] || null;
@@ -105,6 +142,20 @@
     getFeaturedLog(logs) {
       const safeLogs = asArray(logs, []);
       return safeLogs.find((log) => log.featured) || this.getLatestLog(safeLogs);
+    },
+
+    getResearchActivity(researchFeed) {
+      const payload = normalizeResearchPayload(researchFeed);
+      const metadata = payload.metadata || {};
+      const posts = payload.posts.slice(0, 4).map(createResearchActivityEntry);
+      const syncEntry = metadata.generatedAt
+        ? { time: formatClock(metadata.generatedAt), title: 'Research Terminal synchronized' }
+        : null;
+      const countEntry = metadata.posts
+        ? { time: 'BASE', title: `${metadata.posts} observations indexed` }
+        : null;
+
+      return [syncEntry, ...posts, countEntry].filter(Boolean);
     }
   };
 })(window);

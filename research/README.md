@@ -305,7 +305,7 @@ If every real provider fails:
 
 - The fetcher keeps the previous cache.
 - If no cache exists, the sample provider generates 10 local development observations.
-- The frontend shows `Research feed temporarily unavailable. Observation continues...` only if `feed.json` cannot load at all.
+- The frontend shows `Research observations temporarily unavailable. Observation continues...` only if `feed.json` cannot load at all.
 - The page never crashes.
 
 ## Future Expansion

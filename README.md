@@ -9,10 +9,9 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `research/index.html` is the Research observation terminal.
 - `evolution/index.html` is the Laboratory Evolution Tree page.
 - `protocol/index.html` redirects old links to Evolution.
-- `data/logs.json` is the source of truth for Laboratory Logs.
+- `data/logs.json` is the source of truth for Prototype Records.
 - `data/evolution.json` drives the Evolution page.
-- `research/backend/cache/feed.json` drives the Research feed and status metadata.
-- `data/activity.json` drives the Activity Feed.
+- `research/backend/cache/feed.json` drives the Research journal, status metadata, and homepage Activity Trace.
 - `data/status.json` drives the System Status panel.
 - `data/scanner.json` drives the simulated Host Scanner.
 - `data/terminal-events.json` feeds the permanent Laboratory Terminal.
@@ -26,14 +25,14 @@ Static laboratory terminal for the 0XB20 public experiment.
 
 ## Updating The Lab
 
-Add a new Laboratory Log by appending an object to `data/logs.json`.
-The homepage uses the first `featured: true` log, or the newest JSON entry if none is featured.
+Correct a Prototype Record by editing `data/logs.json`.
+The homepage always displays the newest JSON entry as the latest archive record.
 
 Update the Laboratory Evolution tree by editing `data/evolution.json`.
 Future phases should be added to the `phases` array only.
 
-Tune scanner outcomes in `data/scanner.json` and passive system events in
-`data/terminal-events.json`.
+Tune scanner outcomes in `data/scanner.json` and passive terminal events in
+`data/terminal-events.json`. Homepage activity comes from Research cache metadata.
 
 Update Research accounts in `research/backend/config/accounts.json`.
 Run the provider chain to refresh `research/backend/cache/feed.json`:
@@ -44,7 +43,7 @@ npm ci
 npm run fetch
 ```
 
-The browser frontend still downloads only `research/backend/cache/feed.json`.
+The Research frontend still downloads only `research/backend/cache/feed.json`.
 Open `/research/?debug=1` to inspect provider/cache diagnostics during development.
 
 Use a local static server for full JSON loading during development:

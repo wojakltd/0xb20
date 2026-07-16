@@ -28,19 +28,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   ui.initReveal();
   interactions.initReactivePanels();
 
-  const [logs, activity, status, terminalEvents, scannerConfig] = await Promise.all([
+  const [logs, researchFeed, status, terminalEvents, scannerConfig] = await Promise.all([
     data.loadLogs(),
-    data.loadActivity(),
+    data.loadResearchFeed(),
     data.loadStatus(),
     data.loadTerminalEvents(),
     data.loadScannerConfig()
   ]);
 
-  const latestLog = data.getFeaturedLog(logs);
+  const latestLog = data.getLatestLog(logs);
+  const researchActivity = data.getResearchActivity(researchFeed);
 
   ui.renderLatestLog(latestLog);
-  ui.renderStatus(status, latestLog);
-  terminal.startActivityFeed(activity);
+  ui.renderStatus(status, latestLog, researchFeed);
+  terminal.startActivityFeed(researchActivity);
   terminal.startLiveTerminal(terminalEvents);
   scanner.init(scannerConfig, {
     pushActivity: terminal.pushActivity,

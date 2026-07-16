@@ -42,9 +42,27 @@
     }).format(date);
   }
 
-  function formatLastUpdate(status, latestLog) {
+  function formatLastUpdate(status, latestLog, researchFeed) {
     if (status && status.lastUpdate && status.lastUpdate !== 'auto') {
       return status.lastUpdate;
+    }
+
+    const latestObservationAt = researchFeed
+      && researchFeed.metadata
+      && researchFeed.metadata.latestObservationAt;
+
+    if (latestObservationAt) {
+      const observationDate = new Date(latestObservationAt);
+
+      if (!Number.isNaN(observationDate.getTime())) {
+        const observationKey = [
+          observationDate.getFullYear(),
+          String(observationDate.getMonth() + 1).padStart(2, '0'),
+          String(observationDate.getDate()).padStart(2, '0')
+        ].join('-');
+
+        return observationKey === getTodayKey() ? 'Today' : formatDate(observationKey);
+      }
     }
 
     if (!latestLog || !latestLog.date) {
@@ -161,7 +179,7 @@
     target.replaceChildren(...items);
   }
 
-  function renderStatus(status, latestLog) {
+  function renderStatus(status, latestLog, researchFeed) {
     const target = document.querySelector('[data-system-status]');
 
     if (!target) {
@@ -175,7 +193,7 @@
       ['Development Progress', `${progress}%`],
       ['Current Network', status.currentNetwork],
       ['Current Hosts', status.currentHosts],
-      ['Last Update', formatLastUpdate(status, latestLog)]
+      ['Last Update', formatLastUpdate(status, latestLog, researchFeed)]
     ];
 
     const rows = fields.map(([labelText, valueText, stateClass]) => {

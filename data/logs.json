@@ -322,7 +322,7 @@
     "content": "The Prototype Record system has fulfilled its purpose.\n\nBeginning July 13, 2026, Laboratory observations are no longer written manually.\n\nThe official research journal now lives inside the Research Terminal.\n\nEvery experiment...\nEvery deployment...\nEvery public transmission...\n\nis archived automatically from the Laboratory X account.\n\nPrototype Records remain available as historical artifacts documenting the Laboratory's earliest evolution.\n\nResearch continues.",
     "tags": ["archive", "research", "migration", "laboratory"],
     "featured": true,
-    "link": "/research",
+    "link": "/research/",
     "linkLabel": "→ Open Research Terminal"
   }
 ]
