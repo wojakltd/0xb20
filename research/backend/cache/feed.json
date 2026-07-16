@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-16T20:54:15.549Z",
-    "durationMs": 108548,
+    "generatedAt": "2026-07-16T21:19:06.063Z",
+    "durationMs": 106816,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 120,
-    "postsCollected": 90,
-    "latestObservationAt": "2026-07-16T20:11:27.917Z",
+    "posts": 110,
+    "postsCollected": 80,
+    "latestObservationAt": "2026-07-16T20:05:23.555Z",
     "refreshIntervalMinutes": 10,
     "networks": [
       "BASE"
@@ -378,50 +378,21 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 720,
-      "lastSyncAt": "2026-07-16T20:52:28.888Z",
-      "nextSyncAt": "2026-07-17T08:52:28.888Z",
-      "importedPosts": 34,
+      "lastSyncAt": "2026-07-16T21:17:20.848Z",
+      "nextSyncAt": "2026-07-17T09:17:20.848Z",
+      "importedPosts": 24,
       "accountsScanned": 1,
       "skipped": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-07-16T20:52:28.888Z",
-    "laboratoryImportedPosts": 34,
-    "startedAt": "2026-07-16T20:52:27.000Z",
-    "previousGeneratedAt": "2026-07-16T20:51:12.366Z"
+    "lastLaboratorySyncAt": "2026-07-16T21:17:20.848Z",
+    "laboratoryImportedPosts": 24,
+    "startedAt": "2026-07-16T21:17:19.246Z",
+    "previousGeneratedAt": "2026-07-16T21:15:46.918Z"
   },
   "posts": [
-    {
-      "id": "0xb20lol-2077848610319007983",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@EVA_404_EVA Couldn't agree more.\n\nThe best ideas still come from people.\nAI just helps us bring them to life faster. 🤝",
-      "created_at": "2026-07-16T20:11:27.917Z",
-      "createdAt": "2026-07-16T20:11:27.917Z",
-      "relative_time": "41m ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077848610319007983",
-      "url": "https://x.com/0xb20lol/status/2077848610319007983",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
-    },
     {
       "id": "0xb20lol-2077847082073989337",
       "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
@@ -432,14 +403,16 @@
       "text": "🧪 TERMINAL LOG #019\n\nToday's researcher isn't human.\n\nIt's Codex.\n\nTask:\n→ Refactor the Research module.\n→ Improve stability.\n→ Prepare the architecture for future evolution.\nWe're treating AI like another instrument inside the Laboratory.\nNot magic.\nNot hype.\n\nJust another tool helping us build faster.\n\nThe best AI projects won't replace humans.\n\nThey'll amplify curious builders.\n\nResearch never ends.\n\n🌐 https://t.co/zhRsCW6hCj\n\n@OpenAI @github @base @BuildOnBase @jessepollak @o1_exchange\n\n#0XB20 #Codex #OpenAI #AI #BuildInPublic #BuildOnBase #Base #VibeCoding #OpenSource #Research #DevTools #AIEngineering",
       "created_at": "2026-07-16T20:05:23.555Z",
       "createdAt": "2026-07-16T20:05:23.555Z",
-      "relative_time": "47m ago",
+      "relative_time": "1h ago",
       "images": [
         "https://pbs.twimg.com/media/HNX-u71a4AAX4iW.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077847082073989337",
       "url": "https://x.com/0xb20lol/status/2077847082073989337",
-      "likes": 2,
+      "likes": 3,
       "replies": 1,
       "reposts": 0,
       "category": "laboratory",
@@ -451,6 +424,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077847082073989337",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -463,7 +439,7 @@
       "text": "If you're building across: → Tokenization → Stablecoins → Credit → Prediction markets → Institutional markets → Agentic commerce ...or anything amazing on Base, this is for you ↓",
       "created_at": "2026-07-16T20:09:38.463Z",
       "createdAt": "2026-07-16T20:09:38.463Z",
-      "relative_time": "42m ago",
+      "relative_time": "1h ago",
       "images": [
         "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
       ],
@@ -482,7 +458,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2077843414658478157",
@@ -514,94 +495,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
-    },
-    {
-      "id": "0xb20lol-2077834804587024496",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@jessepollak @base Building every day.\nOne experiment at a time. 🧪",
-      "created_at": "2026-07-16T19:16:36.374Z",
-      "createdAt": "2026-07-16T19:16:36.374Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077834804587024496",
-      "url": "https://x.com/0xb20lol/status/2077834804587024496",
-      "likes": 1,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2077834435555397965",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@buildonbase We're building one of them. 🧪\nSmall team. Public experiment. Building every single day on Base.",
-      "created_at": "2026-07-16T19:15:08.390Z",
-      "createdAt": "2026-07-16T19:15:08.390Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077834435555397965",
-      "url": "https://x.com/0xb20lol/status/2077834435555397965",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2077834189123309712",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@base Time says \"be based.\"\nWe took it a bit too seriously. 🧪👀",
-      "created_at": "2026-07-16T19:14:09.636Z",
-      "createdAt": "2026-07-16T19:14:09.636Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077834189123309712",
-      "url": "https://x.com/0xb20lol/status/2077834189123309712",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077827590509998562",
@@ -618,6 +517,8 @@
         "https://pbs.twimg.com/media/HNXtLH1awAAooJN.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077827590509998562",
       "url": "https://x.com/0xb20lol/status/2077827590509998562",
       "likes": 1,
@@ -632,6 +533,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077092338510233684",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2077443643204583615",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -675,7 +584,7 @@
       "text": "Base is only as powerful as the applications built on top of it. The Base Ecosystem Fund exists to find and enable the founders building them. Today we're sharing what we're looking to fund across tokenization, stablecoins, credit, prediction markets, institutional markets, and",
       "created_at": "2026-07-16T16:56:08.533Z",
       "createdAt": "2026-07-16T16:56:08.533Z",
-      "relative_time": "3h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
       ],
@@ -694,7 +603,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2077791161776062851",
@@ -725,36 +639,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
-    },
-    {
-      "id": "0xb20lol-2077782833062727837",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@AbdullahAkramET Thank you! 🙏 Still a long way to go, but we're building it step by step.",
-      "created_at": "2026-07-16T15:50:05.397Z",
-      "createdAt": "2026-07-16T15:50:05.397Z",
-      "relative_time": "5h ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077782833062727837",
-      "url": "https://x.com/0xb20lol/status/2077782833062727837",
-      "likes": 1,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077780381492011164",
@@ -771,6 +661,8 @@
         "https://pbs.twimg.com/media/HNXB6B2a4AA4_hi.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077780381492011164",
       "url": "https://x.com/0xb20lol/status/2077780381492011164",
       "likes": 4,
@@ -785,6 +677,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077780381492011164",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -814,7 +709,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077761138432045090",
@@ -845,7 +745,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077753931728633952",
@@ -857,7 +762,7 @@
       "text": "a message from our co-founder @everythingempty on why and how to tokenize on Virtuals Protocol Timeline: 0:00 why Virtuals Protocol 1:35 instant vs scheduled launch 2:19 ACF 3:37 prebuy 4:11 token distribution 4:52 anti-sniper 5:33 airdrop to vevirtual 5:53 60 days 6:18",
       "created_at": "2026-07-16T13:55:14.782Z",
       "createdAt": "2026-07-16T13:55:14.782Z",
-      "relative_time": "6h ago",
+      "relative_time": "7h ago",
       "images": [
         "https://pbs.twimg.com/media/HNWpmaXbQAARUOM.jpg"
       ],
@@ -876,7 +781,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2077749647703949603",
@@ -907,7 +817,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2077730654318420400",
@@ -936,7 +851,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077680175358369952",
@@ -948,7 +868,7 @@
       "text": "The AI agent Infrastructure on Robinhood Chain",
       "created_at": "2026-07-16T09:02:09.893Z",
       "createdAt": "2026-07-16T09:02:09.893Z",
-      "relative_time": "11h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HNVnG6xaYAASrfK?format=webp&name=medium"
       ],
@@ -967,7 +887,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077612941193744816",
@@ -998,7 +923,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077595746396987872",
@@ -1027,7 +957,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077581920246841480",
@@ -1040,10 +975,10 @@
       "created_at": "2026-07-16T02:31:44.049Z",
       "createdAt": "2026-07-16T02:31:44.049Z",
       "relative_time": "18h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2077581804945408000/img/CA6hdUaWiKrUpiF4.jpg"
-      ],
+      "images": [],
       "video": "https://video.twimg.com/amplify_video/2077581804945408000/vid/avc1/1088x1904/L6HgLoUBLYfxHRdM.mp4",
+      "video_preview": "https://pbs.twimg.com/amplify_video_thumb/2077581804945408000/img/CA6hdUaWiKrUpiF4.jpg",
+      "videoPreview": "https://pbs.twimg.com/amplify_video_thumb/2077581804945408000/img/CA6hdUaWiKrUpiF4.jpg",
       "post_url": "https://x.com/0xb20lol/status/2077581920246841480",
       "url": "https://x.com/0xb20lol/status/2077581920246841480",
       "likes": 3,
@@ -1058,6 +993,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077581920246841480",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1089,7 +1027,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2077451069324743034",
@@ -1121,7 +1064,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077443643204583615",
@@ -1138,6 +1086,8 @@
         "https://pbs.twimg.com/media/HNSP3dAaEAAdKer.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077443643204583615",
       "url": "https://x.com/0xb20lol/status/2077443643204583615",
       "likes": 3,
@@ -1152,6 +1102,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077092338510233684",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2077092338510233684",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -1216,7 +1174,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2077438121038536855",
@@ -1247,7 +1210,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2077423780364980679",
@@ -1342,7 +1310,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077419682198585548",
@@ -1359,6 +1332,8 @@
         "https://pbs.twimg.com/media/HNR5hQIasAAj95w.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077419682198585548",
       "url": "https://x.com/0xb20lol/status/2077419682198585548",
       "likes": 3,
@@ -1373,6 +1348,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077419682198585548",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1407,7 +1385,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077382740367097930",
@@ -1438,7 +1421,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2077357053832523993",
@@ -1467,7 +1455,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2077333707946414305",
@@ -1498,7 +1491,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077324765027840502",
@@ -1530,36 +1528,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
-    },
-    {
-      "id": "0xb20lol-2077224747134513405",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@DeFiShakil Thanks! Really appreciate it ❤️",
-      "created_at": "2026-07-15T02:52:27.343Z",
-      "createdAt": "2026-07-15T02:52:27.343Z",
-      "relative_time": "1d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077224747134513405",
-      "url": "https://x.com/0xb20lol/status/2077224747134513405",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077222137228669116",
@@ -1576,6 +1550,8 @@
         "https://pbs.twimg.com/media/HNPGgtoXIAAO_1o.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077222137228669116",
       "url": "https://x.com/0xb20lol/status/2077222137228669116",
       "likes": 5,
@@ -1590,6 +1566,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077222137228669116",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1635,10 +1614,10 @@
       "created_at": "2026-07-14T23:27:30.698Z",
       "createdAt": "2026-07-14T23:27:30.698Z",
       "relative_time": "1d ago",
-      "images": [
-        "https://pbs.twimg.com/tweet_video_thumb/HNOZ5mSacAAav9Z.jpg"
-      ],
+      "images": [],
       "video": "https://video.twimg.com/tweet_video/HNOZ5mSacAAav9Z.mp4",
+      "video_preview": "https://pbs.twimg.com/tweet_video_thumb/HNOZ5mSacAAav9Z.jpg",
+      "videoPreview": "https://pbs.twimg.com/tweet_video_thumb/HNOZ5mSacAAav9Z.jpg",
       "post_url": "https://x.com/0xb20lol/status/2077173171267207520",
       "url": "https://x.com/0xb20lol/status/2077173171267207520",
       "likes": 3,
@@ -1653,35 +1632,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2077160403952615930",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@stambouli_o1 @base We don't know about $100M yet... 😄\nRight now we're just trying to build the weirdest experiment on Base.\nOne log at a time. 🧪",
-      "created_at": "2026-07-14T22:36:46.733Z",
-      "createdAt": "2026-07-14T22:36:46.733Z",
-      "relative_time": "1d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2077160403952615930",
-      "url": "https://x.com/0xb20lol/status/2077160403952615930",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
+      "conversation_id": "2077173171267207520",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1699,6 +1652,8 @@
         "https://pbs.twimg.com/media/HNNrPJrboAAr6-c.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077121802812424459",
       "url": "https://x.com/0xb20lol/status/2077121802812424459",
       "likes": 2,
@@ -1713,6 +1668,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077121802812424459",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1744,7 +1702,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077092338510233684",
@@ -1761,6 +1724,8 @@
         "https://pbs.twimg.com/media/HNMv8hAbIAAsgXh.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077092338510233684",
       "url": "https://x.com/0xb20lol/status/2077092338510233684",
       "likes": 3,
@@ -1775,6 +1740,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077092338510233684",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1806,7 +1774,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077059185372713354",
@@ -1823,6 +1796,8 @@
         "https://pbs.twimg.com/media/HNMxpfibQAA7YNc.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077059185372713354",
       "url": "https://x.com/0xb20lol/status/2077059185372713354",
       "likes": 2,
@@ -1837,6 +1812,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077059185372713354",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -1868,7 +1846,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2077048211911651385",
@@ -1915,6 +1898,8 @@
       "relative_time": "2d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077038247252009360",
       "url": "https://x.com/0xb20lol/status/2077038247252009360",
       "likes": 2,
@@ -1929,6 +1914,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077027210851180581",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2077027210851180581",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -1958,7 +1951,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2077038305149964528",
@@ -1989,7 +1987,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2077027210851180581",
@@ -2006,6 +2009,8 @@
         "https://pbs.twimg.com/media/HNMVMNSakAAVLNI.png"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2077027210851180581",
       "url": "https://x.com/0xb20lol/status/2077027210851180581",
       "likes": 4,
@@ -2020,6 +2025,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2077027210851180581",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2051,7 +2059,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2076994306288898350",
@@ -2176,35 +2189,6 @@
       "logo": ""
     },
     {
-      "id": "0xb20lol-2076854551928267098",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@KickBrains That's exactly why I posted it.\nOne day we'll all look back at this photo and laugh. 🧪🐈",
-      "created_at": "2026-07-14T02:21:25.928Z",
-      "createdAt": "2026-07-14T02:21:25.928Z",
-      "relative_time": "2d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2076854551928267098",
-      "url": "https://x.com/0xb20lol/status/2076854551928267098",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "source": "xapi"
-    },
-    {
       "id": "0xb20lol-2076849618814468603",
       "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
       "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
@@ -2219,6 +2203,8 @@
         "https://pbs.twimg.com/media/HNJztQ3W8AA4A3E.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076849618814468603",
       "url": "https://x.com/0xb20lol/status/2076849618814468603",
       "likes": 5,
@@ -2233,6 +2219,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076849618814468603",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2250,6 +2239,8 @@
         "https://pbs.twimg.com/media/HNJEyyzaEAAU6vQ.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076800243837100239",
       "url": "https://x.com/0xb20lol/status/2076800243837100239",
       "likes": 5,
@@ -2264,6 +2255,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076800243837100239",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2281,6 +2275,8 @@
         "https://pbs.twimg.com/media/HNI84enbwAAdsJG.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076789964331966516",
       "url": "https://x.com/0xb20lol/status/2076789964331966516",
       "likes": 10,
@@ -2295,6 +2291,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076789964331966516",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2310,6 +2309,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076761560824094810",
       "url": "https://x.com/0xb20lol/status/2076761560824094810",
       "likes": 2,
@@ -2324,6 +2325,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076747554432401865",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2355,7 +2364,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2076747554432401865",
@@ -2370,6 +2384,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076747554432401865",
       "url": "https://x.com/0xb20lol/status/2076747554432401865",
       "likes": 2,
@@ -2384,6 +2400,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076724486259564573",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2399,6 +2423,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076724486259564573",
       "url": "https://x.com/0xb20lol/status/2076724486259564573",
       "likes": 1,
@@ -2413,6 +2439,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076712814925009096",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2475,36 +2509,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
-    },
-    {
-      "id": "0xb20lol-2076713286759022838",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@basebro_ @base Happy Birthday, @base. 🟦\n\nWe accidentally launched a memecoin.\n\nIt slowly evolved into a living Laboratory.\n\nStill building. Still researching.\n\nResearch never ends. 🧪",
-      "created_at": "2026-07-13T17:00:05.687Z",
-      "createdAt": "2026-07-13T17:00:05.687Z",
-      "relative_time": "3d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2076713286759022838",
-      "url": "https://x.com/0xb20lol/status/2076713286759022838",
-      "likes": 2,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
       "logo": "",
-      "source": "xapi"
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "0xb20lol-2076712814925009096",
@@ -2519,6 +2529,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076712814925009096",
       "url": "https://x.com/0xb20lol/status/2076712814925009096",
       "likes": 1,
@@ -2533,6 +2545,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076696844026130573",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2548,6 +2568,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076696844026130573",
       "url": "https://x.com/0xb20lol/status/2076696844026130573",
       "likes": 1,
@@ -2562,6 +2584,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076680306082590826",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2579,6 +2609,8 @@
         "https://pbs.twimg.com/media/HNHZmVKaoAABDlL.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076680306082590826",
       "url": "https://x.com/0xb20lol/status/2076680306082590826",
       "likes": 2,
@@ -2593,6 +2625,14 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "1790954879864692736",
+      "referenced_tweets": [
+        {
+          "id": "2076680040071520416",
+          "type": "replied_to"
+        }
+      ],
       "source": "xapi"
     },
     {
@@ -2608,6 +2648,8 @@
       "relative_time": "3d ago",
       "images": [],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076680040071520416",
       "url": "https://x.com/0xb20lol/status/2076680040071520416",
       "likes": 3,
@@ -2622,35 +2664,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2076663593286963289",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "@Web3Alph_a Yes!😅",
-      "created_at": "2026-07-13T13:42:37.840Z",
-      "createdAt": "2026-07-13T13:42:37.840Z",
-      "relative_time": "3d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/0xb20lol/status/2076663593286963289",
-      "url": "https://x.com/0xb20lol/status/2076663593286963289",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
+      "conversation_id": "2076680040071520416",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2668,6 +2684,8 @@
         "https://pbs.twimg.com/media/HNHGQoeb0AA4Pmf.jpg"
       ],
       "video": "",
+      "video_preview": "",
+      "videoPreview": "",
       "post_url": "https://x.com/0xb20lol/status/2076659510803079325",
       "url": "https://x.com/0xb20lol/status/2076659510803079325",
       "likes": 6,
@@ -2682,6 +2700,9 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
+      "conversation_id": "2076659510803079325",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
       "source": "xapi"
     },
     {
@@ -2773,7 +2794,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2076423413154058267",
@@ -2939,7 +2965,7 @@
       "text": "I bullposted $TOSHI from 40M —> 950M I bullposted $DRB from 2M —> 40M I bullposted $BRIAN to 4.8M I bullposted $TSG to 10M I bullposted $SKI from 5M —> 300M (many more btw) and I‘m not part of any cabal, I‘m just slavic, a @base maxi and have conviction. meme specialist I 6 4 64 3",
       "created_at": "2026-07-10T21:17:26.822Z",
       "createdAt": "2026-07-10T21:17:26.822Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [],
       "video": "",
       "post_url": "https://x.com/basedsnipez/status/2075690887976558735",
@@ -2956,7 +2982,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "base-2075670502140461331",
@@ -3110,7 +3141,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "buildonbase-2074978436553298168",
@@ -3172,7 +3208,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "o1_exchange-2074909233519239565",
@@ -3203,7 +3244,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2074905602581536937",
@@ -3234,7 +3280,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2074901341290578230",
@@ -3265,7 +3316,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "o1_exchange-2074714170390421670",
@@ -3296,7 +3352,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2074570897441399021",
@@ -3328,7 +3389,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2074532091841364227",
@@ -3359,7 +3425,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "talentprotocol-2074497230149464461",
@@ -3388,7 +3459,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "talentprotocol-2074496939844882446",
@@ -3417,7 +3493,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2074223608894017861",
@@ -3479,7 +3560,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2073445168876044453",
@@ -3510,7 +3596,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2072753924843491430",
@@ -3572,7 +3663,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "virtuals_io-2072551467085709488",
@@ -3604,7 +3700,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2072391536990449726",
@@ -3666,7 +3767,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "schoen_xyz-2072296767144575113",
@@ -3757,7 +3863,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2071639896230662394",
@@ -3788,7 +3899,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2070552722663936119",
@@ -3819,7 +3935,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2069827960367116377",
@@ -3850,7 +3971,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2069134249987289566",
@@ -3881,7 +4007,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "jpegapp-2069044379013292435",
@@ -3910,7 +4041,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "jpegapp-2068933705872330985",
@@ -3939,7 +4075,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "a16zcrypto-2068017444510429570",
@@ -3970,7 +4111,12 @@
       "favorite": false,
       "description": "",
       "website": "",
-      "logo": ""
+      "logo": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "talentprotocol-2068006399527805216",
@@ -3999,7 +4145,12 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "reader",
+      "video_preview": "",
+      "videoPreview": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": []
     },
     {
       "id": "degentokenbase-2067661304253350342",

@@ -128,6 +128,8 @@ function normalizePost(source, account = {}, provider = 'unknown') {
     relative_time: String(source.relative_time || source.relativeTime || getRelativeTime(createdAt)),
     images: unique(source.images).filter((url) => /^https?:\/\//i.test(url)),
     video: String(source.video || ''),
+    video_preview: String(source.video_preview || source.videoPreview || ''),
+    videoPreview: String(source.videoPreview || source.video_preview || ''),
     post_url: postUrl,
     url: postUrl,
     likes: toNumber(source.likes),
@@ -142,6 +144,9 @@ function normalizePost(source, account = {}, provider = 'unknown') {
     description: String(source.description || account.description || ''),
     website: String(source.website || account.website || ''),
     logo: String(source.logo || account.logo || ''),
+    conversation_id: String(source.conversation_id || source.conversationId || ''),
+    in_reply_to_user_id: String(source.in_reply_to_user_id || source.inReplyToUserId || ''),
+    referenced_tweets: Array.isArray(source.referenced_tweets) ? source.referenced_tweets : [],
     source: provider
   };
 }

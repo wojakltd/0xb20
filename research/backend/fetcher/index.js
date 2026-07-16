@@ -169,9 +169,15 @@ function normalizePosts(posts, accounts, providerName, providerConfig) {
 
 function mergePosts(previousPosts, nextPosts, maxItems, options = {}) {
   const postsById = new Map();
-  const previous = options.dropSamplePrevious
+  const replaceUsernames = new Set(
+    (options.replaceUsernames || [])
+      .map((username) => String(username || '').toLowerCase())
+      .filter(Boolean)
+  );
+  const previous = (options.dropSamplePrevious
     ? previousPosts.filter((post) => post && post.source !== 'sample')
-    : previousPosts;
+    : previousPosts)
+    .filter((post) => !replaceUsernames.has(String(post && post.username || '').toLowerCase()));
   const previousById = new Map(previous.map((post) => [String(post.id), post]));
 
   for (const incomingPost of nextPosts) {
@@ -556,7 +562,8 @@ async function selectPosts(accounts, providerConfig, previousPosts, previousMeta
     providerName: providerNameForSelections(selections),
     posts: mergeUniquePosts([], selections.flatMap((selection) => selection.posts || [])),
     failures: selections.flatMap((selection) => selection.failures || []),
-    diagnostics: mergeDiagnostics(selections)
+    diagnostics: mergeDiagnostics(selections),
+    replaceUsernames: laboratoryAccounts.map((account) => account.username)
   };
 }
 
@@ -587,7 +594,8 @@ async function runOnce() {
   const nextCache = selected.providerName === 'cache'
     ? previousPosts.slice(0, maxCacheItems)
     : mergePosts(previousPosts, selected.posts, maxCacheItems, {
-      dropSamplePrevious: shouldDropSamplePrevious
+      dropSamplePrevious: shouldDropSamplePrevious,
+      replaceUsernames: selected.replaceUsernames || []
     });
 
   if (!nextCache.length) {

@@ -143,6 +143,7 @@
       relative_time: String(source.relative_time || ''),
       images: Array.isArray(source.images) ? source.images : [],
       video: String(source.video || ''),
+      video_preview: String(source.video_preview || source.videoPreview || ''),
       post_url: String(source.post_url || source.url || `https://x.com/${username}`),
       url: String(source.url || source.post_url || `https://x.com/${username}`),
       likes: Number(source.likes) || 0,
@@ -355,6 +356,11 @@
       video.src = post.video;
       video.controls = true;
       video.preload = 'metadata';
+
+      if (post.video_preview) {
+        video.poster = post.video_preview;
+      }
+
       media.append(video);
     }
 

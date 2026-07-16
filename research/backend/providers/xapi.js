@@ -73,7 +73,7 @@ function getConfig(config = {}) {
     maxResults: Math.min(100, Math.max(5, Number(xapiConfig.maxResults) || 100)),
     maxPages: Math.max(1, Number(xapiConfig.maxPages) || 3),
     userFields: xapiConfig.userFields || 'created_at,description,id,name,profile_image_url,protected,public_metrics,url,username,verified,verified_type',
-    tweetFields: xapiConfig.tweetFields || 'attachments,author_id,conversation_id,created_at,entities,id,note_tweet,public_metrics,referenced_tweets,text',
+    tweetFields: xapiConfig.tweetFields || 'attachments,author_id,conversation_id,created_at,entities,id,in_reply_to_user_id,note_tweet,public_metrics,referenced_tweets,text',
     expansions: xapiConfig.expansions || 'attachments.media_keys,author_id',
     mediaFields: xapiConfig.mediaFields || 'alt_text,duration_ms,height,media_key,preview_image_url,public_metrics,type,url,variants,width'
   };
@@ -166,6 +166,7 @@ function normalizeMedia(tweet, mediaByKey) {
     : [];
   const images = [];
   let video = '';
+  let videoPreview = '';
 
   keys.forEach((mediaKey) => {
     const media = mediaByKey.get(mediaKey);
@@ -183,15 +184,42 @@ function normalizeMedia(tweet, mediaByKey) {
       video = bestVideoVariant(media);
     }
 
-    if (media.preview_image_url) {
-      images.push(media.preview_image_url);
+    if ((media.type === 'video' || media.type === 'animated_gif') && media.preview_image_url && !videoPreview) {
+      videoPreview = media.preview_image_url;
     }
   });
 
   return {
     images: Array.from(new Set(images)),
-    video
+    video,
+    videoPreview
   };
+}
+
+function replyTargetIds(tweet) {
+  return (Array.isArray(tweet && tweet.referenced_tweets) ? tweet.referenced_tweets : [])
+    .filter((reference) => reference && reference.type === 'replied_to' && reference.id)
+    .map((reference) => String(reference.id));
+}
+
+function isReply(tweet) {
+  return Boolean(tweet && (tweet.in_reply_to_user_id || replyTargetIds(tweet).length));
+}
+
+function isOwnThreadReply(tweet, user, ownTweetIds) {
+  if (!isReply(tweet)) {
+    return true;
+  }
+
+  if (String(tweet.in_reply_to_user_id || '') === String(user.id)) {
+    return true;
+  }
+
+  if (!tweet.in_reply_to_user_id && replyTargetIds(tweet).some((id) => ownTweetIds.has(id))) {
+    return true;
+  }
+
+  return false;
 }
 
 function expandedLinks(tweet) {
@@ -223,6 +251,11 @@ function normalizeTweet(tweet, user, account, mediaByKey) {
     post_url: `https://x.com/${user.username || account.username}/status/${tweet.id}`,
     images: media.images,
     video: media.video,
+    video_preview: media.videoPreview,
+    videoPreview: media.videoPreview,
+    conversation_id: tweet.conversation_id || '',
+    in_reply_to_user_id: tweet.in_reply_to_user_id || '',
+    referenced_tweets: Array.isArray(tweet.referenced_tweets) ? tweet.referenced_tweets : [],
     likes: publicMetrics.like_count || 0,
     replies: publicMetrics.reply_count || 0,
     reposts: publicMetrics.retweet_count || 0,
@@ -269,7 +302,11 @@ async function fetchAccountPosts(account, options = {}) {
     const mediaByKey = new Map(
       ((payload.includes && payload.includes.media) || []).map((media) => [media.media_key, media])
     );
-    const pagePosts = (payload.data || []).map((tweet) => normalizeTweet(tweet, user, account, mediaByKey));
+    const tweets = payload.data || [];
+    const ownTweetIds = new Set(tweets.map((tweet) => String(tweet.id)));
+    const pagePosts = tweets
+      .filter((tweet) => isOwnThreadReply(tweet, user, ownTweetIds))
+      .map((tweet) => normalizeTweet(tweet, user, account, mediaByKey));
 
     posts.push(...pagePosts);
 
