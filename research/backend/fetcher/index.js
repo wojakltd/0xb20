@@ -43,7 +43,10 @@ function normalizeAccount(account, providerConfig) {
     website: account.website || '',
     logo: account.logo || '',
     minCreatedAt: account.minCreatedAt || '',
-    minPostId: account.minPostId || ''
+    minPostId: account.minPostId || '',
+    scrapePaths: Array.isArray(account.scrapePaths)
+      ? account.scrapePaths.map((value) => String(value || '').trim()).filter((value, index, values) => values.indexOf(value) === index)
+      : []
   };
 }
 

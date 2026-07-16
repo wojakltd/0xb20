@@ -26,6 +26,116 @@ function getConfig(config) {
   };
 }
 
+function buildCookie(name, value, domain, httpOnly = false) {
+  return {
+    name,
+    value,
+    domain,
+    path: '/',
+    httpOnly,
+    secure: true,
+    sameSite: 'Lax'
+  };
+}
+
+function normalizeSameSite(value) {
+  const normalized = String(value || '').toLowerCase();
+
+  if (normalized === 'strict') {
+    return 'Strict';
+  }
+
+  if (normalized === 'none' || normalized === 'no_restriction' || normalized === 'no restriction') {
+    return 'None';
+  }
+
+  return 'Lax';
+}
+
+function normalizeCookie(cookie) {
+  if (!cookie || !cookie.name || typeof cookie.value === 'undefined') {
+    return null;
+  }
+
+  return {
+    name: String(cookie.name),
+    value: String(cookie.value),
+    domain: cookie.domain || '.x.com',
+    path: cookie.path || '/',
+    expires: Number.isFinite(Number(cookie.expires)) ? Number(cookie.expires) : undefined,
+    httpOnly: Boolean(cookie.httpOnly),
+    secure: cookie.secure !== false,
+    sameSite: normalizeSameSite(cookie.sameSite)
+  };
+}
+
+function cookiesFromHeader(header) {
+  return String(header || '')
+    .split(';')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const separatorIndex = part.indexOf('=');
+
+      if (separatorIndex <= 0) {
+        return null;
+      }
+
+      return normalizeCookie({
+        name: part.slice(0, separatorIndex),
+        value: part.slice(separatorIndex + 1)
+      });
+    })
+    .filter(Boolean);
+}
+
+function getAuthCookies() {
+  const cookies = [];
+
+  if (process.env.X_COOKIES_JSON) {
+    try {
+      const parsed = JSON.parse(process.env.X_COOKIES_JSON);
+      const sourceCookies = Array.isArray(parsed)
+        ? parsed
+        : Array.isArray(parsed.cookies)
+          ? parsed.cookies
+          : [];
+      cookies.push(...sourceCookies.map(normalizeCookie).filter(Boolean));
+    } catch (error) {
+      console.log(`[research:playwright] X_COOKIES_JSON ignored: ${error.message}`);
+    }
+  }
+
+  if (process.env.X_COOKIE_HEADER) {
+    cookies.push(...cookiesFromHeader(process.env.X_COOKIE_HEADER));
+  }
+
+  if (process.env.X_AUTH_TOKEN) {
+    cookies.push(buildCookie('auth_token', process.env.X_AUTH_TOKEN, '.x.com', true));
+    cookies.push(buildCookie('auth_token', process.env.X_AUTH_TOKEN, '.twitter.com', true));
+  }
+
+  if (process.env.X_CT0) {
+    cookies.push(buildCookie('ct0', process.env.X_CT0, '.x.com'));
+    cookies.push(buildCookie('ct0', process.env.X_CT0, '.twitter.com'));
+  }
+
+  const cookiesByKey = new Map();
+  cookies.forEach((cookie) => {
+    cookiesByKey.set(`${cookie.domain}:${cookie.name}`, cookie);
+  });
+
+  return Array.from(cookiesByKey.values());
+}
+
+function getAccountPaths(account) {
+  const paths = Array.isArray(account.scrapePaths) && account.scrapePaths.length
+    ? account.scrapePaths
+    : [''];
+
+  return paths.map((value) => String(value || '').replace(/^\/+|\/+$/g, ''));
+}
+
 async function preparePage(context) {
   const page = await context.newPage();
 
@@ -122,9 +232,10 @@ async function extractPosts(page, account, maxPostsPerAccount) {
   });
 }
 
-async function scrapeAccount(context, account, providerConfig) {
+async function scrapeAccountPath(context, account, providerConfig, pathSuffix) {
   const page = await preparePage(context);
-  const url = `https://x.com/${encodeURIComponent(account.username)}`;
+  const suffix = pathSuffix ? `/${encodeURIComponent(pathSuffix)}` : '';
+  const url = `https://x.com/${encodeURIComponent(account.username)}${suffix}`;
 
   try {
     await page.goto(url, {
@@ -158,11 +269,37 @@ async function scrapeAccount(context, account, providerConfig) {
     }
 
     return Array.from(postsById.values())
-      .slice(0, providerConfig.maxPostsPerAccount)
-      .map((post) => normalizePost(post, account, 'playwright'));
+      .slice(0, providerConfig.maxPostsPerAccount);
   } finally {
     await page.close().catch(() => {});
   }
+}
+
+async function scrapeAccount(context, account, providerConfig) {
+  const postsById = new Map();
+  const pathFailures = [];
+
+  for (const pathSuffix of getAccountPaths(account)) {
+    try {
+      const pathPosts = await scrapeAccountPath(context, account, providerConfig, pathSuffix);
+      pathPosts.forEach((post) => {
+        postsById.set(post.id, post);
+      });
+      console.log(`[research:playwright] ${account.username}${pathSuffix ? `/${pathSuffix}` : ''}: ${pathPosts.length} posts`);
+    } catch (error) {
+      const message = error && error.message ? error.message : String(error);
+      pathFailures.push(`${pathSuffix || 'timeline'}: ${message}`);
+      console.log(`[research:playwright] ${account.username}${pathSuffix ? `/${pathSuffix}` : ''}: ${message}`);
+    }
+  }
+
+  if (!postsById.size) {
+    throw new Error(pathFailures.length ? pathFailures.join(' | ') : 'No public timeline posts found.');
+  }
+
+  return Array.from(postsById.values())
+    .slice(0, providerConfig.maxPostsPerAccount)
+    .map((post) => normalizePost(post, account, 'playwright'));
 }
 
 async function fetchPosts(accounts, context = {}) {
@@ -185,6 +322,12 @@ async function fetchPosts(accounts, context = {}) {
       userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
       viewport: { width: 1280, height: 900 }
     });
+    const authCookies = getAuthCookies();
+
+    if (authCookies.length) {
+      await browserContext.addCookies(authCookies);
+      console.log(`[research:playwright] authenticated cookie session loaded: ${authCookies.length} cookies`);
+    }
 
     for (const account of accounts) {
       try {

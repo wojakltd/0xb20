@@ -6,6 +6,7 @@
     "network": "BASE",
     "minCreatedAt": "2026-07-13T13:26:00.000Z",
     "minPostId": "2076659510803079325",
+    "scrapePaths": ["", "with_replies", "media"],
     "priority": 3,
     "favorite": true,
     "description": "Primary Laboratory relay and public experiment log.",

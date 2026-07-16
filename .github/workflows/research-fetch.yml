@@ -35,6 +35,11 @@ jobs:
 
       - name: Fetch research feed
         working-directory: research/backend
+        env:
+          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          X_CT0: ${{ secrets.X_CT0 }}
+          X_COOKIES_JSON: ${{ secrets.X_COOKIES_JSON }}
+          X_COOKIE_HEADER: ${{ secrets.X_COOKIE_HEADER }}
         run: npm run fetch
 
       - name: Commit cache update

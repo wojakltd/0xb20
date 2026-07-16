@@ -109,6 +109,17 @@ The frontend is provider-agnostic. The fetcher tries providers in this order:
 
 `playwright` is the primary provider when Chromium is available. If X blocks anonymous browser access or Playwright cannot launch, the fetcher logs the reason and continues.
 
+Playwright can run either anonymously or with an optional authenticated X session. Anonymous mode is free, but X may hide parts of a profile timeline. Authenticated mode is required when the Laboratory must observe every post from an account that X does not expose to logged-out visitors.
+
+Supported GitHub Secrets:
+
+- `X_AUTH_TOKEN`: X `auth_token` cookie value.
+- `X_CT0`: X `ct0` cookie value.
+- `X_COOKIES_JSON`: full browser cookie export as JSON.
+- `X_COOKIE_HEADER`: raw cookie header, useful for temporary local testing.
+
+Do not commit real cookies into the repository. Store them only as GitHub Secrets.
+
 `reader` currently provides the most reliable free fallback by reading public `twitter.com` profile pages through an open reader endpoint.
 
 `rss` tries Nitter, RSSHub, and TwitRSS bridges with short timeouts. These services are unstable by design, so failures are expected and logged.
@@ -154,9 +165,12 @@ Edit `backend/config/accounts.json`.
   "website": "",
   "logo": "",
   "minCreatedAt": "",
-  "minPostId": ""
+  "minPostId": "",
+  "scrapePaths": []
 }
 ```
+
+`scrapePaths` is optional and used only by Playwright. The Laboratory account uses `["", "with_replies", "media"]` so authenticated collection can observe the main profile, replies, and media tabs from the canonical July 13 start point.
 
 Supported categories today:
 
