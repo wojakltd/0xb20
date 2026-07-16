@@ -9,12 +9,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-16T06:21:40.401Z",
-    "durationMs": 883765,
+    "generatedAt": "2026-07-16T08:47:07.769Z",
+    "durationMs": 874921,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 77,
-    "postsCollected": 60,
+    "postsCollected": 59,
     "latestObservationAt": "2026-07-16T04:35:00.019Z",
     "refreshIntervalMinutes": 10,
     "networks": [
@@ -48,7 +48,7 @@
       {
         "provider": "playwright",
         "username": "AerodromeFinance",
-        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
+        "message": "timeline: page.goto: Timeout 18000ms exceeded.\nCall log: - navigating to \"https://x.com/AerodromeFinance\", waiting until \"domcontentloaded\""
       },
       {
         "provider": "playwright",
@@ -87,27 +87,27 @@
       {
         "provider": "rss",
         "username": "BronheimDaniel",
-        "message": "https://nitter.net/BronheimDaniel/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitt"
+        "message": "https://nitter.net/BronheimDaniel/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
         "username": "robertsun",
-        "message": "https://nitter.net/robertsun/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user"
+        "message": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_u"
       },
       {
         "provider": "rss",
         "username": "raymdong",
-        "message": "https://nitter.net/raymdong/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=ray"
+        "message": "https://nitter.net/raymdong/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_"
       },
       {
         "provider": "rss",
         "username": "AerodromeFinance",
-        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss."
+        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | "
       },
       {
         "provider": "rss",
         "username": "SeamlessProtocol",
-        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss."
+        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
       },
       {
         "provider": "rss",
@@ -267,12 +267,12 @@
         "provider": "playwright",
         "username": "AerodromeFinance",
         "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+        "error": "timeline: page.goto: Timeout 18000ms exceeded.\nCall log:\n  - navigating to \"https://x.com/AerodromeFinance\", waiting until \"domcontentloaded\"\n"
       },
       {
         "provider": "playwright",
         "username": "virtuals_io",
-        "returned": 12
+        "returned": 11
       },
       {
         "provider": "playwright",
@@ -340,39 +340,39 @@
         "username": "BronheimDaniel",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/BronheimDaniel/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=BronheimDaniel attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/BronheimDaniel/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=BronheimDaniel attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "robertsun",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/robertsun/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "raymdong",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/raymdong/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=raymdong attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/raymdong/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=raymdong attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "AerodromeFinance",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
       }
     ],
-    "startedAt": "2026-07-16T06:06:56.636Z",
-    "previousGeneratedAt": "2026-07-16T04:02:31.052Z"
+    "startedAt": "2026-07-16T08:32:32.848Z",
+    "previousGeneratedAt": "2026-07-16T06:21:40.401Z"
   },
   "posts": [
     {
@@ -385,7 +385,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T04:35:00.019Z",
       "createdAt": "2026-07-16T04:35:00.019Z",
-      "relative_time": "1h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HNUp9eXbMAACf9c?format=webp&name=medium",
         "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small"
@@ -446,7 +446,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T19:38:02.043Z",
       "createdAt": "2026-07-15T19:38:02.043Z",
-      "relative_time": "10h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/media/HJReowLWIAA7zOf.jpg"
       ],
@@ -477,7 +477,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:51:46.758Z",
       "createdAt": "2026-07-15T17:51:46.758Z",
-      "relative_time": "12h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077445830840311808/img/DFEBUOtRxvucD8jC.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
@@ -509,7 +509,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:31:48.974Z",
       "createdAt": "2026-07-15T17:31:48.974Z",
-      "relative_time": "12h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/media/HNSSK0la4AACusF?format=webp&name=medium"
       ],
@@ -540,7 +540,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:31:45.126Z",
       "createdAt": "2026-07-15T17:31:45.126Z",
-      "relative_time": "12h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/media/HNSSJ2BbMAASRh-?format=webp&name=medium",
         "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small"
@@ -572,7 +572,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:00:19.646Z",
       "createdAt": "2026-07-15T17:00:19.646Z",
-      "relative_time": "13h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077438057960374272/img/CTQDlr1Zs6SXdk2E.jpg"
       ],
@@ -603,7 +603,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.563Z",
       "createdAt": "2026-07-15T16:03:20.563Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HE_LGP8asAAXVme.jpg"
       ],
@@ -634,7 +634,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.119Z",
       "createdAt": "2026-07-15T16:03:20.119Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HGW3NW9aEAApY-9.jpg"
       ],
@@ -665,7 +665,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:18.307Z",
       "createdAt": "2026-07-15T16:03:18.307Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HNRq2jfacAABBHe?format=webp&name=medium"
       ],
@@ -696,7 +696,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T13:34:01.153Z",
       "createdAt": "2026-07-15T13:34:01.153Z",
-      "relative_time": "16h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HNRbvE9XoAAqJxN?format=webp&name=small",
         "https://pbs.twimg.com/media/HNRbvFAWIAAJdCU?format=webp&name=small",
@@ -730,7 +730,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T13:20:15.865Z",
       "createdAt": "2026-07-15T13:20:15.865Z",
-      "relative_time": "16h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HNRVZq-b0AAS7L2?format=webp&name=medium"
       ],
@@ -790,7 +790,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T10:05:25.625Z",
       "createdAt": "2026-07-15T10:05:25.625Z",
-      "relative_time": "20h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HNQr6mTWEAAuI_2?format=webp&name=medium"
       ],
@@ -821,7 +821,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T09:29:53.467Z",
       "createdAt": "2026-07-15T09:29:53.467Z",
-      "relative_time": "20h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077324713752440832/img/OOs48TUOGxGheUV2.jpg",
         "https://pbs.twimg.com/media/HNNEOIuaYAAmRGq.jpg"
@@ -1163,9 +1163,8 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T07:02:51.545Z",
       "createdAt": "2026-07-14T07:02:51.545Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2076925318443753472/img/Kz1Jx7aDsCa9YDYo.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2076868109064155136/img/Fh58eG0UQsIRb6sz.jpg"
       ],
       "video": "",
