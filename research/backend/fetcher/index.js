@@ -415,6 +415,7 @@ async function selectPostsForAccounts(accounts, providerConfig, previousPosts, p
   const providerFailures = [];
   const collectedPosts = [];
   const coverage = [];
+  const diagnostics = {};
   let selectedProviderName = '';
   let usernamesForFallback = new Set();
 
@@ -452,6 +453,7 @@ async function selectPostsForAccounts(accounts, providerConfig, previousPosts, p
       console.log(`[research] provider ${providerName}: scanning ${accountsToFetch.length}/${accounts.length} accounts`);
       const result = await runExternalProvider(providerName, accountsToFetch, providerConfig, previousPosts, previousMetadata);
       providerFailures.push(...result.errors);
+      Object.assign(diagnostics, result.diagnostics || {});
       coverage.push(...annotateCoverage(providerName, result.diagnostics));
       usernamesForFallback = new Set(
         result.errors
@@ -493,6 +495,7 @@ async function selectPostsForAccounts(accounts, providerConfig, previousPosts, p
       posts: collectedPosts,
       failures: providerFailures,
       diagnostics: {
+        ...diagnostics,
         coverage
       }
     };
@@ -502,7 +505,7 @@ async function selectPostsForAccounts(accounts, providerConfig, previousPosts, p
     providerName: 'none',
     posts: [],
     failures: providerFailures,
-    diagnostics: {}
+    diagnostics
   };
 }
 

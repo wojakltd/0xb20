@@ -211,7 +211,7 @@ function normalizeTweet(tweet, user, account, mediaByKey) {
   const publicMetrics = tweet.public_metrics || {};
 
   return {
-    id: tweet.id,
+    id: `${account.username || user.username}-${tweet.id}`,
     username: user.username || account.username,
     displayName: user.name || account.displayName || account.username,
     avatar: user.profile_image_url || account.avatar || '',
