@@ -136,12 +136,16 @@ async function scrapeAccount(context, account, providerConfig) {
       timeout: providerConfig.selectorTimeoutMs
     });
 
-    let posts = [];
+    const postsById = new Map();
 
     for (let pass = 0; pass <= providerConfig.scrollPasses; pass += 1) {
-      posts = await extractPosts(page, account, providerConfig.maxPostsPerAccount);
+      const visiblePosts = await extractPosts(page, account, providerConfig.maxPostsPerAccount);
 
-      if (posts.length >= providerConfig.maxPostsPerAccount) {
+      visiblePosts.forEach((post) => {
+        postsById.set(post.id, post);
+      });
+
+      if (postsById.size >= providerConfig.maxPostsPerAccount) {
         break;
       }
 
@@ -149,11 +153,13 @@ async function scrapeAccount(context, account, providerConfig) {
       await page.waitForTimeout(800);
     }
 
-    if (!posts.length) {
+    if (!postsById.size) {
       throw new Error('No public timeline posts found. X may be blocking anonymous browser access.');
     }
 
-    return posts.map((post) => normalizePost(post, account, 'playwright'));
+    return Array.from(postsById.values())
+      .slice(0, providerConfig.maxPostsPerAccount)
+      .map((post) => normalizePost(post, account, 'playwright'));
   } finally {
     await page.close().catch(() => {});
   }
@@ -165,6 +171,7 @@ async function fetchPosts(accounts, context = {}) {
   const { chromium } = loadPlaywright();
   const posts = [];
   const errors = [];
+  const coverage = [];
   let failedAccountsBeforeSuccess = 0;
   const browser = await chromium.launch({
     headless: providerConfig.headless,
@@ -183,6 +190,10 @@ async function fetchPosts(accounts, context = {}) {
       try {
         const accountPosts = await scrapeAccount(browserContext, account, providerConfig);
         posts.push(...accountPosts);
+        coverage.push({
+          username: account.username,
+          returned: accountPosts.length
+        });
         console.log(`[research:playwright] ${account.username}: ${accountPosts.length} posts`);
       } catch (error) {
         const message = error && error.message ? error.message : String(error);
@@ -191,6 +202,11 @@ async function fetchPosts(accounts, context = {}) {
           provider: 'playwright',
           username: account.username,
           message
+        });
+        coverage.push({
+          username: account.username,
+          returned: 0,
+          error: message
         });
 
         if (!posts.length) {
@@ -209,7 +225,13 @@ async function fetchPosts(accounts, context = {}) {
     await browser.close().catch(() => {});
   }
 
-  return { posts, errors };
+  return {
+    posts,
+    errors,
+    diagnostics: {
+      coverage
+    }
+  };
 }
 
 module.exports = {

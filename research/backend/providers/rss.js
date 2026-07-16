@@ -40,8 +40,10 @@ async function fetchWithTimeout(url, timeoutMs) {
 
 async function fetchAccountFeed(account, config) {
   const urls = buildUrls(account, config);
-  const timeoutMs = (config.rss && config.rss.timeoutMs) || 15000;
-  const retries = (config.rss && config.rss.retries) || 1;
+  const timeoutMs = Number(config.rss && config.rss.timeoutMs) || 15000;
+  const retries = Number.isFinite(Number(config.rss && config.rss.retries))
+    ? Number(config.rss.retries)
+    : 1;
   const failures = [];
 
   for (const url of urls) {
@@ -73,17 +75,30 @@ async function fetchPosts(accounts, context = {}) {
   const maxPostsPerAccount = Number(config.maxPostsPerAccount) || 8;
   const posts = [];
   const errors = [];
+  const coverage = [];
 
   for (const account of accounts) {
     try {
       const accountPosts = await fetchAccountFeed(account, config);
-      posts.push(...accountPosts.slice(0, maxPostsPerAccount));
+      const returnedPosts = accountPosts.slice(0, maxPostsPerAccount);
+      posts.push(...returnedPosts);
+      coverage.push({
+        username: account.username,
+        parsed: accountPosts.length,
+        returned: returnedPosts.length
+      });
       console.log(`[research:rss] ${account.username}: ${accountPosts.length} posts`);
     } catch (error) {
       errors.push({
         provider: 'rss',
         username: account.username,
         message: error.message
+      });
+      coverage.push({
+        username: account.username,
+        parsed: 0,
+        returned: 0,
+        error: error.message
       });
     }
 
@@ -92,7 +107,10 @@ async function fetchPosts(accounts, context = {}) {
 
   return {
     posts,
-    errors
+    errors,
+    diagnostics: {
+      coverage
+    }
   };
 }
 

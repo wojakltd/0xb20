@@ -253,7 +253,7 @@ function trimPostText(rawText) {
   return markdownToText(rawText.slice(0, end));
 }
 
-function parseMarkdown(markdown, account, limit) {
+function parseMarkdown(markdown, account) {
   const username = String(account.username || '').replace(/^@/, '');
   const escapedUsername = escapeRegex(username);
   const displayName = profileDisplayName(markdown, account);
@@ -289,9 +289,6 @@ function parseMarkdown(markdown, account, limit) {
       images
     }, account, 'reader'));
 
-    if (posts.length >= limit) {
-      break;
-    }
   }
 
   return posts;
@@ -299,22 +296,44 @@ function parseMarkdown(markdown, account, limit) {
 
 async function fetchAccount(account, config) {
   const timeoutMs = Number(config.reader && config.reader.timeoutMs) || 12000;
+  const retries = Number(config.reader && config.reader.retries) || 0;
   const maxPostsPerAccount = Number(config.maxPostsPerAccount) || 10;
   const url = `https://r.jina.ai/http://r.jina.ai/http://https://twitter.com/${encodeURIComponent(account.username)}`;
-  const response = await fetchWithTimeout(url, timeoutMs);
-  const body = await response.text();
+  let lastError = null;
 
-  if (!response.ok) {
-    throw new Error(`Reader HTTP ${response.status}: ${body.slice(0, 180)}`);
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      const response = await fetchWithTimeout(url, timeoutMs);
+      const body = await response.text();
+
+      if (!response.ok) {
+        throw new Error(`Reader HTTP ${response.status}: ${body.slice(0, 180)}`);
+      }
+
+      const allPosts = parseMarkdown(body, account);
+      const posts = allPosts.slice(0, maxPostsPerAccount);
+
+      if (!posts.length) {
+        throw new Error('Reader returned no parseable status posts.');
+      }
+
+      return {
+        posts,
+        parsed: allPosts.length,
+        attempts: attempt + 1
+      };
+    } catch (error) {
+      lastError = error;
+
+      if (attempt < retries) {
+        const message = error && error.message ? error.message : String(error);
+        console.log(`[research:reader] ${account.username}: attempt ${attempt + 1} failed: ${message}`);
+        await sleep(1000 * (attempt + 1));
+      }
+    }
   }
 
-  const posts = parseMarkdown(body, account, maxPostsPerAccount);
-
-  if (!posts.length) {
-    throw new Error('Reader returned no parseable status posts.');
-  }
-
-  return posts;
+  throw lastError || new Error('Reader request failed.');
 }
 
 async function fetchPosts(accounts, context = {}) {
@@ -322,12 +341,19 @@ async function fetchPosts(accounts, context = {}) {
   const requestDelayMs = Number(config.reader && config.reader.requestDelayMs) || Number(config.requestDelayMs) || 1000;
   const posts = [];
   const errors = [];
+  const coverage = [];
 
   for (const account of accounts) {
     try {
-      const accountPosts = await fetchAccount(account, config);
-      posts.push(...accountPosts);
-      console.log(`[research:reader] ${account.username}: ${accountPosts.length} posts`);
+      const accountResult = await fetchAccount(account, config);
+      posts.push(...accountResult.posts);
+      coverage.push({
+        username: account.username,
+        parsed: accountResult.parsed,
+        returned: accountResult.posts.length,
+        attempts: accountResult.attempts
+      });
+      console.log(`[research:reader] ${account.username}: ${accountResult.posts.length}/${accountResult.parsed} posts in ${accountResult.attempts} attempt(s)`);
     } catch (error) {
       const message = error && error.message ? error.message : String(error);
       console.log(`[research:reader] ${account.username}: ${message}`);
@@ -336,12 +362,24 @@ async function fetchPosts(accounts, context = {}) {
         username: account.username,
         message
       });
+      coverage.push({
+        username: account.username,
+        parsed: 0,
+        returned: 0,
+        error: message
+      });
     }
 
     await sleep(requestDelayMs);
   }
 
-  return { posts, errors };
+  return {
+    posts,
+    errors,
+    diagnostics: {
+      coverage
+    }
+  };
 }
 
 module.exports = {

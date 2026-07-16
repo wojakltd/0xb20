@@ -473,6 +473,7 @@
       durationMs: metadata.durationMs || 0,
       lastUpdate: metadata.generatedAt || null,
       providerFailures: metadata.failures || [],
+      coverage: metadata.coverage || [],
       accountsScanned: metadata.accountsScanned || metadata.accounts || 0,
       postsCollected: metadata.postsCollected || state.posts.length,
       cacheAge: getCacheAge(metadata),

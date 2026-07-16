@@ -3,24 +3,25 @@
   "providerOrder": ["playwright", "reader", "rss", "cache", "sample"],
   "refreshIntervalMinutes": 10,
   "requestDelayMs": 900,
-  "maxPostsPerAccount": 10,
-  "maxCacheItems": 400,
+  "maxPostsPerAccount": 80,
+  "maxCacheItems": 2500,
   "maxPostAgeDays": 30,
   "defaultNetwork": "BASE",
   "playwright": {
     "headless": true,
-    "navigationTimeoutMs": 16000,
-    "selectorTimeoutMs": 8000,
-    "scrollPasses": 4,
+    "navigationTimeoutMs": 18000,
+    "selectorTimeoutMs": 9000,
+    "scrollPasses": 24,
     "failureLimitBeforeFallback": 3
   },
   "reader": {
-    "timeoutMs": 12000,
-    "requestDelayMs": 700
+    "timeoutMs": 25000,
+    "requestDelayMs": 1200,
+    "retries": 2
   },
   "rss": {
-    "timeoutMs": 6000,
-    "retries": 1,
+    "timeoutMs": 4500,
+    "retries": 0,
     "bridgeTemplates": [
       "https://nitter.net/{username}/rss",
       "https://nitter.poast.org/{username}/rss",

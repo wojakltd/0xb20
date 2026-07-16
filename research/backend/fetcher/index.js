@@ -203,6 +203,39 @@ function mergePosts(previousPosts, nextPosts, maxItems, options = {}) {
     .slice(0, maxItems);
 }
 
+function mergeUniquePosts(currentPosts, nextPosts) {
+  const postsById = new Map();
+
+  [...currentPosts, ...nextPosts].forEach((post) => {
+    if (post && post.id) {
+      postsById.set(String(post.id), post);
+    }
+  });
+
+  return sortPosts(Array.from(postsById.values()));
+}
+
+function getAccountsByUsernames(accounts, usernames) {
+  const wantedUsernames = new Set(
+    Array.from(usernames || [])
+      .map((username) => String(username || '').toLowerCase())
+      .filter(Boolean)
+  );
+
+  return accounts.filter((account) => wantedUsernames.has(String(account.username).toLowerCase()));
+}
+
+function annotateCoverage(providerName, diagnostics) {
+  const coverage = diagnostics && Array.isArray(diagnostics.coverage)
+    ? diagnostics.coverage
+    : [];
+
+  return coverage.map((entry) => ({
+    provider: providerName,
+    ...entry
+  }));
+}
+
 function getPriorityWindowMs(post) {
   return post && post.category === 'laboratory' ? 15 * 60 * 1000 : 0;
 }
@@ -266,6 +299,9 @@ function createMetadata({
     networks: Array.from(new Set(accounts.map((account) => account.network))).sort(),
     categories: Array.from(new Set(accounts.map((account) => account.category))).sort(),
     failures: sanitizeFailures(selected.failures),
+    coverage: selected.diagnostics && Array.isArray(selected.diagnostics.coverage)
+      ? selected.diagnostics.coverage
+      : [],
     startedAt: startedAt.toISOString(),
     previousGeneratedAt: previousMetadata && previousMetadata.generatedAt ? previousMetadata.generatedAt : null
   };
@@ -305,24 +341,34 @@ async function runExternalProvider(providerName, accounts, providerConfig, previ
   return {
     providerName,
     posts,
-    errors: (result && result.errors) || []
+    errors: (result && result.errors) || [],
+    diagnostics: (result && result.diagnostics) || {}
   };
 }
 
 async function selectPosts(accounts, providerConfig, previousPosts) {
   const providerOrder = getProviderOrder(providerConfig);
   const providerFailures = [];
+  const collectedPosts = [];
+  const coverage = [];
+  let selectedProviderName = '';
+  let usernamesForFallback = new Set();
 
   console.log(`[research] provider order: ${providerOrder.join(' -> ')}`);
 
   for (const providerName of providerOrder) {
     if (providerName === 'cache') {
+      if (collectedPosts.length) {
+        break;
+      }
+
       if (previousPosts.length) {
         console.log(`[research] provider cache: using ${previousPosts.length} preserved observations`);
         return {
           providerName: 'cache',
           posts: previousPosts,
-          failures: providerFailures
+          failures: providerFailures,
+          diagnostics: {}
         };
       }
 
@@ -331,14 +377,35 @@ async function selectPosts(accounts, providerConfig, previousPosts) {
     }
 
     try {
-      const result = await runExternalProvider(providerName, accounts, providerConfig, previousPosts);
+      const accountsToFetch = usernamesForFallback.size
+        ? getAccountsByUsernames(accounts, usernamesForFallback)
+        : accounts;
+
+      if (!accountsToFetch.length) {
+        break;
+      }
+
+      console.log(`[research] provider ${providerName}: scanning ${accountsToFetch.length}/${accounts.length} accounts`);
+      const result = await runExternalProvider(providerName, accountsToFetch, providerConfig, previousPosts);
+      providerFailures.push(...result.errors);
+      coverage.push(...annotateCoverage(providerName, result.diagnostics));
+      usernamesForFallback = new Set(
+        result.errors
+          .map((error) => error && error.username)
+          .filter(Boolean)
+      );
 
       if (result.posts.length) {
-        return {
-          providerName,
-          posts: result.posts,
-          failures: providerFailures
-        };
+        collectedPosts.splice(0, collectedPosts.length, ...mergeUniquePosts(collectedPosts, result.posts));
+        selectedProviderName = selectedProviderName ? `${selectedProviderName}+${providerName}` : providerName;
+
+        console.log(`[research] coverage after ${providerName}: ${accounts.length - usernamesForFallback.size}/${accounts.length} accounts without provider errors`);
+
+        if (!usernamesForFallback.size) {
+          break;
+        }
+
+        continue;
       }
 
       providerFailures.push({
@@ -356,10 +423,22 @@ async function selectPosts(accounts, providerConfig, previousPosts) {
     }
   }
 
+  if (collectedPosts.length) {
+    return {
+      providerName: selectedProviderName || 'mixed',
+      posts: collectedPosts,
+      failures: providerFailures,
+      diagnostics: {
+        coverage
+      }
+    };
+  }
+
   return {
     providerName: 'none',
     posts: [],
-    failures: providerFailures
+    failures: providerFailures,
+    diagnostics: {}
   };
 }
 
