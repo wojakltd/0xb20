@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "playwright+reader",
+    "provider": "playwright",
     "providerOrder": [
       "playwright",
       "reader",
@@ -9,13 +9,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-16T04:02:31.052Z",
-    "durationMs": 107003,
+    "generatedAt": "2026-07-16T06:21:40.401Z",
+    "durationMs": 883765,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 72,
-    "postsCollected": 72,
-    "latestObservationAt": "2026-07-16T03:26:40.460Z",
+    "posts": 77,
+    "postsCollected": 60,
+    "latestObservationAt": "2026-07-16T04:35:00.019Z",
     "refreshIntervalMinutes": 10,
     "networks": [
       "BASE"
@@ -32,7 +32,28 @@
     "failures": [
       {
         "provider": "playwright",
-        "message": "browserType.launch: Executable doesn't exist at [local-path]"
+        "username": "BronheimDaniel",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
+      },
+      {
+        "provider": "playwright",
+        "username": "robertsun",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
+      },
+      {
+        "provider": "playwright",
+        "username": "raymdong",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
+      },
+      {
+        "provider": "playwright",
+        "username": "AerodromeFinance",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
+      },
+      {
+        "provider": "playwright",
+        "username": "SeamlessProtocol",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "reader",
@@ -60,29 +81,33 @@
         "message": "Reader returned no parseable status posts."
       },
       {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
         "provider": "rss",
         "username": "BronheimDaniel",
-        "message": "https://nitter.net/BronheimDaniel/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://"
+        "message": "https://nitter.net/BronheimDaniel/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitt"
       },
       {
         "provider": "rss",
         "username": "robertsun",
-        "message": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_u"
+        "message": "https://nitter.net/robertsun/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user"
       },
       {
         "provider": "rss",
         "username": "raymdong",
-        "message": "https://nitter.net/raymdong/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_"
+        "message": "https://nitter.net/raymdong/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=ray"
       },
       {
         "provider": "rss",
         "username": "AerodromeFinance",
-        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | "
+        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss."
       },
       {
         "provider": "rss",
         "username": "SeamlessProtocol",
-        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss."
       },
       {
         "provider": "rss",
@@ -91,74 +116,196 @@
     ],
     "coverage": [
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "0xb20lol",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 80
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "base",
-        "parsed": 11,
-        "returned": 11,
-        "attempts": 1
+        "returned": 13
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "buildonbase",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 48
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "jessepollak",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 32
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "brad_or_bradley",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 38
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "therymac",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 15
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "HorinekPM",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 14
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "donofbase",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 43
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "BronheimDaniel",
-        "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
-        "provider": "reader",
+        "provider": "playwright",
         "username": "AhaanRaizada",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
+        "returned": 38
+      },
+      {
+        "provider": "playwright",
+        "username": "robertsun",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "RVanGrack",
+        "returned": 24
+      },
+      {
+        "provider": "playwright",
+        "username": "jonroethke",
+        "returned": 6
+      },
+      {
+        "provider": "playwright",
+        "username": "austinvalleskey",
+        "returned": 46
+      },
+      {
+        "provider": "playwright",
+        "username": "catferdon",
+        "returned": 25
+      },
+      {
+        "provider": "playwright",
+        "username": "ZacPrater",
+        "returned": 27
+      },
+      {
+        "provider": "playwright",
+        "username": "base_vietnam",
+        "returned": 47
+      },
+      {
+        "provider": "playwright",
+        "username": "Little_Dogx",
+        "returned": 47
+      },
+      {
+        "provider": "playwright",
+        "username": "Sir_Damilare",
+        "returned": 32
+      },
+      {
+        "provider": "playwright",
+        "username": "basedsnipez",
+        "returned": 29
+      },
+      {
+        "provider": "playwright",
+        "username": "inversebrah",
+        "returned": 54
+      },
+      {
+        "provider": "playwright",
+        "username": "dannyvayne",
+        "returned": 42
+      },
+      {
+        "provider": "playwright",
+        "username": "raymdong",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "darkohh",
+        "returned": 46
+      },
+      {
+        "provider": "playwright",
+        "username": "Lennart_up",
+        "returned": 41
+      },
+      {
+        "provider": "playwright",
+        "username": "iruletrenches",
+        "returned": 28
+      },
+      {
+        "provider": "playwright",
+        "username": "Schoen_xyz",
+        "returned": 48
+      },
+      {
+        "provider": "playwright",
+        "username": "o1_exchange",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "degentokenbase",
+        "returned": 17
+      },
+      {
+        "provider": "playwright",
+        "username": "AerodromeFinance",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "virtuals_io",
+        "returned": 12
+      },
+      {
+        "provider": "playwright",
+        "username": "SeamlessProtocol",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "talentprotocol",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "jpegapp",
+        "returned": 9
+      },
+      {
+        "provider": "playwright",
+        "username": "cbventures",
+        "returned": 36
+      },
+      {
+        "provider": "playwright",
+        "username": "a16zcrypto",
+        "returned": 15
+      },
+      {
+        "provider": "reader",
+        "username": "BronheimDaniel",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
@@ -169,129 +316,10 @@
       },
       {
         "provider": "reader",
-        "username": "RVanGrack",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "jonroethke",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "austinvalleskey",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "catferdon",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "ZacPrater",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "base_vietnam",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "Little_Dogx",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "Sir_Damilare",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "basedsnipez",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "inversebrah",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "dannyvayne",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
         "username": "raymdong",
         "parsed": 0,
         "returned": 0,
         "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "darkohh",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "Lennart_up",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "iruletrenches",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "Schoen_xyz",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "o1_exchange",
-        "parsed": 3,
-        "returned": 3,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "degentokenbase",
-        "parsed": 13,
-        "returned": 13,
-        "attempts": 1
       },
       {
         "provider": "reader",
@@ -302,86 +330,83 @@
       },
       {
         "provider": "reader",
-        "username": "virtuals_io",
-        "parsed": 9,
-        "returned": 9,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
         "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "talentprotocol",
-        "parsed": 8,
-        "returned": 8,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "jpegapp",
-        "parsed": 11,
-        "returned": 11,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "cbventures",
-        "parsed": 14,
-        "returned": 14,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "a16zcrypto",
-        "parsed": 12,
-        "returned": 12,
-        "attempts": 2
       },
       {
         "provider": "rss",
         "username": "BronheimDaniel",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/BronheimDaniel/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=BronheimDaniel attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/BronheimDaniel/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/BronheimDaniel/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/BronheimDaniel/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/BronheimDaniel attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=BronheimDaniel attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "robertsun",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/robertsun/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "raymdong",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/raymdong/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=raymdong attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/raymdong/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/raymdong/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/raymdong/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/raymdong attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=raymdong attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "AerodromeFinance",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: This operation was aborted | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
       }
     ],
-    "startedAt": "2026-07-16T03:56:42.484Z",
-    "previousGeneratedAt": "2026-07-16T03:54:02.371Z"
+    "startedAt": "2026-07-16T06:06:56.636Z",
+    "previousGeneratedAt": "2026-07-16T04:02:31.052Z"
   },
   "posts": [
+    {
+      "id": "virtuals_io-2077612941193744816",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
+      "username": "virtuals_io",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-07-16T04:35:00.019Z",
+      "createdAt": "2026-07-16T04:35:00.019Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HNUp9eXbMAACf9c?format=webp&name=medium",
+        "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small"
+      ],
+      "video": "",
+      "post_url": "https://x.com/virtuals_io/status/2077612941193744816",
+      "url": "https://x.com/virtuals_io/status/2077612941193744816",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "protocols",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "source": "playwright"
+    },
     {
       "id": "virtuals_io-2077595746396987872",
       "author": "Virtuals Protocol",
@@ -413,15 +438,15 @@
     },
     {
       "id": "a16zcrypto-2077477809208115231",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "Since RWAs are back in the timeline (for reasons both good and cursed) let’s skip the AI-slop discourse and look at the actual tokenized asset data.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T19:38:02.043Z",
       "createdAt": "2026-07-15T19:38:02.043Z",
-      "relative_time": "8h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/media/HJReowLWIAA7zOf.jpg"
       ],
@@ -440,19 +465,19 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "a16zcrypto-2077451069324743034",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "\"If we can't make contracts, then I can't send you 5,000 bushels of wheat with 60 days payable on delivery. But if we can promiscuously make contracts, then you can hire me before I have a chance to interview at the other places that are interested in hiring me.\" Nobel laureate",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:51:46.758Z",
       "createdAt": "2026-07-15T17:51:46.758Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077445830840311808/img/DFEBUOtRxvucD8jC.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
@@ -472,7 +497,7 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "virtuals_io-2077446045454479447",
@@ -484,7 +509,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:31:48.974Z",
       "createdAt": "2026-07-15T17:31:48.974Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HNSSK0la4AACusF?format=webp&name=medium"
       ],
@@ -507,19 +532,18 @@
     },
     {
       "id": "virtuals_io-2077446029314826420",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "The first robotics network is now live on @RobinhoodApp Chain. Humanoid Network is building motion simulators for embodied AI. Its tracking policy has already achieved a 100% success rate in zero-shot sim-to-real transfer on the Unitree G1. Read the full whitepaper ↓",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:31:45.126Z",
       "createdAt": "2026-07-15T17:31:45.126Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HNSSJ2BbMAASRh-?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small",
-        "https://pbs.twimg.com/media/HNSSK0la4AACusF?format=webp&name=medium"
+        "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small"
       ],
       "video": "",
       "post_url": "https://x.com/virtuals_io/status/2077446029314826420",
@@ -536,19 +560,19 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "degentokenbase-2077438121038536855",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "YES OR NO. YES OR NO. YES OR NO.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:00:19.646Z",
       "createdAt": "2026-07-15T17:00:19.646Z",
-      "relative_time": "10h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077438057960374272/img/CTQDlr1Zs6SXdk2E.jpg"
       ],
@@ -567,7 +591,7 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "a16zcrypto-2077423780364980679",
@@ -579,7 +603,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.563Z",
       "createdAt": "2026-07-15T16:03:20.563Z",
-      "relative_time": "11h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HE_LGP8asAAXVme.jpg"
       ],
@@ -610,7 +634,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.119Z",
       "createdAt": "2026-07-15T16:03:20.119Z",
-      "relative_time": "11h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HGW3NW9aEAApY-9.jpg"
       ],
@@ -633,19 +657,17 @@
     },
     {
       "id": "a16zcrypto-2077423770902688108",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "Timeline feeling a little different lately? If you're following us but haven’t seen much recently, here are a few recent pieces worth catching up on:",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:18.307Z",
       "createdAt": "2026-07-15T16:03:18.307Z",
-      "relative_time": "11h ago",
+      "relative_time": "14h ago",
       "images": [
-        "https://pbs.twimg.com/media/HNRq2jfacAABBHe?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HGW3NW9aEAApY-9.jpg",
-        "https://pbs.twimg.com/media/HE_LGP8asAAXVme.jpg"
+        "https://pbs.twimg.com/media/HNRq2jfacAABBHe?format=webp&name=medium"
       ],
       "video": "",
       "post_url": "https://x.com/a16zcrypto/status/2077423770902688108",
@@ -662,19 +684,19 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "base-2077386201875542516",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "This carousel is pretty based",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T13:34:01.153Z",
       "createdAt": "2026-07-15T13:34:01.153Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HNRbvE9XoAAqJxN?format=webp&name=small",
         "https://pbs.twimg.com/media/HNRbvFAWIAAJdCU?format=webp&name=small",
@@ -696,19 +718,19 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "virtuals_io-2077382740367097930",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "Eastworlds, a robotics initiative under Virtuals Protocol, has officially partnered with @UnitreeRobotics to accelerate the deployment of embodied AI.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T13:20:15.865Z",
       "createdAt": "2026-07-15T13:20:15.865Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HNRVZq-b0AAS7L2?format=webp&name=medium"
       ],
@@ -727,7 +749,7 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "base-2077357053832523993",
@@ -760,15 +782,15 @@
     },
     {
       "id": "base-2077333707946414305",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Best seats in the house",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T10:05:25.625Z",
       "createdAt": "2026-07-15T10:05:25.625Z",
-      "relative_time": "17h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HNQr6mTWEAAuI_2?format=webp&name=medium"
       ],
@@ -787,19 +809,19 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "virtuals_io-2077324765027840502",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "Imagine $CASHCAT, $ARROW, $VEX, $VIRTUAL in one token. Anyone will be able to compose their own index from the tokenized assets on Robinhood Chain, publish it, and earn fees every time someone mints it. Live on Virtuals Protocol.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T09:29:53.467Z",
       "createdAt": "2026-07-15T09:29:53.467Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077324713752440832/img/OOs48TUOGxGheUV2.jpg",
         "https://pbs.twimg.com/media/HNNEOIuaYAAmRGq.jpg"
@@ -819,16 +841,16 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "virtuals_io-2077208553451089953",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "cloud infrastructure for agents requiring multi-surface control is live on Robinhood Chain",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T01:48:06.468Z",
       "createdAt": "2026-07-15T01:48:06.468Z",
       "relative_time": "1d ago",
@@ -851,16 +873,16 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "a16zcrypto-2077098776003543381",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "Article TradFi doesn’t want DeFi. It wants blockchain. @cc_crowley and @lordvolth There’s a version of the future that’s become almost canonical in crypto: DeFi and TradFi converge, permissionless liquidity meets institutional distribution, and the result...",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T18:31:53.485Z",
       "createdAt": "2026-07-14T18:31:53.485Z",
       "relative_time": "1d ago",
@@ -877,7 +899,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -886,12 +908,12 @@
     },
     {
       "id": "a16zcrypto-2077069425954414750",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "First Principles Ep. 4 with Alvin Roth Long before crypto made coordination programmable, Nobel Prize winner Alvin Roth was designing markets where coordination could save lives, matching doctors to hospitals, students to schools, and kidney donors to the patients who need them.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T16:35:15.888Z",
       "createdAt": "2026-07-14T16:35:15.888Z",
       "relative_time": "1d ago",
@@ -908,7 +930,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -917,16 +939,18 @@
     },
     {
       "id": "inversebrah-2077053331953078627",
-      "author": "smolting (wassie, verse)",
-      "displayName": "smolting (wassie, verse)",
+      "author": "inversebrah",
+      "displayName": "inversebrah",
       "username": "inversebrah",
-      "avatar": "https://pbs.twimg.com/profile_images/2075587476085698561/g4RKWOYr_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2073944695491923968/TU5DzKER_normal.jpg",
       "verified": false,
-      "text": "our very first The Weekly Close episode by @stanthecup and @wassie is here observ and discuss ^-^ also follow us on @WeeklyCloseShow 👉👈",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T15:31:18.779Z",
       "createdAt": "2026-07-14T15:31:18.779Z",
       "relative_time": "1d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2077052169317183488/img/KdEMi07D2uFKSEq-.jpg"
+      ],
       "video": "",
       "post_url": "https://x.com/inversebrah/status/2077053331953078627",
       "url": "https://x.com/inversebrah/status/2077053331953078627",
@@ -937,7 +961,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -946,12 +970,12 @@
     },
     {
       "id": "virtuals_io-2077048211911651385",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "a zk-verified data marketplace for users tired of giving their data away free, now live on Virtuals Protocol",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T15:10:58.066Z",
       "createdAt": "2026-07-14T15:10:58.066Z",
       "relative_time": "1d ago",
@@ -969,7 +993,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1007,12 +1031,12 @@
     },
     {
       "id": "base-2077038305149964528",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Give your agent superpowers on Base",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T14:31:36.110Z",
       "createdAt": "2026-07-14T14:31:36.110Z",
       "relative_time": "1d ago",
@@ -1029,7 +1053,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1038,12 +1062,12 @@
     },
     {
       "id": "base-2077011372903194886",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Finally seeing mutuals is cool A based button would be even cooler",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T12:44:34.962Z",
       "createdAt": "2026-07-14T12:44:34.962Z",
       "relative_time": "1d ago",
@@ -1060,7 +1084,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1100,18 +1124,17 @@
     },
     {
       "id": "virtuals_io-2076994293445841236",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "Agents on Robinhood Chain are growing faster than ever: $77M+ in agent volume 2,100+ agents launched $1.3M+ earned by agent builders The next era of consumer finance is agentic, and we're excited to power it with Robinhood Chain.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T11:36:42.902Z",
       "createdAt": "2026-07-14T11:36:42.902Z",
       "relative_time": "1d ago",
       "images": [
-        "https://pbs.twimg.com/media/HNL3TX_aEAApabF?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HMNjICMaEAEckg7.png"
+        "https://pbs.twimg.com/media/HNL3TX_aEAApabF?format=webp&name=medium"
       ],
       "video": "",
       "post_url": "https://x.com/virtuals_io/status/2076994293445841236",
@@ -1123,7 +1146,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1132,12 +1155,12 @@
     },
     {
       "id": "virtuals_io-2076925375339430170",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "an AI broker for tokenized equities on Robinhood Chain, powered by Virtuals Protocol",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T07:02:51.545Z",
       "createdAt": "2026-07-14T07:02:51.545Z",
       "relative_time": "1d ago",
@@ -1155,7 +1178,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1196,21 +1219,21 @@
       "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
       "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
       "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
       "verified": false,
-      "text": "🧪 ACCESS GRANTED Connecting to 0XB20 Laboratory... ████████████████ 100% STATUS: ONLINE NETWORK: BASE ━━━━━━━━━━━━━━━━━━━━━━ 0XB20 started as a memecoin. It is evolving into a living Laboratory built in public. Every release becomes",
+      "text": "ACCESS GRANTED\n\nConnecting to 0XB20 Laboratory...\n\n████████████████ 100%\n\nSTATUS: ONLINE\nNETWORK: BASE\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n0XB20 started as a memecoin.\n\nIt is evolving into a living Laboratory built in public.\n\nEvery release becomes",
       "created_at": "2026-07-13T22:04:47.045Z",
       "createdAt": "2026-07-13T22:04:47.045Z",
       "relative_time": "2d ago",
       "images": [
-        "https://pbs.twimg.com/media/HNI84enbwAAdsJG?format=webp&name=medium"
+        "https://pbs.twimg.com/media/HNI84enbwAAdsJG?format=jpg&name=small"
       ],
       "video": "",
       "post_url": "https://x.com/0xb20lol/status/2076789964331966516",
       "url": "https://x.com/0xb20lol/status/2076789964331966516",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
+      "likes": 10,
+      "replies": 1,
+      "reposts": 1,
       "category": "laboratory",
       "network": "BASE",
       "partner": false,
@@ -1220,16 +1243,16 @@
       "description": "Primary Laboratory relay and public experiment log.",
       "website": "https://0xb20.lol",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "base-2076754277385617440",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "A based way to play on Nifty Island",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T19:42:58.614Z",
       "createdAt": "2026-07-13T19:42:58.614Z",
       "relative_time": "2d ago",
@@ -1246,7 +1269,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1255,15 +1278,15 @@
     },
     {
       "id": "virtuals_io-2076723229411148263",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "A curated board of dev-selected agents built on Virtuals infrastructure",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T17:39:36.200Z",
       "createdAt": "2026-07-13T17:39:36.200Z",
-      "relative_time": "",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2076723117909778432/img/q7JNYXyFvqW13Hpb.jpg"
       ],
@@ -1277,7 +1300,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1286,12 +1309,12 @@
     },
     {
       "id": "a16zcrypto-2076721742794436983",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "“It feels like the world is going to forget that pre-stablecoins was even a thing.” Stablecoins are already moving hundreds of billions of dollars through the financial system. @PrimordialAA of @LayerZero_Core says demand is only accelerating.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T17:33:41.763Z",
       "createdAt": "2026-07-13T17:33:41.763Z",
       "relative_time": "2d ago",
@@ -1308,7 +1331,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1317,12 +1340,12 @@
     },
     {
       "id": "base-2076628699546292571",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "The based beginning",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T11:23:58.524Z",
       "createdAt": "2026-07-13T11:23:58.524Z",
       "relative_time": "2d ago",
@@ -1339,7 +1362,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1377,12 +1400,12 @@
     },
     {
       "id": "degentokenbase-2076488952715055274",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "Degens took over @Wimbledon today. 🎾",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T02:08:40.283Z",
       "createdAt": "2026-07-13T02:08:40.283Z",
       "relative_time": "3d ago",
@@ -1399,7 +1422,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1471,18 +1494,17 @@
     },
     {
       "id": "base-2075982174721905128",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "No weekend plans? Here's one: Read about Base Beryl ↓",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-11T16:34:54.994Z",
       "createdAt": "2026-07-11T16:34:54.994Z",
       "relative_time": "4d ago",
       "images": [
-        "https://pbs.twimg.com/media/HM9eetkWwAA_xH3?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HLHUOvVaUAAxsOJ.jpg"
+        "https://pbs.twimg.com/media/HM9eetkWwAA_xH3?format=webp&name=medium"
       ],
       "video": "",
       "post_url": "https://x.com/base/status/2075982174721905128",
@@ -1494,7 +1516,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1532,12 +1554,12 @@
     },
     {
       "id": "base-2075692577182073084",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Beryl, B20 & More! News: ■ Base Beryl and the B20 Native Token Standard are live on mainnet! ■ @AskVenice raises $65M at a $1B valuation for private, uncensored AI ■ @openstandard launches Open USD — a stablecoin...",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-10T21:24:09.560Z",
       "createdAt": "2026-07-10T21:24:09.560Z",
       "relative_time": "5d ago",
@@ -1554,7 +1576,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1591,19 +1613,49 @@
       "logo": ""
     },
     {
-      "id": "base-2075670499808477322",
-      "author": "Base",
-      "displayName": "Base",
+      "id": "base-2075670502140461331",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Ready for this weekend's football?",
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-07-10T19:56:26.460Z",
+      "createdAt": "2026-07-10T19:56:26.460Z",
+      "relative_time": "5d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HM5DB49WkAALOGY?format=webp&name=medium"
+      ],
+      "video": "",
+      "post_url": "https://x.com/base/status/2075670502140461331",
+      "url": "https://x.com/base/status/2075670502140461331",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "source": "playwright"
+    },
+    {
+      "id": "base-2075670499808477322",
+      "author": "base",
+      "displayName": "base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-10T19:56:25.904Z",
       "createdAt": "2026-07-10T19:56:25.904Z",
-      "relative_time": "",
+      "relative_time": "5d ago",
       "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2075669730870861824/img/cNP-3o0-wevoNMpM.jpg",
-        "https://pbs.twimg.com/media/HM5DB49WkAALOGY?format=webp&name=medium"
+        "https://pbs.twimg.com/amplify_video_thumb/2075669730870861824/img/cNP-3o0-wevoNMpM.jpg"
       ],
       "video": "",
       "post_url": "https://x.com/base/status/2075670499808477322",
@@ -1615,7 +1667,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1652,13 +1704,44 @@
       "logo": ""
     },
     {
-      "id": "degentokenbase-2075271559397167335",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
-      "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "id": "base-2075534613582147895",
+      "author": "base",
+      "displayName": "base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "The future of internet debates starts here. pov.co is now live!",
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-07-10T10:56:28.103Z",
+      "createdAt": "2026-07-10T10:56:28.103Z",
+      "relative_time": "5d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2075533351302119424/img/KFmvdH56GUFkFvll.jpg"
+      ],
+      "video": "",
+      "post_url": "https://x.com/base/status/2075534613582147895",
+      "url": "https://x.com/base/status/2075534613582147895",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "source": "playwright"
+    },
+    {
+      "id": "degentokenbase-2075271559397167335",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
+      "username": "degentokenbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-09T17:31:11.098Z",
       "createdAt": "2026-07-09T17:31:11.098Z",
       "relative_time": "6d ago",
@@ -1676,7 +1759,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1685,12 +1768,12 @@
     },
     {
       "id": "buildonbase-2074978436553298168",
-      "author": "Base Build",
-      "displayName": "Base Build",
+      "author": "buildonbase",
+      "displayName": "buildonbase",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
       "verified": false,
-      "text": "Most tokens are smart contracts deployed on top of a chain. B20 tokens are native to Base - built directly into the protocol. The B20 Native Token Standard explained 🧵",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T22:06:25.166Z",
       "createdAt": "2026-07-08T22:06:25.166Z",
       "relative_time": "7d ago",
@@ -1707,7 +1790,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1716,12 +1799,12 @@
     },
     {
       "id": "base-2074978236820521370",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Base Beryl and the B20 Native Token Standard are officially live on mainnet",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T22:05:37.546Z",
       "createdAt": "2026-07-08T22:05:37.546Z",
       "relative_time": "7d ago",
@@ -1738,7 +1821,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 2,
       "favorite": false,
       "description": "",
@@ -1747,12 +1830,12 @@
     },
     {
       "id": "o1_exchange-2074909233519239565",
-      "author": "o1.exchange",
-      "displayName": "o1.exchange",
+      "author": "o1_exchange",
+      "displayName": "o1_exchange",
       "username": "o1_exchange",
-      "avatar": "https://pbs.twimg.com/profile_images/2010294212177371136/kWzvlDOx_400x400.png",
+      "avatar": "https://pbs.twimg.com/profile_images/2010294212177371136/kWzvlDOx_normal.png",
       "verified": false,
-      "text": "Introducing b20.o1.exchange launchpad— the 1st launchpad built natively on the B20 token standard on Base",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:31:25.877Z",
       "createdAt": "2026-07-08T17:31:25.877Z",
       "relative_time": "7d ago",
@@ -1769,7 +1852,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1778,12 +1861,12 @@
     },
     {
       "id": "a16zcrypto-2074905602581536937",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "What makes a great founder? @guywuolletjr on the Promethean flame:",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:17:00.194Z",
       "createdAt": "2026-07-08T17:17:00.194Z",
       "relative_time": "7d ago",
@@ -1800,7 +1883,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1809,12 +1892,12 @@
     },
     {
       "id": "degentokenbase-2074901341290578230",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "You'll do fookin' nuttin.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:00:04.223Z",
       "createdAt": "2026-07-08T17:00:04.223Z",
       "relative_time": "7d ago",
@@ -1831,7 +1914,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1840,15 +1923,15 @@
     },
     {
       "id": "o1_exchange-2074714170390421670",
-      "author": "o1.exchange",
-      "displayName": "o1.exchange",
+      "author": "o1_exchange",
+      "displayName": "o1_exchange",
       "username": "o1_exchange",
-      "avatar": "https://pbs.twimg.com/profile_images/2010294212177371136/kWzvlDOx_400x400.png",
+      "avatar": "https://pbs.twimg.com/profile_images/2010294212177371136/kWzvlDOx_normal.png",
       "verified": false,
-      "text": "🪶 @RobinhoodCrypto is live on @o1_exchange",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T04:36:19.203Z",
       "createdAt": "2026-07-08T04:36:19.203Z",
-      "relative_time": "7d ago",
+      "relative_time": "8d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2074713626112327680/img/GoVP6kMhOEM7OEk6.jpg"
       ],
@@ -1862,7 +1945,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1871,12 +1954,12 @@
     },
     {
       "id": "a16zcrypto-2074570897441399021",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "\"Satoshi knew.\" a16z crypto research partner @ittaia on how Bitcoin solved a 40-year-old academic problem, and how its creator knew it all along: \"It actually took quite a few years for people to realize that this is kind of solving a Byzantine agreement problem… a very core",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-07T19:07:00.270Z",
       "createdAt": "2026-07-07T19:07:00.270Z",
       "relative_time": "8d ago",
@@ -1894,7 +1977,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1903,12 +1986,12 @@
     },
     {
       "id": "degentokenbase-2074532091841364227",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "That's one way to use the trump card...",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-07T16:32:48.294Z",
       "createdAt": "2026-07-07T16:32:48.294Z",
       "relative_time": "8d ago",
@@ -1925,7 +2008,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -1992,12 +2075,12 @@
     },
     {
       "id": "a16zcrypto-2074223608894017861",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "It started on a napkin. Turing Award winner Leslie Lamport on sketching a piece of modern cryptography in a Berkeley coffee shop, and how the fault model behind every blockchain came from research on keeping airplanes in the sky: \"I was one of the few people in the world who",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-06T20:07:00.228Z",
       "createdAt": "2026-07-06T20:07:00.228Z",
       "relative_time": "9d ago",
@@ -2015,7 +2098,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2024,12 +2107,12 @@
     },
     {
       "id": "degentokenbase-2074176812712972723",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "Maybe we should start keeping score... 💭",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-06T17:01:03.149Z",
       "createdAt": "2026-07-06T17:01:03.149Z",
       "relative_time": "9d ago",
@@ -2046,7 +2129,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2055,12 +2138,12 @@
     },
     {
       "id": "degentokenbase-2073445168876044453",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "Happy 4th Degens 🦅 🇺🇸",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-04T16:33:45.665Z",
       "createdAt": "2026-07-04T16:33:45.665Z",
       "relative_time": "11d ago",
@@ -2077,7 +2160,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2086,12 +2169,12 @@
     },
     {
       "id": "a16zcrypto-2072753924843491430",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": ". @rhackett on why the \"autonomous\" in DAO finally works: “People would talk about it as a group chat with a bank account. But they had higher aspirations than that: maybe you could have an internet-native organization where people all over the world coordinate via decentralized",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-02T18:47:00.245Z",
       "createdAt": "2026-07-02T18:47:00.245Z",
       "relative_time": "13d ago",
@@ -2108,7 +2191,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2117,12 +2200,12 @@
     },
     {
       "id": "degentokenbase-2072727026017194058",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "Court is now in session. 🧑‍⚖️",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-02T17:00:07.065Z",
       "createdAt": "2026-07-02T17:00:07.065Z",
       "relative_time": "13d ago",
@@ -2139,7 +2222,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2148,15 +2231,15 @@
     },
     {
       "id": "virtuals_io-2072551467085709488",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
       "verified": false,
-      "text": "Robinhood Chain is integrating Virtuals’ AI agent infrastructure from day one, giving users access to launch, fund, own, and use agents in tokenized markets.",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-02T05:22:30.554Z",
       "createdAt": "2026-07-02T05:22:30.554Z",
-      "relative_time": "13d ago",
+      "relative_time": "14d ago",
       "images": [
         "https://pbs.twimg.com/media/HMMukuxbMAE-5t9?format=webp&name=medium",
         "https://pbs.twimg.com/media/HMKZt-OWMAAN1G3?format=webp&name=small"
@@ -2171,7 +2254,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2180,12 +2263,12 @@
     },
     {
       "id": "a16zcrypto-2072391536990449726",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "\"And then along came blockchains.\" Turing Award winner Barbara Liskov on how PBFT — practical Byzantine fault tolerance, now foundational to modern consensus — started as a PhD student answering a DARPA RFP: \"I had a student, Miguel Castro, who was looking for a PhD thesis, and",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-07-01T18:47:00.248Z",
       "createdAt": "2026-07-01T18:47:00.248Z",
       "relative_time": "14d ago",
@@ -2203,38 +2286,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": ""
-    },
-    {
-      "id": "Schoen_xyz-2072296767144575113",
-      "author": "Schoen",
-      "displayName": "Schoen",
-      "username": "Schoen_xyz",
-      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_400x400.jpg",
-      "verified": false,
-      "text": "June PNL: $17k ~Breakdown~ SOL: $15k ETH: $4k Stock Trades (AMC + WEN): $5k Perps: -$7k this was the month of 9/10 coin selection, but 2/10 execution had 1-2% in 3/4 $10m+ runners this month with sub 200k entry, but only came away with a net +$10k in those positions was up",
-      "created_at": "2026-07-01T12:30:25.356Z",
-      "createdAt": "2026-07-01T12:30:25.356Z",
-      "relative_time": "14d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HMJFlz4W4AAFvgd?format=webp&name=medium"
-      ],
-      "video": "",
-      "post_url": "https://x.com/Schoen_xyz/status/2072296767144575113",
-      "url": "https://x.com/Schoen_xyz/status/2072296767144575113",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2273,16 +2325,47 @@
       "source": "playwright"
     },
     {
-      "id": "a16zcrypto-2072034182138892584",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
-      "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "id": "Schoen_xyz-2072296767144575113",
+      "author": "Schoen",
+      "displayName": "Schoen",
+      "username": "Schoen_xyz",
+      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_400x400.jpg",
       "verified": false,
-      "text": "“There needs to be guardrails. There needs to be rules in place.” @rhackett on why the CLARITY Act matters for crypto: “These markets are substantial. They’re worth trillions of dollars. It’s not like a small little weird phenomenon anymore. These are global massive markets,",
+      "text": "June PNL: $17k ~Breakdown~ SOL: $15k ETH: $4k Stock Trades (AMC + WEN): $5k Perps: -$7k this was the month of 9/10 coin selection, but 2/10 execution had 1-2% in 3/4 $10m+ runners this month with sub 200k entry, but only came away with a net +$10k in those positions was up",
+      "created_at": "2026-07-01T12:30:25.356Z",
+      "createdAt": "2026-07-01T12:30:25.356Z",
+      "relative_time": "14d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HMJFlz4W4AAFvgd?format=webp&name=medium"
+      ],
+      "video": "",
+      "post_url": "https://x.com/Schoen_xyz/status/2072296767144575113",
+      "url": "https://x.com/Schoen_xyz/status/2072296767144575113",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "source": "reader",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": ""
+    },
+    {
+      "id": "a16zcrypto-2072034182138892584",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
+      "username": "a16zcrypto",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-30T19:07:00.212Z",
       "createdAt": "2026-06-30T19:07:00.212Z",
-      "relative_time": "",
+      "relative_time": "15d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2070642673342693376/img/gHMFBNU_UTatcnJr.jpg"
       ],
@@ -2296,7 +2379,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2334,12 +2417,12 @@
     },
     {
       "id": "degentokenbase-2071639896230662394",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "What would you choose? 🤷‍♂️",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-29T17:00:15.126Z",
       "createdAt": "2026-06-29T17:00:15.126Z",
       "relative_time": "16d ago",
@@ -2356,7 +2439,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2365,12 +2448,12 @@
     },
     {
       "id": "degentokenbase-2070552722663936119",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "$Degen explained",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-26T17:00:12.749Z",
       "createdAt": "2026-06-26T17:00:12.749Z",
       "relative_time": "19d ago",
@@ -2387,7 +2470,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2396,12 +2479,12 @@
     },
     {
       "id": "degentokenbase-2069827960367116377",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "There is only one way... & that way is UP! 🎩",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-24T17:00:15.952Z",
       "createdAt": "2026-06-24T17:00:15.952Z",
       "relative_time": "21d ago",
@@ -2423,16 +2506,16 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "degentokenbase-2069134249987289566",
-      "author": "Degen 🎩",
-      "displayName": "Degen 🎩",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
       "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
       "verified": false,
-      "text": "Your opinions are already worth something. Start questing, climb the leaderboard, and compete for a share of the $5,000 reward pool. 🎩 👇",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-22T19:03:42.509Z",
       "createdAt": "2026-06-22T19:03:42.509Z",
       "relative_time": "23d ago",
@@ -2454,7 +2537,7 @@
       "description": "",
       "website": "",
       "logo": "",
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "jpegapp-2069044379013292435",
@@ -2516,16 +2599,18 @@
     },
     {
       "id": "a16zcrypto-2068017444510429570",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
+      "author": "a16zcrypto",
+      "displayName": "a16zcrypto",
       "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
       "verified": false,
-      "text": "A handful of ideas hold up the entire digital world, but most of us never learn where they came from. So we went to the source: the people who solved these problems, and won Turing Awards and Nobel Prizes for it. First Principles, hosted by @Tim_Roughgarden. First episode out",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-06-19T17:05:55.334Z",
       "createdAt": "2026-06-19T17:05:55.334Z",
       "relative_time": "26d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2068016204082786304/img/KhyNwyZ1geBdCV-_.jpg"
+      ],
       "video": "",
       "post_url": "https://x.com/a16zcrypto/status/2068017444510429570",
       "url": "https://x.com/a16zcrypto/status/2068017444510429570",
@@ -2536,7 +2621,7 @@
       "network": "BASE",
       "partner": false,
       "partner_label": "",
-      "source": "reader",
+      "source": "playwright",
       "priority": 0,
       "favorite": false,
       "description": "",
@@ -2571,6 +2656,68 @@
       "website": "",
       "logo": "",
       "source": "reader"
+    },
+    {
+      "id": "degentokenbase-2067661304253350342",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
+      "username": "degentokenbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-06-18T17:30:44.880Z",
+      "createdAt": "2026-06-18T17:30:44.880Z",
+      "relative_time": "27d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2067656017819623424/img/KKySPcXqGcoKO3_c.jpg"
+      ],
+      "video": "",
+      "post_url": "https://x.com/degentokenbase/status/2067661304253350342",
+      "url": "https://x.com/degentokenbase/status/2067661304253350342",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "protocols",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "source": "playwright"
+    },
+    {
+      "id": "degentokenbase-2067246149187346734",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
+      "username": "degentokenbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-06-17T14:01:04.199Z",
+      "createdAt": "2026-06-17T14:01:04.199Z",
+      "relative_time": "28d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HLBVamOaAAASjle?format=webp&name=medium"
+      ],
+      "video": "",
+      "post_url": "https://x.com/degentokenbase/status/2067246149187346734",
+      "url": "https://x.com/degentokenbase/status/2067246149187346734",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "protocols",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "source": "playwright"
     },
     {
       "id": "talentprotocol-2066900916758847602",
