@@ -40,6 +40,13 @@
     const body = createElement('p', 'archive-terminal-body', log.content);
 
     entry.append(meta, title, body);
+
+    if (log.link) {
+      const link = createElement('a', 'log-link', log.linkLabel || '→ Open Research Terminal');
+      link.href = log.link;
+      entry.append(link);
+    }
+
     return entry;
   }
 

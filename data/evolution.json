@@ -4,11 +4,11 @@
     "subtitle": "The experiment grows through public research.",
     "secondary": "Research never ends.",
     "progressLabel": "Current Progress",
-    "progress": 18
+    "progress": 36
   },
   "telemetry": {
     "title": "LAB STATUS",
-    "progress": 18,
+    "progress": 36,
     "fields": [
       {
         "label": "Research",
@@ -17,15 +17,15 @@
       },
       {
         "label": "Current Phase",
-        "value": "Signal Detection"
+        "value": "Research Infrastructure"
       },
       {
         "label": "Current Objective",
-        "value": "Build Base Signal Monitor"
+        "value": "Stabilize Research Terminal"
       },
       {
         "label": "Progress",
-        "value": "18%",
+        "value": "36%",
         "progress": true
       },
       {
@@ -65,7 +65,7 @@
       "objectives": [
         { "text": "Official Laboratory interface", "done": true },
         { "text": "Genesis Specimens archived", "done": true },
-        { "text": "Laboratory Logs connected", "done": true },
+        { "text": "Prototype Records preserved", "done": true },
         { "text": "Host Scanner online", "done": true },
         { "text": "Console online", "done": true }
       ]
@@ -73,18 +73,31 @@
     {
       "id": 2,
       "title": "SIGNAL DETECTION",
-      "summary": "Current Phase",
-      "state": "current",
-      "goal": "Observe Base ecosystem activity.",
+      "summary": "Observation instrument built.",
+      "state": "completed",
+      "goal": "Begin monitoring Laboratory and ecosystem transmissions.",
       "objectives": [
-        { "text": "Build Base Signal Monitor", "active": true },
-        { "text": "Jesse Activity Monitor", "done": false },
-        { "text": "Ecosystem Event Feed", "done": false },
-        { "text": "Telegram Alerts", "done": false }
+        { "text": "Research Terminal launched", "done": true },
+        { "text": "Laboratory X observations connected", "done": true },
+        { "text": "Base ecosystem sources observed", "done": true },
+        { "text": "Automatic archive flow established", "done": true }
       ]
     },
     {
       "id": 3,
+      "title": "RESEARCH INFRASTRUCTURE",
+      "summary": "Current Phase",
+      "state": "current",
+      "goal": "Make the Research Terminal stable enough for public use.",
+      "objectives": [
+        { "text": "Stabilize Research Terminal", "active": true },
+        { "text": "Improve observation accuracy", "done": false },
+        { "text": "Preserve automatic Laboratory history", "done": false },
+        { "text": "Keep ecosystem monitoring operational", "done": false }
+      ]
+    },
+    {
+      "id": 4,
       "title": "HOST OBSERVATION",
       "summary": "Study Host behavior.",
       "state": "future",
@@ -97,11 +110,11 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "RESEARCH EXPANSION",
       "summary": "Expand the research surface.",
       "state": "future",
-      "goal": "Turn collected signals into useful Laboratory systems.",
+      "goal": "Turn collected observations into useful Laboratory systems.",
       "objectives": [
         { "text": "Specimen Database", "done": false },
         { "text": "Interactive Archive", "done": false },
@@ -110,7 +123,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "AUTONOMOUS RESEARCH",
       "summary": "First researcher wakes up.",
       "state": "future",
@@ -123,8 +136,8 @@
       ]
     },
     {
-      "id": 6,
-      "title": "ECOSYSTEM",
+      "id": 7,
+      "title": "ECOSYSTEM INFRASTRUCTURE",
       "summary": "Laboratory becomes infrastructure.",
       "state": "future",
       "goal": "Let research decide what the Laboratory becomes.",
@@ -141,9 +154,11 @@
     "lines": [
       "Experiment #001",
       "Foundation Complete",
-      "Research Active",
+      "Signal Detection Complete",
+      "Research Terminal Online",
       "Current Phase:",
-      "Signal Detection",
+      "Research Infrastructure",
+      "Prototype Records preserved.",
       "No deadlines.",
       "No promises.",
       "Research continues."

@@ -309,6 +309,20 @@
     "summary": "The primary X host was infected, forcing transmissions through a temporary relay.",
     "content": "Unusual parasite activity was detected inside the Laboratory's primary X host.\n\nThe infection resulted in the suspension of the original communication channel.\n\nRecovery procedures were initiated immediately.\n\nRather than waiting in silence, the Laboratory deployed a temporary relay and resumed transmissions.\n\nThe parasites adapted.\n\nSo did we.\n\nResearch never ends.",
     "tags": ["incident", "x", "relay", "communications", "parasite"],
-    "featured": true
+    "featured": false
+  },
+  {
+    "id": 27,
+    "logNumber": "013",
+    "entryLabel": "LOG #013",
+    "title": "Research Migration Complete",
+    "date": "2026-07-17",
+    "type": "archive",
+    "summary": "Prototype Records are preserved while the Research Terminal becomes the official Laboratory journal.",
+    "content": "The Prototype Record system has fulfilled its purpose.\n\nBeginning July 13, 2026, Laboratory observations are no longer written manually.\n\nThe official research journal now lives inside the Research Terminal.\n\nEvery experiment...\nEvery deployment...\nEvery public transmission...\n\nis archived automatically from the Laboratory X account.\n\nPrototype Records remain available as historical artifacts documenting the Laboratory's earliest evolution.\n\nResearch continues.",
+    "tags": ["archive", "research", "migration", "laboratory"],
+    "featured": true,
+    "link": "/research",
+    "linkLabel": "→ Open Research Terminal"
   }
 ]

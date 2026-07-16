@@ -38,7 +38,9 @@
       summary,
       content,
       tags: Array.isArray(sourceLog.tags) ? sourceLog.tags.map((tag) => String(tag).toLowerCase()) : [],
-      featured: Boolean(sourceLog.featured)
+      featured: Boolean(sourceLog.featured),
+      link: String(sourceLog.link || ''),
+      linkLabel: String(sourceLog.linkLabel || '')
     };
   }
 

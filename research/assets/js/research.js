@@ -186,7 +186,7 @@
     const response = await fetch(`${cachePath}?t=${Date.now()}`, { cache: 'no-store' });
 
     if (!response.ok) {
-      throw new Error(`Research feed unavailable: ${response.status}`);
+      throw new Error(`Research observations unavailable: ${response.status}`);
     }
 
     return normalizePayload(await response.json());
@@ -420,7 +420,7 @@
     }
 
     if (!visiblePosts.length) {
-      feedTarget.replaceChildren(createElement('p', 'research-empty', 'Research feed temporarily unavailable. Observation continues...'));
+      feedTarget.replaceChildren(createElement('p', 'research-empty', 'Research observations temporarily unavailable. Observation continues...'));
       return;
     }
 
@@ -511,7 +511,7 @@
       }
     } catch (error) {
       if (isInitialLoad) {
-        feedTarget.replaceChildren(createElement('p', 'research-empty', 'Research feed temporarily unavailable. Observation continues...'));
+        feedTarget.replaceChildren(createElement('p', 'research-empty', 'Research observations temporarily unavailable. Observation continues...'));
       }
     }
   }
