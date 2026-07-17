@@ -87,6 +87,24 @@
           </div>
         </fieldset>
 
+        <fieldset class="ai-options-field">
+          <legend>X Post Options</legend>
+          <div class="ai-option-grid">
+            <label>
+              <input type="checkbox" data-ai-option="emojis">
+              <span>Add emojis</span>
+            </label>
+            <label>
+              <input type="checkbox" data-ai-option="hashtags">
+              <span>Add hashtags</span>
+            </label>
+            <label>
+              <input type="checkbox" data-ai-option="attribution">
+              <span>Append AI LAB attribution</span>
+            </label>
+          </div>
+        </fieldset>
+
         <div class="ai-actions-row">
           <button class="ai-generate-button" type="submit" data-ai-submit>Generate Signal</button>
           <p class="ai-status" data-ai-status aria-live="polite">Engine idle.</p>
@@ -99,17 +117,52 @@
         <span class="ai-output-kicker" data-ai-signal-number>SIGNAL #00000</span>
         <p class="ai-output-text" data-ai-signal-text></p>
         <div class="ai-output-actions">
-          <button type="button" data-ai-copy="signal">Copy</button>
+          <button type="button" data-ai-copy="signal">Copy Signal</button>
           <button type="button" data-ai-remix>Remix</button>
-          <button type="button" data-ai-post-toggle>Generate X Post</button>
+          <button type="button" data-ai-favorite>Save Favourite</button>
+          <button type="button" data-ai-post-generate>Generate X Post</button>
         </div>
       </article>
 
       <article class="ai-output-card ai-post-card" data-ai-post-card hidden>
         <span class="ai-output-kicker">X-READY TRANSMISSION</span>
         <p class="ai-output-text" data-ai-post-text></p>
+        <p class="ai-counter" data-ai-counter>0 / 280</p>
         <div class="ai-output-actions">
-          <button type="button" data-ai-copy="post">Copy</button>
+          <button type="button" data-ai-copy="post">Copy X Post</button>
+          <a href="#" target="_blank" rel="noopener noreferrer" data-ai-publish hidden>Publish to X</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="ai-memory-grid" data-reveal>
+      <article class="ai-memory-panel">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Local Memory</span>
+          <h2>Recent Signals</h2>
+        </div>
+        <div class="ai-memory-list" data-ai-signal-history>
+          <p class="ai-memory-empty">No restored signals yet.</p>
+        </div>
+      </article>
+
+      <article class="ai-memory-panel">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Transmission Cache</span>
+          <h2>Recent X Posts</h2>
+        </div>
+        <div class="ai-memory-list" data-ai-post-history>
+          <p class="ai-memory-empty">No transmissions yet.</p>
+        </div>
+      </article>
+
+      <article class="ai-memory-panel">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Saved Signals</span>
+          <h2>Favourites</h2>
+        </div>
+        <div class="ai-memory-list" data-ai-favorites>
+          <p class="ai-memory-empty">No favourites saved.</p>
         </div>
       </article>
     </section>

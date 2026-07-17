@@ -322,7 +322,8 @@ AI Lab lives at `/ai/` and is temporarily protected by the shared access gate.
 - The frontend calls only `/api/ai/generate`.
 - The OpenAI key must be stored as `OPENAI_API_KEY` in `.env.local` for local work and in Vercel Environment Variables for production.
 - Optional model override: `OPENAI_MODEL`.
-- The endpoint uses one low-token Responses API request per generation and returns `{ "signal": "...", "post": "..." }`.
+- The endpoint uses one low-token Responses API request per action and supports `generateSignal`, `generatePost`, and `remixSignal`.
+- `generateSignal` and `remixSignal` return only a signal; `generatePost` returns post text plus AI-generated hashtag and emoji arrays.
 - Never hardcode keys, model credentials, generated history, or private prompts in frontend files.
 
 ## Future Modules
