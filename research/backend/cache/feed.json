@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-17T17:00:09.919Z",
-    "durationMs": 814600,
+    "generatedAt": "2026-07-17T18:04:58.152Z",
+    "durationMs": 802359,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 116,
-    "postsCollected": 78,
+    "postsCollected": 76,
     "latestObservationAt": "2026-07-17T16:47:08.958Z",
     "refreshIntervalMinutes": 10,
     "networks": [
@@ -274,7 +274,7 @@
       {
         "provider": "playwright",
         "username": "virtuals_io",
-        "returned": 8
+        "returned": 6
       },
       {
         "provider": "playwright",
@@ -389,8 +389,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-07-16T21:17:20.848Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-17T16:46:35.319Z",
-    "previousGeneratedAt": "2026-07-17T15:52:46.863Z"
+    "startedAt": "2026-07-17T17:51:35.793Z",
+    "previousGeneratedAt": "2026-07-17T17:00:09.919Z"
   },
   "posts": [
     {
@@ -403,7 +403,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T16:47:08.958Z",
       "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "11m ago",
+      "relative_time": "1h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
       ],
@@ -439,7 +439,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T15:00:10.640Z",
       "createdAt": "2026-07-17T15:00:10.640Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcCiOFXQAA3xsU?format=webp&name=medium"
       ],
@@ -475,7 +475,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:47.435Z",
       "createdAt": "2026-07-17T09:23:47.435Z",
-      "relative_time": "7h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HNa0tK6W0AAVXdW.jpg"
       ],
@@ -511,7 +511,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:17.786Z",
       "createdAt": "2026-07-17T09:23:17.786Z",
-      "relative_time": "7h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078047663203799040/img/R8-TVx1D4CBzcdcJ.jpg"
       ],
@@ -547,7 +547,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T08:09:15.529Z",
       "createdAt": "2026-07-17T08:09:15.529Z",
-      "relative_time": "8h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HNakdNNWoAAtm2y?format=webp&name=medium"
       ],
@@ -583,7 +583,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T04:17:26.972Z",
       "createdAt": "2026-07-17T04:17:26.972Z",
-      "relative_time": "12h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/media/HNZvh_1bAAAbdfl?format=webp&name=medium",
         "https://pbs.twimg.com/amplify_video_thumb/2077873013987721216/img/UhZ57xQFoUGtTe4I.jpg"
@@ -620,7 +620,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T00:43:58.268Z",
       "createdAt": "2026-07-17T00:43:58.268Z",
-      "relative_time": "16h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HNYy4_PbkAAq8SH?format=webp&name=medium"
       ],
@@ -692,7 +692,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T20:09:38.463Z",
       "createdAt": "2026-07-16T20:09:38.463Z",
-      "relative_time": "20h ago",
+      "relative_time": "21h ago",
       "images": [
         "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
       ],
@@ -728,7 +728,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T19:50:49.175Z",
       "createdAt": "2026-07-16T19:50:49.175Z",
-      "relative_time": "21h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077843351668465664/img/8Q6pCy2odqfqwmOR.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
@@ -837,7 +837,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T16:56:08.533Z",
       "createdAt": "2026-07-16T16:56:08.533Z",
-      "relative_time": "23h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
       ],
@@ -1152,15 +1152,14 @@
       "author": "virtuals_io",
       "displayName": "virtuals_io",
       "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1987471217805119488/i9UACZQ7_normal.jpg",
       "verified": false,
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T04:35:00.019Z",
       "createdAt": "2026-07-16T04:35:00.019Z",
       "relative_time": "1d ago",
       "images": [
-        "https://pbs.twimg.com/media/HNUp9eXbMAACf9c?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HNSBqGBXgAEaE5W?format=webp&name=small"
+        "https://pbs.twimg.com/media/HNUp9eXbMAACf9c?format=webp&name=medium"
       ],
       "video": "",
       "post_url": "https://x.com/virtuals_io/status/2077612941193744816",
@@ -1298,7 +1297,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:51:46.758Z",
       "createdAt": "2026-07-15T17:51:46.758Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077445830840311808/img/DFEBUOtRxvucD8jC.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
@@ -1449,7 +1448,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T17:00:19.646Z",
       "createdAt": "2026-07-15T17:00:19.646Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077438057960374272/img/CTQDlr1Zs6SXdk2E.jpg"
       ],
@@ -2764,7 +2763,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-13T17:33:41.763Z",
       "createdAt": "2026-07-13T17:33:41.763Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2076720006809694209/img/gNTL4PhWbK2xCV2q.jpg"
       ],
@@ -3410,7 +3409,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-09T17:31:11.098Z",
       "createdAt": "2026-07-09T17:31:11.098Z",
-      "relative_time": "7d ago",
+      "relative_time": "8d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2075271316236582912/img/EF5tvJzBi6pRpIkq.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2075263271209156608/img/WDpDpAFiCQ_phW_U.jpg"
@@ -3514,7 +3513,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:31:25.877Z",
       "createdAt": "2026-07-08T17:31:25.877Z",
-      "relative_time": "8d ago",
+      "relative_time": "9d ago",
       "images": [
         "https://pbs.twimg.com/media/HMuO2_0XkAAvJyO?format=webp&name=medium"
       ],
@@ -3550,7 +3549,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:17:00.194Z",
       "createdAt": "2026-07-08T17:17:00.194Z",
-      "relative_time": "8d ago",
+      "relative_time": "9d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2070645336574701568/img/pBVobF_BG901Ym7J.jpg"
       ],
@@ -3586,7 +3585,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-08T17:00:04.223Z",
       "createdAt": "2026-07-08T17:00:04.223Z",
-      "relative_time": "8d ago",
+      "relative_time": "9d ago",
       "images": [
         "https://pbs.twimg.com/media/HMuHxfaasAAQa50?format=webp&name=medium"
       ],
@@ -3834,7 +3833,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-06T17:01:03.149Z",
       "createdAt": "2026-07-06T17:01:03.149Z",
-      "relative_time": "10d ago",
+      "relative_time": "11d ago",
       "images": [
         "https://pbs.twimg.com/media/HMj00W1aoAE-ISt?format=webp&name=medium"
       ],
@@ -3937,7 +3936,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-02T17:00:07.065Z",
       "createdAt": "2026-07-02T17:00:07.065Z",
-      "relative_time": "14d ago",
+      "relative_time": "15d ago",
       "images": [
         "https://pbs.twimg.com/media/HMPOPqGaIAAa3JY?format=webp&name=medium"
       ],
@@ -4178,7 +4177,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-06-29T17:00:15.126Z",
       "createdAt": "2026-06-29T17:00:15.126Z",
-      "relative_time": "17d ago",
+      "relative_time": "18d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2071639838206636032/img/x3IeLDon9bJcJPMJ.jpg"
       ],
@@ -4214,7 +4213,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-06-26T17:00:12.749Z",
       "createdAt": "2026-06-26T17:00:12.749Z",
-      "relative_time": "20d ago",
+      "relative_time": "21d ago",
       "images": [
         "https://pbs.twimg.com/media/HLwUuoabMAASK4d?format=webp&name=medium"
       ],
@@ -4250,7 +4249,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-06-24T17:00:15.952Z",
       "createdAt": "2026-06-24T17:00:15.952Z",
-      "relative_time": "22d ago",
+      "relative_time": "23d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2069827903257481216/img/qb7X6mGn3cC4rIH0.jpg"
       ],
@@ -4390,7 +4389,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-06-19T17:05:55.334Z",
       "createdAt": "2026-06-19T17:05:55.334Z",
-      "relative_time": "27d ago",
+      "relative_time": "28d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2068016204082786304/img/KhyNwyZ1geBdCV-_.jpg"
       ],
@@ -4460,7 +4459,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-06-18T17:30:44.880Z",
       "createdAt": "2026-06-18T17:30:44.880Z",
-      "relative_time": "28d ago",
+      "relative_time": "29d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2067656017819623424/img/KKySPcXqGcoKO3_c.jpg"
       ],
