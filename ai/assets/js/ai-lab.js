@@ -135,11 +135,10 @@
       return '';
     }
 
-    const parts = [postData.post.trim()];
-
-    if (options.emojis && postData.emojis && postData.emojis.length) {
-      parts.push(postData.emojis.join(' '));
-    }
+    const emojis = options.emojis && postData.emojis && postData.emojis.length
+      ? ` ${postData.emojis.join(' ')}`
+      : '';
+    const parts = [`${postData.post.trim()}${emojis}`.trim()];
 
     if (options.hashtags && postData.hashtags && postData.hashtags.length) {
       parts.push(postData.hashtags.join(' '));

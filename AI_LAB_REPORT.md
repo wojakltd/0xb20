@@ -105,6 +105,7 @@ No previous post is reused.
 - Optional `Append AI LAB attribution` checkbox.
 - Live `current / 280` character counter.
 - `Publish to X` button using `https://twitter.com/intent/tweet?text=...`.
+- Tweet-like preview formatting that preserves the same line breaks sent to X.
 - Separate `Copy Signal` and `Copy X Post` buttons.
 - Local memory panels for recent signals, recent X posts, and favourite signals.
 - `Save Favourite` action for signals.
@@ -215,7 +216,7 @@ The endpoint normalizes the result and caps hashtags at five.
 
 Emoji selection depends on the actual tone and subject.
 The model decides whether emojis fit and returns a capped array.
-The frontend only appends them when the user enables emoji mode.
+The frontend appends approved emojis inline at the end of the main post paragraph, so they do not float as a disconnected standalone line.
 There is no static emoji dictionary.
 
 ## Security

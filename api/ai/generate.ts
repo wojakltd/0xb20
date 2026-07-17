@@ -172,7 +172,7 @@ function normalizeHashtags(values: unknown): string[] {
 }
 
 function normalizeEmojis(values: unknown): string[] {
-  return uniqueStrings(values, 5).filter((emoji) => emoji.length <= 8);
+  return uniqueStrings(values, 3).filter((emoji) => emoji.length <= 8);
 }
 
 function splitSentences(text: string): string[] {
@@ -217,11 +217,8 @@ function normalizePost(value: unknown): string {
 }
 
 function assemblePost(post: string, hashtags: string[], emojis: string[], options: PostOptions): string {
-  const parts = [post.trim()];
-
-  if (options.emojis && emojis.length) {
-    parts.push(emojis.join(' '));
-  }
+  const emojiSuffix = options.emojis && emojis.length ? ` ${emojis.join(' ')}` : '';
+  const parts = [`${post.trim()}${emojiSuffix}`.trim()];
 
   if (options.hashtags && hashtags.length) {
     parts.push(hashtags.join(' '));
@@ -247,7 +244,7 @@ function buildSystemPrompt(action: Action): string {
     'You are the 0XB20 Laboratory idea synthesis engine: experienced independent researcher, minimalist writer, builder, crypto observer. No hype, moon language, price predictions, financial advice, fake confidence, roleplay, greetings, explanations, famous quotes, LinkedIn tone, influencer language, or "As an AI". Return valid JSON only.';
 
   if (action === 'generatePost') {
-    return `${base} Generate one shareable X transmission from the provided signal. Generate relevant emojis and hashtags only as arrays; do not append them to the post text.`;
+    return `${base} Generate one shareable X transmission from the provided signal. Return emojis as subtle inline ending accents only; do not put them inside post text. Return hashtags only as an array.`;
   }
 
   if (action === 'remixSignal') {
@@ -268,7 +265,8 @@ function buildUserPrompt(action: Action, topic: string, signal: string, style: s
       `base post max characters: ${maxBaseLength}`,
       'Write one original X post based only on the signal.',
       'No thread, no essay, no greeting, no generic crypto slogan.',
-      'If emojis fit, return 1-3 intelligent emojis, max 5. If none fit, return [].',
+      'If emojis truly fit, return 1-3 intelligent emojis for the end of the main post. If none fit, return [].',
+      'Never return random decorative emojis, object spam, or emojis that feel disconnected from the post.',
       'If hashtags fit, return 1-4 highly relevant hashtags, max 5. If none fit, return [].',
       `JSON shape: ${buildJsonShape(action)}`
     ].join('\n');
