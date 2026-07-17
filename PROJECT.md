@@ -27,7 +27,7 @@ The site is static and must remain lightweight:
 - Pure CSS
 - Vanilla JavaScript
 - Static JSON data
-- No runtime app backend for visitors
+- No runtime app backend for visitors except narrow serverless API routes that protect third-party secrets
 - Node.js is allowed only for Research fetcher automation
 - No frameworks
 - No browser/frontend dependencies
@@ -41,6 +41,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `index.html` is the main Laboratory Operating System shell.
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
 - `research/index.html` is the Research observation terminal at `/research/`.
+- `ai/index.html` is the password-gated AI Lab idea synthesis terminal at `/ai/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
@@ -49,6 +50,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `assets/js/` contains independent browser modules.
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
+- `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
 
 ## JSON Schemas
 
@@ -215,6 +217,7 @@ Never use:
 - Do not throw console errors for missing data.
 - Do not add browser/frontend dependencies.
 - Keep backend Research dependencies minimal and isolated inside `research/backend/`.
+- Keep third-party API keys server-side only. Browser modules must never read or contain secrets.
 - Preserve root compatibility files.
 
 ## Current JavaScript Modules
@@ -227,6 +230,8 @@ Never use:
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/logs-page.js` renders the `/logs/` archive.
 - `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
+- `assets/js/access-gate.js` contains reusable client-side access-gate behavior.
+- `ai/assets/js/ai-lab.js` renders `/ai/` and calls only the server endpoint.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
@@ -307,6 +312,18 @@ Edit `data/evolution.json`.
 - Never make the frontend depend on a provider.
 - Refresh cache with `cd research/backend && npm run fetch`.
 - The GitHub Action `.github/workflows/research-fetch.yml` refreshes `research/backend/cache/feed.json` every 10 minutes.
+
+## How To Update AI Lab
+
+AI Lab lives at `/ai/` and is temporarily protected by the shared access gate.
+
+- Browser code lives in `ai/assets/js/ai-lab.js`.
+- Visual module styles live in `ai/assets/css/ai.css`.
+- The frontend calls only `/api/ai/generate`.
+- The OpenAI key must be stored as `OPENAI_API_KEY` in `.env.local` for local work and in Vercel Environment Variables for production.
+- Optional model override: `OPENAI_MODEL`.
+- The endpoint uses one low-token Responses API request per generation and returns `{ "signal": "...", "post": "..." }`.
+- Never hardcode keys, model credentials, generated history, or private prompts in frontend files.
 
 ## Future Modules
 

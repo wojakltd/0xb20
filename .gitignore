@@ -3,6 +3,7 @@ research/backend/node_modules/
 .env
 .env.local
 .env.*
+!.env.example
 *.env
 API X.txt
 *credentials*.txt

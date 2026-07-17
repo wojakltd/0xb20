@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 AI Lab: an experimental idea synthesis terminal for Laboratory signals.">
+  <meta name="b20-root" content="/">
+  <title>0XB20 AI Lab</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/effects.css">
+  <link rel="stylesheet" href="/ai/assets/css/ai.css">
+</head>
+<body class="ai-body">
+
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="/">0XB20</a>
+  <div class="nav-links">
+    <a href="/#scanner" data-module-route="/scanner">Scanner</a>
+    <a href="/#console" data-module-route="/console">Console</a>
+    <a href="/logs/" data-module-route="/logs">Archive</a>
+    <a href="/research/" data-module-route="/research">Research</a>
+    <a href="/ai/" data-module-route="/ai" aria-current="page">AI LAB</a>
+    <a href="/#specimens" data-module-route="/specimens">Specimens</a>
+    <a href="/evolution/" data-module-route="/evolution">Evolution</a>
+    <a href="/#laboratory" data-module-route="/laboratory">Laboratory</a>
+  </div>
+</nav>
+
+<main class="ai-page">
+  <section class="research-gate ai-gate" data-ai-gate hidden>
+    <span class="eyebrow">Restricted Instrument</span>
+    <h1>AI LAB LOCKED</h1>
+    <p>Temporary access gate. Enter the Laboratory key to open the idea synthesis terminal.</p>
+    <form class="research-gate-form" data-ai-gate-form>
+      <label for="ai-password">Access key</label>
+      <div class="research-gate-controls">
+        <input id="ai-password" data-ai-password type="password" autocomplete="current-password" spellcheck="false" placeholder="Laboratory key">
+        <button type="submit">Unlock AI Lab</button>
+      </div>
+      <p class="research-gate-error" data-ai-gate-error hidden>ACCESS DENIED. Key rejected.</p>
+    </form>
+  </section>
+
+  <div data-ai-content hidden>
+    <section class="ai-hero" data-reveal>
+      <span class="eyebrow">Internal Instrument</span>
+      <h1>AI LAB</h1>
+      <p class="ai-subtitle">Experimental Idea Synthesis Terminal</p>
+      <p class="ai-copy">Generate original observations, memorable one-liners and X-ready posts using the Laboratory AI engine.</p>
+      <div class="ai-status-strip" aria-label="AI Lab status">
+        <span>AI Engine: Online</span>
+        <span>Generation: Active</span>
+        <span>Mode: Experimental</span>
+      </div>
+    </section>
+
+    <section class="ai-console" data-reveal>
+      <div class="ai-console-header">
+        <div>
+          <span class="eyebrow">Synthesis Core</span>
+          <h2>Generate Signal</h2>
+        </div>
+        <span class="ai-console-state" data-ai-engine-state>STANDBY</span>
+      </div>
+
+      <form class="ai-form" data-ai-form>
+        <label for="ai-topic">Input Signal</label>
+        <textarea id="ai-topic" data-ai-topic rows="4" maxlength="180" placeholder="What are you thinking about?"></textarea>
+
+        <p class="ai-examples">
+          Examples: builders, airdrops, fear, liquidity, Base, memecoins, decentralization, AI, crypto, markets
+        </p>
+
+        <fieldset class="ai-style-field">
+          <legend>Signal Style</legend>
+          <div class="ai-style-grid" data-ai-style-options>
+            <button class="ai-style-button is-active" type="button" data-ai-style="minimal">Minimal</button>
+            <button class="ai-style-button" type="button" data-ai-style="funny">Funny</button>
+            <button class="ai-style-button" type="button" data-ai-style="philosophy">Philosophy</button>
+            <button class="ai-style-button" type="button" data-ai-style="brutal">Brutal</button>
+            <button class="ai-style-button" type="button" data-ai-style="builder">Builder</button>
+            <button class="ai-style-button" type="button" data-ai-style="random">Random</button>
+          </div>
+        </fieldset>
+
+        <div class="ai-actions-row">
+          <button class="ai-generate-button" type="submit" data-ai-submit>Generate Signal</button>
+          <p class="ai-status" data-ai-status aria-live="polite">Engine idle.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="ai-output" data-ai-output hidden aria-live="polite">
+      <article class="ai-output-card" data-ai-signal-card hidden>
+        <span class="ai-output-kicker" data-ai-signal-number>SIGNAL #00000</span>
+        <p class="ai-output-text" data-ai-signal-text></p>
+        <div class="ai-output-actions">
+          <button type="button" data-ai-copy="signal">Copy</button>
+          <button type="button" data-ai-remix>Remix</button>
+          <button type="button" data-ai-post-toggle>Generate X Post</button>
+        </div>
+      </article>
+
+      <article class="ai-output-card ai-post-card" data-ai-post-card hidden>
+        <span class="ai-output-kicker">X-READY TRANSMISSION</span>
+        <p class="ai-output-text" data-ai-post-text></p>
+        <div class="ai-output-actions">
+          <button type="button" data-ai-copy="post">Copy</button>
+        </div>
+      </article>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>
+    Experimental synthesis only.
+    Research continues.
+  </p>
+</footer>
+
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/access-gate.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+<script src="/ai/assets/js/ai-lab.js" defer></script>
+
+</body>
+</html>

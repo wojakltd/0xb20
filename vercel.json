@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/(logs|research|evolution|protocol)/(.*)",
+      "source": "/(logs|research|ai|evolution|protocol)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -38,6 +38,24 @@
     },
     {
       "source": "/research/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/ai/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
