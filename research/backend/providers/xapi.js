@@ -60,7 +60,10 @@ function getBearerToken() {
   return [
     process.env.X_BEARER_TOKEN,
     process.env.X_API_BEARER_TOKEN,
-    process.env.TWITTER_BEARER_TOKEN
+    process.env.TWITTER_BEARER_TOKEN,
+    process.env.TWITTER_API_BEARER_TOKEN,
+    process.env.X_BEARER,
+    process.env.X_API_TOKEN
   ].find(Boolean);
 }
 
@@ -274,12 +277,13 @@ async function fetchAccountPosts(account, options = {}) {
   const token = getBearerToken();
 
   if (!token) {
-    throw new Error('X API bearer token is missing. Set X_BEARER_TOKEN in .env.local or GitHub Secrets.');
+    throw new Error('X API bearer token is missing. Add GitHub Actions secret X_BEARER_TOKEN or set it in .env.local.');
   }
 
   const user = await getUserByUsername(account.username, config, token);
   const posts = [];
   let paginationToken = '';
+  let pagesRequested = 0;
 
   for (let page = 0; page < config.maxPages; page += 1) {
     const params = {
@@ -299,6 +303,7 @@ async function fetchAccountPosts(account, options = {}) {
 
     const url = buildUrl(config.baseUrl, `/users/${encodeURIComponent(user.id)}/tweets`, params);
     const payload = await fetchJson(url, token, config.timeoutMs);
+    pagesRequested += 1;
     const mediaByKey = new Map(
       ((payload.includes && payload.includes.media) || []).map((media) => [media.media_key, media])
     );
@@ -321,7 +326,7 @@ async function fetchAccountPosts(account, options = {}) {
     posts,
     diagnostics: {
       apiStatus: 'online',
-      pagesRequested: Math.max(1, posts.length ? Math.ceil(posts.length / config.maxResults) : 1)
+      pagesRequested
     }
   };
 }

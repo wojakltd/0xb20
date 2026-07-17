@@ -346,6 +346,7 @@
 .research-feed{
     display:grid;
     gap:14px;
+    min-width:0;
 }
 
 .research-card{
@@ -353,6 +354,10 @@
     border-radius:var(--radius);
     background:rgba(5,10,22,.78);
     padding:18px;
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
     animation:researchIn .28s ease both;
     transition:border-color .2s ease,box-shadow .2s ease;
 }
@@ -397,6 +402,7 @@
 
 .research-identity{
     min-width:0;
+    max-width:100%;
 }
 
 .research-name-row{
@@ -409,6 +415,7 @@
 .research-author{
     color:var(--text);
     font-weight:800;
+    overflow-wrap:anywhere;
 }
 
 .research-username,
@@ -461,6 +468,8 @@
 .research-text{
     color:var(--muted-strong);
     white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    word-break:break-word;
 }
 
 .research-media{
@@ -468,11 +477,15 @@
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:10px;
     margin-top:12px;
+    min-width:0;
+    max-width:100%;
 }
 
 .research-media-button{
     position:relative;
     overflow:hidden;
+    width:100%;
+    min-width:0;
     min-height:180px;
     border:1px solid rgba(103,179,255,.18);
     border-radius:var(--radius);
@@ -511,6 +524,7 @@
 
 .research-video{
     width:100%;
+    max-width:100%;
     max-height:360px;
     border:1px solid rgba(103,179,255,.18);
     border-radius:var(--radius);
@@ -625,7 +639,8 @@
 
 @media(max-width:700px){
     .research-page{
-        padding-top:42px;
+        overflow-x:hidden;
+        padding:42px 12px 72px;
     }
 
     .research-gate{
@@ -648,7 +663,24 @@
     .research-hero,
     .research-status-panel,
     .research-shell{
-        padding:20px;
+        padding:16px;
+    }
+
+    .research-card{
+        padding:14px;
+    }
+
+    .research-card-header{
+        gap:10px;
+    }
+
+    .research-avatar{
+        width:38px;
+        height:38px;
+    }
+
+    .research-media{
+        grid-template-columns:minmax(0,1fr);
     }
 
     .research-status-panel{
@@ -667,6 +699,15 @@
     .research-actions{
         flex-direction:column;
         align-items:flex-start;
+    }
+
+    .research-actions,
+    .research-open{
+        width:100%;
+    }
+
+    .research-open{
+        text-align:center;
     }
 
     .research-count{

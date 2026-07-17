@@ -38,6 +38,10 @@ jobs:
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           X_API_BEARER_TOKEN: ${{ secrets.X_API_BEARER_TOKEN }}
+          TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+          TWITTER_API_BEARER_TOKEN: ${{ secrets.TWITTER_API_BEARER_TOKEN }}
+          X_BEARER: ${{ secrets.X_BEARER }}
+          X_API_TOKEN: ${{ secrets.X_API_TOKEN }}
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
           X_COOKIES_JSON: ${{ secrets.X_COOKIES_JSON }}

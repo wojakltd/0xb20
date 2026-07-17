@@ -49,6 +49,19 @@ function previousForLaboratory(previousPosts, accounts) {
     .sort((first, second) => getPostTime(second) - getPostTime(first));
 }
 
+function mergeLaboratoryPosts(previousPosts, nextPosts) {
+  const postsById = new Map();
+
+  [...previousPosts, ...nextPosts].forEach((post) => {
+    if (post && post.id) {
+      postsById.set(String(post.id), post);
+    }
+  });
+
+  return Array.from(postsById.values())
+    .sort((first, second) => getPostTime(second) - getPostTime(first));
+}
+
 function refreshIntervalMinutes(config) {
   return Number(config.laboratory && config.laboratory.refreshIntervalMinutes) || 720;
 }
@@ -126,19 +139,21 @@ async function fetchPosts(accounts, context = {}) {
 
   const posts = [];
   const errors = [];
-  const officialSyncAlreadyCompleted = Boolean(previousMetadata.laboratory && previousMetadata.laboratory.lastSyncAt);
+  let importedPosts = 0;
 
   for (const account of laboratoryAccounts) {
     try {
       const accountPreviousPosts = previousForLaboratory(previousPosts, [account]);
-      const sinceId = officialSyncAlreadyCompleted ? newestStatusId(accountPreviousPosts) : '';
+      const sinceId = accountPreviousPosts.length ? newestStatusId(accountPreviousPosts) : '';
       const result = await xapi.fetchAccountPosts(account, {
         config,
         previousPosts: accountPreviousPosts,
         sinceId
       });
+      const normalizedPosts = (result.posts || []).map((post) => normalizePost(post, account, 'xapi'));
 
-      posts.push(...(result.posts || []).map((post) => normalizePost(post, account, 'xapi')));
+      importedPosts += normalizedPosts.length;
+      posts.push(...mergeLaboratoryPosts(accountPreviousPosts, normalizedPosts));
     } catch (error) {
       errors.push({
         provider: 'laboratory',
@@ -172,7 +187,7 @@ async function fetchPosts(accounts, context = {}) {
       refreshIntervalMinutes: intervalMinutes,
       lastSyncAt: now,
       nextSyncAt: nextSyncAt(now, config),
-      importedPosts: posts.length,
+      importedPosts,
       accountsScanned: laboratoryAccounts.length
     })
   };
