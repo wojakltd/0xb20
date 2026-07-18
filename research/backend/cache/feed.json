@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-18T11:01:46.173Z",
-    "durationMs": 828529,
+    "generatedAt": "2026-07-18T11:53:25.013Z",
+    "durationMs": 781321,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 124,
@@ -32,6 +32,11 @@
       "team"
     ],
     "failures": [
+      {
+        "provider": "laboratory",
+        "username": "0xb20lol",
+        "message": "X API bearer token is missing. Add GitHub Actions secret X_BEARER_TOKEN or set it in .env.local."
+      },
       {
         "provider": "playwright",
         "username": "BronheimDaniel",
@@ -197,7 +202,7 @@
       {
         "provider": "playwright",
         "username": "base_vietnam",
-        "returned": 47
+        "returned": 44
       },
       {
         "provider": "playwright",
@@ -370,22 +375,22 @@
     ],
     "laboratory": {
       "provider": "xapi",
-      "apiStatus": "skipped",
-      "status": "skipped",
+      "apiStatus": "failed",
+      "status": "failed",
       "refreshIntervalMinutes": 720,
       "lastSyncAt": "2026-07-17T22:59:43.860Z",
       "nextSyncAt": "2026-07-18T10:59:43.860Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
-      "error": ""
+      "skipped": false,
+      "error": "X API bearer token is missing. Add GitHub Actions secret X_BEARER_TOKEN or set it in .env.local."
     },
     "laboratoryProvider": "xapi",
-    "apiStatus": "skipped",
+    "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-18T10:47:57.644Z",
-    "previousGeneratedAt": "2026-07-18T09:41:23.528Z"
+    "startedAt": "2026-07-18T11:40:23.692Z",
+    "previousGeneratedAt": "2026-07-18T11:01:46.173Z"
   },
   "posts": [
     {
@@ -398,7 +403,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-18T09:26:27.673Z",
       "createdAt": "2026-07-18T09:26:27.673Z",
-      "relative_time": "1h ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HNf_Zh3WAAAQlsH?format=webp&name=small",
         "https://pbs.twimg.com/media/HNf_ktrXwAEJDtY?format=webp&name=small",
@@ -506,7 +511,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T21:06:46.945Z",
       "createdAt": "2026-07-17T21:06:46.945Z",
-      "relative_time": "13h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078215575256629248/img/1ZR5sNY9YSYx0juP.jpg"
       ],
@@ -614,7 +619,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T16:47:08.958Z",
       "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "18h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
       ],
@@ -650,7 +655,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T15:00:10.640Z",
       "createdAt": "2026-07-17T15:00:10.640Z",
-      "relative_time": "19h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcCiOFXQAA3xsU?format=webp&name=medium"
       ],
