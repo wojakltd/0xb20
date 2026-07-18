@@ -28,7 +28,7 @@ The site is static and must remain lightweight:
 - Vanilla JavaScript
 - Static JSON data
 - No runtime app backend for visitors except narrow serverless API routes that protect third-party secrets
-- Node.js is allowed only for Research fetcher automation
+- Node.js is allowed only for Research fetcher automation and narrow serverless API routes
 - No frameworks
 - No browser/frontend dependencies
 
@@ -41,7 +41,8 @@ HTML should define module shells only. Expandable content should come from `data
 - `index.html` is the main Laboratory Operating System shell.
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
 - `research/index.html` is the Research observation terminal at `/research/`.
-- `ai/index.html` is the password-gated AI Lab idea synthesis terminal at `/ai/`.
+- `ai/index.html` is the public AI Lab idea synthesis terminal at `/ai/`.
+- `test/index.html` is the password-gated Web3 sandbox at `/test/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
@@ -51,6 +52,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
 - `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
+- `test/assets/` contains the isolated Web3 test module runtime.
 
 ## JSON Schemas
 
@@ -217,6 +219,7 @@ Never use:
 - Do not throw console errors for missing data.
 - Do not add browser/frontend dependencies.
 - Keep backend Research dependencies minimal and isolated inside `research/backend/`.
+- Keep experimental Web3 dependencies isolated inside `/test/` if a build step is introduced later.
 - Keep third-party API keys server-side only. Browser modules must never read or contain secrets.
 - Preserve root compatibility files.
 
@@ -233,6 +236,7 @@ Never use:
 - `assets/js/access-gate.js` contains reusable client-side access-gate behavior.
 - `ai/assets/js/ai-lab.js` renders `/ai/` and calls only the server endpoint.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
+- `test/assets/js/test-wallet.js` renders `/test/` wallet experiments with read-only wallet methods.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Legacy Record
@@ -315,7 +319,7 @@ Edit `data/evolution.json`.
 
 ## How To Update AI Lab
 
-AI Lab lives at `/ai/` and is temporarily protected by the shared access gate.
+AI Lab lives at `/ai/` and is public. The shared access gate mechanism is preserved for future restricted instruments.
 
 - Browser code lives in `ai/assets/js/ai-lab.js`.
 - Visual module styles live in `ai/assets/css/ai.css`.
@@ -325,6 +329,17 @@ AI Lab lives at `/ai/` and is temporarily protected by the shared access gate.
 - The endpoint uses one low-token Responses API request per action and supports `generateSignal`, `generatePost`, and `remixSignal`.
 - `generateSignal` and `remixSignal` return only a signal; `generatePost` returns post text plus AI-generated hashtag and emoji arrays.
 - Never hardcode keys, model credentials, generated history, or private prompts in frontend files.
+
+## How To Update Test Lab
+
+The Test Lab lives at `/test/` and is protected by the shared access gate.
+
+- Browser code lives in `test/assets/js/test-wallet.js`.
+- Visual module styles live in `test/assets/css/test.css`.
+- TypeScript contracts live in `test/src/wallet-contracts.ts`.
+- Current wallet methods are read-only except `personal_sign` for the signature demo.
+- Never add `approve`, `permit`, `transfer`, or `eth_sendTransaction` to this sandbox without explicit review.
+- WalletConnect QR support requires a public WalletConnect/Reown project id before enabling the adapter.
 
 ## Future Modules
 

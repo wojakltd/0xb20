@@ -7,7 +7,8 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `index.html` is the stable shell and should stay lightweight.
 - `logs/index.html` is the fixed-height Laboratory Archive page.
 - `research/index.html` is the Research observation terminal.
-- `ai/index.html` is the password-gated AI Lab idea synthesis terminal.
+- `ai/index.html` is the public AI Lab idea synthesis terminal.
+- `test/index.html` is the password-gated Web3 Laboratory sandbox.
 - `evolution/index.html` is the Laboratory Evolution Tree page.
 - `protocol/index.html` redirects old links to Evolution.
 - `data/logs.json` is the source of truth for Prototype Records.
@@ -24,6 +25,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `assets/js/evolution-page.js` renders the Evolution tree from JSON.
 - `research/assets/js/research.js` renders the Research observation feed from cache.
 - `ai/assets/js/ai-lab.js` renders the AI Lab interface and calls only `/api/ai/generate`.
+- `test/assets/js/test-wallet.js` renders the read-only wallet integration sandbox.
 - `style.css` and `script.js` remain root compatibility entry points.
 
 ## Environment
@@ -62,7 +64,9 @@ npm run fetch
 The Research frontend still downloads only `research/backend/cache/feed.json`.
 Open `/research/?debug=1` to inspect provider/cache diagnostics during development.
 
-AI Lab is temporarily gated with the existing Laboratory access key mechanism.
+AI Lab is public. The reusable password gate remains available in `assets/js/access-gate.js`.
+
+The `/test/` sandbox is gated with the existing Laboratory access key mechanism.
 The current password is `0xb20.lol`.
 
 Use a local static server for full JSON loading during development:
