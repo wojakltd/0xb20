@@ -4,6 +4,7 @@
   const postLimit = 280;
   const maxHistoryItems = 10;
   const attributionText = 'Generated with https://0xb20.lol/ai';
+  const aiLabAccessGateEnabled = false;
   const storageKeys = {
     signals: 'b20-ai-lab-signals',
     posts: 'b20-ai-lab-posts',
@@ -564,7 +565,7 @@
     }
 
     window.B20AccessGate.init({
-      enabled: true,
+      enabled: aiLabAccessGateEnabled,
       password: '0xb20.lol',
       storageKey: 'b20-ai-lab-access',
       gateSelector: '[data-ai-gate]',
