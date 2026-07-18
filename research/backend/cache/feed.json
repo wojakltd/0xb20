@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-18T08:07:44.861Z",
-    "durationMs": 804286,
+    "generatedAt": "2026-07-18T09:41:23.528Z",
+    "durationMs": 804823,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 122,
-    "postsCollected": 80,
-    "latestObservationAt": "2026-07-17T22:25:48.612Z",
+    "posts": 123,
+    "postsCollected": 79,
+    "latestObservationAt": "2026-07-18T08:47:35.717Z",
     "refreshIntervalMinutes": 10,
     "networks": [
       "BASE"
@@ -269,7 +269,7 @@
       {
         "provider": "playwright",
         "username": "virtuals_io",
-        "returned": 6
+        "returned": 5
       },
       {
         "provider": "playwright",
@@ -384,10 +384,46 @@
     "apiStatus": "skipped",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-18T07:54:20.574Z",
-    "previousGeneratedAt": "2026-07-18T06:05:41.607Z"
+    "startedAt": "2026-07-18T09:27:58.704Z",
+    "previousGeneratedAt": "2026-07-18T08:07:44.861Z"
   },
   "posts": [
+    {
+      "id": "base-2078401284529365055",
+      "author": "base",
+      "displayName": "base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-07-18T08:47:35.717Z",
+      "createdAt": "2026-07-18T08:47:35.717Z",
+      "relative_time": "40m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HNfzaj1XMAAGLF3.jpg"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2078401284529365055",
+      "url": "https://x.com/base/status/2078401284529365055",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "0xb20lol-2078244807189950841",
       "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
@@ -432,7 +468,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T21:06:46.945Z",
       "createdAt": "2026-07-17T21:06:46.945Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078215575256629248/img/1ZR5sNY9YSYx0juP.jpg"
       ],
@@ -504,7 +540,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T19:53:20.997Z",
       "createdAt": "2026-07-17T19:53:20.997Z",
-      "relative_time": "12h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/media/HNdFvkkbkAAuV-X?format=webp&name=medium"
       ],
@@ -540,7 +576,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T16:47:08.958Z",
       "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "15h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
       ],
@@ -576,7 +612,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T15:00:10.640Z",
       "createdAt": "2026-07-17T15:00:10.640Z",
-      "relative_time": "17h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcCiOFXQAA3xsU?format=webp&name=medium"
       ],
@@ -612,7 +648,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:47.435Z",
       "createdAt": "2026-07-17T09:23:47.435Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HNa0tK6W0AAVXdW.jpg"
       ],
@@ -648,7 +684,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:17.786Z",
       "createdAt": "2026-07-17T09:23:17.786Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078047663203799040/img/R8-TVx1D4CBzcdcJ.jpg"
       ],
@@ -684,7 +720,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T08:09:15.529Z",
       "createdAt": "2026-07-17T08:09:15.529Z",
-      "relative_time": "23h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HNakdNNWoAAtm2y?format=webp&name=medium"
       ],
