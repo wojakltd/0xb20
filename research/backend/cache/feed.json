@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-17T23:21:14.577Z",
-    "durationMs": 770594,
+    "generatedAt": "2026-07-18T00:22:25.401Z",
+    "durationMs": 811857,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 122,
@@ -60,27 +60,27 @@
       {
         "provider": "reader",
         "username": "BronheimDaniel",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "robertsun",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "raymdong",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "AerodromeFinance",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "SeamlessProtocol",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -302,35 +302,35 @@
         "username": "BronheimDaniel",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "robertsun",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "raymdong",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "AerodromeFinance",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Jul 18 2026 01:00:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "rss",
@@ -384,8 +384,8 @@
     "apiStatus": "skipped",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-17T23:08:23.983Z",
-    "previousGeneratedAt": "2026-07-17T22:59:43.865Z"
+    "startedAt": "2026-07-18T00:08:53.543Z",
+    "previousGeneratedAt": "2026-07-17T23:21:14.577Z"
   },
   "posts": [
     {
@@ -432,7 +432,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T21:06:46.945Z",
       "createdAt": "2026-07-17T21:06:46.945Z",
-      "relative_time": "2h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078215575256629248/img/1ZR5sNY9YSYx0juP.jpg"
       ],
@@ -504,7 +504,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T19:53:20.997Z",
       "createdAt": "2026-07-17T19:53:20.997Z",
-      "relative_time": "3h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HNdFvkkbkAAuV-X?format=webp&name=medium"
       ],
@@ -540,7 +540,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T16:47:08.958Z",
       "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "6h ago",
+      "relative_time": "7h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
       ],
@@ -576,7 +576,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T15:00:10.640Z",
       "createdAt": "2026-07-17T15:00:10.640Z",
-      "relative_time": "8h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HNcCiOFXQAA3xsU?format=webp&name=medium"
       ],
@@ -612,7 +612,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:47.435Z",
       "createdAt": "2026-07-17T09:23:47.435Z",
-      "relative_time": "13h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HNa0tK6W0AAVXdW.jpg"
       ],
@@ -648,7 +648,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T09:23:17.786Z",
       "createdAt": "2026-07-17T09:23:17.786Z",
-      "relative_time": "13h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078047663203799040/img/R8-TVx1D4CBzcdcJ.jpg"
       ],
@@ -684,7 +684,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T08:09:15.529Z",
       "createdAt": "2026-07-17T08:09:15.529Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HNakdNNWoAAtm2y?format=webp&name=medium"
       ],
@@ -756,7 +756,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T04:17:26.972Z",
       "createdAt": "2026-07-17T04:17:26.972Z",
-      "relative_time": "19h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HNZvh_1bAAAbdfl?format=webp&name=medium",
         "https://pbs.twimg.com/amplify_video_thumb/2077873013987721216/img/UhZ57xQFoUGtTe4I.jpg"
@@ -793,7 +793,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T00:43:58.268Z",
       "createdAt": "2026-07-17T00:43:58.268Z",
-      "relative_time": "22h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/media/HNYy4_PbkAAq8SH?format=webp&name=medium"
       ],
