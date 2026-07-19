@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-19T15:56:02.839Z",
-    "durationMs": 835833,
+    "generatedAt": "2026-07-19T16:52:49.849Z",
+    "durationMs": 812982,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 126,
-    "postsCollected": 81,
-    "latestObservationAt": "2026-07-19T12:00:23.047Z",
+    "postsCollected": 82,
+    "latestObservationAt": "2026-07-19T16:44:56.336Z",
     "refreshIntervalMinutes": 10,
     "networks": [
       "BASE"
@@ -202,7 +202,7 @@
       {
         "provider": "playwright",
         "username": "base_vietnam",
-        "returned": 44
+        "returned": 47
       },
       {
         "provider": "playwright",
@@ -389,10 +389,46 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-19T15:42:07.005Z",
-    "previousGeneratedAt": "2026-07-19T14:57:30.739Z"
+    "startedAt": "2026-07-19T16:39:16.867Z",
+    "previousGeneratedAt": "2026-07-19T15:56:02.839Z"
   },
   "posts": [
+    {
+      "id": "degentokenbase-2078883799858094470",
+      "author": "degentokenbase",
+      "displayName": "degentokenbase",
+      "username": "degentokenbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-07-19T16:44:56.336Z",
+      "createdAt": "2026-07-19T16:44:56.336Z",
+      "relative_time": "4m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HNmtzI4aQAAv6hk?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/degentokenbase/status/2078883799858094470",
+      "url": "https://x.com/degentokenbase/status/2078883799858094470",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "protocols",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "virtuals_io-2078812189293764849",
       "author": "virtuals_io",
@@ -403,7 +439,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T12:00:23.047Z",
       "createdAt": "2026-07-19T12:00:23.047Z",
-      "relative_time": "3h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HNlsqz5aQAA0ATN?format=webp&name=medium"
       ],
@@ -439,7 +475,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T02:58:52.144Z",
       "createdAt": "2026-07-19T02:58:52.144Z",
-      "relative_time": "12h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078675889584508928/img/ajvLPuQcn-cNoy4f.jpg",
         "https://pbs.twimg.com/media/HNYXTFDbUAAgg-3?format=webp&name=small"
@@ -729,7 +765,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T16:47:08.958Z",
       "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
       ],
@@ -1235,7 +1271,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T16:23:11.117Z",
       "createdAt": "2026-07-16T16:23:11.117Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HNXL4BFbUAIqF5n?format=webp&name=medium"
       ],
@@ -1846,7 +1882,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.563Z",
       "createdAt": "2026-07-15T16:03:20.563Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HE_LGP8asAAXVme.jpg"
       ],
@@ -1882,7 +1918,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:20.119Z",
       "createdAt": "2026-07-15T16:03:20.119Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HGW3NW9aEAApY-9.jpg"
       ],
@@ -1918,7 +1954,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-15T16:03:18.307Z",
       "createdAt": "2026-07-15T16:03:18.307Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HNRq2jfacAABBHe?format=webp&name=medium"
       ],
@@ -2386,7 +2422,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T16:35:15.888Z",
       "createdAt": "2026-07-14T16:35:15.888Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
       ],
@@ -4091,7 +4127,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-07T16:32:48.294Z",
       "createdAt": "2026-07-07T16:32:48.294Z",
-      "relative_time": "11d ago",
+      "relative_time": "12d ago",
       "images": [
         "https://pbs.twimg.com/media/HMo38YGaMAAmJsZ?format=webp&name=medium"
       ],
@@ -4267,7 +4303,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-04T16:33:45.665Z",
       "createdAt": "2026-07-04T16:33:45.665Z",
-      "relative_time": "14d ago",
+      "relative_time": "15d ago",
       "images": [
         "https://pbs.twimg.com/media/HMZbZDvakAAXKnP?format=webp&name=medium"
       ],
@@ -4807,40 +4843,6 @@
       "description": "",
       "website": "",
       "logo": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": []
-    },
-    {
-      "id": "talentprotocol-2068006399527805216",
-      "author": "Talent Protocol",
-      "displayName": "Talent Protocol",
-      "username": "talentprotocol",
-      "avatar": "https://pbs.twimg.com/profile_images/1838579348086882305/KEjwEWVa_400x400.jpg",
-      "verified": false,
-      "text": "Happy to support this IRL event in Lisbon with @CTOPortugal and @posthog.",
-      "created_at": "2026-06-19T16:22:02.005Z",
-      "createdAt": "2026-06-19T16:22:02.005Z",
-      "relative_time": "27d ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/talentprotocol/status/2068006399527805216",
-      "url": "https://x.com/talentprotocol/status/2068006399527805216",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "source": "reader",
       "video_preview": "",
       "videoPreview": "",
       "conversation_id": "",
