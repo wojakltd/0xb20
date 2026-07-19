@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-19T20:12:29.259Z",
-    "durationMs": 836528,
+    "generatedAt": "2026-07-19T21:15:15.122Z",
+    "durationMs": 797743,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 125,
-    "postsCollected": 81,
+    "postsCollected": 80,
     "latestObservationAt": "2026-07-19T16:44:56.336Z",
     "refreshIntervalMinutes": 10,
     "networks": [
@@ -130,7 +130,7 @@
       {
         "provider": "playwright",
         "username": "buildonbase",
-        "returned": 48
+        "returned": 63
       },
       {
         "provider": "playwright",
@@ -150,7 +150,7 @@
       {
         "provider": "playwright",
         "username": "HorinekPM",
-        "returned": 14
+        "returned": 11
       },
       {
         "provider": "playwright",
@@ -192,7 +192,7 @@
       {
         "provider": "playwright",
         "username": "catferdon",
-        "returned": 25
+        "returned": 21
       },
       {
         "provider": "playwright",
@@ -212,7 +212,7 @@
       {
         "provider": "playwright",
         "username": "Sir_Damilare",
-        "returned": 32
+        "returned": 36
       },
       {
         "provider": "playwright",
@@ -227,7 +227,7 @@
       {
         "provider": "playwright",
         "username": "dannyvayne",
-        "returned": 42
+        "returned": 44
       },
       {
         "provider": "playwright",
@@ -238,7 +238,7 @@
       {
         "provider": "playwright",
         "username": "darkohh",
-        "returned": 46
+        "returned": 53
       },
       {
         "provider": "playwright",
@@ -248,12 +248,12 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 28
+        "returned": 24
       },
       {
         "provider": "playwright",
         "username": "Schoen_xyz",
-        "returned": 48
+        "returned": 47
       },
       {
         "provider": "playwright",
@@ -300,7 +300,7 @@
       {
         "provider": "playwright",
         "username": "a16zcrypto",
-        "returned": 14
+        "returned": 13
       },
       {
         "provider": "reader",
@@ -389,8 +389,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-19T19:58:32.731Z",
-    "previousGeneratedAt": "2026-07-19T18:56:29.928Z"
+    "startedAt": "2026-07-19T21:01:57.379Z",
+    "previousGeneratedAt": "2026-07-19T20:12:29.259Z"
   },
   "posts": [
     {
@@ -403,7 +403,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T16:44:56.336Z",
       "createdAt": "2026-07-19T16:44:56.336Z",
-      "relative_time": "3h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HNmtzI4aQAAv6hk?format=webp&name=medium"
       ],
@@ -439,7 +439,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T12:00:23.047Z",
       "createdAt": "2026-07-19T12:00:23.047Z",
-      "relative_time": "8h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HNlsqz5aQAA0ATN?format=webp&name=medium"
       ],
@@ -475,7 +475,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T02:58:52.144Z",
       "createdAt": "2026-07-19T02:58:52.144Z",
-      "relative_time": "17h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078675889584508928/img/ajvLPuQcn-cNoy4f.jpg",
         "https://pbs.twimg.com/media/HNYXTFDbUAAgg-3?format=webp&name=small"
@@ -657,7 +657,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-17T21:06:46.945Z",
       "createdAt": "2026-07-17T21:06:46.945Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078215575256629248/img/1ZR5sNY9YSYx0juP.jpg"
       ],
@@ -1090,7 +1090,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-16T20:09:38.463Z",
       "createdAt": "2026-07-16T20:09:38.463Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
       ],
@@ -3685,7 +3685,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-10T20:11:21.663Z",
       "createdAt": "2026-07-10T20:11:21.663Z",
-      "relative_time": "8d ago",
+      "relative_time": "9d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2075673445266808832/img/4_L5-attHLSdZP0x.jpg"
       ],
