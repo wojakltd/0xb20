@@ -1,7 +1,7 @@
 (function () {
   const accessPassword = '0xb20.lol';
   const accessGateEnabled = true;
-  const walletConnectProjectId = '';
+  const walletConnectProjectId = '917508eb683075298f4c297df0bf21d1';
   const baseChainId = '0x2105';
   const chainNames = {
     '0x1': 'ETHEREUM',
