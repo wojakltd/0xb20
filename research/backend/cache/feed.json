@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-07-19T17:55:50.941Z",
-    "durationMs": 801537,
+    "generatedAt": "2026-07-19T18:56:29.928Z",
+    "durationMs": 840905,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 125,
@@ -389,8 +389,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-07-17T22:59:43.860Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-07-19T17:42:29.404Z",
-    "previousGeneratedAt": "2026-07-19T16:52:49.849Z"
+    "startedAt": "2026-07-19T18:42:29.023Z",
+    "previousGeneratedAt": "2026-07-19T17:55:50.941Z"
   },
   "posts": [
     {
@@ -403,7 +403,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T16:44:56.336Z",
       "createdAt": "2026-07-19T16:44:56.336Z",
-      "relative_time": "1h ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HNmtzI4aQAAv6hk?format=webp&name=medium"
       ],
@@ -439,7 +439,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T12:00:23.047Z",
       "createdAt": "2026-07-19T12:00:23.047Z",
-      "relative_time": "5h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/media/HNlsqz5aQAA0ATN?format=webp&name=medium"
       ],
@@ -475,7 +475,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-19T02:58:52.144Z",
       "createdAt": "2026-07-19T02:58:52.144Z",
-      "relative_time": "14h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2078675889584508928/img/ajvLPuQcn-cNoy4f.jpg",
         "https://pbs.twimg.com/media/HNYXTFDbUAAgg-3?format=webp&name=small"
@@ -2350,7 +2350,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-14T18:31:53.485Z",
       "createdAt": "2026-07-14T18:31:53.485Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/media/HNNV6NqWAAAb7Bg.jpg"
       ],
