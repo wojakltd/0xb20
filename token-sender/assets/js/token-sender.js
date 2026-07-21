@@ -116,6 +116,29 @@
     return code;
   }
 
+  async function getSenderReadiness() {
+    if (!hasSenderContract()) {
+      return {
+        ready: false,
+        message: 'Distribution contract is not configured. Preview mode only.'
+      };
+    }
+
+    try {
+      await requireSenderBytecode();
+
+      return {
+        ready: true,
+        message: 'Sender contract verified on Base.'
+      };
+    } catch (error) {
+      return {
+        ready: false,
+        message: error && error.message ? error.message : 'Sender contract verification failed.'
+      };
+    }
+  }
+
   function basescanAddressUrl(address) {
     return `https://basescan.org/address/${address}`;
   }
@@ -245,6 +268,7 @@
 
     if (state.preview) {
       rows.push(createDetailRow('Transfer Total', `${state.preview.totalFormatted} ${state.token ? state.token.symbol : 'TOKEN'}`));
+      rows.push(createDetailRow('Sender Status', state.preview.senderMessage || 'Unknown'));
       rows.push(createDetailRow('Allowance Status', state.preview.allowanceReady ? 'READY FOR SEND' : 'APPROVAL REQUIRED'));
     }
 
@@ -471,13 +495,14 @@
     const connectedToBase = Boolean(state.wallet && state.wallet.connected && state.wallet.isBase);
     const contractReady = hasSenderContract();
     const hasAllowance = Boolean(state.preview && state.preview.allowanceReady);
+    const senderReady = Boolean(state.preview && state.preview.senderReady);
 
     if (approveButton) {
-      approveButton.disabled = !canPreview || !connectedToBase || !contractReady || hasAllowance;
+      approveButton.disabled = !canPreview || !connectedToBase || !contractReady || !senderReady || hasAllowance;
     }
 
     if (sendButton) {
-      sendButton.disabled = !canPreview || !connectedToBase || !contractReady || !hasAllowance;
+      sendButton.disabled = !canPreview || !connectedToBase || !contractReady || !senderReady || !hasAllowance;
     }
   }
 
@@ -528,8 +553,6 @@
         throw new Error('Read token contract before preview.');
       }
 
-      await requireSenderBytecode();
-
       const parsed = parseRecipients();
 
       if (parsed.errors.length) {
@@ -547,32 +570,42 @@
         totalRaw: parsed.totalRaw.toString(),
         totalFormatted: parsed.totalFormatted,
         allowanceReady: false,
+        senderReady: false,
+        senderMessage: '',
         estimatedGas: hasSenderContract()
           ? 'Checking allowance...'
           : 'Unavailable until sender contract is configured'
       };
 
-      const allowanceRaw = await window.B20Wallet.readTokenAllowance(
-        state.token.address,
-        state.wallet.address,
-        senderConfig().contractAddress
-      );
-      preview.allowanceRaw = allowanceRaw;
-      preview.allowanceReady = BigInt(allowanceRaw) >= parsed.totalRaw;
+      const senderStatus = await getSenderReadiness();
+      preview.senderReady = senderStatus.ready;
+      preview.senderMessage = senderStatus.message;
 
-      if (preview.allowanceReady) {
-        try {
-          const gas = await window.B20Wallet.estimateGas({
-            to: senderConfig().contractAddress,
-            data: buildSenderTransactionFromPreview(preview),
-            value: '0x0'
-          });
-          preview.estimatedGas = BigInt(gas).toString();
-        } catch (error) {
-          preview.estimatedGas = 'Gas estimate unavailable';
+      if (senderStatus.ready) {
+        const allowanceRaw = await window.B20Wallet.readTokenAllowance(
+          state.token.address,
+          state.wallet.address,
+          senderConfig().contractAddress
+        );
+        preview.allowanceRaw = allowanceRaw;
+        preview.allowanceReady = BigInt(allowanceRaw) >= parsed.totalRaw;
+
+        if (preview.allowanceReady) {
+          try {
+            const gas = await window.B20Wallet.estimateGas({
+              to: senderConfig().contractAddress,
+              data: buildSenderTransactionFromPreview(preview),
+              value: '0x0'
+            });
+            preview.estimatedGas = BigInt(gas).toString();
+          } catch (error) {
+            preview.estimatedGas = 'Gas estimate unavailable';
+          }
+        } else {
+          preview.estimatedGas = 'Available after exact approval';
         }
       } else {
-        preview.estimatedGas = 'Available after exact approval';
+        preview.estimatedGas = senderStatus.message;
       }
 
       state.preview = preview;
@@ -581,7 +614,12 @@
       renderPreview();
       renderExecutionDetails();
       updateExecutionState();
-      setText(query(selectors.executionMessage), 'Preview validated. No transaction has been requested.');
+      setText(
+        query(selectors.executionMessage),
+        preview.senderReady
+          ? 'Preview validated. No transaction has been requested.'
+          : `Preview validated. ${preview.senderMessage}`
+      );
     } catch (error) {
       state.preview = null;
       renderPreview();
@@ -694,22 +732,28 @@
       state.token = null;
       state.preview = null;
       state.approvalTx = '';
+      state.batchTx = '';
       renderTokenReadout();
       renderPreview();
+      renderExecutionDetails();
       updateExecutionState();
     });
     query(selectors.preview).addEventListener('click', validatePreview);
     query(selectors.defaultAmount).addEventListener('input', () => {
       state.preview = null;
       state.approvalTx = '';
+      state.batchTx = '';
       renderPreview();
+      renderExecutionDetails();
       updateExecutionState();
     });
     query(selectors.recipients).addEventListener('input', () => {
       state.preview = null;
       state.approvalTx = '';
+      state.batchTx = '';
       showErrors([]);
       renderPreview();
+      renderExecutionDetails();
       updateExecutionState();
     });
     query(selectors.approve).addEventListener('click', approveExactAmount);
