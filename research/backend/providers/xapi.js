@@ -62,6 +62,9 @@ function getBearerToken() {
     process.env.X_API_BEARER_TOKEN,
     process.env.TWITTER_BEARER_TOKEN,
     process.env.TWITTER_API_BEARER_TOKEN,
+    process.env.BEARER_TOKEN,
+    process.env.X_API_BEARER,
+    process.env.TWITTER_BEARER,
     process.env.X_BEARER,
     process.env.X_API_TOKEN
   ].find(Boolean);
@@ -277,7 +280,7 @@ async function fetchAccountPosts(account, options = {}) {
   const token = getBearerToken();
 
   if (!token) {
-    throw new Error('X API bearer token is missing. Add GitHub Actions secret X_BEARER_TOKEN or set it in .env.local.');
+    throw new Error('X API bearer token is missing. Add GitHub Actions secret X_BEARER_TOKEN or X_API_BEARER_TOKEN, or set it in .env.local.');
   }
 
   const user = await getUserByUsername(account.username, config, token);
