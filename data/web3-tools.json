@@ -8,7 +8,7 @@
     "enabled": true,
     "chainId": "0x2105",
     "network": "BASE",
-    "contractAddress": "",
+    "contractAddress": "0x43CFa18B75ba6356d5699C9e2F962534d70D6D45",
     "contractName": "0XB20 Token Sender",
     "approvalMode": "exact",
     "maxRecipients": 250
