@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  ui.runBootSequence(config.bootSequence);
+  ui.runBootSequence(config.bootSequence).then(() => ui.initCounters());
   ui.initReveal();
   interactions.initReactivePanels();
 

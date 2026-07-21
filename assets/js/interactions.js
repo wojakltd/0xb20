@@ -9,7 +9,7 @@
   }
 
   function initReactivePanels() {
-    const targets = document.querySelectorAll('.card,.log,.observation,.terminal-panel,.scanner-shell,.console-shell,.archive-shell,.archive-card,.buttons a,.scanner-button');
+    const targets = document.querySelectorAll('.card,.log,.observation,.terminal-panel,.scanner-shell,.console-shell,.archive-shell,.archive-card,.application-card,.buttons a,.scanner-button');
 
     targets.forEach((target) => {
       target.classList.add('lab-reactive');

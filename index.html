@@ -24,27 +24,26 @@
 </div>
 
 <nav class="lab-nav" aria-label="B20 Laboratory modules">
-  <a class="nav-brand" href="/#top">0XB20</a>
+  <a class="nav-brand" href="/">0XB20</a>
   <div class="nav-links">
-    <a href="/#scanner" data-module-route="/scanner">Scanner</a>
-    <a href="/#console" data-module-route="/console">Console</a>
+    <a href="/" data-module-route="/" aria-current="page">Home</a>
     <a href="/logs/" data-module-route="/logs">Archive</a>
     <a href="/research/" data-module-route="/research">Research</a>
     <a href="/ai/" data-module-route="/ai">AI LAB</a>
-    <a href="/test/" data-module-route="/test">Test</a>
-    <a href="/#specimens" data-module-route="/specimens">Specimens</a>
+    <a href="/test/" data-module-route="/test">Test Zone</a>
     <a href="/evolution/" data-module-route="/evolution">Evolution</a>
-    <a href="/#laboratory" data-module-route="/laboratory">Laboratory</a>
   </div>
 </nav>
 
 <header id="top" class="hero">
   <div class="overlay"></div>
+  <div class="hero-particles" aria-hidden="true"></div>
   <div class="hero-content">
-    <span class="tag">B20 LAB TERMINAL</span>
+    <span class="tag hero-tag"><span></span>B20 LAB TERMINAL</span>
     <h1>0XB20</h1>
     <p class="subtitle">
-      The experiment survived another day.
+      <strong>Research. Build. Evolve.</strong>
+      <span>A Living Laboratory on Base.</span>
     </p>
 
     <div class="status-grid" aria-label="Laboratory snapshot">
@@ -54,8 +53,8 @@
       </div>
 
       <div class="card" data-reveal>
-        <h3>Current Hosts</h3>
-        <p>100+</p>
+        <h3>Current Holders</h3>
+        <p data-count-target="900" data-count-suffix="+">900+</p>
       </div>
 
       <div class="card" data-reveal>
@@ -80,6 +79,43 @@
 
 <main id="laboratory" class="lab-layout">
   <div class="lab-main">
+    <section class="section applications-section" data-reveal>
+      <div class="section-heading">
+        <span class="eyebrow">Control Center</span>
+        <h2>Experimental Applications</h2>
+      </div>
+
+      <div class="application-grid" aria-label="Homepage experimental applications">
+        <a class="application-card" href="#scanner">
+          <span class="application-status is-active">ACTIVE</span>
+          <h3>Scanner</h3>
+          <p>Analyze EVM hosts for simulated parasite activity.</p>
+          <span class="application-link">Open homepage module</span>
+        </a>
+
+        <a class="application-card" href="#console">
+          <span class="application-status is-active">ACTIVE</span>
+          <h3>Console</h3>
+          <p>Send commands into the Laboratory operating terminal.</p>
+          <span class="application-link">Open homepage module</span>
+        </a>
+
+        <a class="application-card" href="#specimens">
+          <span class="application-status">UNDER OBSERVATION</span>
+          <h3>Specimens</h3>
+          <p>Genesis entities archived for future mutation studies.</p>
+          <span class="application-link">View homepage record</span>
+        </a>
+
+        <a class="application-card" href="#laboratory">
+          <span class="application-status">IN DEVELOPMENT</span>
+          <h3>Laboratory</h3>
+          <p>The control shell that connects every experiment.</p>
+          <span class="application-link">Return to system core</span>
+        </a>
+      </div>
+    </section>
+
     <section id="scanner" class="section scanner-section" data-reveal>
       <div class="scanner-shell" data-scanner-panel>
         <div class="scanner-header">

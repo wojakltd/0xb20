@@ -151,6 +151,49 @@ input:focus-visible{
     }
 }
 
+@keyframes heroGlow{
+    0%,100%{
+        opacity:.72;
+        transform:translate3d(0,0,0) scale(1);
+    }
+    50%{
+        opacity:1;
+        transform:translate3d(0,-10px,0) scale(1.04);
+    }
+}
+
+@keyframes heroLightSweep{
+    0%{
+        transform:translateX(-6%);
+    }
+    100%{
+        transform:translateX(6%);
+    }
+}
+
+@keyframes particleDrift{
+    0%,100%{
+        transform:translate3d(0,0,0);
+    }
+    50%{
+        transform:translate3d(12px,-18px,0);
+    }
+}
+
+@keyframes scanLine{
+    0%{
+        transform:translateY(-100%);
+        opacity:0;
+    }
+    12%,72%{
+        opacity:.28;
+    }
+    100%{
+        transform:translateY(300%);
+        opacity:0;
+    }
+}
+
 @keyframes protocolPulse{
     0%,100%{
         opacity:.72;

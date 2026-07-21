@@ -130,6 +130,65 @@
     targets.forEach((target) => observer.observe(target));
   }
 
+  function animateCounter(target) {
+    const finalValue = Number(target.dataset.countTarget);
+    const suffix = target.dataset.countSuffix || '';
+
+    if (!Number.isFinite(finalValue)) {
+      return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      target.textContent = `${finalValue}${suffix}`;
+      return;
+    }
+
+    const startedAt = performance.now();
+    const duration = 1100;
+
+    function tick(now) {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(finalValue * eased);
+
+      target.textContent = `${value}${suffix}`;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+      }
+    }
+
+    target.textContent = `0${suffix}`;
+    window.requestAnimationFrame(tick);
+  }
+
+  function initCounters() {
+    const targets = document.querySelectorAll('[data-count-target]');
+
+    if (!targets.length) {
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(animateCounter);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || entry.target.dataset.counted === 'true') {
+          return;
+        }
+
+        entry.target.dataset.counted = 'true';
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    targets.forEach((target) => observer.observe(target));
+  }
+
   function renderLatestLog(log) {
     const target = document.querySelector('[data-latest-log]');
 
@@ -192,7 +251,7 @@
       ['Current Experiment', status.currentExperiment],
       ['Development Progress', `${progress}%`],
       ['Current Network', status.currentNetwork],
-      ['Current Hosts', status.currentHosts],
+      ['Current Holders', status.currentHosts],
       ['Last Update', formatLastUpdate(status, latestLog, researchFeed)]
     ];
 
@@ -218,6 +277,7 @@
   }
 
   global.B20UI = {
+    initCounters,
     initReveal,
     renderActivity,
     renderLatestLog,

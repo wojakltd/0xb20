@@ -99,7 +99,7 @@ Drives the System Status panel.
   "currentExperiment": "Research Infrastructure",
   "developmentProgress": 36,
   "currentNetwork": "BASE",
-  "currentHosts": "100+",
+  "currentHosts": "900+",
   "lastUpdate": "auto"
 }
 ```
