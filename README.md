@@ -9,6 +9,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `research/index.html` is the Research observation terminal.
 - `ai/index.html` is the public AI Lab idea synthesis terminal.
 - `test/index.html` is the password-gated Web3 Laboratory sandbox.
+- `token-sender/index.html` is the protected Token Sender v1 instrument.
 - `evolution/index.html` is the Laboratory Evolution Tree page.
 - `protocol/index.html` redirects old links to Evolution.
 - `data/logs.json` is the source of truth for Prototype Records.
@@ -21,11 +22,13 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `assets/css/` contains visual modules loaded directly by `index.html`.
 - `assets/js/` contains small browser modules loaded before `script.js`.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
+- `assets/js/wallet-service.js` owns the global wallet connection layer.
 - `assets/js/logs-page.js` renders the simple scrolling Laboratory Archive terminal.
 - `assets/js/evolution-page.js` renders the Evolution tree from JSON.
 - `research/assets/js/research.js` renders the Research observation feed from cache.
 - `ai/assets/js/ai-lab.js` renders the AI Lab interface and calls only `/api/ai/generate`.
-- `test/assets/js/test-wallet.js` renders the read-only wallet integration sandbox.
+- `test/assets/js/test-wallet.js` renders the read-only wallet integration sandbox through the shared wallet layer.
+- `token-sender/assets/js/token-sender.js` renders Token Sender v1 through the shared wallet layer.
 - `style.css` and `script.js` remain root compatibility entry points.
 
 ## Environment
@@ -68,6 +71,10 @@ AI Lab is public. The reusable password gate remains available in `assets/js/acc
 
 The `/test/` sandbox is gated with the existing Laboratory access key mechanism.
 The current password is `0xb20.lol`.
+
+The `/token-sender/` instrument uses the same protected Web3 session gate.
+Wallet connection state is global and persists through refresh/navigation when wallet permissions remain valid.
+Token Sender transaction configuration lives in `data/web3-tools.json`.
 
 Use a local static server for full JSON loading during development:
 

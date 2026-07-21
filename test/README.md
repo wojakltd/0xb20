@@ -7,6 +7,7 @@ It is intentionally separate from the production Research, AI LAB, Archive, Evol
 ## What It Does
 
 - Reuses the shared `assets/js/access-gate.js` password mechanism.
+- Consumes the shared global wallet service in `assets/js/wallet-service.js`.
 - Connects browser wallets through EIP-6963 and EIP-1193 injected providers.
 - Supports MetaMask, Coinbase Wallet, Rabby, Rainbow and other injected wallets when installed.
 - Keeps a WalletConnect adapter slot ready, but direct QR connection requires a public WalletConnect project id.
@@ -35,7 +36,8 @@ Allowed wallet methods:
 
 - `index.html` — route shell and Laboratory UI.
 - `assets/css/test.css` — isolated visual layer matching the existing site.
-- `assets/js/test-wallet.js` — browser runtime for provider discovery, wallet reading and signature demo.
+- `assets/js/test-wallet.js` — Test Zone UI adapter for the global wallet service.
+- `../assets/js/wallet-service.js` — shared wallet runtime used by all future Web3 tools.
 - `src/wallet-contracts.ts` — TypeScript contracts for future Web3 experiments.
 
 The public website remains static. No new build pipeline is required.
@@ -61,7 +63,7 @@ To enable it later:
 
 1. Create a WalletConnect/Reown project.
 2. Put the public project id into `walletConnectProjectId` in `assets/js/test-wallet.js`.
-3. Test `/test/` with a mobile wallet.
+3. Test `/test/` and `/token-sender/` with a mobile wallet.
 
 ## Future Experiments
 

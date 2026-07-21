@@ -43,12 +43,15 @@ HTML should define module shells only. Expandable content should come from `data
 - `research/index.html` is the Research observation terminal at `/research/`.
 - `ai/index.html` is the public AI Lab idea synthesis terminal at `/ai/`.
 - `test/index.html` is the password-gated Web3 sandbox at `/test/`.
+- `token-sender/index.html` is the protected Token Sender v1 instrument at `/token-sender/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
 - `script.js` is the homepage bootstrapper.
 - `assets/css/` contains design tokens, layout, components, and effects.
 - `assets/js/` contains independent browser modules.
+- `src/wallet/` contains TypeScript contracts for the shared Web3 wallet layer.
+- `src/contracts/` contains TypeScript contracts for future smart contract adapters.
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
 - `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
@@ -186,6 +189,31 @@ Drives the Research module. The frontend consumes this cache only and does not k
 }
 ```
 
+### `data/web3-tools.json`
+
+Drives protected Web3 tool configuration.
+
+```json
+{
+  "wallet": {
+    "defaultChainId": "0x2105",
+    "defaultNetwork": "BASE",
+    "walletConnectProjectId": "public_project_id"
+  },
+  "tokenSender": {
+    "enabled": true,
+    "chainId": "0x2105",
+    "network": "BASE",
+    "contractAddress": "",
+    "contractName": "0XB20 Token Sender",
+    "approvalMode": "exact",
+    "maxRecipients": 250
+  }
+}
+```
+
+`contractAddress` stays empty until an audited batch sender contract exists.
+
 ## Terminology
 
 - Use `Host`, not user wallet.
@@ -220,6 +248,7 @@ Never use:
 - Do not add browser/frontend dependencies.
 - Keep backend Research dependencies minimal and isolated inside `research/backend/`.
 - Keep experimental Web3 dependencies isolated inside `/test/` if a build step is introduced later.
+- Protected Web3 applications must consume `assets/js/wallet-service.js` instead of creating isolated wallet state.
 - Keep third-party API keys server-side only. Browser modules must never read or contain secrets.
 - Preserve root compatibility files.
 
@@ -234,9 +263,11 @@ Never use:
 - `assets/js/logs-page.js` renders the `/logs/` archive.
 - `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
 - `assets/js/access-gate.js` contains reusable client-side access-gate behavior.
+- `assets/js/wallet-service.js` owns global wallet discovery, persistent connection restore, profile reads, token reads, Base switching, and exact approval requests.
 - `ai/assets/js/ai-lab.js` renders `/ai/` and calls only the server endpoint.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
-- `test/assets/js/test-wallet.js` renders `/test/` wallet experiments with read-only wallet methods.
+- `test/assets/js/test-wallet.js` renders `/test/` wallet experiments through the shared wallet service.
+- `token-sender/assets/js/token-sender.js` renders `/token-sender/` Token Sender v1 through the shared wallet service.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Legacy Record
@@ -337,9 +368,25 @@ The Test Lab lives at `/test/` and is protected by the shared access gate.
 - Browser code lives in `test/assets/js/test-wallet.js`.
 - Visual module styles live in `test/assets/css/test.css`.
 - TypeScript contracts live in `test/src/wallet-contracts.ts`.
-- Current wallet methods are read-only except `personal_sign` for the signature demo.
+- Wallet state comes from `assets/js/wallet-service.js`.
+- Current Test Zone methods are read-only except `personal_sign` for the signature demo.
 - Never add `approve`, `permit`, `transfer`, or `eth_sendTransaction` to this sandbox without explicit review.
 - WalletConnect QR support requires a public WalletConnect/Reown project id before enabling the adapter.
+
+## How To Update Token Sender
+
+The Token Sender lives at `/token-sender/` and is protected by the same Web3 access gate session as `/test/`.
+
+- Browser code lives in `token-sender/assets/js/token-sender.js`.
+- Visual module styles live in `token-sender/assets/css/token-sender.css`.
+- Shared wallet runtime lives in `assets/js/wallet-service.js`.
+- Tool config lives in `data/web3-tools.json`.
+- TypeScript contracts live in `src/wallet/` and `src/contracts/`.
+- `contractAddress` must stay empty until a reviewed Token Sender smart contract exists.
+- Approval must remain exact amount only.
+- Never auto-send transactions.
+- Never request unlimited approvals by default.
+- Never store private keys, seed phrases, signatures, or wallet credentials.
 
 ## Future Modules
 

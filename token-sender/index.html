@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 Laboratory Token Sender: a protected Web3 distribution instrument.">
+  <meta name="b20-root" content="/">
+  <title>0XB20 Token Sender</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/effects.css">
+  <link rel="stylesheet" href="/ai/assets/css/ai.css">
+  <link rel="stylesheet" href="/test/assets/css/test.css">
+  <link rel="stylesheet" href="/token-sender/assets/css/token-sender.css">
+</head>
+<body class="test-body token-sender-body">
+
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="/">0XB20</a>
+  <div class="nav-links">
+    <a href="/" data-module-route="/">Home</a>
+    <a href="/logs/" data-module-route="/logs">Archive</a>
+    <a href="/research/" data-module-route="/research">Research</a>
+    <a href="/ai/" data-module-route="/ai">AI LAB</a>
+    <a href="/test/" data-module-route="/test">Test Zone</a>
+    <a href="/token-sender/" data-module-route="/token-sender" aria-current="page">Token Sender</a>
+    <a href="/evolution/" data-module-route="/evolution">Evolution</a>
+  </div>
+</nav>
+
+<main class="test-page token-sender-page">
+  <section class="research-gate ai-gate test-gate" data-token-gate hidden>
+    <span class="eyebrow">Protected Instrument</span>
+    <h1>TOKEN SENDER LOCKED</h1>
+    <p>Batch transaction experiments require the current Laboratory access key.</p>
+    <form class="research-gate-form" data-token-gate-form>
+      <label for="token-sender-password">Access key</label>
+      <div class="research-gate-controls">
+        <input id="token-sender-password" data-token-password type="password" autocomplete="current-password" spellcheck="false" placeholder="Laboratory key">
+        <button type="submit">Unlock Token Sender</button>
+      </div>
+      <p class="research-gate-error" data-token-gate-error hidden>ACCESS DENIED. Key rejected.</p>
+    </form>
+  </section>
+
+  <div data-token-content hidden>
+    <section class="test-hero token-hero lab-reactive" data-reveal>
+      <span class="eyebrow">WEB3 FOUNDATION</span>
+      <h1>Token Sender</h1>
+      <p class="test-subtitle">Batch Distribution Instrument v1</p>
+      <div class="test-status-strip" aria-label="Token sender status">
+        <span>Status: PROTECTED</span>
+        <span>Network: BASE</span>
+        <span>Approval: EXACT ONLY</span>
+      </div>
+    </section>
+
+    <section class="sender-shell lab-reactive" data-reveal>
+      <div class="sender-flow" aria-label="Token sender transaction flow">
+        <span>Connect Wallet</span>
+        <span>Token Contract</span>
+        <span>Recipients</span>
+        <span>Preview</span>
+        <span>Approve</span>
+        <span>Send</span>
+      </div>
+
+      <div class="test-grid sender-grid">
+        <article class="test-panel">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Wallet Layer</span>
+              <h3>Connection</h3>
+            </div>
+            <span class="test-state" data-token-wallet-status>STANDBY</span>
+          </div>
+          <div class="test-wallet-list" data-token-wallet-list>
+            <p class="test-muted">Scanning browser wallet providers...</p>
+          </div>
+          <div class="test-action-row">
+            <button class="test-primary" type="button" data-token-connect>Connect Wallet</button>
+            <button class="test-secondary" type="button" data-token-disconnect disabled>Disconnect</button>
+            <button class="test-secondary" type="button" data-token-switch-base hidden>Switch To Base</button>
+          </div>
+          <p class="test-message" data-token-wallet-message>Global wallet layer idle.</p>
+        </article>
+
+        <article class="test-panel">
+          <span class="eyebrow">Specimen Identity</span>
+          <dl class="test-facts sender-wallet-facts">
+            <dt>Status</dt>
+            <dd data-token-wallet-field="status">Disconnected</dd>
+            <dt>Address</dt>
+            <dd data-token-wallet-field="address">Not connected</dd>
+            <dt>Network</dt>
+            <dd data-token-wallet-field="network">Unknown</dd>
+            <dt>ETH Balance</dt>
+            <dd data-token-wallet-field="balance">Unknown</dd>
+          </dl>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Token Contract</span>
+              <h3>ERC-20 Target</h3>
+            </div>
+            <button class="test-secondary" type="button" data-token-load>Read Token</button>
+          </div>
+          <label class="sender-label" for="token-address">Token Address</label>
+          <input id="token-address" class="sender-input" data-token-address type="text" inputmode="text" spellcheck="false" placeholder="0x...">
+          <div class="sender-token-readout" data-token-readout>
+            <span>Name: --</span>
+            <span>Symbol: --</span>
+            <span>Decimals: --</span>
+            <span>Wallet Balance: --</span>
+          </div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Recipients</span>
+              <h3>Batch Input</h3>
+            </div>
+            <button class="test-secondary" type="button" data-token-preview>Validate Preview</button>
+          </div>
+          <label class="sender-label" for="recipient-list">Format: address,amount</label>
+          <textarea id="recipient-list" class="sender-textarea" data-recipient-list spellcheck="false" placeholder="0x1111111111111111111111111111111111111111,100&#10;0x2222222222222222222222222222222222222222,50"></textarea>
+          <div class="sender-errors" data-recipient-errors hidden></div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Preview</span>
+              <h3>Transaction Simulation</h3>
+            </div>
+            <span class="test-state" data-token-preview-state>WAITING</span>
+          </div>
+          <div class="sender-preview-stats">
+            <div>
+              <span>Total Wallets</span>
+              <strong data-preview-wallets>0</strong>
+            </div>
+            <div>
+              <span>Total Tokens</span>
+              <strong data-preview-total>0</strong>
+            </div>
+            <div>
+              <span>Estimated Gas</span>
+              <strong data-preview-gas>Unavailable</strong>
+            </div>
+          </div>
+          <div class="sender-preview-table" data-preview-table>
+            <p class="test-muted">No validated recipients yet.</p>
+          </div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Execution</span>
+              <h3>Approval Flow</h3>
+            </div>
+            <span class="test-state">MANUAL CONFIRMATION ONLY</span>
+          </div>
+          <p class="test-muted sender-contract-status" data-contract-status>
+            Distribution contract not configured. Preview mode is active.
+          </p>
+          <div class="test-action-row">
+            <button class="test-primary" type="button" data-token-approve disabled>Approve Exact Amount</button>
+            <button class="test-primary" type="button" data-token-send disabled>Send Batch</button>
+          </div>
+          <p class="test-message" data-token-execution-message>No transaction can be sent before preview succeeds.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+<script src="/assets/js/access-gate.js" defer></script>
+<script src="/assets/js/wallet-service.js" defer></script>
+<script src="/token-sender/assets/js/token-sender.js" defer></script>
+
+</body>
+</html>

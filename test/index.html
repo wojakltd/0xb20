@@ -25,6 +25,7 @@
     <a href="/research/" data-module-route="/research">Research</a>
     <a href="/ai/" data-module-route="/ai">AI LAB</a>
     <a href="/test/" data-module-route="/test" aria-current="page">Test Zone</a>
+    <a href="/token-sender/" data-module-route="/token-sender">Token Sender</a>
     <a href="/evolution/" data-module-route="/evolution">Evolution</a>
   </div>
 </nav>
@@ -88,7 +89,10 @@
           <div class="test-wallet-list" data-wallet-list>
             <p class="test-muted">Scanning browser wallet providers...</p>
           </div>
-          <button class="test-primary" type="button" data-connect-wallet>Connect Wallet</button>
+          <div class="test-action-row">
+            <button class="test-primary" type="button" data-connect-wallet>Connect Wallet</button>
+            <button class="test-secondary" type="button" data-disconnect-wallet disabled>Disconnect</button>
+          </div>
           <p class="test-message" data-wallet-message>Wallet laboratory idle.</p>
         </article>
 
@@ -141,6 +145,7 @@ Timestamp: pending</pre>
 <script src="/assets/js/ui.js" defer></script>
 <script src="/assets/js/interactions.js" defer></script>
 <script src="/assets/js/access-gate.js" defer></script>
+<script src="/assets/js/wallet-service.js" defer></script>
 <script src="/test/assets/js/test-wallet.js" defer></script>
 
 </body>

@@ -1,0 +1,16 @@
+{
+  "wallet": {
+    "defaultChainId": "0x2105",
+    "defaultNetwork": "BASE",
+    "walletConnectProjectId": "917508eb683075298f4c297df0bf21d1"
+  },
+  "tokenSender": {
+    "enabled": true,
+    "chainId": "0x2105",
+    "network": "BASE",
+    "contractAddress": "",
+    "contractName": "0XB20 Token Sender",
+    "approvalMode": "exact",
+    "maxRecipients": 250
+  }
+}

@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/(logs|research|ai|test|evolution|protocol)/(.*)",
+      "source": "/(logs|research|ai|test|token-sender|evolution|protocol)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -56,6 +56,15 @@
     },
     {
       "source": "/test/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/token-sender/assets/js/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
