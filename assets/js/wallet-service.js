@@ -720,6 +720,14 @@
     return BigInt(allowance || '0x0').toString();
   }
 
+  async function readContractCode(address) {
+    if (!state.provider) {
+      throw new Error('Connect wallet before reading contract code.');
+    }
+
+    return request(state.provider, 'eth_getCode', [normalizeAddress(address), 'latest']);
+  }
+
   async function estimateGas(transaction) {
     if (!state.provider || !state.address) {
       throw new Error('Connect wallet before estimating gas.');
@@ -825,6 +833,7 @@
     switchToBase,
     readTokenInfo,
     readTokenAllowance,
+    readContractCode,
     estimateGas,
     sendTransaction,
     waitForTransactionReceipt,

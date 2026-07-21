@@ -102,6 +102,20 @@
     return Boolean(config.contractAddress && window.B20Wallet.isAddress(config.contractAddress));
   }
 
+  async function requireSenderBytecode() {
+    if (!hasSenderContract()) {
+      throw new Error('Distribution contract is not configured.');
+    }
+
+    const code = await window.B20Wallet.readContractCode(senderConfig().contractAddress);
+
+    if (!code || code === '0x') {
+      throw new Error('Configured sender address has no contract code on Base. Deploy the sender contract and update configuration.');
+    }
+
+    return code;
+  }
+
   function basescanAddressUrl(address) {
     return `https://basescan.org/address/${address}`;
   }
@@ -514,6 +528,8 @@
         throw new Error('Read token contract before preview.');
       }
 
+      await requireSenderBytecode();
+
       const parsed = parseRecipients();
 
       if (parsed.errors.length) {
@@ -536,29 +552,27 @@
           : 'Unavailable until sender contract is configured'
       };
 
-      if (hasSenderContract()) {
-        const allowanceRaw = await window.B20Wallet.readTokenAllowance(
-          state.token.address,
-          state.wallet.address,
-          senderConfig().contractAddress
-        );
-        preview.allowanceRaw = allowanceRaw;
-        preview.allowanceReady = BigInt(allowanceRaw) >= parsed.totalRaw;
+      const allowanceRaw = await window.B20Wallet.readTokenAllowance(
+        state.token.address,
+        state.wallet.address,
+        senderConfig().contractAddress
+      );
+      preview.allowanceRaw = allowanceRaw;
+      preview.allowanceReady = BigInt(allowanceRaw) >= parsed.totalRaw;
 
-        if (preview.allowanceReady) {
-          try {
-            const gas = await window.B20Wallet.estimateGas({
-              to: senderConfig().contractAddress,
-              data: buildSenderTransactionFromPreview(preview),
-              value: '0x0'
-            });
-            preview.estimatedGas = BigInt(gas).toString();
-          } catch (error) {
-            preview.estimatedGas = 'Gas estimate unavailable';
-          }
-        } else {
-          preview.estimatedGas = 'Available after exact approval';
+      if (preview.allowanceReady) {
+        try {
+          const gas = await window.B20Wallet.estimateGas({
+            to: senderConfig().contractAddress,
+            data: buildSenderTransactionFromPreview(preview),
+            value: '0x0'
+          });
+          preview.estimatedGas = BigInt(gas).toString();
+        } catch (error) {
+          preview.estimatedGas = 'Gas estimate unavailable';
         }
+      } else {
+        preview.estimatedGas = 'Available after exact approval';
       }
 
       state.preview = preview;
@@ -586,6 +600,8 @@
       if (!hasSenderContract()) {
         throw new Error('Distribution contract is not configured.');
       }
+
+      await requireSenderBytecode();
 
       const txHash = await window.B20Wallet.requestTokenApproval(
         state.token.address,
@@ -632,6 +648,8 @@
       if (!hasSenderContract()) {
         throw new Error('Distribution contract is not configured.');
       }
+
+      await requireSenderBytecode();
 
       if (!state.preview.allowanceReady) {
         throw new Error('Approve exact amount before sending.');
