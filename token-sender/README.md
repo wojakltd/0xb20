@@ -2,7 +2,7 @@
 
 `/token-sender/` is the first protected Web3 application built on top of the shared Laboratory wallet layer.
 
-It is intentionally conservative. The page can connect wallets, read ERC-20 metadata, parse recipients and build a validated preview. Transaction execution remains blocked until an audited sender contract address is configured.
+It is intentionally conservative. The page can connect wallets, read ERC-20 metadata, parse recipients, build a validated preview, request exact approval and send through the configured sender contract.
 
 ## Access
 
@@ -59,6 +59,38 @@ The contract is expected to expose:
 send(address token, address[] recipients, uint256[] amounts)
 ```
 
+Reference contract:
+
+```text
+contracts/B20TokenSender.sol
+```
+
+Deployment instructions:
+
+```text
+contracts/README.md
+```
+
+## Recipient Input
+
+Simple mode:
+
+```text
+Amount Per Wallet: 100
+
+0x1111111111111111111111111111111111111111
+0x2222222222222222222222222222222222222222
+```
+
+Advanced mode:
+
+```text
+0x1111111111111111111111111111111111111111,100
+0x2222222222222222222222222222222222222222,50
+```
+
+Advanced line amounts override the default amount.
+
 ## Security Rules
 
 - No private keys are stored.
@@ -66,7 +98,7 @@ send(address token, address[] recipients, uint256[] amounts)
 - No transaction is sent automatically.
 - Approval is disabled until preview succeeds.
 - Approval is exact-amount only.
-- Sending is disabled until a real sender contract adapter is connected.
+- Sending is disabled until a real sender contract address is configured.
 
 ## Future Extensions
 

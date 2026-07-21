@@ -49,6 +49,27 @@
     text-transform:uppercase;
 }
 
+.sender-recipient-tools{
+    display:grid;
+    grid-template-columns:minmax(220px,.34fr) minmax(0,1fr);
+    gap:14px;
+    align-items:end;
+    margin-top:8px;
+}
+
+.sender-recipient-tools p{
+    border:1px solid rgba(103,179,255,.14);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.56);
+    margin:0;
+    padding:13px;
+}
+
+.sender-recipient-tools strong{
+    color:var(--cyan);
+    font-family:Consolas,monospace;
+}
+
 .sender-input,
 .sender-textarea{
     width:100%;
@@ -174,6 +195,7 @@
     .sender-flow,
     .sender-token-readout,
     .sender-preview-stats,
+    .sender-recipient-tools,
     .sender-preview-row{
         grid-template-columns:1fr;
     }

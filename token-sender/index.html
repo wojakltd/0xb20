@@ -128,8 +128,18 @@
             </div>
             <button class="test-secondary" type="button" data-token-preview>Validate Preview</button>
           </div>
-          <label class="sender-label" for="recipient-list">Format: address,amount</label>
-          <textarea id="recipient-list" class="sender-textarea" data-recipient-list spellcheck="false" placeholder="0x1111111111111111111111111111111111111111,100&#10;0x2222222222222222222222222222222222222222,50"></textarea>
+          <div class="sender-recipient-tools">
+            <div>
+              <label class="sender-label" for="recipient-default-amount">Amount Per Wallet</label>
+              <input id="recipient-default-amount" class="sender-input" data-default-amount type="text" inputmode="decimal" spellcheck="false" placeholder="Example: 100">
+            </div>
+            <p class="test-muted">
+              Paste one address per line, or use advanced format:
+              <strong>address,amount</strong>
+            </p>
+          </div>
+          <label class="sender-label" for="recipient-list">Recipients</label>
+          <textarea id="recipient-list" class="sender-textarea" data-recipient-list spellcheck="false" placeholder="0x1111111111111111111111111111111111111111&#10;0x2222222222222222222222222222222222222222&#10;&#10;Advanced:&#10;0x3333333333333333333333333333333333333333,250"></textarea>
           <div class="sender-errors" data-recipient-errors hidden></div>
         </article>
 

@@ -52,6 +52,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `assets/js/` contains independent browser modules.
 - `src/wallet/` contains TypeScript contracts for the shared Web3 wallet layer.
 - `src/contracts/` contains TypeScript contracts for future smart contract adapters.
+- `contracts/` contains reviewed smart contract source and deployment notes.
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
 - `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
@@ -381,6 +382,7 @@ The Token Sender lives at `/token-sender/` and is protected by the same Web3 acc
 - Visual module styles live in `token-sender/assets/css/token-sender.css`.
 - Shared wallet runtime lives in `assets/js/wallet-service.js`.
 - Tool config lives in `data/web3-tools.json`.
+- Reference smart contract lives in `contracts/B20TokenSender.sol`.
 - TypeScript contracts live in `src/wallet/` and `src/contracts/`.
 - `contractAddress` must stay empty until a reviewed Token Sender smart contract exists.
 - Approval must remain exact amount only.

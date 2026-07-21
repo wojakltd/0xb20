@@ -12,8 +12,13 @@ export interface LaboratoryWalletService {
   signMessage(message: string): Promise<string>;
   switchToBase(): Promise<WalletState>;
   readTokenInfo(tokenAddress: string): Promise<TokenInfo>;
+  readTokenAllowance(tokenAddress: string, ownerAddress: string, spenderAddress: string): Promise<string>;
   estimateGas(transaction: TransactionRequest): Promise<string>;
   sendTransaction(transaction: TransactionRequest): Promise<string>;
+  waitForTransactionReceipt(transactionHash: string, options?: {
+    timeoutMs?: number;
+    intervalMs?: number;
+  }): Promise<unknown>;
   requestTokenApproval(token: string, spender: string, amountRaw: string): Promise<string>;
 }
 

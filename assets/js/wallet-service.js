@@ -711,6 +711,15 @@
     };
   }
 
+  async function readTokenAllowance(tokenAddress, ownerAddress, spenderAddress) {
+    const token = normalizeAddress(tokenAddress);
+    const owner = normalizeAddress(ownerAddress);
+    const spender = normalizeAddress(spenderAddress);
+    const allowance = await ethCall(token, `0xdd62ed3e${padAddress(owner)}${padAddress(spender)}`);
+
+    return BigInt(allowance || '0x0').toString();
+  }
+
   async function estimateGas(transaction) {
     if (!state.provider || !state.address) {
       throw new Error('Connect wallet before estimating gas.');
@@ -735,6 +744,28 @@
       data: transaction.data || '0x',
       value: transaction.value || '0x0'
     }]);
+  }
+
+  async function waitForTransactionReceipt(transactionHash, options = {}) {
+    if (!state.provider) {
+      throw new Error('Connect wallet before waiting for a transaction.');
+    }
+
+    const timeoutMs = options.timeoutMs || 180000;
+    const intervalMs = options.intervalMs || 2500;
+    const startedAt = Date.now();
+
+    while (Date.now() - startedAt < timeoutMs) {
+      const receipt = await request(state.provider, 'eth_getTransactionReceipt', [transactionHash]);
+
+      if (receipt) {
+        return receipt;
+      }
+
+      await new Promise((resolve) => global.setTimeout(resolve, intervalMs));
+    }
+
+    throw new Error('Transaction confirmation timed out.');
   }
 
   async function requestTokenApproval(tokenAddress, spenderAddress, amountRaw) {
@@ -793,8 +824,10 @@
     signMessage,
     switchToBase,
     readTokenInfo,
+    readTokenAllowance,
     estimateGas,
     sendTransaction,
+    waitForTransactionReceipt,
     requestTokenApproval,
     isAddress,
     normalizeAddress,

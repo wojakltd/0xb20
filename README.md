@@ -23,6 +23,7 @@ Static laboratory terminal for the 0XB20 public experiment.
 - `assets/js/` contains small browser modules loaded before `script.js`.
 - `assets/js/terminal.js` owns the Laboratory Console command registry.
 - `assets/js/wallet-service.js` owns the global wallet connection layer.
+- `contracts/B20TokenSender.sol` is the reference sender contract for protected batch distribution.
 - `assets/js/logs-page.js` renders the simple scrolling Laboratory Archive terminal.
 - `assets/js/evolution-page.js` renders the Evolution tree from JSON.
 - `research/assets/js/research.js` renders the Research observation feed from cache.
