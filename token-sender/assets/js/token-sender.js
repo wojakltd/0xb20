@@ -108,9 +108,14 @@
     }
 
     const code = await window.B20Wallet.readContractCode(senderConfig().contractAddress);
+    const normalizedCode = String(code || '').toLowerCase();
 
-    if (!code || code === '0x') {
+    if (!normalizedCode || normalizedCode === '0x') {
       throw new Error('Configured sender address has no contract code on Base. Deploy the sender contract and update configuration.');
+    }
+
+    if (!normalizedCode.includes('f8129cd2') || !normalizedCode.includes('23b872dd')) {
+      throw new Error('Configured sender contract does not match the expected Token Sender interface.');
     }
 
     return code;
@@ -558,6 +563,15 @@
       if (parsed.errors.length) {
         state.preview = null;
         showErrors(parsed.errors);
+        renderPreview();
+        renderExecutionDetails();
+        updateExecutionState();
+        return;
+      }
+
+      if (state.token.balanceRaw && parsed.totalRaw > BigInt(state.token.balanceRaw)) {
+        state.preview = null;
+        showErrors([`Insufficient wallet balance. Required ${parsed.totalFormatted} ${state.token.symbol}, available ${state.token.balance} ${state.token.symbol}.`]);
         renderPreview();
         renderExecutionDetails();
         updateExecutionState();

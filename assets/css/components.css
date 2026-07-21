@@ -30,7 +30,7 @@ h1{
     position:relative;
     display:inline-block;
     letter-spacing:-.07em;
-    margin-top:22px;
+    margin:0 0 14px;
     text-shadow:
         0 0 18px rgba(103,179,255,.42),
         0 0 42px rgba(59,130,246,.28),
@@ -52,7 +52,7 @@ h1{
     display:inline-flex;
     align-items:center;
     gap:10px;
-    margin-bottom:0;
+    margin:0 auto;
 }
 
 .hero-tag span{
