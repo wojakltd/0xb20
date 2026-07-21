@@ -1,6 +1,10 @@
 type VercelRequest = {
   method?: string;
   body?: unknown;
+  headers?: Record<string, string | string[] | undefined>;
+  socket?: {
+    remoteAddress?: string;
+  };
 };
 
 type VercelResponse = {
@@ -32,12 +36,149 @@ type AiPayload = {
   emojis?: string[];
 };
 
+type RateEntry = {
+  count: number;
+  resetAt: number;
+};
+
 const allowedActions = new Set<Action>(['generateSignal', 'generatePost', 'remixSignal']);
 const allowedStyles = new Set(['minimal', 'funny', 'philosophy', 'brutal', 'builder']);
 const fallbackModel = 'gpt-4.1-mini';
 const maxTopicLength = 180;
 const maxSignalLength = 320;
+const maxRequestBytes = 4096;
+const rateWindowMs = 60 * 1000;
+const dailyWindowMs = 24 * 60 * 60 * 1000;
+const defaultMinuteLimit = 8;
+const defaultDailyLimit = 120;
+const maxRateEntries = 1000;
+const openAiTimeoutMs = 15 * 1000;
 const attributionText = 'Generated with https://0xb20.lol/ai';
+const minuteRate = new Map<string, RateEntry>();
+const dailyRate = new Map<string, RateEntry>();
+
+function readHeader(req: VercelRequest, name: string): string {
+  const headers = req.headers || {};
+  const direct = headers[name] || headers[name.toLowerCase()] || headers[name.toUpperCase()];
+  const value = Array.isArray(direct) ? direct[0] : direct;
+
+  return typeof value === 'string' ? value : '';
+}
+
+function readNumberEnv(name: string, fallback: number, min: number, max: number): number {
+  const value = Number(process.env[name]);
+
+  if (!Number.isFinite(value)) {
+    return fallback;
+  }
+
+  return Math.min(max, Math.max(min, Math.floor(value)));
+}
+
+function isAllowedOrigin(value: string): boolean {
+  if (!value) {
+    return true;
+  }
+
+  try {
+    const host = new URL(value).hostname.toLowerCase();
+
+    return host === '0xb20.lol'
+      || host === 'www.0xb20.lol'
+      || host === 'localhost'
+      || host === '127.0.0.1'
+      || host.endsWith('.vercel.app');
+  } catch (error) {
+    return false;
+  }
+}
+
+function clientKey(req: VercelRequest): string {
+  const forwarded = readHeader(req, 'x-forwarded-for').split(',')[0].trim();
+  const realIp = readHeader(req, 'x-real-ip').trim();
+  const vercelIp = readHeader(req, 'x-vercel-forwarded-for').split(',')[0].trim();
+
+  return forwarded || realIp || vercelIp || req.socket?.remoteAddress || 'unknown';
+}
+
+function pruneRateMap(map: Map<string, RateEntry>, now: number) {
+  if (map.size <= maxRateEntries) {
+    return;
+  }
+
+  for (const [key, entry] of map.entries()) {
+    if (entry.resetAt <= now) {
+      map.delete(key);
+    }
+  }
+}
+
+function consumeRate(map: Map<string, RateEntry>, key: string, limit: number, windowMs: number, now: number) {
+  pruneRateMap(map, now);
+
+  const current = map.get(key);
+
+  if (!current || current.resetAt <= now) {
+    map.set(key, { count: 1, resetAt: now + windowMs });
+    return { allowed: true, retryAfter: 0 };
+  }
+
+  if (current.count >= limit) {
+    return {
+      allowed: false,
+      retryAfter: Math.max(1, Math.ceil((current.resetAt - now) / 1000))
+    };
+  }
+
+  current.count += 1;
+  return { allowed: true, retryAfter: 0 };
+}
+
+function requestSizeBytes(body: unknown): number {
+  try {
+    return new TextEncoder().encode(JSON.stringify(body || {})).length;
+  } catch (error) {
+    return maxRequestBytes + 1;
+  }
+}
+
+function enforceRequestProtection(req: VercelRequest, res: VercelResponse): boolean {
+  const origin = readHeader(req, 'origin');
+
+  if (!isAllowedOrigin(origin)) {
+    res.status(403).json({ error: 'Laboratory origin rejected.' });
+    return false;
+  }
+
+  const contentLength = Number(readHeader(req, 'content-length'));
+
+  if ((Number.isFinite(contentLength) && contentLength > maxRequestBytes) || requestSizeBytes(req.body) > maxRequestBytes) {
+    res.status(413).json({ error: 'Signal payload too large.' });
+    return false;
+  }
+
+  const now = Date.now();
+  const key = clientKey(req);
+  const minuteLimit = readNumberEnv('AI_RATE_LIMIT_PER_MINUTE', defaultMinuteLimit, 1, 60);
+  const dailyLimit = readNumberEnv('AI_RATE_LIMIT_PER_DAY', defaultDailyLimit, 10, 1000);
+  const minute = consumeRate(minuteRate, key, minuteLimit, rateWindowMs, now);
+
+  if (!minute.allowed) {
+    res.setHeader('Retry-After', String(minute.retryAfter));
+    res.status(429).json({ error: 'Synthesis queue saturated.' });
+    return false;
+  }
+
+  const daily = consumeRate(dailyRate, key, dailyLimit, dailyWindowMs, now);
+
+  if (!daily.allowed) {
+    res.setHeader('Retry-After', String(daily.retryAfter));
+    res.status(429).json({ error: 'Daily synthesis budget reached.' });
+    return false;
+  }
+
+  return true;
+}
 
 function normalizeBody(body: unknown): GenerateBody {
   if (typeof body === 'string') {
@@ -336,14 +477,22 @@ async function requestOpenAI(
     };
   }
 
-  return fetch('https://api.openai.com/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), openAiTimeoutMs);
+
+  try {
+    return await fetch('https://api.openai.com/v1/responses', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function respondWithAiOutput(res: VercelResponse, payload: {
@@ -366,9 +515,14 @@ function respondWithAiOutput(res: VercelResponse, payload: {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Cache-Control', 'no-store, max-age=0, must-revalidate');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
 
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed.' });
+    return;
+  }
+
+  if (!enforceRequestProtection(req, res)) {
     return;
   }
 

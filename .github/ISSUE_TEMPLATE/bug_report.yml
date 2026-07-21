@@ -1,0 +1,38 @@
+name: Bug report
+description: Report something broken inside the Laboratory.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep security-sensitive details out of public issues. Use `SECURITY.md` for vulnerability reports.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List exact steps.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Affected page
+      placeholder: /research/
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Browser, wallet, device, network.

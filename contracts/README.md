@@ -11,6 +11,8 @@ It is deliberately small:
 - no token custody
 - no native ETH receive path
 - no unlimited approval requirement
+- MIT SPDX identifier
+- NatSpec comments for public review
 
 The frontend asks the wallet to approve only the exact total amount required by the validated recipient list.
 

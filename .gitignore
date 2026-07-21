@@ -1,5 +1,14 @@
 node_modules/
 research/backend/node_modules/
+.vercel/
+.next/
+dist/
+build/
+out/
+coverage/
+playwright-report/
+test-results/
+.cache/
 .env
 .env.local
 .env.*
@@ -9,5 +18,10 @@ API X.txt
 *credentials*.txt
 *credential*.txt
 *secret*.txt
+*.pem
+*.key
+*.p12
+*.crt
 .DS_Store
+*.log
 npm-debug.log*

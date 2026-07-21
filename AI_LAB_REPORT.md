@@ -225,17 +225,16 @@ There is no static emoji dictionary.
 - The browser never receives the key.
 - `.env`, `.env.local`, `.env.*`, and `*.env` remain ignored.
 - `.env.example` contains only empty placeholders.
+- The endpoint applies per-IP request throttling, daily budget protection, origin checks, request size limits, and OpenAI request timeouts.
 - Provider errors are converted into Laboratory-style public errors.
 
 ## Password Protection
 
-AI Lab continues to reuse `assets/js/access-gate.js`.
-Only `/ai/` is protected with the `b20-ai-lab-access` session key.
-Research remains public.
+AI Lab is currently public for release.
+The reusable `assets/js/access-gate.js` mechanism remains available for protected future instruments.
 
 ## Future Ideas
 
-- Server-side rate limiting.
 - Admin-editable prompt presets.
 - Optional prompt telemetry without storing user secrets.
 - Research-derived topic suggestions.

@@ -1,0 +1,30 @@
+{
+  "name": "0xb20-laboratory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lightweight Web3 Laboratory terminal built in public on Base.",
+  "license": "MIT",
+  "homepage": "https://0xb20.lol",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojakltd/0xb20.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wojakltd/0xb20/issues"
+  },
+  "keywords": [
+    "0xb20",
+    "base",
+    "web3",
+    "laboratory",
+    "vanilla-javascript",
+    "static-site",
+    "research",
+    "wallet-tools"
+  ],
+  "author": "0XB20 Laboratory contributors",
+  "scripts": {
+    "research:fetch": "npm --prefix research/backend run fetch",
+    "research:install": "npm --prefix research/backend ci"
+  }
+}

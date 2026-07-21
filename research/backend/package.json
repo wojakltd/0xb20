@@ -3,6 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "description": "Provider-agnostic Research feed fetcher for the 0XB20 Laboratory.",
+  "license": "MIT",
+  "homepage": "https://0xb20.lol/research/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojakltd/0xb20.git",
+    "directory": "research/backend"
+  },
+  "bugs": {
+    "url": "https://github.com/wojakltd/0xb20/issues"
+  },
+  "keywords": [
+    "0xb20",
+    "base",
+    "research",
+    "feed",
+    "playwright",
+    "provider-agnostic"
+  ],
   "main": "fetcher/index.js",
   "type": "commonjs",
   "engines": {
@@ -14,6 +32,6 @@
     "install-browsers": "playwright install chromium"
   },
   "dependencies": {
-    "playwright": "^1.49.0"
+    "playwright": "^1.61.1"
   }
 }

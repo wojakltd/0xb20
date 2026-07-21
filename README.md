@@ -1,63 +1,137 @@
 # 0XB20 Laboratory
 
-Static laboratory terminal for the 0XB20 public experiment.
+0XB20 Laboratory is an evolving Web3 laboratory built in public on Base.
 
-## Structure
+It is not a generic token landing page. The project treats the website as an operating terminal: research, experiments, archive records, AI synthesis, wallet tools, and future Web3 instruments all live inside one lightweight Laboratory interface.
 
-- `index.html` is the stable shell and should stay lightweight.
-- `logs/index.html` is the fixed-height Laboratory Archive page.
-- `research/index.html` is the Research observation terminal.
-- `ai/index.html` is the public AI Lab idea synthesis terminal.
-- `test/index.html` is the password-gated Web3 Laboratory sandbox.
-- `token-sender/index.html` is the protected Token Sender v1 instrument.
-- `evolution/index.html` is the Laboratory Evolution Tree page.
-- `protocol/index.html` redirects old links to Evolution.
-- `data/logs.json` is the source of truth for Prototype Records.
-- `data/evolution.json` drives the Evolution page.
-- `research/backend/cache/feed.json` drives the Research journal, status metadata, and homepage Activity Trace.
-- `api/ai/generate.ts` is the server-only OpenAI bridge for AI Lab.
-- `data/status.json` drives the System Status panel.
-- `data/scanner.json` drives the simulated Host Scanner.
-- `data/terminal-events.json` feeds the permanent Laboratory Terminal.
-- `assets/css/` contains visual modules loaded directly by `index.html`.
-- `assets/js/` contains small browser modules loaded before `script.js`.
-- `assets/js/terminal.js` owns the Laboratory Console command registry.
-- `assets/js/wallet-service.js` owns the global wallet connection layer.
-- `contracts/B20TokenSender.sol` is the reference sender contract for protected batch distribution.
-- `assets/js/logs-page.js` renders the simple scrolling Laboratory Archive terminal.
-- `assets/js/evolution-page.js` renders the Evolution tree from JSON.
-- `research/assets/js/research.js` renders the Research observation feed from cache.
-- `ai/assets/js/ai-lab.js` renders the AI Lab interface and calls only `/api/ai/generate`.
-- `test/assets/js/test-wallet.js` renders the read-only wallet integration sandbox through the shared wallet layer.
-- `token-sender/assets/js/token-sender.js` renders Token Sender v1 through the shared wallet layer.
-- `style.css` and `script.js` remain root compatibility entry points.
+## Vision
 
-## Environment
+0XB20 exists to document an experiment in public:
 
-AI Lab requires a server-side OpenAI key. Never place this key in browser code.
+- build small systems openly;
+- observe what happens;
+- archive failures and progress;
+- turn useful experiments into reusable tools;
+- avoid fake hype, fake roadmaps, and artificial urgency.
 
-For local Vercel development create `.env.local`:
+Research never ends.
 
-```bash
-OPENAI_API_KEY=your_key_here
-OPENAI_MODEL=gpt-4.1-mini
+## Features
+
+- Static Laboratory terminal built with HTML, CSS, and vanilla JavaScript.
+- Research Terminal that renders ecosystem observations from a generated cache.
+- AI Lab serverless instrument for short idea synthesis and X-ready transmissions.
+- Prototype Records archive rendered from JSON.
+- Evolution Tree rendered from structured project data.
+- Shared wallet layer for Web3 experiments.
+- Test Zone for read-only wallet integration and signature testing.
+- Token Sender v1 for exact-approval ERC-20 batch distribution through a verified sender contract.
+- Vercel-compatible deployment and GitHub Actions research cache automation.
+
+## Architecture
+
+The project intentionally avoids frontend frameworks.
+
+```text
+Static shell
+├─ index.html
+├─ assets/css/*
+├─ assets/js/*
+├─ data/*.json
+├─ logs/
+├─ research/
+├─ ai/
+├─ test/
+├─ token-sender/
+├─ evolution/
+├─ api/ai/generate.ts
+└─ research/backend/
 ```
 
-For production add the same `OPENAI_API_KEY` value in Vercel Project Settings → Environment Variables.
+Important source-of-truth files:
 
-## Updating The Lab
+- `data/logs.json` — Prototype Records archive.
+- `data/evolution.json` — Evolution Tree phases.
+- `data/status.json` — homepage and status panels.
+- `data/scanner.json` — simulated Host Scanner outcomes.
+- `data/terminal-events.json` — Laboratory terminal events.
+- `data/web3-tools.json` — public Web3 tool configuration.
+- `research/backend/config/accounts.json` — Research accounts.
+- `research/backend/cache/feed.json` — generated Research cache consumed by the frontend.
 
-Correct a Prototype Record by editing `data/logs.json`.
-The homepage always displays the newest JSON entry as the latest archive record.
+## Current Applications
 
-Update the Laboratory Evolution tree by editing `data/evolution.json`.
-Future phases should be added to the `phases` array only.
+### Home
 
-Tune scanner outcomes in `data/scanner.json` and passive terminal events in
-`data/terminal-events.json`. Homepage activity comes from Research cache metadata.
+The public control center for the Laboratory.
 
-Update Research accounts in `research/backend/config/accounts.json`.
-Run the provider chain to refresh `research/backend/cache/feed.json`:
+### Archive
+
+Historical Prototype Records from the early development phase.
+
+### Research
+
+The live observation terminal. The frontend reads only `research/backend/cache/feed.json`.
+
+### AI Lab
+
+An idea synthesis instrument. The browser calls `/api/ai/generate`; the OpenAI key remains server-side only.
+
+### Test Zone
+
+Internal Web3 sandbox for wallet connection and signature experiments.
+
+### Token Sender
+
+Protected ERC-20 batch sender interface. It uses:
+
+- shared wallet service;
+- Base mainnet;
+- exact approval only;
+- preview before approval;
+- explicit wallet confirmation for every transaction;
+- verified sender contract configured in `data/web3-tools.json`.
+
+### Evolution
+
+Visual research tree showing the Laboratory's current development phase.
+
+## Roadmap
+
+This is not a promise-based roadmap. It is a research direction.
+
+- Wallet Scanner.
+- NFT Sender.
+- Research Profiles.
+- Portfolio views.
+- AI-assisted research summaries.
+- Additional ecosystem feeds.
+- Token-gated Laboratory experiments.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/wojakltd/0xb20.git
+cd 0xb20
+```
+
+Run the static site locally:
+
+```bash
+python -m http.server 4173
+```
+
+Open:
+
+```text
+http://localhost:4173/
+```
+
+## Development
+
+Research backend:
 
 ```bash
 cd research/backend
@@ -65,20 +139,82 @@ npm ci
 npm run fetch
 ```
 
-The Research frontend still downloads only `research/backend/cache/feed.json`.
-Open `/research/?debug=1` to inspect provider/cache diagnostics during development.
-
-AI Lab is public. The reusable password gate remains available in `assets/js/access-gate.js`.
-
-The `/test/` sandbox is gated with the existing Laboratory access key mechanism.
-The current password is `0xb20.lol`.
-
-The `/token-sender/` instrument uses the same protected Web3 session gate.
-Wallet connection state is global and persists through refresh/navigation when wallet permissions remain valid.
-Token Sender transaction configuration lives in `data/web3-tools.json`.
-
-Use a local static server for full JSON loading during development:
+AI Lab local environment:
 
 ```bash
-python -m http.server 4173
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4.1-mini
+AI_RATE_LIMIT_PER_MINUTE=8
+AI_RATE_LIMIT_PER_DAY=120
 ```
+
+Never commit `.env`, `.env.local`, cookies, bearer tokens, private keys, seed phrases, or wallet credentials.
+
+## Deployment
+
+The site is designed for Vercel.
+
+Required production environment variables:
+
+- `OPENAI_API_KEY` — server-side OpenAI key for AI Lab.
+- `OPENAI_MODEL` — optional model override.
+- `AI_RATE_LIMIT_PER_MINUTE` — optional per-IP throttle for AI Lab.
+- `AI_RATE_LIMIT_PER_DAY` — optional per-IP daily budget guard for AI Lab.
+
+GitHub Actions secrets used by automation:
+
+- `VERCEL_DEPLOY_HOOK_URL` — Vercel Deploy Hook.
+- `X_BEARER_TOKEN` or `X_API_BEARER_TOKEN` — X API bearer token for Laboratory Research import.
+
+Optional temporary Research fallbacks:
+
+- `X_AUTH_TOKEN`
+- `X_CT0`
+- `X_COOKIES_JSON`
+- `X_COOKIE_HEADER`
+
+Store these only as GitHub Secrets or local ignored `.env.local` values.
+
+## WalletConnect / Reown Configuration
+
+WalletConnect Project IDs are public identifiers, not private secrets. They still should be restricted in the Reown Dashboard.
+
+Allowed domains should include only:
+
+- `0xb20.lol`
+- `www.0xb20.lol`
+- Vercel preview domains used by maintainers, if needed
+- `localhost` for local development, if needed
+
+Do not leave unrestricted wildcard domains enabled for public release.
+
+## Security Principles
+
+- Third-party API keys stay server-side.
+- Client-side password gates are UX barriers, not authentication.
+- Wallet tools never request private keys or seed phrases.
+- Token Sender uses exact approvals only.
+- No hidden approvals.
+- No automatic transaction execution.
+- Users manually confirm every wallet action.
+- Public contract configuration contains only public chain IDs and contract addresses.
+
+Report vulnerabilities through `SECURITY.md`.
+
+## Contributing
+
+Read `CONTRIBUTING.md` before opening pull requests.
+
+Useful contribution areas:
+
+- documentation;
+- accessibility;
+- wallet safety;
+- Research provider reliability;
+- performance;
+- test coverage;
+- future Web3 instruments.
+
+## License
+
+Released under the MIT License. See `LICENSE`.

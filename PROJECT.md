@@ -205,7 +205,7 @@ Drives protected Web3 tool configuration.
     "enabled": true,
     "chainId": "0x2105",
     "network": "BASE",
-    "contractAddress": "",
+    "contractAddress": "0x...",
     "contractName": "0XB20 Token Sender",
     "approvalMode": "exact",
     "maxRecipients": 250
@@ -213,7 +213,7 @@ Drives protected Web3 tool configuration.
 }
 ```
 
-`contractAddress` stays empty until an audited batch sender contract exists.
+`contractAddress` contains only the public verified sender contract address for the active network.
 
 ## Terminology
 
@@ -384,7 +384,7 @@ The Token Sender lives at `/token-sender/` and is protected by the same Web3 acc
 - Tool config lives in `data/web3-tools.json`.
 - Reference smart contract lives in `contracts/B20TokenSender.sol`.
 - TypeScript contracts live in `src/wallet/` and `src/contracts/`.
-- `contractAddress` must stay empty until a reviewed Token Sender smart contract exists.
+- `contractAddress` must point only to a reviewed and verified Token Sender smart contract on the configured network.
 - Approval must remain exact amount only.
 - Never auto-send transactions.
 - Never request unlimited approvals by default.
