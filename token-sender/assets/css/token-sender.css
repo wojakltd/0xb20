@@ -179,6 +179,50 @@
     padding:14px;
 }
 
+.sender-contract-status p{
+    margin:0 0 10px;
+}
+
+.sender-contract-status p:last-child{
+    margin-bottom:0;
+}
+
+.sender-execution-details{
+    display:grid;
+    gap:8px;
+    margin:0 0 16px;
+}
+
+.sender-detail-row{
+    display:grid;
+    grid-template-columns:150px minmax(0,1fr);
+    gap:10px;
+    align-items:start;
+    border:1px solid rgba(103,179,255,.12);
+    border-radius:10px;
+    background:rgba(2,6,14,.42);
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    padding:10px 12px;
+}
+
+.sender-detail-row span{
+    color:var(--accent-soft);
+    text-transform:uppercase;
+}
+
+.sender-detail-row code,
+.sender-detail-row a{
+    color:var(--text);
+    text-decoration:none;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+}
+
+.sender-detail-row a:hover{
+    color:var(--accent);
+}
+
 @media(max-width:900px){
     .sender-flow,
     .sender-token-readout,
@@ -196,7 +240,8 @@
     .sender-token-readout,
     .sender-preview-stats,
     .sender-recipient-tools,
-    .sender-preview-row{
+    .sender-preview-row,
+    .sender-detail-row{
         grid-template-columns:1fr;
     }
 }

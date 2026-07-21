@@ -40,7 +40,8 @@
     contractStatus: '[data-contract-status]',
     approve: '[data-token-approve]',
     send: '[data-token-send]',
-    executionMessage: '[data-token-execution-message]'
+    executionMessage: '[data-token-execution-message]',
+    executionDetails: '[data-token-execution-details]'
   };
 
   const state = {
@@ -50,7 +51,8 @@
     config: fallbackConfig,
     token: null,
     preview: null,
-    approvalTx: ''
+    approvalTx: '',
+    batchTx: ''
   };
 
   function query(selector) {
@@ -98,6 +100,34 @@
   function hasSenderContract() {
     const config = senderConfig();
     return Boolean(config.contractAddress && window.B20Wallet.isAddress(config.contractAddress));
+  }
+
+  function basescanAddressUrl(address) {
+    return `https://basescan.org/address/${address}`;
+  }
+
+  function basescanTxUrl(transactionHash) {
+    return `https://basescan.org/tx/${transactionHash}`;
+  }
+
+  function createDetailRow(label, value, href) {
+    const row = document.createElement('div');
+    row.className = 'sender-detail-row';
+
+    const labelNode = document.createElement('span');
+    labelNode.textContent = label;
+
+    const valueNode = href ? document.createElement('a') : document.createElement('code');
+    valueNode.textContent = value;
+
+    if (href) {
+      valueNode.href = href;
+      valueNode.target = '_blank';
+      valueNode.rel = 'noopener noreferrer';
+    }
+
+    row.append(labelNode, valueNode);
+    return row;
   }
 
   function stripHexPrefix(value) {
@@ -164,12 +194,55 @@
       return;
     }
 
-    if (hasSenderContract()) {
-      target.textContent = `${config.contractName} ready on ${config.network}. Exact approval mode active.`;
+    target.replaceChildren();
+
+    if (!hasSenderContract()) {
+      target.textContent = 'Distribution contract not configured. Preview mode is active.';
+      renderExecutionDetails();
       return;
     }
 
-    target.textContent = 'Distribution contract not configured. Preview mode is active.';
+    const title = document.createElement('p');
+    title.textContent = `${config.contractName} ready on ${config.network}. Exact approval mode active.`;
+
+    const note = document.createElement('p');
+    note.textContent = 'Step 1 approves only the exact preview amount. Step 2 sends the batch. Approval alone does not transfer tokens.';
+
+    target.append(
+      title,
+      note,
+      createDetailRow('Sender Contract', config.contractAddress, basescanAddressUrl(config.contractAddress))
+    );
+    renderExecutionDetails();
+  }
+
+  function renderExecutionDetails() {
+    const target = query(selectors.executionDetails);
+
+    if (!target) {
+      return;
+    }
+
+    const rows = [];
+
+    if (state.token) {
+      rows.push(createDetailRow('Token Contract', state.token.address, basescanAddressUrl(state.token.address)));
+    }
+
+    if (state.preview) {
+      rows.push(createDetailRow('Transfer Total', `${state.preview.totalFormatted} ${state.token ? state.token.symbol : 'TOKEN'}`));
+      rows.push(createDetailRow('Allowance Status', state.preview.allowanceReady ? 'READY FOR SEND' : 'APPROVAL REQUIRED'));
+    }
+
+    if (state.approvalTx) {
+      rows.push(createDetailRow('Approval TX', state.approvalTx, basescanTxUrl(state.approvalTx)));
+    }
+
+    if (state.batchTx) {
+      rows.push(createDetailRow('Batch TX', state.batchTx, basescanTxUrl(state.batchTx)));
+    }
+
+    target.replaceChildren(...rows);
   }
 
   function renderWalletList(walletState) {
@@ -383,13 +456,13 @@
     const canPreview = Boolean(state.preview);
     const connectedToBase = Boolean(state.wallet && state.wallet.connected && state.wallet.isBase);
     const contractReady = hasSenderContract();
+    const hasAllowance = Boolean(state.preview && state.preview.allowanceReady);
 
     if (approveButton) {
-      approveButton.disabled = !canPreview || !connectedToBase || !contractReady;
+      approveButton.disabled = !canPreview || !connectedToBase || !contractReady || hasAllowance;
     }
 
     if (sendButton) {
-      const hasAllowance = Boolean(state.preview && state.preview.allowanceReady);
       sendButton.disabled = !canPreview || !connectedToBase || !contractReady || !hasAllowance;
     }
   }
@@ -409,15 +482,20 @@
       state.token = await window.B20Wallet.readTokenInfo(address);
       state.preview = null;
       state.approvalTx = '';
+      state.batchTx = '';
       renderTokenReadout();
       renderPreview();
+      renderExecutionDetails();
       showErrors([]);
       setText(query(selectors.executionMessage), 'Token specimen loaded. Recipient validation can begin.');
     } catch (error) {
       state.token = null;
       state.preview = null;
+      state.approvalTx = '';
+      state.batchTx = '';
       renderTokenReadout();
       renderPreview();
+      renderExecutionDetails();
       setText(query(selectors.executionMessage), error && error.message ? error.message : 'Token read failed.');
     }
   }
@@ -442,6 +520,7 @@
         state.preview = null;
         showErrors(parsed.errors);
         renderPreview();
+        renderExecutionDetails();
         updateExecutionState();
         return;
       }
@@ -484,12 +563,15 @@
 
       state.preview = preview;
       state.approvalTx = '';
+      state.batchTx = '';
       renderPreview();
+      renderExecutionDetails();
       updateExecutionState();
       setText(query(selectors.executionMessage), 'Preview validated. No transaction has been requested.');
     } catch (error) {
       state.preview = null;
       renderPreview();
+      renderExecutionDetails();
       updateExecutionState();
       setText(query(selectors.executionMessage), error && error.message ? error.message : 'Preview failed.');
     }
@@ -512,7 +594,8 @@
       );
 
       state.approvalTx = txHash;
-      setText(query(selectors.executionMessage), `Approval submitted: ${window.B20Wallet.shortAddress(txHash)}. Waiting for confirmation...`);
+      renderExecutionDetails();
+      setText(query(selectors.executionMessage), `Approval submitted. Full hash: ${txHash}. Waiting for confirmation...`);
 
       const receipt = await window.B20Wallet.waitForTransactionReceipt(txHash);
 
@@ -522,7 +605,8 @@
 
       state.preview.allowanceReady = true;
       updateExecutionState();
-      setText(query(selectors.executionMessage), `Exact approval confirmed: ${window.B20Wallet.shortAddress(txHash)}. Batch send is ready.`);
+      renderExecutionDetails();
+      setText(query(selectors.executionMessage), `Exact approval confirmed. Now press Send Batch to move tokens.`);
     } catch (error) {
       setText(query(selectors.executionMessage), error && error.message ? error.message : 'Approval rejected.');
     }
@@ -556,7 +640,9 @@
       const transaction = buildSenderTransaction();
       setText(query(selectors.executionMessage), 'Awaiting wallet confirmation for batch send...');
       const txHash = await window.B20Wallet.sendTransaction(transaction);
-      setText(query(selectors.executionMessage), `Batch submitted: ${window.B20Wallet.shortAddress(txHash)}. Waiting for confirmation...`);
+      state.batchTx = txHash;
+      renderExecutionDetails();
+      setText(query(selectors.executionMessage), `Batch submitted. Full hash: ${txHash}. Waiting for confirmation...`);
       const receipt = await window.B20Wallet.waitForTransactionReceipt(txHash);
 
       if (receipt.status && receipt.status !== '0x1') {
@@ -566,7 +652,8 @@
       state.preview.allowanceReady = false;
       state.approvalTx = '';
       updateExecutionState();
-      setText(query(selectors.executionMessage), `Batch confirmed: ${window.B20Wallet.shortAddress(txHash)}.`);
+      renderExecutionDetails();
+      setText(query(selectors.executionMessage), `Batch confirmed. Tokens were sent. Full hash: ${txHash}.`);
     } catch (error) {
       setText(query(selectors.executionMessage), error && error.message ? error.message : 'Batch send rejected.');
     }
