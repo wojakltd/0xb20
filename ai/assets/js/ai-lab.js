@@ -1,5 +1,6 @@
 (function () {
   const allowedStyles = ['minimal', 'funny', 'philosophy', 'brutal', 'builder', 'random'];
+  const allowedLanguages = new Set(['auto', 'en', 'ru', 'es', 'pt', 'fr', 'de', 'it', 'tr', 'id', 'vi', 'ar', 'hi', 'zh', 'ja', 'ko']);
   const endpoint = '/api/ai/generate';
   const postLimit = 280;
   const maxHistoryItems = 10;
@@ -8,10 +9,12 @@
   const storageKeys = {
     signals: 'b20-ai-lab-signals',
     posts: 'b20-ai-lab-posts',
-    favorites: 'b20-ai-lab-favorites'
+    favorites: 'b20-ai-lab-favorites',
+    language: 'b20-ai-lab-language'
   };
 
   let selectedStyle = 'minimal';
+  let selectedLanguage = 'auto';
   let currentTopic = '';
   let currentSignal = '';
   let currentPost = null;
@@ -33,6 +36,7 @@
   const publishLink = document.querySelector('[data-ai-publish]');
   const styleButtons = Array.from(document.querySelectorAll('[data-ai-style]'));
   const optionInputs = Array.from(document.querySelectorAll('[data-ai-option]'));
+  const languageSelect = document.querySelector('[data-ai-language]');
   const remixButton = document.querySelector('[data-ai-remix]');
   const favoriteButton = document.querySelector('[data-ai-favorite]');
   const postGenerateButton = document.querySelector('[data-ai-post-generate]');
@@ -69,6 +73,15 @@
     return allowedStyles.includes(style) ? style : 'minimal';
   }
 
+  function normalizeLanguage(language) {
+    if (typeof language !== 'string') {
+      return 'auto';
+    }
+
+    const normalized = language.trim().toLowerCase();
+    return allowedLanguages.has(normalized) ? normalized : 'auto';
+  }
+
   function resolveRequestStyle(style) {
     if (style !== 'random') {
       return style;
@@ -84,6 +97,28 @@
     styleButtons.forEach((button) => {
       button.classList.toggle('is-active', button.dataset.aiStyle === selectedStyle);
     });
+  }
+
+  function readLanguagePreference() {
+    try {
+      return normalizeLanguage(window.localStorage.getItem(storageKeys.language));
+    } catch (error) {
+      return 'auto';
+    }
+  }
+
+  function updateLanguageSelection(language) {
+    selectedLanguage = normalizeLanguage(language);
+
+    if (languageSelect) {
+      languageSelect.value = selectedLanguage;
+    }
+
+    try {
+      window.localStorage.setItem(storageKeys.language, selectedLanguage);
+    } catch (error) {
+      // Output language is a preference only; generation should continue without storage.
+    }
   }
 
   function getOptions() {
@@ -218,7 +253,7 @@
     }
 
     if (shouldRemember) {
-      remember(storageKeys.signals, { text: signal, topic: currentTopic, style: selectedStyle });
+      remember(storageKeys.signals, { text: signal, topic: currentTopic, style: selectedStyle, language: selectedLanguage });
     }
 
     setStatus('Signal acquired.');
@@ -244,7 +279,8 @@
         post: currentPost.post,
         hashtags: currentPost.hashtags,
         emojis: currentPost.emojis,
-        options
+        options,
+        language: selectedLanguage
       });
     }
 
@@ -281,7 +317,8 @@
       const payload = await requestAi({
         action: 'generateSignal',
         topic,
-        style: requestStyle
+        style: requestStyle,
+        language: selectedLanguage
       });
 
       if (!payload.signal) {
@@ -312,7 +349,8 @@
         action: 'remixSignal',
         topic: currentTopic,
         signal: currentSignal,
-        style: requestStyle
+        style: requestStyle,
+        language: selectedLanguage
       });
 
       if (!payload.signal) {
@@ -346,6 +384,7 @@
           topic: currentTopic,
           signal: currentSignal,
           style: requestStyle,
+          language: selectedLanguage,
           options
         });
 
@@ -371,6 +410,7 @@
     currentTopic = entry.topic || currentTopic;
     selectedStyle = normalizeStyle(entry.style || selectedStyle);
     updateStyleSelection(selectedStyle);
+    updateLanguageSelection(entry.language || selectedLanguage);
     renderSignal(entry.text, false);
   }
 
@@ -388,6 +428,7 @@
       }
     }
 
+    updateLanguageSelection(entry.language || selectedLanguage);
     setOptions(entry.options || {});
     renderPost({
       post: entry.post || entry.text,
@@ -482,7 +523,8 @@
     remember(storageKeys.favorites, {
       text: currentSignal,
       topic: currentTopic,
-      style: selectedStyle
+      style: selectedStyle,
+      language: selectedLanguage
     });
     setStatus('Favourite signal saved.');
   }
@@ -499,6 +541,7 @@
     }
 
     updateStyleSelection(selectedStyle);
+    updateLanguageSelection(readLanguagePreference());
     renderMemory();
     setStatus('Engine idle.');
     setBusy(false);
@@ -512,6 +555,12 @@
     optionInputs.forEach((input) => {
       input.addEventListener('change', updatePostPreview);
     });
+
+    if (languageSelect) {
+      languageSelect.addEventListener('change', () => {
+        updateLanguageSelection(languageSelect.value);
+      });
+    }
 
     if (form) {
       form.addEventListener('submit', (event) => {

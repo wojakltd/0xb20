@@ -20,7 +20,7 @@ Research never ends.
 
 - Static Laboratory terminal built with HTML, CSS, and vanilla JavaScript.
 - Research Terminal that renders ecosystem observations from a generated cache.
-- AI Lab serverless instrument for short idea synthesis and X-ready transmissions.
+- AI Lab serverless instrument for multilingual idea synthesis and X-ready transmissions.
 - Prototype Records archive rendered from JSON.
 - Evolution Tree rendered from structured project data.
 - Shared wallet layer for Web3 experiments.
@@ -75,7 +75,7 @@ The live observation terminal. The frontend reads only `research/backend/cache/f
 
 ### AI Lab
 
-An idea synthesis instrument. The browser calls `/api/ai/generate`; the OpenAI key remains server-side only.
+An idea synthesis instrument with language selection. The browser calls `/api/ai/generate`; the OpenAI key remains server-side only.
 
 ### Test Zone
 

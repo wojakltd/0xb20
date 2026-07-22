@@ -205,6 +205,7 @@
 .ai-output-kicker,
 .ai-form label,
 .ai-style-field legend,
+.ai-language-field legend,
 .ai-status,
 .ai-examples{
     font-family:Consolas,monospace;
@@ -232,6 +233,7 @@
 
 .ai-form label,
 .ai-style-field legend,
+.ai-language-field legend,
 .ai-options-field legend{
     color:var(--cyan);
     font-size:12px;
@@ -266,6 +268,7 @@
 }
 
 .ai-style-field,
+.ai-language-field,
 .ai-options-field{
     border:0;
     margin:0;
@@ -304,6 +307,42 @@
 
 .ai-option-grid input{
     accent-color:var(--blue2);
+}
+
+.ai-language-control{
+    display:grid;
+    grid-template-columns:minmax(220px,320px) 1fr;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.ai-language-control select{
+    width:100%;
+    min-height:42px;
+    border:1px solid rgba(103,179,255,.24);
+    border-radius:var(--radius);
+    outline:none;
+    background:rgba(2,6,14,.82);
+    color:var(--text);
+    cursor:pointer;
+    font-family:Consolas,monospace;
+    font-size:14px;
+    padding:0 12px;
+    transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+.ai-language-control select:hover,
+.ai-language-control select:focus{
+    border-color:rgba(128,215,255,.58);
+    background:rgba(6,13,28,.94);
+    box-shadow:0 0 18px rgba(59,130,246,.14);
+}
+
+.ai-language-control span{
+    color:var(--muted);
+    font-family:Consolas,monospace;
+    font-size:13px;
 }
 
 .ai-style-button,
@@ -555,6 +594,10 @@
     .ai-actions-row{
         align-items:flex-start;
         flex-direction:column;
+    }
+
+    .ai-language-control{
+        grid-template-columns:1fr;
     }
 
     .ai-generate-button{

@@ -2,7 +2,7 @@
 
 ## Overview
 
-AI Lab is a password-gated Laboratory instrument at `/ai/`.
+AI Lab is a public Laboratory instrument at `/ai/`.
 It is an idea synthesis engine, not a chatbot.
 The tool generates short signals, remixes them into different angles, and turns the current signal into X-ready transmissions.
 
@@ -54,6 +54,7 @@ The existing endpoint now supports multiple actions through the `action` paramet
 
 ```text
 topic + style
+language
 ↓
 POST /api/ai/generate
 action: generateSignal
@@ -69,6 +70,7 @@ This request returns only a concise signal.
 
 ```text
 current signal + style
+language
 ↓
 POST /api/ai/generate
 action: remixSignal
@@ -83,7 +85,7 @@ The remix prompt asks for a genuinely different perspective, not synonym replace
 ### Generate X Post
 
 ```text
-current signal + style + selected options
+current signal + style + language + selected options
 ↓
 POST /api/ai/generate
 action: generatePost
@@ -103,6 +105,7 @@ No previous post is reused.
 - Optional `Add emojis` checkbox.
 - Optional `Add hashtags` checkbox.
 - Optional `Append AI LAB attribution` checkbox.
+- `Output Language` selector for Auto Detect, English, Russian, Spanish, Portuguese, French, German, Italian, Turkish, Indonesian, Vietnamese, Arabic, Hindi, Chinese, Japanese, and Korean.
 - Live `current / 280` character counter.
 - `Publish to X` button using `https://twitter.com/intent/tweet?text=...`.
 - Tweet-like preview formatting that preserves the same line breaks sent to X.
@@ -141,6 +144,7 @@ Signals are constrained to:
 - no threads
 
 X posts are generated from the current signal and remain compact enough for optional additions.
+Language selection is injected as a short instruction in every action. The model is told to write natively in the selected language and avoid literal translation.
 
 ## API Improvements
 
@@ -152,6 +156,7 @@ The endpoint now supports:
   "topic": "optional topic context",
   "signal": "current signal for post/remix",
   "style": "minimal",
+  "language": "auto",
   "options": {
     "emojis": false,
     "hashtags": false,
@@ -181,6 +186,7 @@ The cheapest stable flow is preserved:
 - `Remix` = one OpenAI request returning only a new `signal`.
 
 There are no separate emoji or hashtag requests.
+Language selection does not add additional requests.
 There is no memory sent to the model.
 There are no assistants, threads, embeddings, vector databases, or streaming.
 
@@ -201,8 +207,10 @@ The browser stores only local user output:
 - `b20-ai-lab-signals`
 - `b20-ai-lab-posts`
 - `b20-ai-lab-favorites`
+- `b20-ai-lab-language`
 
 Each list keeps the latest 10 entries.
+The language key stores only the selected output language preference.
 No backend database is used.
 No generated history is sent back to OpenAI.
 

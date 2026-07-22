@@ -68,7 +68,7 @@
 
       <form class="ai-form" data-ai-form>
         <label for="ai-topic">Input Signal</label>
-        <textarea id="ai-topic" data-ai-topic rows="4" maxlength="180" placeholder="What are you thinking about?"></textarea>
+        <textarea id="ai-topic" data-ai-topic rows="4" maxlength="180" dir="auto" placeholder="What are you thinking about?"></textarea>
 
         <p class="ai-examples">
           Examples: builders, airdrops, fear, liquidity, Base, memecoins, decentralization, AI, crypto, markets
@@ -83,6 +83,31 @@
             <button class="ai-style-button" type="button" data-ai-style="brutal">Brutal</button>
             <button class="ai-style-button" type="button" data-ai-style="builder">Builder</button>
             <button class="ai-style-button" type="button" data-ai-style="random">Random</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="ai-language-field">
+          <legend>Output Language</legend>
+          <div class="ai-language-control">
+            <select data-ai-language aria-label="AI Lab output language">
+              <option value="auto">Auto Detect</option>
+              <option value="en">English</option>
+              <option value="ru">Русский</option>
+              <option value="es">Español</option>
+              <option value="pt">Português</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="it">Italiano</option>
+              <option value="tr">Türkçe</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="ar">العربية</option>
+              <option value="hi">हिन्दी</option>
+              <option value="zh">中文</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+            </select>
+            <span>Controls both signal and X-ready transmission.</span>
           </div>
         </fieldset>
 
@@ -114,7 +139,7 @@
     <section class="ai-output" data-ai-output hidden aria-live="polite">
       <article class="ai-output-card" data-ai-signal-card hidden>
         <span class="ai-output-kicker" data-ai-signal-number>SIGNAL #00000</span>
-        <p class="ai-output-text" data-ai-signal-text></p>
+        <p class="ai-output-text" data-ai-signal-text dir="auto"></p>
         <div class="ai-output-actions">
           <button type="button" data-ai-copy="signal">Copy Signal</button>
           <button type="button" data-ai-remix>Remix</button>
@@ -125,7 +150,7 @@
 
       <article class="ai-output-card ai-post-card" data-ai-post-card hidden>
         <span class="ai-output-kicker">X-READY TRANSMISSION</span>
-        <p class="ai-output-text" data-ai-post-text></p>
+        <p class="ai-output-text" data-ai-post-text dir="auto"></p>
         <p class="ai-counter" data-ai-counter>0 / 280</p>
         <div class="ai-output-actions">
           <button type="button" data-ai-copy="post">Copy X Post</button>

@@ -20,6 +20,7 @@ type GenerateBody = {
   topic?: unknown;
   signal?: unknown;
   style?: unknown;
+  language?: unknown;
   options?: unknown;
 };
 
@@ -43,6 +44,24 @@ type RateEntry = {
 
 const allowedActions = new Set<Action>(['generateSignal', 'generatePost', 'remixSignal']);
 const allowedStyles = new Set(['minimal', 'funny', 'philosophy', 'brutal', 'builder']);
+const outputLanguages: Record<string, string> = {
+  auto: 'Auto. Detect the user input language and write naturally in that language. If the language is unclear, use English.',
+  en: 'English. Write naturally in English.',
+  ru: 'Russian. Write naturally in Russian.',
+  es: 'Spanish. Write naturally in Spanish.',
+  pt: 'Portuguese. Write naturally in Portuguese.',
+  fr: 'French. Write naturally in French.',
+  de: 'German. Write naturally in German.',
+  it: 'Italian. Write naturally in Italian.',
+  tr: 'Turkish. Write naturally in Turkish.',
+  id: 'Indonesian. Write naturally in Indonesian.',
+  vi: 'Vietnamese. Write naturally in Vietnamese.',
+  ar: 'Arabic. Write naturally in Arabic.',
+  hi: 'Hindi. Write naturally in Hindi.',
+  zh: 'Simplified Chinese. Write naturally in Simplified Chinese.',
+  ja: 'Japanese. Write naturally in Japanese.',
+  ko: 'Korean. Write naturally in Korean.'
+};
 const fallbackModel = 'gpt-4.1-mini';
 const maxTopicLength = 180;
 const maxSignalLength = 320;
@@ -222,6 +241,19 @@ function normalizeStyle(style: unknown): string {
   return allowedStyles.has(normalized) ? normalized : 'minimal';
 }
 
+function normalizeLanguage(language: unknown): string {
+  if (typeof language !== 'string') {
+    return 'auto';
+  }
+
+  const normalized = language.trim().toLowerCase();
+  return outputLanguages[normalized] ? normalized : 'auto';
+}
+
+function languageInstruction(language: string): string {
+  return `output language: ${outputLanguages[normalizeLanguage(language)]}`;
+}
+
 function normalizeOptions(options: unknown): PostOptions {
   const source = options && typeof options === 'object' ? options as Record<string, unknown> : {};
 
@@ -309,7 +341,7 @@ function uniqueStrings(values: unknown, maxCount: number): string[] {
 function normalizeHashtags(values: unknown): string[] {
   return uniqueStrings(values, 5)
     .map((tag) => tag.replace(/\s+/g, '').replace(/^#?/, '#'))
-    .filter((tag) => /^#[A-Za-z0-9_]{2,32}$/.test(tag));
+    .filter((tag) => /^#[\p{L}\p{N}_]{2,32}$/u.test(tag));
 }
 
 function normalizeEmojis(values: unknown): string[] {
@@ -382,7 +414,7 @@ function buildJsonShape(action: Action): string {
 
 function buildSystemPrompt(action: Action): string {
   const base =
-    'You are the 0XB20 Laboratory idea synthesis engine: experienced independent researcher, minimalist writer, builder, crypto observer. No hype, moon language, price predictions, financial advice, fake confidence, roleplay, greetings, explanations, famous quotes, LinkedIn tone, influencer language, or "As an AI". Return valid JSON only.';
+    'You are the 0XB20 Laboratory idea synthesis engine: experienced independent researcher, minimalist writer, builder, crypto observer. Write natively in the requested output language; never translate literally. No hype, moon language, price predictions, financial advice, fake confidence, roleplay, greetings, explanations, famous quotes, LinkedIn tone, influencer language, or "As an AI". Return valid JSON only.';
 
   if (action === 'generatePost') {
     return `${base} Generate one shareable X transmission from the provided signal. Return emojis as subtle inline ending accents only; do not put them inside post text. Return hashtags only as an array.`;
@@ -395,11 +427,12 @@ function buildSystemPrompt(action: Action): string {
   return `${base} Generate one memorable screenshot-worthy signal.`;
 }
 
-function buildUserPrompt(action: Action, topic: string, signal: string, style: string, options: PostOptions): string {
+function buildUserPrompt(action: Action, topic: string, signal: string, style: string, language: string, options: PostOptions): string {
   if (action === 'generatePost') {
     const maxBaseLength = options.attribution || options.hashtags || options.emojis ? 175 : 220;
 
     return [
+      languageInstruction(language),
       `signal: ${signal}`,
       `style: ${style}`,
       `topic context for relevance only: ${topic || 'none'}`,
@@ -415,6 +448,7 @@ function buildUserPrompt(action: Action, topic: string, signal: string, style: s
 
   if (action === 'remixSignal') {
     return [
+      languageInstruction(language),
       `current signal: ${signal}`,
       `topic context: ${topic || 'none'}`,
       `style: ${style}`,
@@ -426,6 +460,7 @@ function buildUserPrompt(action: Action, topic: string, signal: string, style: s
   }
 
   return [
+    languageInstruction(language),
     `topic: ${topic}`,
     `style: ${style}`,
     'Create one signal only.',
@@ -436,7 +471,7 @@ function buildUserPrompt(action: Action, topic: string, signal: string, style: s
   ].join('\n');
 }
 
-function buildPrompt(action: Action, topic: string, signal: string, style: string, options: PostOptions) {
+function buildPrompt(action: Action, topic: string, signal: string, style: string, language: string, options: PostOptions) {
   return [
     {
       role: 'system',
@@ -444,7 +479,7 @@ function buildPrompt(action: Action, topic: string, signal: string, style: strin
     },
     {
       role: 'user',
-      content: buildUserPrompt(action, topic, signal, style, options)
+      content: buildUserPrompt(action, topic, signal, style, language, options)
     }
   ];
 }
@@ -459,12 +494,13 @@ async function requestOpenAI(
   topic: string,
   signal: string,
   style: string,
+  language: string,
   options: PostOptions,
   useJsonFormat: boolean
 ) {
   const body: Record<string, unknown> = {
     model: process.env.OPENAI_MODEL || fallbackModel,
-    input: buildPrompt(action, topic, signal, style, options),
+    input: buildPrompt(action, topic, signal, style, language, options),
     max_output_tokens: maxOutputTokensFor(action),
     temperature: action === 'remixSignal' ? 0.94 : 0.82
   };
@@ -538,6 +574,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const topic = normalizeText(body.topic, maxTopicLength);
   const signalInput = normalizeText(body.signal, maxSignalLength);
   const style = normalizeStyle(body.style);
+  const language = normalizeLanguage(body.language);
   const options = normalizeOptions(body.options);
 
   if (action === 'generateSignal' && !topic) {
@@ -551,10 +588,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    let response = await requestOpenAI(apiKey, action, topic, signalInput, style, options, true);
+    let response = await requestOpenAI(apiKey, action, topic, signalInput, style, language, options, true);
 
     if (response.status === 400) {
-      response = await requestOpenAI(apiKey, action, topic, signalInput, style, options, false);
+      response = await requestOpenAI(apiKey, action, topic, signalInput, style, language, options, false);
     }
 
     if (response.status === 429) {
