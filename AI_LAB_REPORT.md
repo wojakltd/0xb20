@@ -194,6 +194,7 @@ Current token caps:
 
 - Signal/remix: `max_output_tokens` 90.
 - X post: `max_output_tokens` 190.
+- Default rate limits: 20 requests per minute and 300 requests per day per client IP. Both can be overridden with environment variables.
 
 Estimated usage:
 
@@ -234,7 +235,7 @@ There is no static emoji dictionary.
 - `.env`, `.env.local`, `.env.*`, and `*.env` remain ignored.
 - `.env.example` contains only empty placeholders.
 - The endpoint applies per-IP request throttling, daily budget protection, origin checks, request size limits, and OpenAI request timeouts.
-- Provider errors are converted into Laboratory-style public errors.
+- Provider errors are converted into Laboratory-style public errors and surfaced directly in the UI instead of being hidden behind generic failure text.
 
 ## Password Protection
 

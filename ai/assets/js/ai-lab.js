@@ -69,6 +69,10 @@
     }
   }
 
+  function errorMessage(error, fallback) {
+    return error instanceof Error && error.message ? error.message : fallback;
+  }
+
   function normalizeStyle(style) {
     return allowedStyles.includes(style) ? style : 'minimal';
   }
@@ -327,7 +331,7 @@
 
       renderSignal(payload.signal);
     } catch (error) {
-      setStatus('Synthesis failed. Laboratory signal unstable.');
+      setStatus(errorMessage(error, 'Synthesis failed. Laboratory signal unstable.'));
     } finally {
       setBusy(false);
     }
@@ -359,7 +363,7 @@
 
       renderSignal(payload.signal);
     } catch (error) {
-      setStatus('Remix failed. Signal rejected.');
+      setStatus(errorMessage(error, 'Remix failed. Signal rejected.'));
     } finally {
       setBusy(false);
     }
@@ -397,7 +401,7 @@
         }
       } catch (error) {
         if (attempt === 2) {
-          setStatus('Transmission failed. Laboratory channel unstable.');
+          setStatus(errorMessage(error, 'Transmission failed. Laboratory channel unstable.'));
         }
       }
     }

@@ -68,8 +68,8 @@ const maxSignalLength = 320;
 const maxRequestBytes = 4096;
 const rateWindowMs = 60 * 1000;
 const dailyWindowMs = 24 * 60 * 60 * 1000;
-const defaultMinuteLimit = 8;
-const defaultDailyLimit = 120;
+const defaultMinuteLimit = 20;
+const defaultDailyLimit = 300;
 const maxRateEntries = 1000;
 const openAiTimeoutMs = 15 * 1000;
 const attributionText = 'Generated with https://0xb20.lol/ai';
@@ -184,7 +184,7 @@ function enforceRequestProtection(req: VercelRequest, res: VercelResponse): bool
 
   if (!minute.allowed) {
     res.setHeader('Retry-After', String(minute.retryAfter));
-    res.status(429).json({ error: 'Synthesis queue saturated.' });
+    res.status(429).json({ error: `Synthesis queue saturated. Retry in ${minute.retryAfter}s.` });
     return false;
   }
 
@@ -192,7 +192,7 @@ function enforceRequestProtection(req: VercelRequest, res: VercelResponse): bool
 
   if (!daily.allowed) {
     res.setHeader('Retry-After', String(daily.retryAfter));
-    res.status(429).json({ error: 'Daily synthesis budget reached.' });
+    res.status(429).json({ error: 'Daily synthesis budget reached. Research resumes later.' });
     return false;
   }
 
