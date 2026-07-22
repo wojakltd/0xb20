@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/(logs|research|ai|test|token-sender|evolution|protocol)/(.*)",
+      "source": "/(logs|research|ai|test|token-sender|wallet-parser|evolution|protocol)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -65,6 +65,15 @@
     },
     {
       "source": "/token-sender/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/wallet-parser/assets/js/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

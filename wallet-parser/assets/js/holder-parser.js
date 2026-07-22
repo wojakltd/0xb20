@@ -1,0 +1,42 @@
+(function () {
+  class WalletHolderScanner {
+    constructor(provider) {
+      this.provider = provider;
+      this.abortController = null;
+      this.active = false;
+    }
+
+    isActive() {
+      return this.active;
+    }
+
+    cancel() {
+      if (this.abortController) {
+        this.abortController.abort();
+      }
+    }
+
+    async scan(address, options = {}) {
+      if (this.active) {
+        throw new Error('Scan already running.');
+      }
+
+      this.active = true;
+      this.abortController = new AbortController();
+
+      try {
+        return await this.provider.scanToken(address, {
+          ...options,
+          signal: this.abortController.signal
+        });
+      } finally {
+        this.active = false;
+        this.abortController = null;
+      }
+    }
+  }
+
+  window.B20HolderParser = {
+    WalletHolderScanner
+  };
+})();

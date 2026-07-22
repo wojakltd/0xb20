@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 Laboratory Wallet Parser: a protected read-only Base holder extraction instrument.">
+  <meta name="b20-root" content="/">
+  <title>0XB20 Wallet Parser</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/effects.css">
+  <link rel="stylesheet" href="/ai/assets/css/ai.css">
+  <link rel="stylesheet" href="/test/assets/css/test.css">
+  <link rel="stylesheet" href="/token-sender/assets/css/token-sender.css">
+  <link rel="stylesheet" href="/wallet-parser/assets/css/wallet-parser.css">
+</head>
+<body class="test-body wallet-parser-body">
+
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="/">0XB20</a>
+  <div class="nav-links">
+    <a href="/" data-module-route="/">Home</a>
+    <a href="/research/" data-module-route="/research">Research</a>
+    <a href="/ai/" data-module-route="/ai">AI LAB</a>
+    <a href="/token-sender/" data-module-route="/token-sender">Token Sender</a>
+    <a href="/wallet-parser/" data-module-route="/wallet-parser" aria-current="page">Wallet Parser</a>
+    <a href="/evolution/" data-module-route="/evolution">Evolution</a>
+    <a href="/logs/" data-module-route="/logs">Archive</a>
+    <a href="/test/" data-module-route="/test">Test Zone</a>
+  </div>
+</nav>
+
+<main class="test-page wallet-parser-page">
+  <section class="research-gate ai-gate test-gate" data-parser-gate hidden>
+    <span class="eyebrow">Protected Instrument</span>
+    <h1>WALLET PARSER LOCKED</h1>
+    <p>Holder extraction experiments require the current Laboratory access key.</p>
+    <form class="research-gate-form" data-parser-gate-form>
+      <label for="wallet-parser-password">Access key</label>
+      <div class="research-gate-controls">
+        <input id="wallet-parser-password" data-parser-password type="password" autocomplete="current-password" spellcheck="false" placeholder="Laboratory key">
+        <button type="submit">Unlock Wallet Parser</button>
+      </div>
+      <p class="research-gate-error" data-parser-gate-error hidden>ACCESS DENIED. Key rejected.</p>
+    </form>
+  </section>
+
+  <div data-parser-content hidden>
+    <section class="test-hero parser-hero lab-reactive" data-reveal>
+      <span class="eyebrow">WEB3 FOUNDATION</span>
+      <h1>Wallet Parser</h1>
+      <p class="test-subtitle">ERC-20 Holder Extraction Tool v1</p>
+      <div class="test-status-strip" aria-label="Wallet parser status">
+        <span>Status: PROTECTED</span>
+        <span>Network: BASE</span>
+        <span>Mode: READ ONLY</span>
+      </div>
+    </section>
+
+    <section class="sender-shell parser-shell lab-reactive" data-reveal>
+      <div class="sender-flow parser-flow" aria-label="Wallet parser scan flow">
+        <span>Token Contract</span>
+        <span>Validate</span>
+        <span>Scan Holders</span>
+        <span>Filter</span>
+        <span>Search</span>
+        <span>Copy</span>
+      </div>
+
+      <div class="test-grid sender-grid parser-grid">
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Token Contract</span>
+              <h3>ERC-20 Target</h3>
+            </div>
+            <span class="test-state" data-parser-state>WAITING</span>
+          </div>
+          <label class="sender-label" for="parser-token-address">ERC-20 Contract Address</label>
+          <div class="parser-address-row">
+            <input id="parser-token-address" class="sender-input" data-parser-token-address type="text" inputmode="text" spellcheck="false" placeholder="0x...">
+            <button class="test-primary" type="button" data-parser-scan>Read Holders</button>
+            <button class="test-secondary" type="button" data-parser-cancel disabled>Cancel</button>
+          </div>
+          <p class="test-message" data-parser-message>Paste a Base ERC-20 contract to begin holder extraction.</p>
+          <div class="parser-progress" data-parser-progress hidden>
+            <div class="parser-progress-bar"><span data-parser-progress-fill></span></div>
+            <p data-parser-progress-text>Preparing scan...</p>
+          </div>
+          <div class="sender-token-readout parser-token-readout" data-parser-token-readout>
+            <span>Name: --</span>
+            <span>Symbol: --</span>
+            <span>Decimals: --</span>
+            <span>Total Supply: --</span>
+            <span>Estimated Holders: --</span>
+            <span>Network: BASE</span>
+            <span>Source: Blockscout API</span>
+            <span>Contract: --</span>
+          </div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Holder List</span>
+              <h3>Parsed Wallets</h3>
+            </div>
+            <span class="test-state" data-parser-count>0 FOUND</span>
+          </div>
+          <div class="parser-toolbar">
+            <label class="parser-search-label" for="parser-holder-search">
+              <span>Search Loaded Holders</span>
+              <input id="parser-holder-search" class="sender-input" data-parser-search type="search" spellcheck="false" placeholder="0x...">
+            </label>
+            <button class="test-secondary" type="button" data-parser-copy disabled>Copy Visible Addresses</button>
+          </div>
+          <div class="parser-holder-table" data-parser-holder-table>
+            <p class="test-muted">No holders loaded yet.</p>
+          </div>
+          <p class="test-message" data-parser-pagination hidden>More holders available. Pagination coming soon.</p>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Statistics</span>
+              <h3>Scan Report</h3>
+            </div>
+            <span class="test-state">READ ONLY</span>
+          </div>
+          <div class="sender-preview-stats parser-stats">
+            <div>
+              <span>Wallets Found</span>
+              <strong data-parser-stat="found">0</strong>
+            </div>
+            <div>
+              <span>Wallets Displayed</span>
+              <strong data-parser-stat="displayed">0</strong>
+            </div>
+            <div>
+              <span>Scan Duration</span>
+              <strong data-parser-stat="duration">--</strong>
+            </div>
+            <div>
+              <span>Data Source</span>
+              <strong data-parser-stat="source">Blockscout API</strong>
+            </div>
+            <div>
+              <span>Last Updated</span>
+              <strong data-parser-stat="updated">--</strong>
+            </div>
+            <div>
+              <span>Contract</span>
+              <strong data-parser-stat="contract">--</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Future Capacity</span>
+              <h3>Premium Modules</h3>
+            </div>
+            <span class="test-state">OBSERVATION QUEUE</span>
+          </div>
+          <div class="parser-premium-grid" aria-label="Future wallet parser modules">
+            <div class="parser-premium-card" aria-disabled="true">
+              <span>Next 100 Holders</span>
+              <strong>Coming Soon</strong>
+            </div>
+            <div class="parser-premium-card" aria-disabled="true">
+              <span>Export TXT</span>
+              <strong>Coming Soon</strong>
+            </div>
+            <div class="parser-premium-card" aria-disabled="true">
+              <span>Export CSV</span>
+              <strong>Coming Soon</strong>
+            </div>
+            <div class="parser-premium-card" aria-disabled="true">
+              <span>Advanced Filters</span>
+              <strong>Coming Soon</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+<script src="/assets/js/access-gate.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-utils.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-copy.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-provider.js" defer></script>
+<script src="/wallet-parser/assets/js/blockscout-provider.js" defer></script>
+<script src="/wallet-parser/assets/js/holder-parser.js" defer></script>
+<script src="/wallet-parser/assets/js/wallet-parser.js" defer></script>
+
+</body>
+</html>
