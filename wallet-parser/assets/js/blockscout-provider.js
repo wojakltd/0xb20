@@ -22,6 +22,7 @@
       this.apiBase = config.apiBase || 'https://base.blockscout.com/api/v2';
       this.rpcUrl = config.rpcUrl || 'https://mainnet.base.org';
       this.timeoutMs = config.timeoutMs || 18000;
+      this.pageSize = Math.min(Number(config.pageSize) || 50, 50);
     }
 
     async scanToken(address, options = {}) {
@@ -132,7 +133,8 @@
       let rawItemCount = 0;
 
       do {
-        const url = this.holdersUrl(address, nextPageParams);
+        const remaining = this.maxHolders - collected.length;
+        const url = this.holdersUrl(address, nextPageParams, remaining);
         const response = await this.fetchJson(url, options.signal);
         const items = Array.isArray(response.items) ? response.items : [];
 
@@ -150,9 +152,10 @@
       };
     }
 
-    holdersUrl(address, pageParams) {
+    holdersUrl(address, pageParams, remaining) {
       const url = new URL(`${this.apiBase}/tokens/${address}/holders`);
-      url.searchParams.set('items_count', String(this.maxHolders));
+      const itemsCount = Math.max(1, Math.min(this.pageSize, remaining || this.pageSize));
+      url.searchParams.set('items_count', String(itemsCount));
 
       if (pageParams && typeof pageParams === 'object') {
         Object.entries(pageParams).forEach(([key, value]) => {
