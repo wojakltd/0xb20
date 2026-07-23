@@ -9,6 +9,7 @@
    * - maxHolders: current page size
    * - scanToken(address, options): Promise<{ token, holders, meta }>
    * - loadHolderPage(address, token, pageParams, options): Promise<{ holders, meta }>
+   * - loadAllHolderPages(address, token, pageParams, knownHolders, options): Promise<{ holders, meta }>
    * - addressUrl(address): string
    *
    * Future providers can wrap BaseScan, Moralis, Bitquery, an internal indexer,
@@ -28,6 +29,10 @@
 
     async loadHolderPage() {
       throw new Error('Provider loadHolderPage() is not implemented.');
+    }
+
+    async loadAllHolderPages() {
+      throw new Error('Provider loadAllHolderPages() is not implemented.');
     }
 
     addressUrl(address) {

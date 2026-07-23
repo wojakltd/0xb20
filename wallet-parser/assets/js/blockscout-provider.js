@@ -24,6 +24,9 @@
       this.rpcUrl = config.rpcUrl || 'https://mainnet.base.org';
       this.timeoutMs = config.timeoutMs || 30000;
       this.pageSize = Math.min(Number(config.pageSize) || 50, 50);
+      this.maxExportPages = Number(config.maxExportPages) || 1000;
+      this.retryDelaysMs = config.retryDelaysMs || [800, 1600, 3200];
+      this.holderPageCache = new Map();
     }
 
     async scanToken(address, options = {}) {
@@ -83,6 +86,111 @@
       };
     }
 
+    async loadAllHolderPages(address, token, pageParams, knownHolders = [], options = {}) {
+      const normalizedAddress = this.normalizeInput(address);
+      const startedAt = Date.now();
+      const knownAddresses = new Set(
+        (knownHolders || [])
+          .map((holder) => addressKey(holder.address))
+          .filter(Boolean)
+      );
+      const newHolders = [];
+      const visitedCursors = new Set();
+      let nextPageParams = pageParams || null;
+      let duplicatesRemoved = 0;
+      let pagesLoaded = 0;
+      let partialError = '';
+
+      if (!nextPageParams) {
+        return {
+          holders: [],
+          meta: this.exportMeta({
+            startedAt,
+            pagesLoaded,
+            walletsLoaded: knownAddresses.size,
+            duplicatesRemoved,
+            partialError,
+            nextPageParams
+          })
+        };
+      }
+
+      while (nextPageParams && pagesLoaded < this.maxExportPages) {
+        const cursorKey = this.cacheKey(normalizedAddress, nextPageParams);
+
+        if (visitedCursors.has(cursorKey)) {
+          partialError = 'Provider cursor repeated. Export stopped to avoid duplicate requests.';
+          break;
+        }
+
+        visitedCursors.add(cursorKey);
+        pagesLoaded += 1;
+
+        const pageNumber = (Number(options.startPageNumber) || 2) + pagesLoaded - 1;
+        this.exportProgress(options, {
+          pagesLoaded,
+          walletsLoaded: knownAddresses.size,
+          duplicatesRemoved,
+          currentPage: pageNumber,
+          expectedTotal: options.expectedTotal || null,
+          message: `Loading page ${pageNumber}...`
+        });
+
+        let holderResponse;
+
+        try {
+          holderResponse = await this.readHolderBatchWithRetry(normalizedAddress, token, nextPageParams, options);
+        } catch (error) {
+          if (this.isAbort(error)) {
+            throw error;
+          }
+
+          partialError = error.message || 'Provider became unavailable during export.';
+          break;
+        }
+
+        for (const holder of holderResponse.holders || []) {
+          const key = addressKey(holder.address);
+
+          if (!key || knownAddresses.has(key)) {
+            duplicatesRemoved += 1;
+            continue;
+          }
+
+          knownAddresses.add(key);
+          newHolders.push(holder);
+        }
+
+        nextPageParams = holderResponse.nextPageParams || null;
+
+        this.exportProgress(options, {
+          pagesLoaded,
+          walletsLoaded: knownAddresses.size,
+          duplicatesRemoved,
+          currentPage: pageNumber,
+          expectedTotal: options.expectedTotal || null,
+          moreAvailable: Boolean(nextPageParams),
+          message: nextPageParams ? 'Loading holders...' : 'Preparing export...'
+        });
+      }
+
+      if (pagesLoaded >= this.maxExportPages && nextPageParams && !partialError) {
+        partialError = `Provider export page limit reached (${this.maxExportPages}).`;
+      }
+
+      return {
+        holders: newHolders,
+        meta: this.exportMeta({
+          startedAt,
+          pagesLoaded,
+          walletsLoaded: knownAddresses.size,
+          duplicatesRemoved,
+          partialError,
+          nextPageParams
+        })
+      };
+    }
+
     normalizeInput(address) {
       const normalized = String(address || '').trim();
 
@@ -97,6 +205,32 @@
       if (typeof options.onProgress === 'function') {
         options.onProgress({ value, text });
       }
+    }
+
+    exportProgress(options, payload) {
+      if (typeof options.onExportProgress === 'function') {
+        options.onExportProgress({
+          provider: this.label,
+          ...payload
+        });
+      }
+    }
+
+    exportMeta({ startedAt, pagesLoaded, walletsLoaded, duplicatesRemoved, partialError, nextPageParams }) {
+      return {
+        provider: this.label,
+        providerId: this.id,
+        network: this.network,
+        durationMs: Date.now() - startedAt,
+        lastUpdated: new Date().toISOString(),
+        moreAvailable: Boolean(nextPageParams),
+        nextPageParams: nextPageParams || null,
+        pagesLoaded,
+        walletsLoaded,
+        duplicatesRemoved,
+        partialError,
+        completed: !partialError && !nextPageParams
+      };
     }
 
     async requireContractCode(address, options) {
@@ -157,6 +291,12 @@
     }
 
     async readHolderBatch(address, token, pageParams, options) {
+      const key = this.cacheKey(address, pageParams);
+
+      if (this.holderPageCache.has(key)) {
+        return this.cloneHolderResponse(this.holderPageCache.get(key));
+      }
+
       const collected = [];
       let nextPageParams = pageParams || null;
       let rawItemCount = 0;
@@ -174,11 +314,106 @@
         this.progress(options, Math.min(78, 50 + collected.length), `Indexed holders loaded: ${Math.min(collected.length, this.maxHolders)} / ${this.maxHolders}`);
       } while (collected.length < this.maxHolders && nextPageParams);
 
-      return {
+      const result = {
         holders: this.normalizeHolders(collected.slice(0, this.maxHolders), token),
         nextPageParams,
         rawItemCount
       };
+
+      this.holderPageCache.set(key, this.cloneHolderResponse(result));
+      return result;
+    }
+
+    async readHolderBatchWithRetry(address, token, pageParams, options) {
+      let attempt = 0;
+
+      while (true) {
+        try {
+          return await this.readHolderBatch(address, token, pageParams, options);
+        } catch (error) {
+          if (this.isAbort(error) || !this.isRetryable(error) || attempt >= this.retryDelaysMs.length) {
+            throw error;
+          }
+
+          const delay = this.retryDelaysMs[attempt];
+          attempt += 1;
+          this.progress(options, 40, `Provider retry ${attempt} after ${delay}ms...`);
+          await this.sleep(delay, options.signal);
+        }
+      }
+    }
+
+    cacheKey(address, pageParams) {
+      return `${addressKey(address)}:${this.maxHolders}:${this.serializePageParams(pageParams)}`;
+    }
+
+    serializePageParams(pageParams) {
+      if (!pageParams || typeof pageParams !== 'object') {
+        return 'first';
+      }
+
+      return Object.keys(pageParams)
+        .sort()
+        .map((key) => `${key}:${String(pageParams[key])}`)
+        .join('|');
+    }
+
+    cloneHolderResponse(response) {
+      return {
+        holders: (response.holders || []).map((holder) => ({
+          ...holder,
+          labels: [...(holder.labels || [])]
+        })),
+        nextPageParams: response.nextPageParams ? { ...response.nextPageParams } : null,
+        rawItemCount: response.rawItemCount || 0
+      };
+    }
+
+    sleep(ms, signal) {
+      return new Promise((resolve, reject) => {
+        let timeout;
+
+        const cleanup = () => {
+          window.clearTimeout(timeout);
+          if (signal) {
+            signal.removeEventListener('abort', abort);
+          }
+        };
+
+        const done = () => {
+          cleanup();
+          resolve();
+        };
+
+        const abort = () => {
+          cleanup();
+          reject(new DOMException('Operation cancelled.', 'AbortError'));
+        };
+
+        timeout = window.setTimeout(done, ms);
+
+        if (signal) {
+          if (signal.aborted) {
+            abort();
+            return;
+          }
+
+          signal.addEventListener('abort', abort, { once: true });
+        }
+      });
+    }
+
+    isRetryable(error) {
+      const message = String(error?.message || '').toLowerCase();
+
+      return [
+        'timed out',
+        'rate limit',
+        'unavailable',
+        'rejected',
+        'failed',
+        'temporarily'
+      ].some((fragment) => message.includes(fragment));
     }
 
     holdersUrl(address, pageParams, remaining) {

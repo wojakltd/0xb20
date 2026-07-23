@@ -14,7 +14,7 @@ User flow:
 2. Read token metadata.
 3. Load indexed holders in cached pages.
 4. Filter duplicate/burn/null addresses.
-5. Sort, search, export or copy visible wallet addresses for use in other tools.
+5. Sort, search, export all available provider holders or copy the current visible page for use in other tools.
 
 ## Current Provider
 
@@ -79,6 +79,10 @@ Provider contract:
     holders,
     meta
   }>,
+  loadAllHolderPages(address, token, pageParams, knownHolders, options): Promise<{
+    holders,
+    meta
+  }>,
   addressUrl(address): string
 }
 ```
@@ -86,6 +90,8 @@ Provider contract:
 `scanToken()` validates the contract, reads token metadata and returns the first holder batch.
 
 `loadHolderPage()` loads the next holder batch using the provider cursor returned in `meta.nextPageParams`.
+
+`loadAllHolderPages()` is used by global exports. It walks every available provider cursor, reuses cached pages, retries transient failures, removes duplicates and returns any additional holders that were not already loaded.
 
 ## How To Add A Future Provider
 
@@ -174,7 +180,20 @@ This output is intentionally compatible with Token Sender.
 
 ## Export Format
 
-TXT export downloads currently visible holder addresses only.
+TXT and CSV exports are global provider exports.
+
+When the user starts an export, Wallet Parser:
+
+1. Reuses all holder pages already cached in the browser.
+2. Automatically requests every remaining page currently available from the provider.
+3. Merges all loaded holders.
+4. Removes duplicate addresses.
+5. Applies the active filters, search and sorting.
+6. Generates the file from the final visible result.
+
+This exports all available holders from the current provider. It does not promise mathematical completeness if the provider limits depth, becomes unavailable, rate-limits the browser or has stale index data.
+
+TXT export downloads one filtered wallet address per line.
 
 CSV export downloads:
 
@@ -184,7 +203,9 @@ CSV export downloads:
 - Supply percentage
 - Labels
 
-Both exports use the current visible result after pagination, filters, search and sorting.
+Both exports include only holders matching the current filters and search. Manual page browsing is separate from export scope.
+
+During export the UI reports pages loaded, wallets loaded, wallets exported, duplicates removed, filtered out, elapsed time and provider. If the provider stops early, the tool exports the available data and displays a partial-export message.
 
 ## Advanced Filters
 
@@ -233,10 +254,11 @@ The page is protected with the existing `B20AccessGate` mechanism.
 ## Known V1 Limitations
 
 - Holder availability depends on the current provider index.
-- Very large tokens may require multiple user-triggered page loads.
+- Very large tokens may require long exports because the browser must request multiple provider pages.
 - Results depend on Blockscout index freshness.
 - Browser-only scanning depends on public endpoint availability and CORS.
 - Estimated holder count is only available when the provider exposes it.
+- Global export is limited by provider availability, rate limits and the configured safety page cap.
 
 ## Future Expansion
 

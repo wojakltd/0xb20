@@ -27,6 +27,7 @@
     next: '[data-parser-next]',
     exportTxt: '[data-parser-export-txt]',
     exportCsv: '[data-parser-export-csv]',
+    exportReport: '[data-parser-export-report]',
     filterPanel: '[data-parser-filter-panel]',
     filterToggle: '[data-parser-filter-toggle]',
     applyFilters: '[data-parser-apply-filters]',
@@ -57,7 +58,8 @@
     moreAvailable: false,
     nextPageParams: null,
     meta: null,
-    loadingMore: false
+    loadingMore: false,
+    exporting: false
   };
 
   function query(selector) {
@@ -66,6 +68,10 @@
 
   function stat(name) {
     return document.querySelector(`[data-parser-stat="${name}"]`);
+  }
+
+  function exportStat(name) {
+    return document.querySelector(`[data-parser-export-stat="${name}"]`);
   }
 
   function setText(target, value) {
@@ -100,6 +106,25 @@
     }
 
     renderPaginationControls();
+  }
+
+  function setExportReport(hidden) {
+    const report = query(selectors.exportReport);
+
+    if (report) {
+      report.hidden = hidden;
+    }
+  }
+
+  function updateExportReport(stats = {}) {
+    setExportReport(false);
+    setText(exportStat('pages'), String(stats.pagesLoaded ?? 0));
+    setText(exportStat('wallets'), String(stats.walletsLoaded ?? state.holders.length));
+    setText(exportStat('exported'), String(stats.walletsExported ?? 0));
+    setText(exportStat('duplicates'), String(stats.duplicatesRemoved ?? 0));
+    setText(exportStat('filteredOut'), String(stats.filteredOut ?? 0));
+    setText(exportStat('elapsed'), stats.elapsed || '--');
+    setText(exportStat('provider'), stats.provider || provider.label);
   }
 
   function setProgress(value, text) {
@@ -223,15 +248,17 @@
     const exportCsvButton = query(selectors.exportCsv);
 
     if (copyButton) {
-      copyButton.disabled = visible === 0;
+      copyButton.disabled = visible === 0 || state.exporting || scanner.isActive();
     }
 
     if (exportTxtButton) {
-      exportTxtButton.disabled = visible === 0;
+      exportTxtButton.disabled = visible === 0 || state.exporting || scanner.isActive();
+      exportTxtButton.textContent = state.exporting ? 'Exporting...' : 'Download TXT';
     }
 
     if (exportCsvButton) {
-      exportCsvButton.disabled = visible === 0;
+      exportCsvButton.disabled = visible === 0 || state.exporting || scanner.isActive();
+      exportCsvButton.textContent = state.exporting ? 'Exporting...' : 'Download CSV';
     }
 
     renderPaginationControls();
@@ -253,11 +280,11 @@
     setText(paginationMessage, `${loadedLabel()}. ${currentPageLabel()}. ${visibleRangeLabel()}.`);
 
     if (previousButton) {
-      previousButton.disabled = state.loadingMore || state.currentPageIndex <= 0;
+      previousButton.disabled = state.loadingMore || state.exporting || state.currentPageIndex <= 0;
     }
 
     if (nextButton) {
-      nextButton.disabled = state.loadingMore || !canLoadNext;
+      nextButton.disabled = state.loadingMore || state.exporting || !canLoadNext;
       nextButton.textContent = state.loadingMore ? 'Loading next page...' : 'Load Next 100';
     }
   }
@@ -395,15 +422,19 @@
     });
   }
 
-  function applyView(options = {}) {
-    const preservePage = Boolean(options.preservePage);
-    let filteredHolders = filters.applyFilters(state.holders, state.activeFilters);
+  function filteredSortedHolders(holders) {
+    let filteredHolders = filters.applyFilters(holders, state.activeFilters);
 
     if (state.searchTerm) {
       filteredHolders = filteredHolders.filter((holder) => holder.address.toLowerCase().includes(state.searchTerm));
     }
 
-    state.filteredHolders = sortHolders(filteredHolders);
+    return sortHolders(filteredHolders);
+  }
+
+  function applyView(options = {}) {
+    const preservePage = Boolean(options.preservePage);
+    state.filteredHolders = filteredSortedHolders(state.holders);
 
     if (!preservePage) {
       state.currentPageIndex = 0;
@@ -434,6 +465,8 @@
     state.nextPageParams = null;
     state.meta = null;
     state.loadingMore = false;
+    state.exporting = false;
+    setExportReport(true);
 
     const searchInput = query(selectors.search);
     if (searchInput) {
@@ -449,7 +482,7 @@
 
   function errorMessage(error, fallback) {
     if (error && error.name === 'AbortError') {
-      return 'Scan cancelled.';
+      return 'Operation cancelled.';
     }
 
     return error instanceof Error && error.message ? error.message : fallback;
@@ -529,7 +562,7 @@
   }
 
   async function loadNextPage() {
-    if (!state.token || scanner.isActive() || state.loadingMore) {
+    if (!state.token || scanner.isActive() || state.loadingMore || state.exporting) {
       return;
     }
 
@@ -616,24 +649,152 @@
     }
   }
 
-  function exportTxt() {
+  function exportProgressLabel(walletsLoaded, expectedTotal) {
+    const loaded = Number(walletsLoaded || 0).toLocaleString('en-US');
+
+    if (expectedTotal) {
+      return `${loaded} / ${Number(expectedTotal).toLocaleString('en-US')}`;
+    }
+
+    return loaded;
+  }
+
+  function exportElapsed(startedAt) {
+    return utils.formatDuration(Date.now() - startedAt);
+  }
+
+  async function prepareGlobalExport(type) {
+    if (!state.token || scanner.isActive() || state.exporting) {
+      return null;
+    }
+
+    const startedAt = Date.now();
+    const typeLabel = type.toUpperCase();
+    let pagesLoaded = 0;
+    let duplicatesRemoved = 0;
+    let partialError = '';
+
+    state.exporting = true;
+    setBusy(true);
+    setParserState('EXPORTING');
+    setMessage(`Loading all available provider holders before ${typeLabel} export...`);
+    setProgress(6, 'Loading holders...');
+    updateExportReport({
+      pagesLoaded,
+      walletsLoaded: state.holders.length,
+      walletsExported: 0,
+      duplicatesRemoved,
+      filteredOut: 0,
+      elapsed: exportElapsed(startedAt),
+      provider: provider.label
+    });
+
     try {
-      setMessage('Exporting visible TXT...');
-      exporter.exportTxt(state.token, state.visibleHolders);
-      setMessage(`TXT export generated for ${state.visibleHolders.length} visible holders.`);
+      if (state.moreAvailable) {
+        const result = await scanner.loadAllPages(state.token.address, state.token, state.nextPageParams, state.holders, {
+          expectedTotal: estimatedHolderCount(),
+          startPageNumber: Math.floor(state.holders.length / pageSize) + 1,
+          onProgress: ({ value, text }) => setProgress(value, text),
+          onExportProgress: (progress) => {
+            pagesLoaded = progress.pagesLoaded || pagesLoaded;
+            duplicatesRemoved = progress.duplicatesRemoved || duplicatesRemoved;
+            setProgress(Math.min(90, 8 + pagesLoaded), progress.message || 'Loading holders...');
+            setMessage(`${progress.message || 'Loading holders...'} ${exportProgressLabel(progress.walletsLoaded, progress.expectedTotal)}`);
+            updateExportReport({
+              pagesLoaded,
+              walletsLoaded: progress.walletsLoaded || state.holders.length,
+              walletsExported: 0,
+              duplicatesRemoved,
+              filteredOut: 0,
+              elapsed: exportElapsed(startedAt),
+              provider: progress.provider || provider.label
+            });
+          }
+        });
+
+        state.meta = result.meta;
+        state.moreAvailable = Boolean(result.meta.moreAvailable);
+        state.nextPageParams = result.meta.nextPageParams || null;
+        partialError = result.meta.partialError || '';
+        pagesLoaded = result.meta.pagesLoaded || pagesLoaded;
+        duplicatesRemoved = result.meta.duplicatesRemoved || duplicatesRemoved;
+        mergeHolders(result.holders);
+      }
+
+      applyView({ preservePage: true });
+
+      const exportHolders = filteredSortedHolders(state.holders);
+      const filteredOut = Math.max(0, state.holders.length - exportHolders.length);
+
+      updateExportReport({
+        pagesLoaded,
+        walletsLoaded: state.holders.length,
+        walletsExported: exportHolders.length,
+        duplicatesRemoved,
+        filteredOut,
+        elapsed: exportElapsed(startedAt),
+        provider: provider.label
+      });
+
+      setProgress(96, `Preparing ${typeLabel}...`);
+
+      return {
+        holders: exportHolders,
+        partialError,
+        startedAt
+      };
     } catch (error) {
-      setMessage(errorMessage(error, 'TXT export unavailable.'));
+      setParserState(error && error.name === 'AbortError' ? 'CANCELLED' : 'ERROR');
+      setMessage(errorMessage(error, `${typeLabel} export unavailable.`));
+      return null;
     }
   }
 
-  function exportCsv() {
-    try {
-      setMessage('Exporting visible CSV...');
-      exporter.exportCsv(state.token, state.visibleHolders);
-      setMessage(`CSV export generated for ${state.visibleHolders.length} visible holders.`);
-    } catch (error) {
-      setMessage(errorMessage(error, 'CSV export unavailable.'));
+  async function finishGlobalExport(type, action) {
+    const typeLabel = type.toUpperCase();
+    const prepared = await prepareGlobalExport(type);
+
+    if (!prepared) {
+      state.exporting = false;
+      setBusy(false);
+      hideProgress();
+      renderStats();
+      return;
     }
+
+    try {
+      action(prepared.holders);
+      setProgress(100, `${typeLabel} export ready.`);
+      setParserState(prepared.partialError ? 'PARTIAL' : 'READY');
+      setMessage(prepared.partialError
+        ? `${typeLabel} export generated from available provider data. Provider stopped early: ${prepared.partialError}`
+        : `${typeLabel} export generated for ${prepared.holders.length.toLocaleString('en-US')} available holders.`);
+    } catch (error) {
+      setParserState('ERROR');
+      setMessage(errorMessage(error, `${typeLabel} export unavailable.`));
+    } finally {
+      state.exporting = false;
+      setBusy(false);
+      hideProgress();
+      updateExportReport({
+        pagesLoaded: state.meta?.pagesLoaded || 0,
+        walletsLoaded: state.holders.length,
+        walletsExported: prepared.holders.length,
+        duplicatesRemoved: state.meta?.duplicatesRemoved || 0,
+        filteredOut: Math.max(0, state.holders.length - prepared.holders.length),
+        elapsed: exportElapsed(prepared.startedAt),
+        provider: provider.label
+      });
+      renderStats();
+    }
+  }
+
+  function exportTxt() {
+    finishGlobalExport('txt', (holders) => exporter.exportTxt(state.token, holders));
+  }
+
+  function exportCsv() {
+    finishGlobalExport('csv', (holders) => exporter.exportCsv(state.token, holders));
   }
 
   function toggleFilterPanel() {

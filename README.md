@@ -96,7 +96,7 @@ Protected ERC-20 batch sender interface. It uses:
 
 ### Wallet Parser
 
-Protected read-only holder extraction instrument for Base ERC-20 tokens. It uses a provider abstraction, Blockscout API in V1, cached pagination, safe labels, filters, search, visible-only copy, TXT export and CSV export.
+Protected read-only holder extraction instrument for Base ERC-20 tokens. It uses a provider abstraction, Blockscout API in V1, cached pagination, safe labels, filters, search, visible-page copy, and global TXT/CSV export for all holders available from the current provider.
 
 ### Evolution
 

@@ -198,13 +198,13 @@
             <div class="parser-extension-card">
               <span>Export TXT</span>
               <strong>Addresses Only</strong>
-              <p>Download visible holders as one address per line.</p>
+              <p>Load all available provider holders, then export filtered addresses one per line.</p>
               <button class="test-secondary" type="button" data-parser-export-txt disabled>Download TXT</button>
             </div>
             <div class="parser-extension-card">
               <span>Export CSV</span>
               <strong>Spreadsheet Ready</strong>
-              <p>Download visible holders with rank, balance, supply and labels.</p>
+              <p>Load all available provider holders, then export filtered ranks, balances and labels.</p>
               <button class="test-secondary" type="button" data-parser-export-csv disabled>Download CSV</button>
             </div>
             <div class="parser-extension-card">
@@ -212,6 +212,36 @@
               <strong>Active Controls</strong>
               <p>Filter loaded holders without modifying the original dataset.</p>
               <button class="test-secondary" type="button" data-parser-filter-toggle aria-expanded="false">Open Filters</button>
+            </div>
+          </div>
+          <div class="parser-export-report" data-parser-export-report hidden>
+            <div>
+              <span>Pages Loaded</span>
+              <strong data-parser-export-stat="pages">0</strong>
+            </div>
+            <div>
+              <span>Wallets Loaded</span>
+              <strong data-parser-export-stat="wallets">0</strong>
+            </div>
+            <div>
+              <span>Wallets Exported</span>
+              <strong data-parser-export-stat="exported">0</strong>
+            </div>
+            <div>
+              <span>Duplicates Removed</span>
+              <strong data-parser-export-stat="duplicates">0</strong>
+            </div>
+            <div>
+              <span>Filtered Out</span>
+              <strong data-parser-export-stat="filteredOut">0</strong>
+            </div>
+            <div>
+              <span>Elapsed Time</span>
+              <strong data-parser-export-stat="elapsed">--</strong>
+            </div>
+            <div>
+              <span>Provider</span>
+              <strong data-parser-export-stat="provider">Blockscout API</strong>
             </div>
           </div>
           <div class="parser-filter-panel" data-parser-filter-panel hidden>

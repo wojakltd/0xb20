@@ -257,6 +257,40 @@
     gap:8px;
 }
 
+.parser-export-report{
+    border:1px solid rgba(103,179,255,.16);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.44);
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin-top:18px;
+    padding:14px;
+}
+
+.parser-export-report div{
+    border:1px solid rgba(103,179,255,.12);
+    border-radius:12px;
+    background:rgba(9,20,42,.42);
+    display:grid;
+    gap:8px;
+    min-height:68px;
+    padding:12px;
+}
+
+.parser-export-report span{
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+.parser-export-report strong{
+    color:var(--text);
+    font-family:Consolas,monospace;
+    overflow-wrap:anywhere;
+}
+
 .parser-filter-panel{
     border:1px solid rgba(103,179,255,.16);
     border-radius:var(--radius);
@@ -322,6 +356,7 @@
     .parser-token-readout,
     .parser-stats,
     .parser-extension-grid,
+    .parser-export-report,
     .parser-filter-grid{
         grid-template-columns:1fr 1fr;
     }
@@ -341,6 +376,7 @@
     .parser-token-readout,
     .parser-stats,
     .parser-extension-grid,
+    .parser-export-report,
     .parser-filter-grid{
         grid-template-columns:1fr;
     }

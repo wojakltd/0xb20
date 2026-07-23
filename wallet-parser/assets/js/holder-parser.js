@@ -57,6 +57,29 @@
         this.abortController = null;
       }
     }
+
+    async loadAllPages(address, token, pageParams, knownHolders, options = {}) {
+      if (this.active) {
+        throw new Error('Scan already running.');
+      }
+
+      if (!this.provider || typeof this.provider.loadAllHolderPages !== 'function') {
+        throw new Error('Provider global export is not available.');
+      }
+
+      this.active = true;
+      this.abortController = new AbortController();
+
+      try {
+        return await this.provider.loadAllHolderPages(address, token, pageParams, knownHolders, {
+          ...options,
+          signal: this.abortController.signal
+        });
+      } finally {
+        this.active = false;
+        this.abortController = null;
+      }
+    }
   }
 
   window.B20HolderParser = {
