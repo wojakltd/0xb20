@@ -52,6 +52,13 @@
   async function approveExactPayment(config, account, onProgress) {
     assertConfigured(config);
 
+    if (utils.isNativePayment(config)) {
+      if (typeof onProgress === 'function') {
+        onProgress('Native ETH payment requires no token approval.');
+      }
+      return null;
+    }
+
     const service = wallet();
     const priceRaw = BigInt(config.priceRaw || 0);
     const allowanceRaw = BigInt(await service.readTokenAllowance(
@@ -65,7 +72,7 @@
     }
 
     if (typeof onProgress === 'function') {
-      onProgress('Requesting exact USDC approval...');
+      onProgress(`Requesting exact ${config.paymentToken.symbol || 'ERC-20'} approval...`);
     }
 
     const hash = await service.requestTokenApproval(
@@ -76,7 +83,7 @@
     const receipt = await service.waitForTransactionReceipt(hash, { timeoutMs: 240000 });
 
     if (receipt && receipt.status === '0x0') {
-      throw new Error('USDC approval failed.');
+      throw new Error(`${config.paymentToken.symbol || 'ERC-20'} approval failed.`);
     }
 
     return hash;
@@ -93,7 +100,7 @@
     const hash = await service.sendTransaction({
       to: config.contractAddress,
       data: utils.selectors.purchase,
-      value: '0x0'
+      value: utils.isNativePayment(config) ? utils.toHexValue(config.priceRaw) : '0x0'
     });
     const receipt = await service.waitForTransactionReceipt(hash, { timeoutMs: 240000 });
 

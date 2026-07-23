@@ -90,7 +90,8 @@ It is designed as one reusable licensing contract for every Laboratory tool:
 
 ## Responsibilities
 
-- accept ERC-20 payments;
+- accept native ETH payments in V1;
+- support ERC-20 payments later by switching `paymentToken`;
 - issue one license per wallet;
 - extend active licenses instead of resetting them;
 - expose `isLicenseActive(address)`;
@@ -104,11 +105,11 @@ The owner cannot arbitrarily grant or revoke licenses.
 
 ```text
 initialOwner:        owner wallet
-initialPaymentToken: 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
-initialPrice:        5000000
+initialPaymentToken: 0x0000000000000000000000000000000000000000
+initialPrice:        5263157894736842
 initialDuration:     2592000
 ```
 
-This means 5 USDC for 30 days on Base.
+This means roughly 0.005263 ETH for 30 days on Base, equal to about 10 USD when ETH is 1900 USD.
 
 After deployment, put the verified contract address into `data/web3-tools.json` under `premium.contractAddress`.

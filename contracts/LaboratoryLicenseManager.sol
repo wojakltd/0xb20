@@ -4,25 +4,31 @@ pragma solidity ^0.8.24;
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /// @title 0XB20 Laboratory License Manager
-/// @notice Issues one renewable Lab Pass per wallet after exact ERC-20 payment.
-/// @dev Licenses are never trusted from browser storage; every tool checks this contract.
-contract LaboratoryLicenseManager is Ownable, Pausable, ReentrancyGuard {
+/// @notice Issues one renewable Lab Pass per wallet through one shared on-chain license system.
+/// @dev `paymentToken == address(0)` means native ETH. Any ERC-20 address enables token payments.
+contract LaboratoryLicenseManager is Ownable2Step, Pausable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    error InvalidPaymentToken();
     error InvalidPrice();
     error InvalidDuration();
+    error InvalidPaymentValue(uint256 expected, uint256 received);
+    error UnexpectedNativeCurrency();
     error ZeroAddress();
-    error NativeCurrencyRejected();
+    error NothingToWithdraw();
+    error WithdrawFailed();
 
-    /// @notice Accepted payment token, expected to be USDC on Base for V1.
-    IERC20 public acceptedPaymentToken;
+    /// @notice Native ETH payment sentinel.
+    address public constant NATIVE_PAYMENT = address(0);
 
-    /// @notice Current license price in the accepted token's smallest unit.
+    /// @notice Payment token. `address(0)` means native ETH.
+    address public paymentToken;
+
+    /// @notice Current license price in wei for native ETH, or token smallest units for ERC-20 payments.
     uint256 public price;
 
     /// @notice License duration applied to every purchase or renewal.
@@ -48,56 +54,65 @@ contract LaboratoryLicenseManager is Ownable, Pausable, ReentrancyGuard {
     event PriceUpdated(uint256 previousPrice, uint256 newPrice);
     event PaymentTokenUpdated(address indexed previousToken, address indexed newToken);
     event LicenseDurationUpdated(uint64 previousDuration, uint64 newDuration);
-    event FundsWithdrawn(address indexed recipient, address indexed token, uint256 amount);
+    event NativeFundsWithdrawn(address indexed recipient, uint256 amount);
+    event TokenFundsWithdrawn(address indexed recipient, address indexed token, uint256 amount);
 
     /// @param initialOwner Wallet controlling price/token/pause/withdraw operations.
-    /// @param initialPaymentToken ERC-20 token accepted for Lab Pass payments.
-    /// @param initialPrice Price in the accepted token's smallest unit.
+    /// @param initialPaymentToken Payment token. Use `address(0)` for native ETH.
+    /// @param initialPrice Price in wei for native ETH, or token smallest units for ERC-20 payments.
     /// @param initialDuration License duration in seconds.
     constructor(
         address initialOwner,
-        IERC20 initialPaymentToken,
+        address initialPaymentToken,
         uint256 initialPrice,
         uint64 initialDuration
     ) Ownable(initialOwner) {
-        if (address(initialPaymentToken) == address(0)) revert InvalidPaymentToken();
         if (initialPrice == 0) revert InvalidPrice();
         if (initialDuration == 0) revert InvalidDuration();
 
-        acceptedPaymentToken = initialPaymentToken;
+        paymentToken = initialPaymentToken;
         price = initialPrice;
         licenseDuration = initialDuration;
     }
 
     receive() external payable {
-        revert NativeCurrencyRejected();
+        revert UnexpectedNativeCurrency();
     }
 
     fallback() external payable {
-        revert NativeCurrencyRejected();
+        revert UnexpectedNativeCurrency();
     }
 
     /// @notice Purchases a new Lab Pass or extends an active one.
-    /// @dev Active licenses extend from their current expiry, expired licenses start now.
-    function purchase() external nonReentrant whenNotPaused returns (uint256 newExpiration) {
+    /// @dev Active licenses extend from current expiry; expired licenses start from current block time.
+    function purchase() external payable nonReentrant whenNotPaused returns (uint256 newExpiration) {
+        address activePaymentToken = paymentToken;
+        uint256 activePrice = price;
+
+        if (activePaymentToken == NATIVE_PAYMENT) {
+            if (msg.value != activePrice) {
+                revert InvalidPaymentValue(activePrice, msg.value);
+            }
+        } else {
+            if (msg.value != 0) revert UnexpectedNativeCurrency();
+            IERC20(activePaymentToken).safeTransferFrom(msg.sender, address(this), activePrice);
+        }
+
         uint256 previousExpiration = expiresAt[msg.sender];
         uint256 start = previousExpiration > block.timestamp ? previousExpiration : block.timestamp;
-
         newExpiration = start + licenseDuration;
         expiresAt[msg.sender] = newExpiration;
-
-        acceptedPaymentToken.safeTransferFrom(msg.sender, address(this), price);
 
         if (previousExpiration >= block.timestamp) {
             emit LicenseExtended(
                 msg.sender,
-                address(acceptedPaymentToken),
-                price,
+                activePaymentToken,
+                activePrice,
                 previousExpiration,
                 newExpiration
             );
         } else {
-            emit LicensePurchased(msg.sender, address(acceptedPaymentToken), price, newExpiration);
+            emit LicensePurchased(msg.sender, activePaymentToken, activePrice, newExpiration);
         }
     }
 
@@ -120,13 +135,12 @@ contract LaboratoryLicenseManager is Ownable, Pausable, ReentrancyGuard {
         emit PriceUpdated(previousPrice, newPrice);
     }
 
-    /// @notice Updates the accepted ERC-20 token for future purchases only.
-    function updatePaymentToken(IERC20 newPaymentToken) external onlyOwner {
-        if (address(newPaymentToken) == address(0)) revert InvalidPaymentToken();
-
-        address previousToken = address(acceptedPaymentToken);
-        acceptedPaymentToken = newPaymentToken;
-        emit PaymentTokenUpdated(previousToken, address(newPaymentToken));
+    /// @notice Updates the payment asset for future purchases only.
+    /// @dev Use `address(0)` for native ETH.
+    function updatePaymentToken(address newPaymentToken) external onlyOwner {
+        address previousToken = paymentToken;
+        paymentToken = newPaymentToken;
+        emit PaymentTokenUpdated(previousToken, newPaymentToken);
     }
 
     /// @notice Updates the license duration for future purchases and renewals.
@@ -148,17 +162,35 @@ contract LaboratoryLicenseManager is Ownable, Pausable, ReentrancyGuard {
         _unpause();
     }
 
-    /// @notice Withdraws collected payment tokens to a recipient.
+    /// @notice Withdraws collected native ETH payments.
     /// @param recipient Wallet receiving collected funds.
-    /// @param amount Amount to withdraw. Use 0 to withdraw the full balance.
-    function withdraw(address recipient, uint256 amount) external onlyOwner nonReentrant {
+    /// @param amount Amount to withdraw. Use 0 to withdraw the full native balance.
+    function withdrawNative(address payable recipient, uint256 amount) external onlyOwner nonReentrant {
         if (recipient == address(0)) revert ZeroAddress();
 
-        uint256 balance = acceptedPaymentToken.balanceOf(address(this));
+        uint256 balance = address(this).balance;
         uint256 withdrawAmount = amount == 0 ? balance : amount;
-        if (withdrawAmount == 0) revert InvalidPrice();
+        if (withdrawAmount == 0) revert NothingToWithdraw();
 
-        acceptedPaymentToken.safeTransfer(recipient, withdrawAmount);
-        emit FundsWithdrawn(recipient, address(acceptedPaymentToken), withdrawAmount);
+        (bool success, ) = recipient.call{value: withdrawAmount}("");
+        if (!success) revert WithdrawFailed();
+
+        emit NativeFundsWithdrawn(recipient, withdrawAmount);
+    }
+
+    /// @notice Withdraws ERC-20 payments or tokens accidentally sent to the contract.
+    /// @param token ERC-20 token address.
+    /// @param recipient Wallet receiving collected funds.
+    /// @param amount Amount to withdraw. Use 0 to withdraw the full token balance.
+    function withdrawToken(IERC20 token, address recipient, uint256 amount) external onlyOwner nonReentrant {
+        if (address(token) == address(0)) revert ZeroAddress();
+        if (recipient == address(0)) revert ZeroAddress();
+
+        uint256 balance = token.balanceOf(address(this));
+        uint256 withdrawAmount = amount == 0 ? balance : amount;
+        if (withdrawAmount == 0) revert NothingToWithdraw();
+
+        token.safeTransfer(recipient, withdrawAmount);
+        emit TokenFundsWithdrawn(recipient, address(token), withdrawAmount);
     }
 }

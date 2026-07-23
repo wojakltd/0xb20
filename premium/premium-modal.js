@@ -78,7 +78,7 @@
     const walletState = options.walletState || {};
     const token = config.paymentToken || {};
 
-    instance.fields.price.value.textContent = utils.formatPrice(config.priceRaw, token.decimals, token.symbol);
+    instance.fields.price.value.textContent = config.price || utils.formatPrice(config.priceRaw, token.decimals, token.symbol);
     instance.fields.duration.value.textContent = `${config.durationDays || 30} days`;
     instance.fields.wallet.value.textContent = walletState.address ? utils.shortAddress(walletState.address) : 'Connect required';
     instance.fields.network.value.textContent = config.network || 'BASE';

@@ -25,6 +25,10 @@
     return BigInt(value).toString(16).padStart(64, '0');
   }
 
+  function toHexValue(value) {
+    return `0x${BigInt(value || 0).toString(16)}`;
+  }
+
   function decodeUint256(hex) {
     if (!hex || hex === '0x') {
       return 0n;
@@ -64,13 +68,26 @@
     return `${whole.toString()}${fractionText} ${symbol || ''}`.trim();
   }
 
+  function isNativePayment(config) {
+    return Boolean(
+      config &&
+      (
+        config.paymentMode === 'native' ||
+        !config.paymentToken ||
+        String(config.paymentToken.address || '').toLowerCase() === '0x0000000000000000000000000000000000000000'
+      )
+    );
+  }
+
   function isConfigured(config) {
     return Boolean(
       config &&
       config.enabled &&
       isAddress(config.contractAddress) &&
-      config.paymentToken &&
-      isAddress(config.paymentToken.address)
+      (
+        isNativePayment(config) ||
+        (config.paymentToken && isAddress(config.paymentToken.address))
+      )
     );
   }
 
@@ -104,11 +121,13 @@
     normalizeAddress,
     padAddress,
     padUint256,
+    toHexValue,
     decodeUint256,
     decodeBool,
     shortAddress,
     formatDate,
     formatPrice,
+    isNativePayment,
     isConfigured,
     featureEnabled,
     errorMessage

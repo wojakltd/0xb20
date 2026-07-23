@@ -103,7 +103,7 @@ Advanced Wallet Parser tools integrate with Premium Core through feature checks 
 
 ### Premium Core
 
-Shared Lab Pass layer for Laboratory tools. The frontend checks `LaboratoryLicenseManager` on-chain, requests exact USDC approval when needed, and never stores license access locally.
+Shared Lab Pass layer for Laboratory tools. The frontend checks `LaboratoryLicenseManager` on-chain, sends exact native ETH payment for V1, and never stores license access locally.
 
 ### Evolution
 

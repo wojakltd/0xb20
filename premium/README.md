@@ -30,7 +30,7 @@ On-chain license status
 
 - `premium-core.js` loads config, checks license status, and exposes the public API.
 - `premium-wallet.js` connects wallets and switches to Base through the shared wallet layer.
-- `premium-contract.js` encodes contract calls, exact USDC approvals, and purchases.
+- `premium-contract.js` encodes contract calls, native ETH purchases, and optional exact ERC-20 approvals for future payment modes.
 - `premium-modal.js` renders the reusable Unlock Laboratory modal.
 - `premium-license.js` normalizes license state.
 - `premium-utils.js` contains ABI encoding, formatting, and validation helpers.
@@ -43,8 +43,8 @@ The on-chain contract is `contracts/LaboratoryLicenseManager.sol`.
 V1 deployment settings for Base:
 
 - `initialOwner`: project owner wallet.
-- `initialPaymentToken`: Base USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`.
-- `initialPrice`: `5000000` for 5 USDC.
+- `initialPaymentToken`: `0x0000000000000000000000000000000000000000` for native ETH.
+- `initialPrice`: `5263157894736842` for approximately 10 USD when ETH is 1900 USD.
 - `initialDuration`: `2592000` for 30 days.
 
 The owner can update price, payment token, duration, pause purchases, resume purchases, and withdraw collected funds.
@@ -78,7 +78,8 @@ The parser contains no payment logic. It only calls Premium Core.
 
 - Licenses are verified on-chain.
 - Browser storage is never trusted for license state.
-- Payment uses exact USDC approval for the configured price.
+- V1 payment uses exact native ETH value for the configured price.
+- ERC-20 payment mode is still supported by the contract/frontend for future migration.
 - No private keys, seed phrases, API keys, backend database, or centralized license server are used.
 - Every transaction requires explicit wallet confirmation.
 

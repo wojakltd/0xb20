@@ -19,13 +19,15 @@
     "network": "BASE",
     "contractAddress": "",
     "contractName": "Laboratory License Manager",
+    "paymentMode": "native",
     "paymentToken": {
-      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-      "symbol": "USDC",
-      "decimals": 6
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "decimals": 18
     },
-    "priceRaw": "5000000",
-    "price": "5",
+    "priceRaw": "5263157894736842",
+    "price": "0.005263 ETH",
+    "priceNote": "Approximately 10 USD when ETH is 1900 USD.",
     "durationDays": 30,
     "features": {
       "walletParserGlobalExport": true,
