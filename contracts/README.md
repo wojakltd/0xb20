@@ -101,15 +101,19 @@ It is designed as one reusable licensing contract for every Laboratory tool:
 
 The owner cannot arbitrarily grant or revoke licenses.
 
-## Base V1 Constructor Arguments
+## Base V1 Deployment
 
-```text
-initialOwner:        owner wallet
-initialPaymentToken: 0x0000000000000000000000000000000000000000
-initialPrice:        5263157894736842
-initialDuration:     2592000
-```
+Current deployed contract:
+
+`0xe4a16552EF03C7933031e87161c8C572E50318D5`
+
+Current source uses no constructor arguments. The initial deployment settings are embedded for easier Remix deployment:
+
+- owner: `0xb9F5fB4E152ae5c261DfCdDb1D1124ACA37EF920`
+- payment token: `0x0000000000000000000000000000000000000000`
+- initial price: `5263157894736842`
+- initial duration: `2592000`
 
 This means roughly 0.005263 ETH for 30 days on Base, equal to about 10 USD when ETH is 1900 USD.
 
-After deployment, put the verified contract address into `data/web3-tools.json` under `premium.contractAddress`.
+The verified contract address is configured in `data/web3-tools.json` under `premium.contractAddress`.

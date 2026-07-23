@@ -17,7 +17,7 @@
     "enabled": true,
     "chainId": "0x2105",
     "network": "BASE",
-    "contractAddress": "",
+    "contractAddress": "0xe4a16552EF03C7933031e87161c8C572E50318D5",
     "contractName": "Laboratory License Manager",
     "paymentMode": "native",
     "paymentToken": {

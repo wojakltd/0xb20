@@ -40,12 +40,13 @@ On-chain license status
 
 The on-chain contract is `contracts/LaboratoryLicenseManager.sol`.
 
-V1 deployment settings for Base:
+Current Base deployment:
 
-- `initialOwner`: project owner wallet.
-- `initialPaymentToken`: `0x0000000000000000000000000000000000000000` for native ETH.
-- `initialPrice`: `5263157894736842` for approximately 10 USD when ETH is 1900 USD.
-- `initialDuration`: `2592000` for 30 days.
+- `contractAddress`: `0xe4a16552EF03C7933031e87161c8C572E50318D5`
+- `owner`: `0xb9F5fB4E152ae5c261DfCdDb1D1124ACA37EF920`
+- `paymentToken`: `0x0000000000000000000000000000000000000000` for native ETH.
+- `price`: `5263157894736842` wei, approximately 10 USD when ETH is 1900 USD.
+- `duration`: `2592000` seconds, 30 days.
 
 The owner can update price, payment token, duration, pause purchases, resume purchases, and withdraw collected funds.
 The owner cannot arbitrarily grant or revoke licenses.
@@ -57,7 +58,7 @@ Set the deployed contract address in `data/web3-tools.json`:
 ```json
 {
   "premium": {
-    "contractAddress": "0xDEPLOYED_LAB_PASS_CONTRACT"
+    "contractAddress": "0xe4a16552EF03C7933031e87161c8C572E50318D5"
   }
 }
 ```

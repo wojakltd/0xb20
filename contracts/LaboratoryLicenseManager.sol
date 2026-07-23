@@ -10,7 +10,7 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 
 /// @title 0XB20 Laboratory License Manager
 /// @notice Issues one renewable Lab Pass per wallet through one shared on-chain license system.
-/// @dev `paymentToken == address(0)` means native ETH. Any ERC-20 address enables token payments.
+/// @dev Base V1 deployment uses native ETH payments. `paymentToken == address(0)` means native ETH.
 contract LaboratoryLicenseManager is Ownable2Step, Pausable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
@@ -22,8 +22,18 @@ contract LaboratoryLicenseManager is Ownable2Step, Pausable, ReentrancyGuard {
     error NothingToWithdraw();
     error WithdrawFailed();
 
+    /// @notice Wallet controlling price/token/pause/withdraw operations for the deployed Laboratory.
+    address public constant LAB_OWNER =
+        address(0xb9F5fB4E152ae5c261DfCdDb1D1124ACA37EF920);
+
     /// @notice Native ETH payment sentinel.
     address public constant NATIVE_PAYMENT = address(0);
+
+    /// @notice Initial V1 price: about 10 USD when ETH is 1900 USD.
+    uint256 public constant INITIAL_PRICE = 5_263_157_894_736_842;
+
+    /// @notice Initial V1 Lab Pass duration.
+    uint64 public constant INITIAL_DURATION = 30 days;
 
     /// @notice Payment token. `address(0)` means native ETH.
     address public paymentToken;
@@ -57,22 +67,12 @@ contract LaboratoryLicenseManager is Ownable2Step, Pausable, ReentrancyGuard {
     event NativeFundsWithdrawn(address indexed recipient, uint256 amount);
     event TokenFundsWithdrawn(address indexed recipient, address indexed token, uint256 amount);
 
-    /// @param initialOwner Wallet controlling price/token/pause/withdraw operations.
-    /// @param initialPaymentToken Payment token. Use `address(0)` for native ETH.
-    /// @param initialPrice Price in wei for native ETH, or token smallest units for ERC-20 payments.
-    /// @param initialDuration License duration in seconds.
-    constructor(
-        address initialOwner,
-        address initialPaymentToken,
-        uint256 initialPrice,
-        uint64 initialDuration
-    ) Ownable(initialOwner) {
-        if (initialPrice == 0) revert InvalidPrice();
-        if (initialDuration == 0) revert InvalidDuration();
-
-        paymentToken = initialPaymentToken;
-        price = initialPrice;
-        licenseDuration = initialDuration;
+    /// @notice Deploys the Base V1 Lab Pass contract with fixed initial settings.
+    /// @dev Settings remain adjustable through owner functions after deployment.
+    constructor() Ownable(LAB_OWNER) {
+        paymentToken = NATIVE_PAYMENT;
+        price = INITIAL_PRICE;
+        licenseDuration = INITIAL_DURATION;
     }
 
     receive() external payable {
