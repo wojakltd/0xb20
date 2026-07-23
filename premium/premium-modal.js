@@ -20,6 +20,7 @@
 
     const overlay = createElement('div', 'premium-modal-overlay');
     overlay.hidden = true;
+    overlay.style.display = 'none';
 
     const panel = createElement('section', 'premium-modal lab-reactive');
     panel.setAttribute('role', 'dialog');
@@ -94,6 +95,7 @@
     setStatus('Wallet confirmation required.', false);
 
     instance.overlay.hidden = false;
+    instance.overlay.style.display = 'grid';
 
     return new Promise((resolve) => {
       let successTimer = null;
@@ -116,6 +118,7 @@
         closed = true;
         cleanup();
         instance.overlay.hidden = true;
+        instance.overlay.style.display = 'none';
         instance.unlock.disabled = false;
         instance.cancel.disabled = false;
         instance.cancel.hidden = false;

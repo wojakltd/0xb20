@@ -9,6 +9,10 @@
   backdrop-filter: blur(16px);
 }
 
+.premium-modal-overlay[hidden] {
+  display: none !important;
+}
+
 .premium-modal {
   width: min(620px, 100%);
   border: 1px solid rgba(88, 166, 255, 0.42);
