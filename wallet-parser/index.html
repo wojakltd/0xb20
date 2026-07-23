@@ -115,12 +115,21 @@
               <span>Search Loaded Holders</span>
               <input id="parser-holder-search" class="sender-input" data-parser-search type="search" spellcheck="false" placeholder="0x...">
             </label>
+            <label class="parser-sort-label" for="parser-holder-sort">
+              <span>Sort Loaded Holders</span>
+              <select id="parser-holder-sort" class="sender-input" data-parser-sort>
+                <option value="rank">Rank</option>
+                <option value="balance">Balance</option>
+                <option value="supply">Supply %</option>
+              </select>
+            </label>
+            <button class="test-secondary parser-sort-dir" type="button" data-parser-sort-dir aria-label="Toggle sort direction">ASC</button>
             <button class="test-secondary" type="button" data-parser-copy disabled>Copy Visible Addresses</button>
           </div>
           <div class="parser-holder-table" data-parser-holder-table>
             <p class="test-muted">No holders loaded yet.</p>
           </div>
-          <p class="test-message" data-parser-pagination hidden>More holders available. Pagination coming soon.</p>
+          <p class="test-message" data-parser-pagination>Loaded: 0 / --. Showing 0–0.</p>
         </article>
 
         <article class="test-panel sender-panel-wide">
@@ -133,24 +142,32 @@
           </div>
           <div class="sender-preview-stats parser-stats">
             <div>
-              <span>Wallets Found</span>
-              <strong data-parser-stat="found">0</strong>
+              <span>Loaded Holders</span>
+              <strong data-parser-stat="loaded">0</strong>
             </div>
             <div>
-              <span>Wallets Displayed</span>
-              <strong data-parser-stat="displayed">0</strong>
+              <span>Filtered Holders</span>
+              <strong data-parser-stat="filtered">0</strong>
             </div>
             <div>
-              <span>Scan Duration</span>
-              <strong data-parser-stat="duration">--</strong>
+              <span>Hidden Holders</span>
+              <strong data-parser-stat="hidden">0</strong>
+            </div>
+            <div>
+              <span>Visible Holders</span>
+              <strong data-parser-stat="visible">0</strong>
+            </div>
+            <div>
+              <span>Current Page</span>
+              <strong data-parser-stat="page">Page 1</strong>
+            </div>
+            <div>
+              <span>Contract Filter</span>
+              <strong data-parser-stat="contractFilter">OFF</strong>
             </div>
             <div>
               <span>Data Source</span>
               <strong data-parser-stat="source">Blockscout API</strong>
-            </div>
-            <div>
-              <span>Last Updated</span>
-              <strong data-parser-stat="updated">--</strong>
             </div>
             <div>
               <span>Contract</span>
@@ -162,27 +179,79 @@
         <article class="test-panel sender-panel-wide">
           <div class="test-panel-header">
             <div>
-              <span class="eyebrow">Future Capacity</span>
-              <h3>Premium Modules</h3>
+              <span class="eyebrow">Advanced Tools</span>
+              <h3>Laboratory Extensions</h3>
             </div>
             <span class="test-state">OBSERVATION QUEUE</span>
           </div>
-          <div class="parser-premium-grid" aria-label="Future wallet parser modules">
-            <div class="parser-premium-card" aria-disabled="true">
-              <span>Next 100 Holders</span>
-              <strong>Coming Soon</strong>
+          <div class="parser-extension-grid" aria-label="Wallet parser extension modules">
+            <div class="parser-extension-card">
+              <span>Holder Pagination</span>
+              <strong data-parser-loaded>Loaded 0 / --</strong>
+              <p data-parser-page-label>Page 1</p>
+              <p data-parser-range>Showing 0–0</p>
+              <div class="parser-extension-actions">
+                <button class="test-secondary" type="button" data-parser-prev disabled>Load Previous 100</button>
+                <button class="test-secondary" type="button" data-parser-next disabled>Load Next 100</button>
+              </div>
             </div>
-            <div class="parser-premium-card" aria-disabled="true">
+            <div class="parser-extension-card">
               <span>Export TXT</span>
-              <strong>Coming Soon</strong>
+              <strong>Addresses Only</strong>
+              <p>Download visible holders as one address per line.</p>
+              <button class="test-secondary" type="button" data-parser-export-txt disabled>Download TXT</button>
             </div>
-            <div class="parser-premium-card" aria-disabled="true">
+            <div class="parser-extension-card">
               <span>Export CSV</span>
-              <strong>Coming Soon</strong>
+              <strong>Spreadsheet Ready</strong>
+              <p>Download visible holders with rank, balance, supply and labels.</p>
+              <button class="test-secondary" type="button" data-parser-export-csv disabled>Download CSV</button>
             </div>
-            <div class="parser-premium-card" aria-disabled="true">
+            <div class="parser-extension-card">
               <span>Advanced Filters</span>
-              <strong>Coming Soon</strong>
+              <strong>Active Controls</strong>
+              <p>Filter loaded holders without modifying the original dataset.</p>
+              <button class="test-secondary" type="button" data-parser-filter-toggle aria-expanded="false">Open Filters</button>
+            </div>
+          </div>
+          <div class="parser-filter-panel" data-parser-filter-panel hidden>
+            <div class="parser-filter-grid">
+              <label class="parser-check">
+                <input type="checkbox" data-parser-filter="hide-contracts">
+                <span title="Hide wallets identified as smart contracts.">Hide Smart Contracts</span>
+              </label>
+              <label class="parser-check">
+                <input type="checkbox" data-parser-filter="hide-burn" checked>
+                <span>Hide Burn Wallets</span>
+              </label>
+              <label class="parser-check">
+                <input type="checkbox" data-parser-filter="hide-zero" checked>
+                <span>Hide Zero Address</span>
+              </label>
+              <label>
+                <span>Minimum Balance</span>
+                <input class="sender-input" data-parser-filter="min-balance" type="text" inputmode="decimal" placeholder="0">
+              </label>
+              <label>
+                <span>Maximum Balance</span>
+                <input class="sender-input" data-parser-filter="max-balance" type="text" inputmode="decimal" placeholder="1000000">
+              </label>
+              <label>
+                <span>Minimum Supply %</span>
+                <input class="sender-input" data-parser-filter="min-supply" type="text" inputmode="decimal" placeholder="0.1">
+              </label>
+              <label>
+                <span>Maximum Supply %</span>
+                <input class="sender-input" data-parser-filter="max-supply" type="text" inputmode="decimal" placeholder="10">
+              </label>
+              <label>
+                <span>Search Address</span>
+                <input class="sender-input" data-parser-filter="address" type="search" spellcheck="false" placeholder="0x...">
+              </label>
+            </div>
+            <div class="parser-filter-actions">
+              <button class="test-primary" type="button" data-parser-apply-filters>Apply Filters</button>
+              <button class="test-secondary" type="button" data-parser-reset-filters>Reset Filters</button>
             </div>
           </div>
         </article>
@@ -195,8 +264,12 @@
 <script src="/assets/js/interactions.js" defer></script>
 <script src="/assets/js/access-gate.js" defer></script>
 <script src="/wallet-parser/assets/js/parser-utils.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-labels.js" defer></script>
 <script src="/wallet-parser/assets/js/parser-copy.js" defer></script>
 <script src="/wallet-parser/assets/js/parser-provider.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-pagination.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-export.js" defer></script>
+<script src="/wallet-parser/assets/js/parser-filters.js" defer></script>
 <script src="/wallet-parser/assets/js/blockscout-provider.js" defer></script>
 <script src="/wallet-parser/assets/js/holder-parser.js" defer></script>
 <script src="/wallet-parser/assets/js/wallet-parser.js" defer></script>

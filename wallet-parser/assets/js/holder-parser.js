@@ -34,6 +34,29 @@
         this.abortController = null;
       }
     }
+
+    async loadPage(address, token, pageParams, options = {}) {
+      if (this.active) {
+        throw new Error('Scan already running.');
+      }
+
+      if (!this.provider || typeof this.provider.loadHolderPage !== 'function') {
+        throw new Error('Provider pagination is not available.');
+      }
+
+      this.active = true;
+      this.abortController = new AbortController();
+
+      try {
+        return await this.provider.loadHolderPage(address, token, pageParams, {
+          ...options,
+          signal: this.abortController.signal
+        });
+      } finally {
+        this.active = false;
+        this.abortController = null;
+      }
+    }
   }
 
   window.B20HolderParser = {

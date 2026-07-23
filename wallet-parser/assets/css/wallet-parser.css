@@ -64,22 +64,28 @@
 
 .parser-toolbar{
     display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-columns:minmax(0,1fr) minmax(180px,220px) auto auto;
     gap:12px;
     align-items:end;
     margin:18px 0;
 }
 
-.parser-search-label{
+.parser-search-label,
+.parser-sort-label{
     display:grid;
     gap:8px;
 }
 
-.parser-search-label span{
+.parser-search-label span,
+.parser-sort-label span{
     color:var(--cyan);
     font-family:Consolas,monospace;
     font-size:12px;
     text-transform:uppercase;
+}
+
+.parser-sort-dir{
+    min-height:52px;
 }
 
 .parser-holder-table{
@@ -93,7 +99,7 @@
 .parser-holder-header,
 .parser-holder-row{
     display:grid;
-    grid-template-columns:72px minmax(180px,1fr) minmax(140px,.34fr) minmax(100px,.22fr) minmax(104px,.18fr);
+    grid-template-columns:72px minmax(220px,1fr) minmax(140px,.34fr) minmax(100px,.22fr) minmax(150px,.2fr);
     gap:12px;
     align-items:center;
     min-width:820px;
@@ -125,6 +131,7 @@
 .parser-holder-address{
     display:flex;
     align-items:center;
+    flex-wrap:wrap;
     gap:8px;
     min-width:0;
 }
@@ -148,6 +155,38 @@
 .parser-label.is-contract{
     border-color:rgba(255,202,87,.34);
     color:#ffd98a;
+}
+
+.parser-label.is-burn{
+    border-color:rgba(255,102,102,.36);
+    color:#ffb4b4;
+}
+
+.parser-row-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+}
+
+.parser-external-link{
+    border:1px solid rgba(103,179,255,.24);
+    border-radius:10px;
+    color:var(--cyan);
+    display:inline-grid;
+    font-family:Consolas,monospace;
+    font-size:13px;
+    min-width:36px;
+    place-items:center;
+    text-decoration:none;
+    transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+
+.parser-external-link:hover,
+.parser-external-link:focus-visible{
+    border-color:rgba(128,215,255,.7);
+    box-shadow:0 0 18px rgba(59,130,246,.18);
+    transform:translateY(-1px);
 }
 
 .parser-copy-button{
@@ -177,14 +216,14 @@
     overflow-wrap:anywhere;
 }
 
-.parser-premium-grid{
+.parser-extension-grid{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:12px;
     margin-top:18px;
 }
 
-.parser-premium-card{
+.parser-extension-card{
     min-height:120px;
     border:1px solid rgba(103,179,255,.16);
     border-radius:var(--radius);
@@ -200,10 +239,70 @@
     padding:16px;
 }
 
-.parser-premium-card strong{
+.parser-extension-card p{
+    color:var(--muted-strong);
+    font-size:12px;
+    line-height:1.5;
+    margin:10px 0 14px;
+}
+
+.parser-extension-card strong{
     color:var(--cyan);
     font-size:13px;
     text-transform:uppercase;
+}
+
+.parser-extension-actions{
+    display:grid;
+    gap:8px;
+}
+
+.parser-filter-panel{
+    border:1px solid rgba(103,179,255,.16);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.44);
+    margin-top:18px;
+    padding:16px;
+}
+
+.parser-filter-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+}
+
+.parser-filter-grid label{
+    color:var(--cyan);
+    display:grid;
+    font-family:Consolas,monospace;
+    font-size:12px;
+    gap:8px;
+    text-transform:uppercase;
+}
+
+.parser-check{
+    align-content:center;
+    border:1px solid rgba(103,179,255,.12);
+    border-radius:12px;
+    background:rgba(9,20,42,.44);
+    grid-template-columns:auto 1fr;
+    min-height:54px;
+    padding:10px 12px;
+}
+
+.parser-check input{
+    accent-color:var(--blue2);
+}
+
+.parser-filter-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:14px;
+}
+
+.parser-pagination-note{
+    color:var(--cyan);
 }
 
 .parser-empty,
@@ -222,7 +321,8 @@
     .parser-flow,
     .parser-token-readout,
     .parser-stats,
-    .parser-premium-grid{
+    .parser-extension-grid,
+    .parser-filter-grid{
         grid-template-columns:1fr 1fr;
     }
 
@@ -230,13 +330,18 @@
     .parser-toolbar{
         grid-template-columns:1fr;
     }
+
+    .parser-sort-dir{
+        min-height:auto;
+    }
 }
 
 @media(max-width:620px){
     .parser-flow,
     .parser-token-readout,
     .parser-stats,
-    .parser-premium-grid{
+    .parser-extension-grid,
+    .parser-filter-grid{
         grid-template-columns:1fr;
     }
 }

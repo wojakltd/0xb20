@@ -3,11 +3,12 @@
   const {
     isAddress,
     addressKey,
-    isExcludedAddress,
     formatTokenAmount,
     formatPercentage,
+    percentageNumber,
     safeText
   } = window.B20ParserUtils;
+  const labels = window.B20ParserLabels;
 
   class BlockscoutProvider extends BaseProvider {
     constructor(config = {}) {
@@ -21,7 +22,7 @@
 
       this.apiBase = config.apiBase || 'https://base.blockscout.com/api/v2';
       this.rpcUrl = config.rpcUrl || 'https://mainnet.base.org';
-      this.timeoutMs = config.timeoutMs || 18000;
+      this.timeoutMs = config.timeoutMs || 30000;
       this.pageSize = Math.min(Number(config.pageSize) || 50, 50);
     }
 
@@ -36,16 +37,15 @@
       const token = await this.readTokenInfo(normalizedAddress, options);
 
       this.progress(options, 46, 'Reading indexed holder balances...');
-      const holderResponse = await this.readFirstHolders(normalizedAddress, options);
+      const holderResponse = await this.readHolderBatch(normalizedAddress, token, null, options);
 
       this.progress(options, 82, 'Filtering holder list...');
-      const holders = this.normalizeHolders(holderResponse.items, token);
 
       this.progress(options, 100, 'Wallet parser scan complete.');
 
       return {
         token,
-        holders,
+        holders: holderResponse.holders,
         meta: {
           provider: this.label,
           providerId: this.id,
@@ -53,6 +53,31 @@
           durationMs: Date.now() - startedAt,
           lastUpdated: new Date().toISOString(),
           moreAvailable: Boolean(holderResponse.nextPageParams),
+          nextPageParams: holderResponse.nextPageParams,
+          rawHolderCount: holderResponse.rawItemCount
+        }
+      };
+    }
+
+    async loadHolderPage(address, token, pageParams, options = {}) {
+      const normalizedAddress = this.normalizeInput(address);
+      const startedAt = Date.now();
+
+      this.progress(options, 12, 'Loading next indexed holder page...');
+      const holderResponse = await this.readHolderBatch(normalizedAddress, token, pageParams || null, options);
+
+      this.progress(options, 100, 'Holder page loaded.');
+
+      return {
+        holders: holderResponse.holders,
+        meta: {
+          provider: this.label,
+          providerId: this.id,
+          network: this.network,
+          durationMs: Date.now() - startedAt,
+          lastUpdated: new Date().toISOString(),
+          moreAvailable: Boolean(holderResponse.nextPageParams),
+          nextPageParams: holderResponse.nextPageParams,
           rawHolderCount: holderResponse.rawItemCount
         }
       };
@@ -112,7 +137,7 @@
       }
 
       return {
-        address,
+        address: token.address_hash || address,
         name: safeText(token.name),
         symbol: safeText(token.symbol),
         decimals,
@@ -127,9 +152,13 @@
       return this.fetchJson(`${this.apiBase}/addresses/${address}`, options.signal);
     }
 
-    async readFirstHolders(address, options) {
+    addressUrl(address) {
+      return `https://base.blockscout.com/address/${address}`;
+    }
+
+    async readHolderBatch(address, token, pageParams, options) {
       const collected = [];
-      let nextPageParams = null;
+      let nextPageParams = pageParams || null;
       let rawItemCount = 0;
 
       do {
@@ -146,7 +175,7 @@
       } while (collected.length < this.maxHolders && nextPageParams);
 
       return {
-        items: collected.slice(0, this.maxHolders),
+        holders: this.normalizeHolders(collected.slice(0, this.maxHolders), token),
         nextPageParams,
         rawItemCount
       };
@@ -176,7 +205,7 @@
         const address = item?.address?.hash || item?.address_hash || item?.hash || '';
         const key = addressKey(address);
 
-        if (!isAddress(address) || seen.has(key) || isExcludedAddress(address)) {
+        if (!isAddress(address) || seen.has(key)) {
           continue;
         }
 
@@ -188,15 +217,20 @@
           continue;
         }
 
-        holders.push({
+        const isContract = item?.address?.is_contract === true;
+        const normalizedHolder = {
           rank: holders.length + 1,
           address,
           valueRaw,
           balance: formatTokenAmount(valueRaw, token.decimals, 6),
           percentage: formatPercentage(valueRaw, token.totalSupplyRaw),
-          isContract: item?.address?.is_contract === true,
+          percentageValue: percentageNumber(valueRaw, token.totalSupplyRaw),
+          isContract,
           label: item?.address?.name || this.readTagName(item?.address)
-        });
+        };
+
+        normalizedHolder.labels = labels.labelsForHolder(normalizedHolder);
+        holders.push(normalizedHolder);
       }
 
       return holders;
@@ -288,6 +322,10 @@
 
       if (status === 429) {
         return new Error('Blockscout rate limit reached. Try again later.');
+      }
+
+      if (status === 422) {
+        return new Error('Provider rejected the request. Token may be temporarily unavailable or not fully indexed.');
       }
 
       if (status >= 500) {

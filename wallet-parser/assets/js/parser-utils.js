@@ -1,11 +1,5 @@
 (function () {
   const zeroAddress = '0x0000000000000000000000000000000000000000';
-  const excludedAddresses = new Set([
-    zeroAddress,
-    '0x000000000000000000000000000000000000dead',
-    '0x0000000000000000000000000000000000000001',
-    '0x0000000000000000000000000000000000000002'
-  ]);
 
   function normalizeAddress(address) {
     return String(address || '').trim();
@@ -17,10 +11,6 @@
 
   function addressKey(address) {
     return normalizeAddress(address).toLowerCase();
-  }
-
-  function isExcludedAddress(address) {
-    return excludedAddresses.has(addressKey(address));
   }
 
   function shortAddress(address) {
@@ -68,6 +58,34 @@
     })}%`;
   }
 
+  function percentageNumber(valueRaw, totalSupplyRaw) {
+    const value = BigInt(String(valueRaw || '0'));
+    const total = BigInt(String(totalSupplyRaw || '0'));
+
+    if (value <= 0n || total <= 0n) {
+      return 0;
+    }
+
+    return Number((value * 1000000n) / total) / 10000;
+  }
+
+  function parseDecimalToRaw(value, decimals) {
+    const text = String(value || '').trim().replace(/,/g, '');
+    const safeDecimals = Math.max(0, Number(decimals) || 0);
+
+    if (!text) {
+      return null;
+    }
+
+    if (!/^\d+(\.\d+)?$/.test(text)) {
+      throw new Error('Invalid numeric filter value.');
+    }
+
+    const [whole, fraction = ''] = text.split('.');
+    const normalizedFraction = fraction.padEnd(safeDecimals, '0').slice(0, safeDecimals);
+    return BigInt(whole || '0') * (10n ** BigInt(safeDecimals)) + BigInt(normalizedFraction || '0');
+  }
+
   function safeText(value, fallback = '--') {
     const text = String(value ?? '').trim();
     return text || fallback;
@@ -90,10 +108,11 @@
     normalizeAddress,
     isAddress,
     addressKey,
-    isExcludedAddress,
     shortAddress,
     formatTokenAmount,
     formatPercentage,
+    percentageNumber,
+    parseDecimalToRaw,
     formatDuration,
     safeText
   };

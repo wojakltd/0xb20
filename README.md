@@ -26,6 +26,7 @@ Research never ends.
 - Shared wallet layer for Web3 experiments.
 - Test Zone for read-only wallet integration and signature testing.
 - Token Sender v1 for exact-approval ERC-20 batch distribution through a verified sender contract.
+- Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
 - Vercel-compatible deployment and GitHub Actions research cache automation.
 
 ## Architecture
@@ -43,6 +44,7 @@ Static shell
 ├─ ai/
 ├─ test/
 ├─ token-sender/
+├─ wallet-parser/
 ├─ evolution/
 ├─ api/ai/generate.ts
 └─ research/backend/
@@ -91,6 +93,10 @@ Protected ERC-20 batch sender interface. It uses:
 - preview before approval;
 - explicit wallet confirmation for every transaction;
 - verified sender contract configured in `data/web3-tools.json`.
+
+### Wallet Parser
+
+Protected read-only holder extraction instrument for Base ERC-20 tokens. It uses a provider abstraction, Blockscout API in V1, cached pagination, safe labels, filters, search, visible-only copy, TXT export and CSV export.
 
 ### Evolution
 

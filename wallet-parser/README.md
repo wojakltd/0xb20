@@ -12,9 +12,9 @@ User flow:
 
 1. Paste a Base ERC-20 token contract.
 2. Read token metadata.
-3. Load the first indexed holders.
+3. Load indexed holders in cached pages.
 4. Filter duplicate/burn/null addresses.
-5. Copy raw wallet addresses for use in other tools.
+5. Sort, search, export or copy visible wallet addresses for use in other tools.
 
 ## Current Provider
 
@@ -62,7 +62,8 @@ Provider contract:
       balance,
       percentage,
       isContract,
-      label
+      label,
+      labels
     }],
     meta: {
       provider,
@@ -74,8 +75,17 @@ Provider contract:
       rawHolderCount
     }
   }>
+  loadHolderPage(address, token, pageParams, options): Promise<{
+    holders,
+    meta
+  }>,
+  addressUrl(address): string
 }
 ```
+
+`scanToken()` validates the contract, reads token metadata and returns the first holder batch.
+
+`loadHolderPage()` loads the next holder batch using the provider cursor returned in `meta.nextPageParams`.
 
 ## How To Add A Future Provider
 
@@ -112,12 +122,39 @@ Future provider candidates:
 V1 only applies safe filtering:
 
 - Invalid addresses are rejected.
-- Zero address is rejected.
-- Dead/burn/null addresses are rejected.
 - Duplicate addresses are rejected.
 - Zero-balance entries are rejected.
+- Zero/dead/burn/null addresses are labeled and hidden by default.
 
 Smart contracts are not removed automatically. They are visually labeled when the provider marks them as contracts because legitimate holders can be contracts.
+
+## Holder Labels
+
+Each holder supports multiple labels through `parser-labels.js`.
+
+Implemented labels:
+
+- `CONTRACT`
+- `BURN`
+
+Reserved labels for later provider improvements:
+
+- `LP`
+- `ROUTER`
+- `BRIDGE`
+- `SAFE`
+- `CEX`
+- `UNKNOWN`
+
+Filtering uses labels instead of destructive removal, so the original loaded dataset stays intact.
+
+## Pagination
+
+Wallet Parser caches every loaded provider page in memory.
+
+The UI can move backward through already loaded holders without making another provider request. New requests are only made when the user reaches the end of the loaded dataset and the provider reports more holders.
+
+V1 loads 100 useful holders per application page. Blockscout currently allows a maximum `items_count` of 50 per API request, so `BlockscoutProvider` internally performs two indexed requests per Wallet Parser page when needed.
 
 ## Copy Format
 
@@ -134,6 +171,49 @@ Format:
 No balances, ranks, commas, JSON, or formatting are included.
 
 This output is intentionally compatible with Token Sender.
+
+## Export Format
+
+TXT export downloads currently visible holder addresses only.
+
+CSV export downloads:
+
+- Rank
+- Address
+- Balance
+- Supply percentage
+- Labels
+
+Both exports use the current visible result after pagination, filters, search and sorting.
+
+## Advanced Filters
+
+Filters are applied in memory and never mutate the original loaded holder dataset.
+
+Current filters:
+
+- Hide smart contracts
+- Hide burn wallets
+- Hide zero address
+- Minimum balance
+- Maximum balance
+- Minimum supply percentage
+- Maximum supply percentage
+- Search address
+
+Statistics update after filtering and display loaded, filtered, hidden, visible holders, current page and contract filter state.
+
+## Sorting
+
+Sorting is performed in memory on loaded holders only.
+
+Available sort keys:
+
+- Rank
+- Balance
+- Supply percentage
+
+Sorting never triggers a provider reload.
 
 ## Security
 
@@ -152,8 +232,8 @@ The page is protected with the existing `B20AccessGate` mechanism.
 
 ## Known V1 Limitations
 
-- Only the first 100 indexed holders are displayed.
-- Pagination UI is intentionally not implemented yet.
+- Holder availability depends on the current provider index.
+- Very large tokens may require multiple user-triggered page loads.
 - Results depend on Blockscout index freshness.
 - Browser-only scanning depends on public endpoint availability and CORS.
 - Estimated holder count is only available when the provider exposes it.
@@ -162,11 +242,8 @@ The page is protected with the existing `B20AccessGate` mechanism.
 
 The module is structured for:
 
-- Pagination
-- TXT download
-- CSV export
-- Balance filters
-- Excluding LP/router/burn/CEX wallets
+- Premium Core access checks
+- LP/router/bridge/CEX labels
 - Wallet labels
 - Activity score
 - Wallet quality score

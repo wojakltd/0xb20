@@ -1,6 +1,7 @@
 (function () {
   const accessPassword = '0xb20.lol';
   const accessGateEnabled = true;
+  const pageSize = 100;
 
   const selectors = {
     tokenAddress: '[data-parser-token-address]',
@@ -13,23 +14,50 @@
     progressText: '[data-parser-progress-text]',
     tokenReadout: '[data-parser-token-readout]',
     search: '[data-parser-search]',
+    sort: '[data-parser-sort]',
+    sortDir: '[data-parser-sort-dir]',
     copy: '[data-parser-copy]',
     table: '[data-parser-holder-table]',
     count: '[data-parser-count]',
-    pagination: '[data-parser-pagination]'
+    pagination: '[data-parser-pagination]',
+    loaded: '[data-parser-loaded]',
+    range: '[data-parser-range]',
+    pageLabel: '[data-parser-page-label]',
+    previous: '[data-parser-prev]',
+    next: '[data-parser-next]',
+    exportTxt: '[data-parser-export-txt]',
+    exportCsv: '[data-parser-export-csv]',
+    filterPanel: '[data-parser-filter-panel]',
+    filterToggle: '[data-parser-filter-toggle]',
+    applyFilters: '[data-parser-apply-filters]',
+    resetFilters: '[data-parser-reset-filters]'
   };
 
-  const provider = new window.B20BlockscoutProvider.BlockscoutProvider();
+  const provider = new window.B20BlockscoutProvider.BlockscoutProvider({
+    maxHolders: pageSize
+  });
   const scanner = new window.B20HolderParser.WalletHolderScanner(provider);
   const utils = window.B20ParserUtils;
   const copy = window.B20ParserCopy;
+  const exporter = window.B20ParserExport;
+  const filters = window.B20ParserFilters;
+  const pagination = new window.B20ParserPagination.ParserPagination(pageSize);
 
   const state = {
     initialized: false,
     token: null,
     holders: [],
+    filteredHolders: [],
     visibleHolders: [],
-    meta: null
+    activeFilters: filters.defaultFilters(),
+    searchTerm: '',
+    sortKey: 'rank',
+    sortDirection: 'asc',
+    currentPageIndex: 0,
+    moreAvailable: false,
+    nextPageParams: null,
+    meta: null,
+    loadingMore: false
   };
 
   function query(selector) {
@@ -70,6 +98,8 @@
     if (tokenInput) {
       tokenInput.disabled = isBusy;
     }
+
+    renderPaginationControls();
   }
 
   function setProgress(value, text) {
@@ -134,29 +164,101 @@
     });
   }
 
+  function estimatedHolderCount() {
+    const estimate = Number(state.token?.holdersCount);
+    return Number.isFinite(estimate) && estimate > 0 ? estimate : null;
+  }
+
+  function loadedLabel() {
+    const estimate = estimatedHolderCount();
+    const loaded = state.holders.length.toLocaleString('en-US');
+
+    return estimate ? `Loaded ${loaded} / ${estimate.toLocaleString('en-US')}` : `Loaded ${loaded} / --`;
+  }
+
+  function visibleRangeLabel() {
+    const range = pagination.range(state.currentPageIndex, state.filteredHolders.length);
+    const estimate = estimatedHolderCount();
+    const hasUserFilter = hasActiveFilters() || Boolean(state.searchTerm);
+    const total = !hasUserFilter && estimate && estimate > range.total ? estimate : range.total;
+
+    return `Showing ${range.start.toLocaleString('en-US')}–${range.end.toLocaleString('en-US')} of ${total.toLocaleString('en-US')}`;
+  }
+
+  function currentPageLabel() {
+    return `Page ${state.currentPageIndex + 1}`;
+  }
+
+  function hasActiveFilters() {
+    const config = state.activeFilters || filters.defaultFilters();
+    return Boolean(
+      config.hideContracts ||
+      config.minBalanceRaw !== null ||
+      config.maxBalanceRaw !== null ||
+      config.minSupply !== null ||
+      config.maxSupply !== null ||
+      config.address
+    );
+  }
+
   function renderStats() {
-    const displayed = state.visibleHolders.length;
-    const found = state.holders.length;
-    const duration = state.meta ? utils.formatDuration(state.meta.durationMs) : '--';
-    const updated = state.meta ? new Date(state.meta.lastUpdated).toLocaleString() : '--';
+    const loaded = state.holders.length;
+    const filtered = state.filteredHolders.length;
+    const hidden = Math.max(0, loaded - filtered);
+    const visible = state.visibleHolders.length;
     const contract = state.token ? state.token.address : '--';
 
-    setText(stat('found'), String(found));
-    setText(stat('displayed'), String(displayed));
-    setText(stat('duration'), duration);
+    setText(stat('loaded'), String(loaded));
+    setText(stat('filtered'), String(filtered));
+    setText(stat('hidden'), String(hidden));
+    setText(stat('visible'), String(visible));
+    setText(stat('page'), currentPageLabel());
+    setText(stat('contractFilter'), state.activeFilters.hideContracts ? 'ON' : 'OFF');
     setText(stat('source'), provider.label);
-    setText(stat('updated'), updated);
     setText(stat('contract'), contract);
-    setText(query(selectors.count), `${found} FOUND`);
+    setText(query(selectors.count), `${visible} VISIBLE`);
 
     const copyButton = query(selectors.copy);
+    const exportTxtButton = query(selectors.exportTxt);
+    const exportCsvButton = query(selectors.exportCsv);
+
     if (copyButton) {
-      copyButton.disabled = displayed === 0;
+      copyButton.disabled = visible === 0;
     }
 
-    const pagination = query(selectors.pagination);
-    if (pagination) {
-      pagination.hidden = !(state.meta && state.meta.moreAvailable);
+    if (exportTxtButton) {
+      exportTxtButton.disabled = visible === 0;
+    }
+
+    if (exportCsvButton) {
+      exportCsvButton.disabled = visible === 0;
+    }
+
+    renderPaginationControls();
+  }
+
+  function renderPaginationControls() {
+    const previousButton = query(selectors.previous);
+    const nextButton = query(selectors.next);
+    const loaded = query(selectors.loaded);
+    const range = query(selectors.range);
+    const pageLabel = query(selectors.pageLabel);
+    const paginationMessage = query(selectors.pagination);
+    const hasCachedNext = state.currentPageIndex < Math.ceil(state.filteredHolders.length / pageSize) - 1;
+    const canLoadNext = Boolean(state.token && (hasCachedNext || state.moreAvailable));
+
+    setText(loaded, loadedLabel());
+    setText(pageLabel, currentPageLabel());
+    setText(range, visibleRangeLabel());
+    setText(paginationMessage, `${loadedLabel()}. ${currentPageLabel()}. ${visibleRangeLabel()}.`);
+
+    if (previousButton) {
+      previousButton.disabled = state.loadingMore || state.currentPageIndex <= 0;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = state.loadingMore || !canLoadNext;
+      nextButton.textContent = state.loadingMore ? 'Loading next page...' : 'Load Next 100';
     }
   }
 
@@ -174,7 +276,7 @@
   function createHeader() {
     const header = document.createElement('div');
     header.className = 'parser-holder-header';
-    ['Rank', 'Address', 'Balance', 'Supply', 'Copy'].forEach((label) => {
+    ['Rank', 'Address', 'Balance', 'Supply %', 'Actions'].forEach((label) => {
       header.appendChild(createCell(label));
     });
     return header;
@@ -184,7 +286,7 @@
     const row = document.createElement('div');
     row.className = 'parser-holder-row';
 
-    const rank = createCell(String(index + 1), 'parser-holder-rank');
+    const rank = createCell(String(holder.rank || index + 1), 'parser-holder-rank');
 
     const addressCell = document.createElement('div');
     addressCell.className = 'parser-holder-address';
@@ -195,16 +297,20 @@
     short.title = holder.address;
     addressCell.appendChild(short);
 
-    if (holder.isContract) {
+    (holder.labels || []).forEach((labelName) => {
       const label = document.createElement('span');
-      label.className = 'parser-label is-contract';
-      label.textContent = holder.label ? `Contract: ${holder.label}` : 'Contract';
-      label.title = holder.label || 'Smart contract holder';
+      const normalizedLabel = String(labelName).toLowerCase();
+      label.className = `parser-label is-${normalizedLabel}`;
+      label.textContent = labelName;
+      label.title = labelName === 'CONTRACT' && holder.label ? holder.label : `${labelName} holder`;
       addressCell.appendChild(label);
-    }
+    });
 
     const balance = createCell(`${holder.balance} ${state.token ? state.token.symbol : ''}`.trim());
     const percentage = createCell(holder.percentage);
+
+    const actions = document.createElement('div');
+    actions.className = 'parser-row-actions';
 
     const copyButton = document.createElement('button');
     copyButton.type = 'button';
@@ -219,7 +325,16 @@
       }
     });
 
-    row.append(rank, addressCell, balance, percentage, copyButton);
+    const externalLink = document.createElement('a');
+    externalLink.className = 'parser-external-link';
+    externalLink.href = typeof provider.addressUrl === 'function' ? provider.addressUrl(holder.address) : `https://base.blockscout.com/address/${holder.address}`;
+    externalLink.target = '_blank';
+    externalLink.rel = 'noopener noreferrer';
+    externalLink.textContent = '↗';
+    externalLink.title = 'Open in Blockscout';
+
+    actions.append(copyButton, externalLink);
+    row.append(rank, addressCell, balance, percentage, actions);
     return row;
   }
 
@@ -235,7 +350,7 @@
     if (!state.visibleHolders.length) {
       const empty = document.createElement('p');
       empty.className = 'parser-empty';
-      empty.textContent = state.holders.length ? 'No loaded holders match this search.' : 'No holders loaded yet.';
+      empty.textContent = state.holders.length ? 'No loaded holders match the active filters.' : 'No holders loaded yet.';
       table.appendChild(empty);
       renderStats();
       return;
@@ -249,25 +364,84 @@
     renderStats();
   }
 
-  function applySearch() {
-    const input = query(selectors.search);
-    const term = input ? input.value.trim().toLowerCase() : '';
-
-    if (!term) {
-      state.visibleHolders = [...state.holders];
-    } else {
-      state.visibleHolders = state.holders.filter((holder) => holder.address.toLowerCase().includes(term));
+  function compareBigInt(left, right) {
+    if (left === right) {
+      return 0;
     }
 
+    return left > right ? 1 : -1;
+  }
+
+  function sortHolders(holders) {
+    const direction = state.sortDirection === 'desc' ? -1 : 1;
+    const key = state.sortKey;
+
+    return [...holders].sort((left, right) => {
+      let result = 0;
+
+      if (key === 'balance') {
+        result = compareBigInt(BigInt(String(left.valueRaw || '0')), BigInt(String(right.valueRaw || '0')));
+      } else if (key === 'supply') {
+        result = Number(left.percentageValue || 0) - Number(right.percentageValue || 0);
+      } else {
+        result = Number(left.rank || 0) - Number(right.rank || 0);
+      }
+
+      if (result === 0) {
+        result = Number(left.rank || 0) - Number(right.rank || 0);
+      }
+
+      return result * direction;
+    });
+  }
+
+  function applyView(options = {}) {
+    const preservePage = Boolean(options.preservePage);
+    let filteredHolders = filters.applyFilters(state.holders, state.activeFilters);
+
+    if (state.searchTerm) {
+      filteredHolders = filteredHolders.filter((holder) => holder.address.toLowerCase().includes(state.searchTerm));
+    }
+
+    state.filteredHolders = sortHolders(filteredHolders);
+
+    if (!preservePage) {
+      state.currentPageIndex = 0;
+    }
+
+    state.currentPageIndex = pagination.clampPage(state.currentPageIndex, state.filteredHolders.length);
+    state.visibleHolders = pagination.pageItems(state.filteredHolders, state.currentPageIndex);
     renderHolders();
+  }
+
+  function applySearch() {
+    const input = query(selectors.search);
+    state.searchTerm = input ? input.value.trim().toLowerCase() : '';
+    applyView();
   }
 
   function resetResult() {
     state.token = null;
     state.holders = [];
+    state.filteredHolders = [];
     state.visibleHolders = [];
+    state.activeFilters = filters.defaultFilters();
+    state.searchTerm = '';
+    state.sortKey = 'rank';
+    state.sortDirection = 'asc';
+    state.currentPageIndex = 0;
+    state.moreAvailable = false;
+    state.nextPageParams = null;
     state.meta = null;
+    state.loadingMore = false;
 
+    const searchInput = query(selectors.search);
+    if (searchInput) {
+      searchInput.value = '';
+    }
+
+    filters.resetControls(query(selectors.filterPanel));
+    resetSortControls();
     renderTokenReadout(null);
     renderHolders();
     renderStats();
@@ -279,6 +453,30 @@
     }
 
     return error instanceof Error && error.message ? error.message : fallback;
+  }
+
+  function assignRanks() {
+    state.holders = state.holders.map((holder, index) => ({
+      ...holder,
+      rank: index + 1
+    }));
+  }
+
+  function mergeHolders(incomingHolders) {
+    const seen = new Set(state.holders.map((holder) => utils.addressKey(holder.address)));
+
+    (incomingHolders || []).forEach((holder) => {
+      const key = utils.addressKey(holder.address);
+
+      if (!key || seen.has(key)) {
+        return;
+      }
+
+      seen.add(key);
+      state.holders.push(holder);
+    });
+
+    assignRanks();
   }
 
   async function startScan() {
@@ -311,12 +509,13 @@
       });
 
       state.token = result.token;
-      state.holders = result.holders;
-      state.visibleHolders = [...result.holders];
       state.meta = result.meta;
+      state.moreAvailable = Boolean(result.meta.moreAvailable);
+      state.nextPageParams = result.meta.nextPageParams || null;
+      mergeHolders(result.holders);
 
       renderTokenReadout(state.token);
-      renderHolders();
+      applyView();
       setParserState('READY');
       setMessage(`Scan complete. ${state.holders.length} useful holder wallets loaded from ${provider.label}.`);
     } catch (error) {
@@ -327,6 +526,65 @@
       setBusy(false);
       hideProgress();
     }
+  }
+
+  async function loadNextPage() {
+    if (!state.token || scanner.isActive() || state.loadingMore) {
+      return;
+    }
+
+    const cachedPageCount = Math.ceil(state.filteredHolders.length / pageSize);
+
+    if (state.currentPageIndex < cachedPageCount - 1) {
+      state.currentPageIndex += 1;
+      applyView({ preservePage: true });
+      return;
+    }
+
+    if (!state.moreAvailable) {
+      setMessage('No additional indexed holders available.');
+      renderPaginationControls();
+      return;
+    }
+
+    state.loadingMore = true;
+    setBusy(true);
+    setParserState('LOADING');
+    setMessage('Loading next holder page...');
+    setProgress(8, 'Requesting next indexed holder page...');
+
+    try {
+      const previousPageIndex = state.currentPageIndex;
+      const result = await scanner.loadPage(state.token.address, state.token, state.nextPageParams, {
+        onProgress: ({ value, text }) => setProgress(value, text)
+      });
+
+      state.meta = result.meta;
+      state.moreAvailable = Boolean(result.meta.moreAvailable);
+      state.nextPageParams = result.meta.nextPageParams || null;
+      mergeHolders(result.holders);
+      state.currentPageIndex = previousPageIndex + 1;
+      applyView({ preservePage: true });
+      setParserState('READY');
+      setMessage(result.holders.length ? `Loaded next holder page. ${state.holders.length} total holders cached.` : 'Provider returned an empty page.');
+    } catch (error) {
+      setParserState(error && error.name === 'AbortError' ? 'CANCELLED' : 'ERROR');
+      setMessage(errorMessage(error, 'Unable to load next holder page.'));
+    } finally {
+      state.loadingMore = false;
+      setBusy(false);
+      hideProgress();
+      renderPaginationControls();
+    }
+  }
+
+  function loadPreviousPage() {
+    if (state.currentPageIndex <= 0 || state.loadingMore) {
+      return;
+    }
+
+    state.currentPageIndex -= 1;
+    applyView({ preservePage: true });
   }
 
   function renderError(message) {
@@ -358,6 +616,95 @@
     }
   }
 
+  function exportTxt() {
+    try {
+      setMessage('Exporting visible TXT...');
+      exporter.exportTxt(state.token, state.visibleHolders);
+      setMessage(`TXT export generated for ${state.visibleHolders.length} visible holders.`);
+    } catch (error) {
+      setMessage(errorMessage(error, 'TXT export unavailable.'));
+    }
+  }
+
+  function exportCsv() {
+    try {
+      setMessage('Exporting visible CSV...');
+      exporter.exportCsv(state.token, state.visibleHolders);
+      setMessage(`CSV export generated for ${state.visibleHolders.length} visible holders.`);
+    } catch (error) {
+      setMessage(errorMessage(error, 'CSV export unavailable.'));
+    }
+  }
+
+  function toggleFilterPanel() {
+    const panel = query(selectors.filterPanel);
+    const toggle = query(selectors.filterToggle);
+
+    if (!panel) {
+      return;
+    }
+
+    panel.hidden = !panel.hidden;
+
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+      toggle.textContent = panel.hidden ? 'Open Filters' : 'Close Filters';
+    }
+  }
+
+  function applyAdvancedFilters() {
+    try {
+      setMessage('Applying filters...');
+      state.activeFilters = filters.readFilters(query(selectors.filterPanel), state.token);
+      applyView();
+      setMessage(`${state.filteredHolders.length} holders match active filters.`);
+    } catch (error) {
+      setMessage(errorMessage(error, 'Invalid filter settings.'));
+    }
+  }
+
+  function resetAdvancedFilters() {
+    filters.resetControls(query(selectors.filterPanel));
+
+    const searchInput = query(selectors.search);
+    if (searchInput) {
+      searchInput.value = '';
+    }
+
+    state.activeFilters = filters.defaultFilters();
+    state.searchTerm = '';
+    applyView();
+    setMessage('Filters reset.');
+  }
+
+  function resetSortControls() {
+    const sortInput = query(selectors.sort);
+    const sortDirectionButton = query(selectors.sortDir);
+
+    if (sortInput) {
+      sortInput.value = state.sortKey;
+    }
+
+    if (sortDirectionButton) {
+      sortDirectionButton.textContent = state.sortDirection.toUpperCase();
+      sortDirectionButton.setAttribute('aria-label', `Sort direction ${state.sortDirection}`);
+    }
+  }
+
+  function applySort() {
+    const sortInput = query(selectors.sort);
+    state.sortKey = sortInput ? sortInput.value : 'rank';
+    applyView();
+    setMessage(`Sorted by ${state.sortKey}.`);
+  }
+
+  function toggleSortDirection() {
+    state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+    resetSortControls();
+    applyView({ preservePage: true });
+    setMessage(`Sort direction ${state.sortDirection.toUpperCase()}.`);
+  }
+
   function initParser() {
     if (state.initialized) {
       return;
@@ -374,26 +721,28 @@
     renderHolders();
     renderStats();
 
-    const scanButton = query(selectors.scan);
-    const cancelButton = query(selectors.cancel);
-    const searchInput = query(selectors.search);
-    const copyButton = query(selectors.copy);
+    const bindings = [
+      [selectors.scan, 'click', startScan],
+      [selectors.cancel, 'click', cancelScan],
+      [selectors.search, 'input', applySearch],
+      [selectors.sort, 'change', applySort],
+      [selectors.sortDir, 'click', toggleSortDirection],
+      [selectors.copy, 'click', copyVisibleAddresses],
+      [selectors.previous, 'click', loadPreviousPage],
+      [selectors.next, 'click', loadNextPage],
+      [selectors.exportTxt, 'click', exportTxt],
+      [selectors.exportCsv, 'click', exportCsv],
+      [selectors.filterToggle, 'click', toggleFilterPanel],
+      [selectors.applyFilters, 'click', applyAdvancedFilters],
+      [selectors.resetFilters, 'click', resetAdvancedFilters]
+    ];
 
-    if (scanButton) {
-      scanButton.addEventListener('click', startScan);
-    }
-
-    if (cancelButton) {
-      cancelButton.addEventListener('click', cancelScan);
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', applySearch);
-    }
-
-    if (copyButton) {
-      copyButton.addEventListener('click', copyVisibleAddresses);
-    }
+    bindings.forEach(([selector, eventName, handler]) => {
+      const element = query(selector);
+      if (element) {
+        element.addEventListener(eventName, handler);
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
