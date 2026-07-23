@@ -73,3 +73,42 @@ Do not add owner withdrawals, upgrade proxies, delegatecall, arbitrary executor 
 6. Send batch.
 
 Research never ends.
+
+---
+
+# Laboratory License Manager
+
+`LaboratoryLicenseManager.sol` is the shared Lab Pass contract for Premium Core.
+
+It is designed as one reusable licensing contract for every Laboratory tool:
+
+- Wallet Parser
+- Token Sender
+- AI LAB
+- Research
+- future experiments
+
+## Responsibilities
+
+- accept ERC-20 payments;
+- issue one license per wallet;
+- extend active licenses instead of resetting them;
+- expose `isLicenseActive(address)`;
+- expose `licenseExpiration(address)`;
+- allow owner updates for price, payment token and license duration;
+- allow pausing purchases and withdrawing collected funds.
+
+The owner cannot arbitrarily grant or revoke licenses.
+
+## Base V1 Constructor Arguments
+
+```text
+initialOwner:        owner wallet
+initialPaymentToken: 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
+initialPrice:        5000000
+initialDuration:     2592000
+```
+
+This means 5 USDC for 30 days on Base.
+
+After deployment, put the verified contract address into `data/web3-tools.json` under `premium.contractAddress`.

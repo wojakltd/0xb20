@@ -1,0 +1,109 @@
+.premium-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 6, 16, 0.78);
+  backdrop-filter: blur(16px);
+}
+
+.premium-modal {
+  width: min(620px, 100%);
+  border: 1px solid rgba(88, 166, 255, 0.42);
+  border-radius: 18px;
+  padding: 28px;
+  background: linear-gradient(145deg, rgba(8, 18, 38, 0.96), rgba(4, 9, 20, 0.98));
+  box-shadow: 0 0 40px rgba(33, 116, 255, 0.18);
+}
+
+.premium-modal h2 {
+  margin: 8px 0 10px;
+  color: var(--blue, #5aa9ff);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.premium-modal p {
+  color: var(--text-muted, #b8c8e8);
+}
+
+.premium-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.premium-modal-grid div,
+.parser-lab-pass {
+  border: 1px solid rgba(88, 166, 255, 0.22);
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(2, 8, 20, 0.62);
+}
+
+.premium-modal-grid span,
+.parser-lab-pass span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted, #9bb0d3);
+  font-size: 0.78rem;
+}
+
+.premium-modal-grid strong,
+.parser-lab-pass strong {
+  color: var(--text, #f5f8ff);
+  word-break: break-word;
+}
+
+.premium-modal-status {
+  min-height: 24px;
+  color: var(--cyan, #74dfff);
+  font-family: var(--mono, monospace);
+}
+
+.premium-modal-status.is-error {
+  color: #ff8f9c;
+}
+
+.premium-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.parser-lab-pass {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.4fr) 1fr;
+  gap: 6px 16px;
+  margin-top: 18px;
+}
+
+.parser-lab-pass span {
+  grid-row: span 2;
+  margin: 0;
+  color: var(--cyan, #74dfff);
+  font-family: var(--mono, monospace);
+  text-transform: uppercase;
+}
+
+.parser-lab-pass small {
+  color: var(--text-muted, #9bb0d3);
+}
+
+.parser-lab-pass.is-active {
+  border-color: rgba(74, 255, 154, 0.38);
+  box-shadow: 0 0 18px rgba(74, 255, 154, 0.08);
+}
+
+.parser-lab-pass.is-inactive {
+  border-color: rgba(88, 166, 255, 0.24);
+}
+
+@media (max-width: 720px) {
+  .premium-modal-grid,
+  .parser-lab-pass {
+    grid-template-columns: 1fr;
+  }
+}

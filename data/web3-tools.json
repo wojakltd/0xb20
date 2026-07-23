@@ -12,5 +12,25 @@
     "contractName": "0XB20 Token Sender",
     "approvalMode": "exact",
     "maxRecipients": 250
+  },
+  "premium": {
+    "enabled": true,
+    "chainId": "0x2105",
+    "network": "BASE",
+    "contractAddress": "",
+    "contractName": "Laboratory License Manager",
+    "paymentToken": {
+      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "priceRaw": "5000000",
+    "price": "5",
+    "durationDays": 30,
+    "features": {
+      "walletParserGlobalExport": true,
+      "walletParserUnlimitedPagination": true,
+      "walletParserAdvancedFilters": true
+    }
   }
 }

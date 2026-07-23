@@ -11,8 +11,10 @@ export interface LaboratoryWalletService {
   disconnect(): Promise<WalletState>;
   signMessage(message: string): Promise<string>;
   switchToBase(): Promise<WalletState>;
+  callContract(to: string, data: string): Promise<string>;
   readTokenInfo(tokenAddress: string): Promise<TokenInfo>;
   readTokenAllowance(tokenAddress: string, ownerAddress: string, spenderAddress: string): Promise<string>;
+  readContractCode(address: string): Promise<string>;
   estimateGas(transaction: TransactionRequest): Promise<string>;
   sendTransaction(transaction: TransactionRequest): Promise<string>;
   waitForTransactionReceipt(transactionHash: string, options?: {

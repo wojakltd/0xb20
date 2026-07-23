@@ -31,7 +31,8 @@
     filterPanel: '[data-parser-filter-panel]',
     filterToggle: '[data-parser-filter-toggle]',
     applyFilters: '[data-parser-apply-filters]',
-    resetFilters: '[data-parser-reset-filters]'
+    resetFilters: '[data-parser-reset-filters]',
+    labPassStatus: '[data-lab-pass-status]'
   };
 
   const provider = new window.B20BlockscoutProvider.BlockscoutProvider({
@@ -59,7 +60,8 @@
     nextPageParams: null,
     meta: null,
     loadingMore: false,
-    exporting: false
+    exporting: false,
+    premium: null
   };
 
   function query(selector) {
@@ -86,6 +88,80 @@
 
   function setParserState(value) {
     setText(query(selectors.state), value);
+  }
+
+  function renderLabPassStatus(premiumState) {
+    const target = query(selectors.labPassStatus);
+
+    if (!target) {
+      return;
+    }
+
+    state.premium = premiumState || state.premium;
+
+    const license = state.premium?.license || {};
+    const walletState = state.premium?.wallet || {};
+    const isActive = Boolean(license.active);
+    const title = target.querySelector('strong');
+    const details = target.querySelector('small');
+
+    target.classList.toggle('is-active', isActive);
+    target.classList.toggle('is-inactive', !isActive);
+
+    if (title) {
+      title.textContent = isActive ? 'Active' : 'Inactive';
+    }
+
+    if (details) {
+      if (isActive) {
+        details.textContent = `Expires: ${license.expiresAtLabel || '--'}`;
+      } else if (license.error) {
+        details.textContent = license.error;
+      } else if (walletState && walletState.address) {
+        details.textContent = 'Advanced tools require an active on-chain license.';
+      } else {
+        details.textContent = 'Connect wallet when unlocking advanced tools.';
+      }
+    }
+  }
+
+  async function initPremium() {
+    renderLabPassStatus(null);
+
+    if (!window.B20Premium) {
+      renderLabPassStatus({
+        license: {
+          active: false,
+          error: 'Premium Core unavailable.'
+        }
+      });
+      return;
+    }
+
+    window.B20Premium.subscribe(renderLabPassStatus);
+    await window.B20Premium.init();
+  }
+
+  async function requirePremiumFeature(featureId, featureLabel) {
+    if (!window.B20Premium || typeof window.B20Premium.requireAccess !== 'function') {
+      setMessage('Lab Pass module unavailable.');
+      return false;
+    }
+
+    try {
+      const unlocked = await window.B20Premium.requireAccess(featureId, featureLabel);
+      renderLabPassStatus(window.B20Premium.getState());
+
+      if (!unlocked) {
+        setMessage(`${featureLabel} requires an active Lab Pass.`);
+      }
+
+      return unlocked;
+    } catch (error) {
+      setMessage(errorMessage(error, 'Lab Pass verification failed.'));
+      renderLabPassStatus(window.B20Premium.getState());
+      return false;
+    }
   }
 
   function setBusy(isBusy) {
@@ -566,6 +642,10 @@
       return;
     }
 
+    if (!(await requirePremiumFeature('walletParserUnlimitedPagination', 'Unlimited Pagination'))) {
+      return;
+    }
+
     const cachedPageCount = Math.ceil(state.filteredHolders.length / pageSize);
 
     if (state.currentPageIndex < cachedPageCount - 1) {
@@ -789,19 +869,27 @@
     }
   }
 
-  function exportTxt() {
-    finishGlobalExport('txt', (holders) => exporter.exportTxt(state.token, holders));
+  async function exportTxt() {
+    if (await requirePremiumFeature('walletParserGlobalExport', 'Global TXT Export')) {
+      finishGlobalExport('txt', (holders) => exporter.exportTxt(state.token, holders));
+    }
   }
 
-  function exportCsv() {
-    finishGlobalExport('csv', (holders) => exporter.exportCsv(state.token, holders));
+  async function exportCsv() {
+    if (await requirePremiumFeature('walletParserGlobalExport', 'Global CSV Export')) {
+      finishGlobalExport('csv', (holders) => exporter.exportCsv(state.token, holders));
+    }
   }
 
-  function toggleFilterPanel() {
+  async function toggleFilterPanel() {
     const panel = query(selectors.filterPanel);
     const toggle = query(selectors.filterToggle);
 
     if (!panel) {
+      return;
+    }
+
+    if (panel.hidden && !(await requirePremiumFeature('walletParserAdvancedFilters', 'Advanced Filters'))) {
       return;
     }
 
@@ -813,7 +901,11 @@
     }
   }
 
-  function applyAdvancedFilters() {
+  async function applyAdvancedFilters() {
+    if (!(await requirePremiumFeature('walletParserAdvancedFilters', 'Advanced Filters'))) {
+      return;
+    }
+
     try {
       setMessage('Applying filters...');
       state.activeFilters = filters.readFilters(query(selectors.filterPanel), state.token);
@@ -881,6 +973,7 @@
     renderTokenReadout(null);
     renderHolders();
     renderStats();
+    initPremium();
 
     const bindings = [
       [selectors.scan, 'click', startScan],

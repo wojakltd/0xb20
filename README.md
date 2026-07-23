@@ -27,6 +27,7 @@ Research never ends.
 - Test Zone for read-only wallet integration and signature testing.
 - Token Sender v1 for exact-approval ERC-20 batch distribution through a verified sender contract.
 - Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
+- Premium Core v1 foundation for one reusable on-chain Lab Pass across current and future tools.
 - Vercel-compatible deployment and GitHub Actions research cache automation.
 
 ## Architecture
@@ -97,6 +98,12 @@ Protected ERC-20 batch sender interface. It uses:
 ### Wallet Parser
 
 Protected read-only holder extraction instrument for Base ERC-20 tokens. It uses a provider abstraction, Blockscout API in V1, cached pagination, safe labels, filters, search, visible-page copy, and global TXT/CSV export for all holders available from the current provider.
+
+Advanced Wallet Parser tools integrate with Premium Core through feature checks only. Licensing logic stays outside the parser.
+
+### Premium Core
+
+Shared Lab Pass layer for Laboratory tools. The frontend checks `LaboratoryLicenseManager` on-chain, requests exact USDC approval when needed, and never stores license access locally.
 
 ### Evolution
 
@@ -200,6 +207,7 @@ Do not leave unrestricted wildcard domains enabled for public release.
 - Client-side password gates are UX barriers, not authentication.
 - Wallet tools never request private keys or seed phrases.
 - Token Sender uses exact approvals only.
+- Premium Core uses on-chain license checks only.
 - No hidden approvals.
 - No automatic transaction execution.
 - Users manually confirm every wallet action.

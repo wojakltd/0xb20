@@ -684,6 +684,10 @@
     return request(state.provider, 'eth_call', [{ to: normalizeAddress(to), data }, 'latest']);
   }
 
+  async function callContract(to, data) {
+    return ethCall(to, data || '0x');
+  }
+
   async function readTokenInfo(tokenAddress) {
     const token = normalizeAddress(tokenAddress);
     const [nameResult, symbolResult, decimalsResult] = await Promise.allSettled([
@@ -831,6 +835,7 @@
     disconnect,
     signMessage,
     switchToBase,
+    callContract,
     readTokenInfo,
     readTokenAllowance,
     readContractCode,

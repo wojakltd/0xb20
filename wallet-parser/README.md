@@ -207,6 +207,19 @@ Both exports include only holders matching the current filters and search. Manua
 
 During export the UI reports pages loaded, wallets loaded, wallets exported, duplicates removed, filtered out, elapsed time and provider. If the provider stops early, the tool exports the available data and displays a partial-export message.
 
+## Lab Pass Access
+
+Advanced functions are controlled by Premium Core:
+
+- Unlimited Pagination
+- Global TXT Export
+- Global CSV Export
+- Advanced Filters
+
+Wallet Parser does not contain licensing or payment logic. It only calls `window.B20Premium.requireAccess(featureId, featureLabel)`.
+Premium Core verifies the wallet's Lab Pass on-chain through `LaboratoryLicenseManager`.
+If the Lab Pass contract address is not configured in `data/web3-tools.json`, protected tools show a configuration message and do not attempt payment.
+
 ## Advanced Filters
 
 Filters are applied in memory and never mutate the original loaded holder dataset.
