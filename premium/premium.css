@@ -18,6 +18,13 @@
   box-shadow: 0 0 40px rgba(33, 116, 255, 0.18);
 }
 
+.premium-modal.is-success {
+  border-color: rgba(74, 255, 154, 0.46);
+  box-shadow:
+    0 0 42px rgba(33, 116, 255, 0.16),
+    0 0 24px rgba(74, 255, 154, 0.1);
+}
+
 .premium-modal h2 {
   margin: 8px 0 10px;
   color: var(--blue, #5aa9ff);
@@ -65,6 +72,10 @@
 
 .premium-modal-status.is-error {
   color: #ff8f9c;
+}
+
+.premium-modal-status.is-success {
+  color: #4affa0;
 }
 
 .premium-modal-actions {

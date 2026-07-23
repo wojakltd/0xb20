@@ -62,14 +62,16 @@
     overlay.appendChild(panel);
     document.body.appendChild(overlay);
 
-    modal = { overlay, fields, status, unlock, cancel };
+    modal = { overlay, panel, fields, status, unlock, cancel };
     return modal;
   }
 
-  function setStatus(text, isError) {
+  function setStatus(text, isError, isSuccess) {
     const instance = ensureModal();
     instance.status.textContent = text;
     instance.status.classList.toggle('is-error', Boolean(isError));
+    instance.status.classList.toggle('is-success', Boolean(isSuccess));
+    instance.panel.classList.toggle('is-success', Boolean(isSuccess));
   }
 
   function openUnlock(options) {
@@ -84,22 +86,51 @@
     instance.fields.network.value.textContent = config.network || 'BASE';
     instance.fields.token.value.textContent = token.symbol || 'USDC';
     instance.fields.feature.value.textContent = options.featureLabel || 'Laboratory Extension';
+    instance.unlock.textContent = 'Unlock';
+    instance.cancel.textContent = 'Cancel';
+    instance.cancel.hidden = false;
+    instance.unlock.disabled = false;
+    instance.cancel.disabled = false;
     setStatus('Wallet confirmation required.', false);
 
     instance.overlay.hidden = false;
 
     return new Promise((resolve) => {
+      let successTimer = null;
+      let closed = false;
+
       const cleanup = () => {
+        if (successTimer) {
+          global.clearTimeout(successTimer);
+          successTimer = null;
+        }
         instance.unlock.onclick = null;
         instance.cancel.onclick = null;
       };
 
       const close = (value) => {
+        if (closed) {
+          return;
+        }
+
+        closed = true;
         cleanup();
         instance.overlay.hidden = true;
         instance.unlock.disabled = false;
         instance.cancel.disabled = false;
+        instance.cancel.hidden = false;
         resolve(value);
+      };
+
+      const completeUnlock = () => {
+        setStatus('Thank you. Lab Pass active. Starting Laboratory tool...', false, true);
+        instance.unlock.textContent = 'Start';
+        instance.cancel.textContent = 'Close';
+        instance.unlock.disabled = false;
+        instance.cancel.disabled = false;
+        instance.unlock.onclick = () => close(true);
+        instance.cancel.onclick = () => close(true);
+        successTimer = global.setTimeout(() => close(true), 1100);
       };
 
       instance.cancel.onclick = () => close(false);
@@ -108,10 +139,11 @@
         instance.cancel.disabled = true;
         try {
           await options.onUnlock((message) => setStatus(message, false));
-          setStatus('Lab Pass active.', false);
-          close(true);
+          completeUnlock();
         } catch (error) {
           setStatus(utils.errorMessage(error, 'Unable to unlock Lab Pass.'), true);
+          instance.unlock.textContent = 'Retry';
+          instance.cancel.textContent = 'Close';
           instance.unlock.disabled = false;
           instance.cancel.disabled = false;
         }
