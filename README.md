@@ -24,7 +24,7 @@ Research never ends.
 - Prototype Records archive rendered from JSON.
 - Evolution Tree rendered from structured project data.
 - Shared wallet layer for Web3 experiments.
-- Test Zone for read-only wallet integration and signature testing.
+- Profile terminal for read-only wallet identity, Lab Pass status and signature testing.
 - Token Sender v1 for exact-approval ERC-20 batch distribution through a verified sender contract.
 - Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
 - Premium Core v1 foundation for one reusable on-chain Lab Pass across current and future tools.
@@ -43,6 +43,7 @@ Static shell
 ├─ logs/
 ├─ research/
 ├─ ai/
+├─ profile/
 ├─ test/
 ├─ token-sender/
 ├─ wallet-parser/
@@ -80,9 +81,9 @@ The live observation terminal. The frontend reads only `research/backend/cache/f
 
 An idea synthesis instrument with language selection. The browser calls `/api/ai/generate`; the OpenAI key remains server-side only.
 
-### Test Zone
+### Profile
 
-Internal Web3 sandbox for wallet connection and signature experiments.
+Unified wallet profile terminal for connection status, identity reads, Lab Pass status and signature experiments.
 
 ### Token Sender
 

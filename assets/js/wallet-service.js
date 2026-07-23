@@ -257,6 +257,7 @@
       global.localStorage.setItem(config.storageKey, JSON.stringify({
         connected: true,
         providerId: provider.id,
+        rdns: provider.rdns,
         walletName: provider.name,
         type: provider.type,
         updatedAt: new Date().toISOString()
@@ -274,11 +275,19 @@
     }
   }
 
-  function providerId(info) {
-    return info.uuid || info.rdns || info.name || `provider-${state.providers.length}`;
-  }
-
   function inferLegacyName(provider) {
+    if (provider && provider.isPhantom) {
+      return 'Phantom';
+    }
+
+    if (provider && provider.isMagicEden) {
+      return 'Magic Eden';
+    }
+
+    if (provider && provider.isBraveWallet) {
+      return 'Brave Wallet';
+    }
+
     if (provider && provider.isRabby) {
       return 'Rabby';
     }
@@ -298,15 +307,131 @@
     return 'Injected Wallet';
   }
 
+  function normalizeProviderKey(value) {
+    return String(value || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9.:-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
+  function inferLegacyRdns(provider, info = {}) {
+    const rdns = normalizeProviderKey(info.rdns);
+    const name = normalizeProviderKey(info.name || inferLegacyName(provider));
+
+    if (rdns) {
+      return rdns;
+    }
+
+    if ((provider && provider.isPhantom) || name.includes('phantom')) {
+      return 'app.phantom';
+    }
+
+    if ((provider && provider.isMagicEden) || name.includes('magic-eden')) {
+      return 'io.magiceden';
+    }
+
+    if ((provider && provider.isBraveWallet) || name.includes('brave')) {
+      return 'com.brave.wallet';
+    }
+
+    if ((provider && provider.isRabby) || name.includes('rabby')) {
+      return 'io.rabby';
+    }
+
+    if ((provider && provider.isCoinbaseWallet) || name.includes('coinbase')) {
+      return 'com.coinbase.wallet';
+    }
+
+    if ((provider && provider.isRainbow) || name.includes('rainbow')) {
+      return 'me.rainbow';
+    }
+
+    if (provider && provider.isMetaMask && !(provider && provider.isPhantom)) {
+      return 'io.metamask';
+    }
+
+    return name;
+  }
+
+  function providerId(info, provider) {
+    return info.uuid || info.rdns || inferLegacyRdns(provider, info) || info.name || `provider-${state.providers.length}`;
+  }
+
+  function providerPriority(provider) {
+    const marker = normalizeProviderKey(`${provider.id} ${provider.rdns} ${provider.name}`);
+
+    if (provider.disabled) {
+      return 1000;
+    }
+
+    if (marker.includes('metamask')) {
+      return 10;
+    }
+
+    if (marker.includes('rabby')) {
+      return 20;
+    }
+
+    if (marker.includes('coinbase')) {
+      return 30;
+    }
+
+    if (marker.includes('rainbow')) {
+      return 40;
+    }
+
+    if (provider.type === 'walletconnect') {
+      return 50;
+    }
+
+    if (marker.includes('brave')) {
+      return 60;
+    }
+
+    if (marker.includes('phantom') || marker.includes('magiceden') || marker.includes('magic-eden')) {
+      return 80;
+    }
+
+    return 70;
+  }
+
+  function sortProviders() {
+    state.providers.sort((left, right) => {
+      const priorityDelta = providerPriority(left) - providerPriority(right);
+
+      if (priorityDelta !== 0) {
+        return priorityDelta;
+      }
+
+      return String(left.name).localeCompare(String(right.name));
+    });
+  }
+
+  function findStoredProvider(stored) {
+    if (!stored) {
+      return null;
+    }
+
+    const storedId = normalizeProviderKey(stored.providerId);
+    const storedRdns = normalizeProviderKey(stored.rdns);
+    const storedName = normalizeProviderKey(stored.walletName);
+
+    return state.providers.find((provider) => normalizeProviderKey(provider.id) === storedId)
+      || state.providers.find((provider) => storedRdns && normalizeProviderKey(provider.rdns) === storedRdns)
+      || state.providers.find((provider) => storedName && normalizeProviderKey(provider.name) === storedName)
+      || null;
+  }
+
   function addProvider(provider, info = {}) {
     if (!provider) {
       return;
     }
 
     const entry = {
-      id: providerId(info),
+      id: providerId(info, provider),
       name: info.name || inferLegacyName(provider),
-      rdns: info.rdns || '',
+      rdns: info.rdns || inferLegacyRdns(provider, info),
       icon: info.icon || '',
       provider,
       type: 'injected',
@@ -378,12 +503,14 @@
       global.setTimeout(() => {
         discoverLegacyProviders();
         addWalletConnectAdapter();
+        sortProviders();
 
-        const firstEnabled = state.providers.find((provider) => !provider.disabled);
         const stored = readStoredSession();
+        const storedProvider = findStoredProvider(stored);
+        const firstEnabled = state.providers.find((provider) => !provider.disabled);
 
-        state.selectedProviderId = stored && stored.providerId
-          ? stored.providerId
+        state.selectedProviderId = storedProvider
+          ? storedProvider.id
           : firstEnabled
             ? firstEnabled.id
             : '';
@@ -545,7 +672,8 @@
   async function connect(providerIdValue) {
     await discoverWallets();
 
-    const selected = state.providers.find((provider) => provider.id === providerIdValue)
+    const requestedProviderId = providerIdValue || state.selectedProviderId;
+    const selected = state.providers.find((provider) => provider.id === requestedProviderId && !provider.disabled)
       || state.providers.find((provider) => !provider.disabled);
 
     if (!selected) {
@@ -591,7 +719,7 @@
       setState({ restoring: true, message: 'Restoring wallet session...' });
       await discoverWallets();
 
-      let selected = state.providers.find((provider) => provider.id === stored.providerId);
+      let selected = findStoredProvider(stored);
 
       if (!selected && stored.type === 'walletconnect') {
         selected = state.providers.find((provider) => provider.type === 'walletconnect');
@@ -811,6 +939,9 @@
 
     if (state.initialized) {
       emit();
+      if (options.autoRestore && !state.connected) {
+        return restoreConnection();
+      }
       return restorePromise || Promise.resolve(snapshot());
     }
 

@@ -159,6 +159,38 @@
     }
   }
 
+  function renderPremiumState(premiumState) {
+    const license = premiumState && premiumState.license ? premiumState.license : {};
+
+    if (license.active) {
+      setField('labPassStatus', 'ACTIVE');
+      setField('labPassExpiry', `Expires: ${license.expiresAtLabel || 'Unknown'}`);
+      return;
+    }
+
+    if (license.error) {
+      setField('labPassStatus', 'UNAVAILABLE');
+      setField('labPassExpiry', license.error);
+      return;
+    }
+
+    setField('labPassStatus', 'INACTIVE');
+    setField('labPassExpiry', 'No active Lab Pass detected.');
+  }
+
+  async function initPremiumCore() {
+    renderPremiumState(null);
+
+    if (!window.B20Premium) {
+      setField('labPassStatus', 'UNAVAILABLE');
+      setField('labPassExpiry', 'Premium Core unavailable.');
+      return;
+    }
+
+    window.B20Premium.subscribe(renderPremiumState);
+    await window.B20Premium.init();
+  }
+
   async function connectWallet() {
     try {
       await window.B20Wallet.connect(state.selectedProviderId);
@@ -223,11 +255,16 @@
 
     window.B20Wallet.init({
       walletConnectProjectId,
-      appName: '0XB20 Laboratory Test',
-      appDescription: 'Read-only wallet integration sandbox.',
-      appUrl: 'https://0xb20.lol/test'
+      appName: '0XB20 Laboratory Profile',
+      appDescription: 'Unified wallet identity and Lab Pass terminal.',
+      appUrl: 'https://0xb20.lol/profile',
+      autoRestore: true
     });
     window.B20Wallet.subscribe(renderWalletState);
+    initPremiumCore().catch((error) => {
+      setField('labPassStatus', 'UNAVAILABLE');
+      setField('labPassExpiry', error && error.message ? error.message : 'Premium Core unavailable.');
+    });
 
     if (window.B20Interactions) {
       window.B20Interactions.initReactivePanels();
@@ -243,7 +280,7 @@
     window.B20AccessGate.init({
       enabled: accessGateEnabled,
       password: accessPassword,
-      storageKey: 'b20-test-lab-access',
+      storageKey: 'b20-profile-access',
       gateSelector: '[data-test-gate]',
       contentSelector: '[data-test-content]',
       formSelector: '[data-test-gate-form]',

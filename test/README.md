@@ -1,6 +1,8 @@
-# 0XB20 Test Module
+# 0XB20 Profile Module
 
-`/test/` is an isolated Laboratory sandbox for Web3 integration experiments.
+`/profile/` is the Laboratory wallet profile terminal for Web3 identity, Lab Pass status and signature experiments.
+
+`/test/` is preserved as a legacy redirect, and `test/assets/` remains the shared visual/runtime asset folder for current Web3 tools.
 
 It is intentionally separate from the production Research, AI LAB, Archive, Evolution and homepage modules.
 
@@ -36,7 +38,7 @@ Allowed wallet methods:
 
 - `index.html` — route shell and Laboratory UI.
 - `assets/css/test.css` — isolated visual layer matching the existing site.
-- `assets/js/test-wallet.js` — Test Zone UI adapter for the global wallet service.
+- `assets/js/test-wallet.js` — Profile UI adapter for the global wallet service.
 - `../assets/js/wallet-service.js` — shared wallet runtime used by all future Web3 tools.
 - `src/wallet-contracts.ts` — TypeScript contracts for future Web3 experiments.
 
@@ -63,7 +65,7 @@ To enable it later:
 
 1. Create a WalletConnect/Reown project.
 2. Put the public project id into `walletConnectProjectId` in `assets/js/test-wallet.js`.
-3. Test `/test/` and `/token-sender/` with a mobile wallet.
+3. Test `/profile/` and `/token-sender/` with a mobile wallet.
 
 ## Future Experiments
 

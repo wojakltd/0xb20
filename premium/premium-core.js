@@ -171,9 +171,16 @@
         await global.B20Wallet.init({ autoRestore: true });
         wallet.subscribe((walletState) => {
           state.wallet = walletState;
+
+          if (!walletState.connected || !walletState.address) {
+            state.license = license.createLicenseStore();
+            emit();
+            return;
+          }
+
           emit();
 
-          if (walletState.connected && walletState.address && utils.isConfigured(state.config)) {
+          if (utils.isConfigured(state.config)) {
             refreshLicense();
           }
         });

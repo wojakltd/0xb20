@@ -42,7 +42,8 @@ HTML should define module shells only. Expandable content should come from `data
 - `logs/index.html` is the Laboratory Archive page at `/logs/`.
 - `research/index.html` is the Research observation terminal at `/research/`.
 - `ai/index.html` is the public AI Lab idea synthesis terminal at `/ai/`.
-- `test/index.html` is the password-gated Web3 sandbox at `/test/`.
+- `profile/index.html` is the wallet Profile terminal at `/profile/`.
+- `test/index.html` is a legacy redirect to `/profile/`.
 - `token-sender/index.html` is the protected Token Sender v1 instrument at `/token-sender/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
@@ -56,7 +57,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
 - `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
-- `test/assets/` contains the isolated Web3 test module runtime.
+- `test/assets/` contains the shared Web3 profile/runtime assets reused by Web3 tools.
 
 ## JSON Schemas
 
@@ -248,7 +249,7 @@ Never use:
 - Do not throw console errors for missing data.
 - Do not add browser/frontend dependencies.
 - Keep backend Research dependencies minimal and isolated inside `research/backend/`.
-- Keep experimental Web3 dependencies isolated inside `/test/` if a build step is introduced later.
+- Keep experimental Web3 dependencies isolated inside shared Web3 runtime folders if a build step is introduced later.
 - Protected Web3 applications must consume `assets/js/wallet-service.js` instead of creating isolated wallet state.
 - Keep third-party API keys server-side only. Browser modules must never read or contain secrets.
 - Preserve root compatibility files.
@@ -267,7 +268,7 @@ Never use:
 - `assets/js/wallet-service.js` owns global wallet discovery, persistent connection restore, profile reads, token reads, Base switching, and exact approval requests.
 - `ai/assets/js/ai-lab.js` renders `/ai/` and calls only the server endpoint.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
-- `test/assets/js/test-wallet.js` renders `/test/` wallet experiments through the shared wallet service.
+- `test/assets/js/test-wallet.js` renders `/profile/` wallet identity through the shared wallet service.
 - `token-sender/assets/js/token-sender.js` renders `/token-sender/` Token Sender v1 through the shared wallet service.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
@@ -362,21 +363,21 @@ AI Lab lives at `/ai/` and is public. The shared access gate mechanism is preser
 - `generateSignal` and `remixSignal` return only a signal; `generatePost` returns post text plus AI-generated hashtag and emoji arrays.
 - Never hardcode keys, model credentials, generated history, or private prompts in frontend files.
 
-## How To Update Test Lab
+## How To Update Profile
 
-The Test Lab lives at `/test/` and is protected by the shared access gate.
+The Profile terminal lives at `/profile/`. `/test/` is kept as a legacy redirect.
 
 - Browser code lives in `test/assets/js/test-wallet.js`.
 - Visual module styles live in `test/assets/css/test.css`.
 - TypeScript contracts live in `test/src/wallet-contracts.ts`.
 - Wallet state comes from `assets/js/wallet-service.js`.
-- Current Test Zone methods are read-only except `personal_sign` for the signature demo.
+- Current Profile methods are read-only except `personal_sign` for the signature demo.
 - Never add `approve`, `permit`, `transfer`, or `eth_sendTransaction` to this sandbox without explicit review.
 - WalletConnect QR support requires a public WalletConnect/Reown project id before enabling the adapter.
 
 ## How To Update Token Sender
 
-The Token Sender lives at `/token-sender/` and is protected by the same Web3 access gate session as `/test/`.
+The Token Sender lives at `/token-sender/` and consumes the same shared wallet layer as `/profile/`.
 
 - Browser code lives in `token-sender/assets/js/token-sender.js`.
 - Visual module styles live in `token-sender/assets/css/token-sender.css`.

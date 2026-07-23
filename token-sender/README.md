@@ -14,7 +14,7 @@ Current password:
 0xb20.lol
 ```
 
-It uses the same session key as `/test/`, so unlocking the Web3 sandbox unlocks this protected instrument for the current browser session.
+It consumes the same shared wallet layer as `/profile/`, so the connected wallet identity stays consistent across Web3 instruments.
 
 ## Wallet Layer
 

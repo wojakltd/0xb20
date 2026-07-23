@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0XB20 Laboratory Profile: unified wallet identity and Lab Pass status terminal.">
+  <meta name="b20-root" content="/">
+  <title>0XB20 Laboratory Profile</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/effects.css">
+  <link rel="stylesheet" href="/ai/assets/css/ai.css">
+  <link rel="stylesheet" href="/premium/premium.css">
+  <link rel="stylesheet" href="/test/assets/css/test.css">
+</head>
+<body class="test-body">
+
+<nav class="lab-nav" aria-label="B20 Laboratory modules">
+  <a class="nav-brand" href="/">0XB20</a>
+  <div class="nav-links">
+    <a href="/" data-module-route="/">Home</a>
+    <a href="/research/" data-module-route="/research">Research</a>
+    <a href="/ai/" data-module-route="/ai">AI LAB</a>
+    <a href="/token-sender/" data-module-route="/token-sender">Token Sender</a>
+    <a href="/wallet-parser/" data-module-route="/wallet-parser">Wallet Parser</a>
+    <a href="/evolution/" data-module-route="/evolution">Evolution</a>
+    <a href="/logs/" data-module-route="/logs">Archive</a>
+    <a href="/profile/" data-module-route="/profile" aria-current="page">Profile</a>
+  </div>
+</nav>
+
+<main class="test-page">
+  <section class="research-gate ai-gate test-gate" data-test-gate hidden>
+    <span class="eyebrow">Restricted Profile</span>
+    <h1>PROFILE LOCKED</h1>
+    <p>Identity instruments require the current Laboratory access key.</p>
+    <form class="research-gate-form" data-test-gate-form>
+      <label for="test-password">Access key</label>
+      <div class="research-gate-controls">
+        <input id="test-password" data-test-password type="password" autocomplete="current-password" spellcheck="false" placeholder="Laboratory key">
+        <button type="submit">Unlock Profile</button>
+      </div>
+      <p class="research-gate-error" data-test-gate-error hidden>ACCESS DENIED. Key rejected.</p>
+    </form>
+  </section>
+
+  <div data-test-content hidden>
+    <section class="test-hero lab-reactive" data-reveal>
+      <span class="eyebrow">LABORATORY PROFILE</span>
+      <h1>Profile</h1>
+      <p class="test-subtitle">Wallet Identity & Lab Pass Terminal</p>
+      <div class="test-status-strip" aria-label="Profile module status">
+        <span>Status: READY</span>
+        <span>Network: BASE</span>
+        <span>Mode: READ ONLY</span>
+      </div>
+    </section>
+
+    <section class="test-landing lab-reactive" data-reveal>
+      <div>
+        <span class="eyebrow">Profile Systems</span>
+        <ul class="test-experiment-list">
+          <li>Wallet Identity</li>
+          <li>Lab Pass Status</li>
+          <li>Signature Verification</li>
+          <li>Future Research Profile</li>
+        </ul>
+      </div>
+      <button class="test-primary" type="button" data-test-launch>Launch Profile</button>
+    </section>
+
+    <section class="test-console" data-test-console hidden>
+      <div class="test-console-header">
+        <div>
+          <span class="eyebrow">Identity Interface</span>
+          <h2>Wallet Profile</h2>
+          <p>Unified wallet inspection. Lab Pass verification. No approvals. No transfers.</p>
+        </div>
+        <span class="test-state" data-wallet-status>STANDBY</span>
+      </div>
+
+      <div class="test-grid">
+        <article class="test-panel">
+          <div class="test-panel-header">
+            <span class="eyebrow">Connection</span>
+            <button class="test-secondary" type="button" data-refresh-wallets>Refresh Wallets</button>
+          </div>
+          <div class="test-wallet-list" data-wallet-list>
+            <p class="test-muted">Scanning browser wallet providers...</p>
+          </div>
+          <div class="test-action-row">
+            <button class="test-primary" type="button" data-connect-wallet>Connect Wallet</button>
+            <button class="test-secondary" type="button" data-disconnect-wallet disabled>Disconnect</button>
+          </div>
+          <p class="test-message" data-wallet-message>Wallet laboratory idle.</p>
+        </article>
+
+        <article class="test-panel test-profile-card">
+          <span class="eyebrow">Wallet Profile</span>
+          <div class="test-avatar" data-wallet-avatar>?</div>
+          <div class="test-lab-pass-card" data-profile-lab-pass>
+            <span>Lab Pass</span>
+            <strong data-wallet-field="labPassStatus">Checking</strong>
+            <small data-wallet-field="labPassExpiry">Connect wallet to verify.</small>
+          </div>
+          <dl class="test-facts">
+            <dt>Status</dt>
+            <dd data-wallet-field="status">Disconnected</dd>
+            <dt>Wallet</dt>
+            <dd data-wallet-field="wallet">Unknown</dd>
+            <dt>Address</dt>
+            <dd data-wallet-field="address">Not connected</dd>
+            <dt>Short Address</dt>
+            <dd data-wallet-field="shortAddress">--</dd>
+            <dt>Base Name</dt>
+            <dd data-wallet-field="baseName">Not detected</dd>
+            <dt>ENS</dt>
+            <dd data-wallet-field="ens">Not detected</dd>
+            <dt>Current Network</dt>
+            <dd data-wallet-field="network">Unknown</dd>
+            <dt>ETH Balance</dt>
+            <dd data-wallet-field="balance">Unknown</dd>
+            <dt>Laboratory Access</dt>
+            <dd data-wallet-field="access">Pending</dd>
+          </dl>
+        </article>
+
+        <article class="test-panel test-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Signature Test</span>
+              <h3>Sign Message</h3>
+            </div>
+            <button class="test-secondary" type="button" data-sign-message disabled>Sign Laboratory Message</button>
+          </div>
+          <pre class="test-signature-message" data-signature-message>Welcome to 0XB20 Laboratory
+
+Nonce: pending
+Timestamp: pending</pre>
+          <div class="test-signature-result" data-signature-result>
+            Identity verification has not started.
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/interactions.js" defer></script>
+<script src="/assets/js/access-gate.js" defer></script>
+<script src="/assets/js/wallet-service.js" defer></script>
+<script src="/premium/premium-utils.js" defer></script>
+<script src="/premium/premium-wallet.js" defer></script>
+<script src="/premium/premium-contract.js" defer></script>
+<script src="/premium/premium-license.js" defer></script>
+<script src="/premium/premium-modal.js" defer></script>
+<script src="/premium/premium-core.js" defer></script>
+<script src="/test/assets/js/test-wallet.js" defer></script>
+
+</body>
+</html>
