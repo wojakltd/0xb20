@@ -74,6 +74,39 @@
     return state.license;
   }
 
+  async function refreshLicenseWithRetry(attempts = 6, delayMs = 1500) {
+    let current = await refreshLicense();
+
+    for (let attempt = 1; attempt < attempts && !current.active; attempt++) {
+      await new Promise((resolve) => global.setTimeout(resolve, delayMs));
+      current = await refreshLicense();
+    }
+
+    return current;
+  }
+
+  async function connectAndVerifyLicense(progress) {
+    if (typeof progress === 'function') {
+      progress('Connecting wallet...');
+    }
+
+    const connected = await wallet.ensureConnected();
+    state.wallet = connected;
+
+    if (typeof progress === 'function') {
+      progress(`Switching to ${state.config.network || 'BASE'}...`);
+    }
+
+    state.wallet = await wallet.ensureNetwork(state.config);
+
+    if (typeof progress === 'function') {
+      progress('Checking Lab Pass on-chain...');
+    }
+
+    await contract.requireDeployedContract(state.config);
+    return refreshLicense();
+  }
+
   async function ensureUnlocked(featureId, featureLabel) {
     if (!state.config || !state.config.enabled || !utils.featureEnabled(state.config, featureId)) {
       return true;
@@ -90,26 +123,29 @@
       throw new Error('Lab Pass contract is not configured yet.');
     }
 
+    const verifiedLicense = await connectAndVerifyLicense();
+
+    if (verifiedLicense.active) {
+      return true;
+    }
+
     const unlocked = await modal.openUnlock({
       config: state.config,
-      walletState: global.B20Wallet.getState(),
+      walletState: state.wallet || global.B20Wallet.getState(),
       featureLabel,
       onUnlock: async (progress) => {
-        progress('Connecting wallet...');
-        const connected = await wallet.ensureConnected();
-        state.wallet = connected;
+        const currentLicense = await connectAndVerifyLicense(progress);
 
-        progress(`Switching to ${state.config.network || 'BASE'}...`);
-        await wallet.ensureNetwork(state.config);
+        if (currentLicense.active) {
+          progress('Lab Pass already active.');
+          return;
+        }
 
-        progress('Checking Lab Pass contract...');
-        await contract.requireDeployedContract(state.config);
-
-        await contract.approveExactPayment(state.config, connected.address, progress);
+        await contract.approveExactPayment(state.config, state.wallet.address, progress);
         await contract.purchaseLicense(state.config, progress);
 
         progress('Verifying license on-chain...');
-        await refreshLicense();
+        await refreshLicenseWithRetry();
 
         if (!state.license.active) {
           throw new Error('License transaction confirmed, but Lab Pass is not active yet.');
