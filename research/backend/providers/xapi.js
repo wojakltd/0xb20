@@ -77,6 +77,7 @@ function getConfig(config = {}) {
     baseUrl: String(xapiConfig.baseUrl || 'https://api.x.com/2').replace(/\/$/, ''),
     timeoutMs: Number(xapiConfig.timeoutMs) || 15000,
     maxResults: Math.min(100, Math.max(5, Number(xapiConfig.maxResults) || 100)),
+    incrementalMaxResults: Math.min(100, Math.max(5, Number(xapiConfig.incrementalMaxResults) || 25)),
     maxPages: Math.max(1, Number(xapiConfig.maxPages) || 3),
     userFields: xapiConfig.userFields || 'created_at,description,id,name,profile_image_url,protected,public_metrics,url,username,verified,verified_type',
     tweetFields: xapiConfig.tweetFields || 'attachments,author_id,conversation_id,created_at,entities,id,in_reply_to_user_id,note_tweet,public_metrics,referenced_tweets,text',
@@ -287,10 +288,11 @@ async function fetchAccountPosts(account, options = {}) {
   const posts = [];
   let paginationToken = '';
   let pagesRequested = 0;
+  const maxResults = options.sinceId ? config.incrementalMaxResults : config.maxResults;
 
   for (let page = 0; page < config.maxPages; page += 1) {
     const params = {
-      max_results: config.maxResults,
+      max_results: maxResults,
       exclude: 'retweets',
       'tweet.fields': config.tweetFields,
       expansions: config.expansions,

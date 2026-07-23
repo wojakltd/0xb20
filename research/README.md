@@ -133,7 +133,7 @@ Everything else uses the ecosystem branch:
 - `start_time` from `minCreatedAt` on first official sync.
 - `since_id` from the newest cached Laboratory post after the first official sync.
 
-The Laboratory account is synced every 12 hours by default to conserve API quota. The GitHub Action can still run every 10 minutes for ecosystem updates; `laboratory.js` skips API calls until the Laboratory sync window opens.
+The Laboratory account is synced every 2 hours by default to keep the public journal fresh without wasting API quota. The GitHub Action can still run every 10 minutes for ecosystem updates; `laboratory.js` skips API calls until the Laboratory sync window opens.
 
 `playwright` is the primary provider when Chromium is available. If X blocks anonymous browser access or Playwright cannot launch, the fetcher logs the reason and continues.
 
@@ -290,9 +290,9 @@ The site remains static.
 
 The GitHub Action `.github/workflows/research-fetch.yml` runs every 10 minutes, installs Node dependencies, installs Chromium for Playwright, updates `research/backend/cache/feed.json`, and commits cache changes when new observations are found.
 
-The Laboratory provider internally syncs every 12 hours by default, even though the workflow runs more often for ecosystem freshness.
+The Laboratory provider internally syncs every 2 hours by default, even though the workflow runs more often for ecosystem freshness. Manual workflow runs can force a Laboratory X API sync immediately.
 
-Vercel then redeploys the static site from the updated repository.
+When `VERCEL_DEPLOY_HOOK_URL` is configured, the Research workflow triggers a Vercel production deploy immediately after pushing an updated cache.
 
 ## Failure Behavior
 

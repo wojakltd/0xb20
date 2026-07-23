@@ -339,7 +339,7 @@ Edit `data/evolution.json`.
 - Provider order is `laboratory`, `playwright`, `reader`, `rss`, preserved `cache`, then `sample`.
 - `laboratory` is the only entry point for official 0XB20 history and currently delegates to `xapi`.
 - `xapi` uses official X API bearer-token auth and must never be called directly outside `laboratory.js`.
-- Laboratory sync cadence is 12 hours by default for API quota conservation.
+- Laboratory sync cadence is 2 hours by default for freshness with controlled API usage.
 - `sample` exists only as a development fallback and is removed automatically once real provider data exists.
 - The `laboratory` category is reserved for 0XB20's own observation source and receives a small sorting boost only when posts are close in time.
 - Research timestamps should prefer X Snowflake IDs over reader text labels.

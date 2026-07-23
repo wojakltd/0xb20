@@ -66,6 +66,11 @@ function refreshIntervalMinutes(config) {
   return Number(config.laboratory && config.laboratory.refreshIntervalMinutes) || 720;
 }
 
+function forceSyncRequested() {
+  return process.env.RESEARCH_FORCE_LABORATORY_SYNC === '1'
+    || process.argv.includes('--force-laboratory');
+}
+
 function nextSyncAt(lastSyncAt, config) {
   const lastSyncTime = new Date(lastSyncAt || 0).getTime();
 
@@ -77,6 +82,10 @@ function nextSyncAt(lastSyncAt, config) {
 }
 
 function shouldSync(previousMetadata, config) {
+  if (forceSyncRequested()) {
+    return true;
+  }
+
   const laboratory = previousMetadata && previousMetadata.laboratory;
   const lastSyncTime = new Date(laboratory && laboratory.lastSyncAt).getTime();
 
@@ -91,7 +100,7 @@ function createDiagnostics(status, details = {}) {
   return {
     laboratory: {
       provider: 'xapi',
-      apiStatus: status,
+      apiStatus: details.apiStatus || status,
       status,
       refreshIntervalMinutes: details.refreshIntervalMinutes,
       lastSyncAt: details.lastSyncAt || null,
@@ -99,6 +108,7 @@ function createDiagnostics(status, details = {}) {
       importedPosts: details.importedPosts || 0,
       accountsScanned: details.accountsScanned || 0,
       skipped: Boolean(details.skipped),
+      forced: Boolean(details.forced),
       error: details.error || ''
     }
   };
@@ -128,6 +138,9 @@ async function fetchPosts(accounts, context = {}) {
       posts: previousPosts,
       errors: [],
       diagnostics: createDiagnostics('skipped', {
+        apiStatus: previousMetadata.laboratory && previousMetadata.laboratory.apiStatus
+          ? previousMetadata.laboratory.apiStatus
+          : 'unknown',
         refreshIntervalMinutes: intervalMinutes,
         lastSyncAt,
         nextSyncAt: nextSyncAt(lastSyncAt, config),
@@ -188,7 +201,8 @@ async function fetchPosts(accounts, context = {}) {
       lastSyncAt: now,
       nextSyncAt: nextSyncAt(now, config),
       importedPosts,
-      accountsScanned: laboratoryAccounts.length
+      accountsScanned: laboratoryAccounts.length,
+      forced: forceSyncRequested()
     })
   };
 }

@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "*/10 * * * *"
   workflow_dispatch:
+    inputs:
+      force_laboratory:
+        description: "Force Laboratory X API sync even when the cache interval has not elapsed."
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -19,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -68,16 +76,59 @@ jobs:
           X_CT0: ${{ secrets.X_CT0 }}
           X_COOKIES_JSON: ${{ secrets.X_COOKIES_JSON }}
           X_COOKIE_HEADER: ${{ secrets.X_COOKIE_HEADER }}
+          RESEARCH_FORCE_LABORATORY_SYNC: ${{ github.event_name == 'workflow_dispatch' && inputs.force_laboratory && '1' || '' }}
         run: npm run fetch
 
+      - name: Inspect research cache
+        working-directory: research/backend
+        run: |
+          node - <<'NODE'
+          const feed = require('./cache/feed.json');
+          const posts = Array.isArray(feed.posts) ? feed.posts : [];
+          const laboratoryPosts = posts.filter((post) => post.username === '0xb20lol');
+          const latest = laboratoryPosts[0] || {};
+
+          console.log(`Research cache generated: ${feed.metadata && feed.metadata.generatedAt}`);
+          console.log(`Research provider: ${feed.metadata && feed.metadata.provider}`);
+          console.log(`Laboratory API status: ${feed.metadata && feed.metadata.apiStatus}`);
+          console.log(`Laboratory posts: ${laboratoryPosts.length}`);
+          console.log(`Latest Laboratory observation: ${latest.created_at || 'missing'} ${latest.id || ''}`);
+
+          if (!laboratoryPosts.length) {
+            throw new Error('Laboratory provider returned zero visible observations.');
+          }
+          NODE
+
       - name: Commit cache update
+        id: commit_cache
         run: |
           if git diff --quiet -- research/backend/cache/feed.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Research cache unchanged."
             exit 0
           fi
           git config user.name "0XB20 Research Bot"
           git config user.email "actions@github.com"
+          git pull --rebase --autostash origin main
           git add research/backend/cache/feed.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Research cache unchanged after rebase."
+            exit 0
+          fi
           git commit -m "Update research feed cache"
-          git push
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger Vercel deploy
+        if: steps.commit_cache.outputs.changed == 'true'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK_URL is missing. Cache was pushed, but production deploy was not triggered directly."
+            exit 0
+          fi
+
+          curl --fail --show-error --silent --request POST "$VERCEL_DEPLOY_HOOK_URL"
+          echo "Vercel production deploy hook triggered after Research cache update."

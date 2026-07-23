@@ -10,12 +10,13 @@
   "laboratory": {
     "provider": "xapi",
     "username": "0xb20lol",
-    "refreshIntervalMinutes": 720
+    "refreshIntervalMinutes": 120
   },
   "xapi": {
     "baseUrl": "https://api.x.com/2",
     "timeoutMs": 15000,
     "maxResults": 100,
+    "incrementalMaxResults": 25,
     "maxPages": 4
   },
   "playwright": {
