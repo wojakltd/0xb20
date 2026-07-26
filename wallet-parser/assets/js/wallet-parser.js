@@ -103,13 +103,20 @@
     const walletState = state.premium?.wallet || {};
     const isActive = Boolean(license.active);
     const title = target.querySelector('strong');
-    const details = target.querySelector('small');
+    const wallet = target.querySelector('[data-lab-pass-wallet]');
+    const details = target.querySelector('[data-lab-pass-details]') || target.querySelector('small');
 
     target.classList.toggle('is-active', isActive);
     target.classList.toggle('is-inactive', !isActive);
 
     if (title) {
       title.textContent = isActive ? 'Active' : 'Inactive';
+    }
+
+    if (wallet) {
+      wallet.textContent = walletState && walletState.address
+        ? `Wallet: ${walletState.address}`
+        : 'Wallet: not connected';
     }
 
     if (details) {

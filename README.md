@@ -180,6 +180,8 @@ GitHub Actions secrets used by automation:
 - `VERCEL_DEPLOY_HOOK_URL` — Vercel Deploy Hook.
 - `X_BEARER_TOKEN` or `X_API_BEARER_TOKEN` — X API bearer token for Laboratory Research import.
 
+The Research workflow runs inside GitHub Actions, so the X bearer token must be stored in GitHub repository Actions secrets. Adding it only to Vercel environment variables will not update the Research cache.
+
 Optional temporary Research fallbacks:
 
 - `X_AUTH_TOKEN`

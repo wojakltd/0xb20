@@ -2,7 +2,7 @@ name: Research Feed Fetch
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
     inputs:
       force_laboratory:
@@ -24,14 +24,15 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "24"
+          package-manager-cache: false
 
       - name: Install research dependencies
         working-directory: research/backend
@@ -53,12 +54,26 @@ jobs:
           X_BEARER: ${{ secrets.X_BEARER }}
           X_API_TOKEN: ${{ secrets.X_API_TOKEN }}
         run: |
-          if [ -n "$X_BEARER_TOKEN$X_API_BEARER_TOKEN$TWITTER_BEARER_TOKEN$TWITTER_API_BEARER_TOKEN$BEARER_TOKEN$X_API_BEARER$TWITTER_BEARER$X_BEARER$X_API_TOKEN" ]; then
-            echo "X API bearer: loaded"
-          else
-            echo "::error::X API bearer: missing. Add repository secret X_BEARER_TOKEN in GitHub Actions secrets."
-            exit 1
+          secret_name=""
+          if [ -n "$X_BEARER_TOKEN" ]; then secret_name="X_BEARER_TOKEN"; fi
+          if [ -z "$secret_name" ] && [ -n "$X_API_BEARER_TOKEN" ]; then secret_name="X_API_BEARER_TOKEN"; fi
+          if [ -z "$secret_name" ] && [ -n "$TWITTER_BEARER_TOKEN" ]; then secret_name="TWITTER_BEARER_TOKEN"; fi
+          if [ -z "$secret_name" ] && [ -n "$TWITTER_API_BEARER_TOKEN" ]; then secret_name="TWITTER_API_BEARER_TOKEN"; fi
+          if [ -z "$secret_name" ] && [ -n "$BEARER_TOKEN" ]; then secret_name="BEARER_TOKEN"; fi
+          if [ -z "$secret_name" ] && [ -n "$X_API_BEARER" ]; then secret_name="X_API_BEARER"; fi
+          if [ -z "$secret_name" ] && [ -n "$TWITTER_BEARER" ]; then secret_name="TWITTER_BEARER"; fi
+          if [ -z "$secret_name" ] && [ -n "$X_BEARER" ]; then secret_name="X_BEARER"; fi
+          if [ -z "$secret_name" ] && [ -n "$X_API_TOKEN" ]; then secret_name="X_API_TOKEN"; fi
+
+          if [ -n "$secret_name" ]; then
+            echo "X API bearer: loaded from $secret_name"
+            exit 0
           fi
+
+          echo "::error::X API bearer: missing. Add it as a GitHub Actions repository secret named X_BEARER_TOKEN. Vercel environment variables are not visible to scheduled GitHub workflows."
+          echo "::notice::Path: GitHub repository -> Settings -> Secrets and variables -> Actions -> New repository secret."
+          echo "::notice::Name: X_BEARER_TOKEN. Value: the Bearer Token from the X Developer Portal."
+          exit 1
 
       - name: Fetch research feed
         working-directory: research/backend

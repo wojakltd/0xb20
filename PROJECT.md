@@ -348,7 +348,7 @@ Edit `data/evolution.json`.
 - Future networks are represented by the `network` string. Do not hardcode Base-only assumptions into new providers.
 - Never make the frontend depend on a provider.
 - Refresh cache with `cd research/backend && npm run fetch`.
-- The GitHub Action `.github/workflows/research-fetch.yml` refreshes `research/backend/cache/feed.json` every 10 minutes.
+- The GitHub Action `.github/workflows/research-fetch.yml` refreshes `research/backend/cache/feed.json` every 2 hours.
 
 ## How To Update AI Lab
 

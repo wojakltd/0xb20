@@ -1,7 +1,7 @@
 {
   "activeProvider": "playwright",
   "providerOrder": ["laboratory", "playwright", "reader", "rss", "cache", "sample"],
-  "refreshIntervalMinutes": 10,
+  "refreshIntervalMinutes": 120,
   "requestDelayMs": 900,
   "maxPostsPerAccount": 80,
   "maxCacheItems": 2500,
