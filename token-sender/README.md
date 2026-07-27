@@ -1,8 +1,8 @@
 # 0XB20 Token Sender
 
-`/token-sender/` is the first protected Web3 application built on top of the shared Laboratory wallet layer.
+`/token-sender/` is the first premium Web3 application built on top of the shared Laboratory wallet layer.
 
-It is intentionally conservative. The page can connect wallets, read ERC-20 metadata, parse recipients, build a validated preview, request exact approval and send through the configured sender contract.
+It is intentionally conservative. The page can connect wallets, read ERC-20 metadata, parse recipients, build a validated preview, request exact approval and send through the configured sender contract. Premium capabilities are exposed through the existing Lab Pass system only; Token Sender does not own licensing logic.
 
 ## Access
 
@@ -71,6 +71,49 @@ Deployment instructions:
 contracts/README.md
 ```
 
+## Premium Edition
+
+Token Sender uses the same Premium Core as Wallet Parser. It calls `B20Premium.requireAccess(...)` for premium capabilities and never implements payment, subscription or license verification itself.
+
+Current feature gates are configured in `data/web3-tools.json`:
+
+- `tokenSenderUnlimitedBatch` — remove the 250-wallet UI limit by splitting into safe sequential batches.
+- `tokenSenderImport` — TXT and CSV recipient imports.
+- `tokenSenderAddressBook` — local saved recipient lists.
+- `tokenSenderRetryFailed` — retry/export failed recipient batches.
+- `tokenSenderHistory` — local transaction memory.
+
+The global Lab Pass is still verified on-chain by Premium Core.
+
+## Batch Engine
+
+The sender separates validation, batching and execution:
+
+- `sender-import.js` parses TXT/CSV/address lists and removes duplicates.
+- `sender-batcher.js` splits recipients into safe blockchain batches.
+- `sender-progress.js` renders live batch progress.
+- `sender-history.js` stores local transaction history.
+- `sender-addressbook.js` stores reusable recipient lists.
+- `sender-export.js` exports failed recipients.
+- `sender-session.js` restores token, amount and recipient input after refresh.
+- `sender-storage.js` provides shared storage, including Wallet Parser handoff.
+
+User flow remains strict:
+
+```text
+Connect
+↓
+Read Token
+↓
+Validate Preview
+↓
+Approve Exact Amount
+↓
+Send Sequential Batches
+```
+
+Successful batches are never resent during retry. Failed recipients can be exported or retried separately.
+
 ## Recipient Input
 
 Simple mode:
@@ -91,6 +134,16 @@ Advanced mode:
 
 Advanced line amounts override the default amount.
 
+CSV import accepts common headers:
+
+```text
+wallet,amount
+address,amount
+recipient,amount
+```
+
+Wallet Parser can transfer currently filtered loaded holders directly into Token Sender through shared browser storage. No copy/paste is required.
+
 ## Security Rules
 
 - No private keys are stored.
@@ -98,7 +151,8 @@ Advanced line amounts override the default amount.
 - No transaction is sent automatically.
 - Approval is disabled until preview succeeds.
 - Approval is exact-amount only.
-- Sending is disabled until a real sender contract address is configured.
+- Sending requires explicit wallet confirmation for every batch.
+- Unlimited sending is implemented as sequential safe batches, not a single unsafe transaction.
 
 ## Future Extensions
 

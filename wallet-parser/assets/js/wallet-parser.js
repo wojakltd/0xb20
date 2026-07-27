@@ -17,6 +17,7 @@
     sort: '[data-parser-sort]',
     sortDir: '[data-parser-sort-dir]',
     copy: '[data-parser-copy]',
+    sendTokenSender: '[data-parser-send-token-sender]',
     table: '[data-parser-holder-table]',
     count: '[data-parser-count]',
     pagination: '[data-parser-pagination]',
@@ -327,11 +328,20 @@
     setText(query(selectors.count), `${visible} VISIBLE`);
 
     const copyButton = query(selectors.copy);
+    const sendTokenSenderButton = query(selectors.sendTokenSender);
     const exportTxtButton = query(selectors.exportTxt);
     const exportCsvButton = query(selectors.exportCsv);
 
     if (copyButton) {
       copyButton.disabled = visible === 0 || state.exporting || scanner.isActive();
+    }
+
+    if (sendTokenSenderButton) {
+      const transferable = state.filteredHolders.length;
+      sendTokenSenderButton.disabled = transferable === 0 || state.exporting || scanner.isActive();
+      sendTokenSenderButton.textContent = transferable
+        ? `Send ${transferable.toLocaleString('en-US')} To Token Sender`
+        : 'Send To Token Sender';
     }
 
     if (exportTxtButton) {
@@ -736,6 +746,41 @@
     }
   }
 
+  function sendToTokenSender() {
+    try {
+      if (!window.B20SenderStorage || typeof window.B20SenderStorage.sendParserRecipients !== 'function') {
+        throw new Error('Token Sender storage bridge unavailable.');
+      }
+
+      const addresses = state.filteredHolders
+        .map((holder) => holder.address)
+        .filter(Boolean);
+
+      if (!addresses.length) {
+        setMessage('No parsed holders available for Token Sender.');
+        return;
+      }
+
+      const stored = window.B20SenderStorage.sendParserRecipients({
+        source: 'wallet-parser',
+        tokenAddress: state.token?.address || '',
+        tokenSymbol: state.token?.symbol || '',
+        filtersActive: activeFiltersEnabled(),
+        count: addresses.length,
+        addresses
+      });
+
+      if (!stored) {
+        throw new Error('Browser storage rejected the transfer.');
+      }
+
+      setMessage(`Prepared ${addresses.length.toLocaleString('en-US')} addresses for Token Sender.`);
+      window.location.href = '/token-sender/';
+    } catch (error) {
+      setMessage(errorMessage(error, 'Token Sender transfer unavailable.'));
+    }
+  }
+
   function exportProgressLabel(walletsLoaded, expectedTotal) {
     const loaded = Number(walletsLoaded || 0).toLocaleString('en-US');
 
@@ -989,6 +1034,7 @@
       [selectors.sort, 'change', applySort],
       [selectors.sortDir, 'click', toggleSortDirection],
       [selectors.copy, 'click', copyVisibleAddresses],
+      [selectors.sendTokenSender, 'click', sendToTokenSender],
       [selectors.previous, 'click', loadPreviousPage],
       [selectors.next, 'click', loadNextPage],
       [selectors.exportTxt, 'click', exportTxt],

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/assets/css/effects.css">
   <link rel="stylesheet" href="/ai/assets/css/ai.css">
   <link rel="stylesheet" href="/test/assets/css/test.css">
+  <link rel="stylesheet" href="/premium/premium.css">
   <link rel="stylesheet" href="/token-sender/assets/css/token-sender.css?v=20260721-4">
 </head>
 <body class="test-body token-sender-body">
@@ -106,6 +107,22 @@
         <article class="test-panel sender-panel-wide">
           <div class="test-panel-header">
             <div>
+              <span class="eyebrow">Lab Pass</span>
+              <h3>Premium Access</h3>
+            </div>
+            <span class="test-state" data-token-premium-state>CHECKING</span>
+          </div>
+          <div class="parser-lab-pass" data-token-lab-pass>
+            <span>Lab Pass</span>
+            <strong>Inactive</strong>
+            <small data-token-lab-pass-wallet>Wallet: not connected</small>
+            <small data-token-lab-pass-details>Unlimited tools verify access on-chain.</small>
+          </div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
               <span class="eyebrow">Token Contract</span>
               <h3>ERC-20 Target</h3>
             </div>
@@ -139,6 +156,20 @@
               <strong>address,amount</strong>
             </p>
           </div>
+          <div class="sender-tool-row">
+            <input type="file" accept=".txt,.csv,text/plain,text/csv" data-token-import-file hidden>
+            <button class="test-secondary" type="button" data-token-import-txt>Import TXT</button>
+            <button class="test-secondary" type="button" data-token-import-csv>Import CSV</button>
+            <input class="sender-input sender-book-name" data-token-book-name type="text" spellcheck="false" placeholder="Address book name">
+            <select class="sender-input sender-book-select" data-token-book-list aria-label="Saved recipient lists">
+              <option value="">Saved lists</option>
+            </select>
+            <button class="test-secondary" type="button" data-token-book-save>Save List</button>
+            <button class="test-secondary" type="button" data-token-book-load>Load</button>
+            <button class="test-secondary" type="button" data-token-book-duplicate>Duplicate</button>
+            <button class="test-secondary" type="button" data-token-book-delete>Delete</button>
+          </div>
+          <p class="test-message" data-token-import-message>Import, address book and unlimited batches require Lab Pass.</p>
           <label class="sender-label" for="recipient-list">Recipients</label>
           <textarea id="recipient-list" class="sender-textarea" data-recipient-list spellcheck="false" placeholder="0x1111111111111111111111111111111111111111&#10;0x2222222222222222222222222222222222222222&#10;&#10;Advanced:&#10;0x3333333333333333333333333333333333333333,250"></textarea>
           <div class="sender-errors" data-recipient-errors hidden></div>
@@ -165,6 +196,18 @@
               <span>Estimated Gas</span>
               <strong data-preview-gas>Unavailable</strong>
             </div>
+            <div>
+              <span>Batches</span>
+              <strong data-preview-batches>0</strong>
+            </div>
+            <div>
+              <span>Duplicates Removed</span>
+              <strong data-preview-duplicates>0</strong>
+            </div>
+            <div>
+              <span>Invalid Lines</span>
+              <strong data-preview-invalid>0</strong>
+            </div>
           </div>
           <div class="sender-preview-table" data-preview-table>
             <p class="test-muted">No validated recipients yet.</p>
@@ -186,8 +229,25 @@
           <div class="test-action-row">
             <button class="test-primary" type="button" data-token-approve disabled>Approve Exact Amount</button>
             <button class="test-primary" type="button" data-token-send disabled>Send Batch</button>
+            <button class="test-secondary" type="button" data-token-retry-failed disabled>Retry Failed</button>
+            <button class="test-secondary" type="button" data-token-export-failed-txt disabled>Export Failed TXT</button>
+            <button class="test-secondary" type="button" data-token-export-failed-csv disabled>Export Failed CSV</button>
           </div>
           <p class="test-message" data-token-execution-message>No transaction can be sent before preview succeeds.</p>
+          <div class="sender-progress" data-token-progress hidden></div>
+        </article>
+
+        <article class="test-panel sender-panel-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Local Memory</span>
+              <h3>Transaction History</h3>
+            </div>
+            <button class="test-secondary" type="button" data-token-history-clear>Clear History</button>
+          </div>
+          <div class="sender-history" data-token-history>
+            <p class="test-muted">No local distribution history yet.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -198,7 +258,24 @@
 <script src="/assets/js/interactions.js" defer></script>
 <script src="/assets/js/access-gate.js" defer></script>
 <script src="/assets/js/wallet-service.js?v=20260721-4" defer></script>
-<script src="/token-sender/assets/js/token-sender.js?v=20260721-5" defer></script>
+<script src="/premium/premium-utils.js?v=20260723-1" defer></script>
+<script src="/premium/premium-wallet.js?v=20260723-1" defer></script>
+<script src="/premium/premium-contract.js?v=20260723-1" defer></script>
+<script src="/premium/premium-license.js?v=20260723-1" defer></script>
+<script src="/premium/premium-modal.js?v=20260723-1" defer></script>
+<script src="/premium/premium-core.js?v=20260723-1" defer></script>
+<script src="/token-sender/assets/js/sender-core.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-storage.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-import.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-batcher.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-history.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-addressbook.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-export.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-progress.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-session.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-gas.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-validator.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/token-sender.js?v=20260727-1" defer></script>
 
 </body>
 </html>

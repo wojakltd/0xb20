@@ -25,7 +25,7 @@ Research never ends.
 - Evolution Tree rendered from structured project data.
 - Shared wallet layer for Web3 experiments.
 - Profile terminal for read-only wallet identity, Lab Pass status and signature testing.
-- Token Sender v1 for exact-approval ERC-20 batch distribution through a verified sender contract.
+- Token Sender Premium Edition for exact-approval ERC-20 batch distribution, imports, local history, address books, retry handling and automatic safe batching.
 - Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
 - Premium Core v1 foundation for one reusable on-chain Lab Pass across current and future tools.
 - Vercel-compatible deployment and GitHub Actions research cache automation.
@@ -87,12 +87,18 @@ Unified wallet profile terminal for connection status, identity reads, Lab Pass 
 
 ### Token Sender
 
-Protected ERC-20 batch sender interface. It uses:
+ERC-20 batch sender interface built on the shared wallet and Lab Pass layers. It uses:
 
 - shared wallet service;
+- existing Premium Core feature checks;
 - Base mainnet;
 - exact approval only;
 - preview before approval;
+- TXT/CSV imports with duplicate removal;
+- local transaction history and address books;
+- automatic safe batch splitting for large recipient lists;
+- retry/export tools for failed recipients;
+- Wallet Parser handoff through shared browser storage;
 - explicit wallet confirmation for every transaction;
 - verified sender contract configured in `data/web3-tools.json`.
 

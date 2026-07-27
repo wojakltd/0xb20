@@ -141,6 +141,23 @@
     overflow:auto;
 }
 
+.sender-tool-row{
+    display:grid;
+    grid-template-columns:repeat(2,max-content) minmax(160px,1fr) minmax(160px,1fr) repeat(4,max-content);
+    gap:10px;
+    align-items:center;
+    margin:14px 0 6px;
+}
+
+.sender-tool-row .sender-input{
+    font-size:13px;
+    padding:11px 12px;
+}
+
+.sender-book-select{
+    min-width:160px;
+}
+
 .sender-preview-row{
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(120px,.25fr);
@@ -223,10 +240,89 @@
     color:var(--accent);
 }
 
+.sender-progress{
+    border:1px solid rgba(103,179,255,.16);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.58);
+    margin-top:16px;
+    padding:14px;
+}
+
+.sender-progress[hidden]{
+    display:none;
+}
+
+.sender-progress-head,
+.sender-progress-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+}
+
+.sender-progress-head strong{
+    color:var(--cyan);
+}
+
+.sender-progress-track{
+    height:10px;
+    border:1px solid rgba(103,179,255,.2);
+    border-radius:999px;
+    background:rgba(4,10,24,.76);
+    margin:12px 0;
+    overflow:hidden;
+}
+
+.sender-progress-track span{
+    display:block;
+    height:100%;
+    background:linear-gradient(90deg,var(--accent),var(--cyan));
+    transition:width .24s ease;
+}
+
+.sender-history{
+    display:grid;
+    gap:10px;
+    max-height:360px;
+    overflow:auto;
+}
+
+.sender-history-item{
+    border:1px solid rgba(103,179,255,.14);
+    border-radius:12px;
+    background:rgba(2,6,14,.46);
+    color:var(--muted-strong);
+    display:grid;
+    gap:8px;
+    font-family:Consolas,monospace;
+    padding:12px;
+}
+
+.sender-history-item strong{
+    color:var(--text);
+}
+
+.sender-history-hashes{
+    display:grid;
+    gap:4px;
+}
+
+.sender-history-hashes a{
+    color:var(--cyan);
+    overflow-wrap:anywhere;
+    text-decoration:none;
+}
+
+.sender-history-hashes a:hover{
+    color:var(--accent);
+}
+
 @media(max-width:900px){
     .sender-flow,
     .sender-token-readout,
-    .sender-preview-stats{
+    .sender-preview-stats,
+    .sender-tool-row{
         grid-template-columns:1fr 1fr;
     }
 }
@@ -239,6 +335,7 @@
     .sender-flow,
     .sender-token-readout,
     .sender-preview-stats,
+    .sender-tool-row,
     .sender-recipient-tools,
     .sender-preview-row,
     .sender-detail-row{

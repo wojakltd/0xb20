@@ -11,7 +11,8 @@
     "contractAddress": "0x1b763d93ac6d0029aA88AD4066AB7731Dc9e03C0",
     "contractName": "0XB20 Token Sender",
     "approvalMode": "exact",
-    "maxRecipients": 250
+    "maxRecipients": 250,
+    "safeBatchSize": 120
   },
   "premium": {
     "enabled": true,
@@ -32,7 +33,12 @@
     "features": {
       "walletParserGlobalExport": true,
       "walletParserUnlimitedPagination": true,
-      "walletParserAdvancedFilters": true
+      "walletParserAdvancedFilters": true,
+      "tokenSenderUnlimitedBatch": true,
+      "tokenSenderHistory": true,
+      "tokenSenderImport": true,
+      "tokenSenderAddressBook": true,
+      "tokenSenderRetryFailed": true
     }
   }
 }
