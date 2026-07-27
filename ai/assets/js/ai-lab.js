@@ -334,7 +334,7 @@
     if (state.mode === 'thread') {
       return [
         createAction('Copy Thread', 'copy-thread'),
-        createAction('Publish Thread', 'publish-thread'),
+        createAction('Start Thread', 'publish-thread'),
         createAction('Save Favourite', 'save-favorite')
       ];
     }
@@ -538,7 +538,7 @@
       setStatus('No thread available.');
       return;
     }
-    setStatus('Opening thread starter. Paste the published tweet link back into the next step.');
+    setStatus('Opening tweet 1. After posting, paste its X link into the tweet 2 step.');
     publishText(items[0]);
   }
 
@@ -558,12 +558,12 @@
     }
 
     if (!tweetId) {
-      setStatus(`Paste tweet ${index} link before publishing tweet ${index + 1}.`);
+      setStatus(`Paste tweet ${index} X link before publishing tweet ${index + 1}.`);
       return;
     }
 
     window.open(`${preview.tweetIntent(text)}&in_reply_to=${encodeURIComponent(tweetId)}`, '_blank', 'noopener,noreferrer');
-    setStatus(`Opening tweet ${index + 1} as thread reply.`);
+    setStatus(`Opening tweet ${index + 1} as a reply. After posting, paste its X link into the next step.`);
   }
 
   function summarySectionText(section) {

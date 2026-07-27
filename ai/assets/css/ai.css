@@ -637,6 +637,21 @@
     color:#ffb2b2;
 }
 
+.ai-thread-publish-note{
+    border:1px solid rgba(103,179,255,.18);
+    border-radius:var(--radius);
+    background:rgba(3,10,24,.72);
+    color:var(--muted);
+    font-family:Consolas,monospace;
+    font-size:12px;
+    line-height:1.6;
+    padding:12px 14px;
+}
+
+.ai-thread-publish-note strong{
+    color:var(--text);
+}
+
 .ai-result-container{
     display:grid;
     gap:14px;

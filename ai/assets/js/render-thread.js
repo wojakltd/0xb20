@@ -20,7 +20,7 @@
   function replyControls(dom, index, payload) {
     if (index === 0) {
       return [
-        dom.button('Publish Tweet 1', 'publish-item', { aiIndex: 0 })
+        dom.button('Start Thread', 'publish-item', { aiIndex: 0 })
       ];
     }
 
@@ -28,8 +28,9 @@
     const input = dom.el('input', 'ai-thread-link-input');
     input.type = 'url';
     input.value = storedValue;
-    input.placeholder = `Paste tweet ${index} URL`;
+    input.placeholder = `Paste tweet ${index} X link`;
     input.dataset.aiThreadTarget = index;
+    input.setAttribute('aria-label', `Paste tweet ${index} X link before publishing tweet ${index + 1}`);
 
     const button = dom.button(`Publish Tweet ${index + 1} as Reply`, 'publish-item', { aiIndex: index });
     button.disabled = !tweetId(storedValue);
@@ -41,6 +42,13 @@
     const dom = global.B20AiRenderDom;
     const thread = items(payload).map(stripThreadNumber).filter(Boolean);
     const list = dom.el('div', 'ai-thread-list');
+    const note = dom.el('div', 'ai-thread-publish-note');
+
+    note.append(
+      dom.el('strong', '', 'Thread publishing is step-by-step.'),
+      dom.el('span', '', ' X does not allow one-click thread creation through public web intents. Start with tweet 1, paste the published X link into tweet 2, then continue down the chain.')
+    );
+    list.appendChild(note);
 
     thread.forEach((tweet, index) => {
       const card = dom.card(
