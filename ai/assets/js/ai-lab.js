@@ -79,6 +79,9 @@
   const deletePersonaButton = document.querySelector('[data-ai-delete-persona]');
   const exportPersonasButton = document.querySelector('[data-ai-export-personas]');
   const importPersonasButton = document.querySelector('[data-ai-import-personas]');
+  const passStatus = document.querySelector('[data-ai-lab-pass]');
+  const passState = document.querySelector('[data-ai-pass-state]');
+  const passDetail = document.querySelector('[data-ai-pass-detail]');
   const historySearch = document.querySelector('[data-ai-history-search]');
   const outputHistoryTarget = document.querySelector('[data-ai-output-history]');
   const postHistoryTarget = document.querySelector('[data-ai-post-history]');
@@ -124,6 +127,62 @@
     if (statusTarget) {
       statusTarget.textContent = text;
     }
+  }
+
+  function shortAddress(address) {
+    const value = String(address || '');
+    return value.length > 12 ? `${value.slice(0, 6)}...${value.slice(-4)}` : value;
+  }
+
+  async function requireLabPass(feature, fallbackStatus) {
+    const featureId = Array.isArray(feature) ? feature[0] : feature;
+    const featureLabel = Array.isArray(feature) ? feature[1] : feature;
+    const allowed = await core.requirePremium([featureId, featureLabel]);
+
+    if (!allowed && fallbackStatus) {
+      setStatus(fallbackStatus);
+    }
+
+    renderLabPassStatus(window.B20Premium?.getState?.());
+    return allowed;
+  }
+
+  function renderLabPassStatus(premiumState) {
+    if (!passStatus || !passState || !passDetail) {
+      return;
+    }
+
+    const license = premiumState?.license || {};
+    const walletState = premiumState?.wallet || {};
+    const active = Boolean(license.active);
+    const checking = Boolean(premiumState?.checking);
+    const error = license.error || premiumState?.error || '';
+    const walletAddress = walletState.address ? shortAddress(walletState.address) : 'Connect wallet for premium tools.';
+
+    passStatus.classList.toggle('is-active', active);
+    passStatus.classList.toggle('is-inactive', !active && !error);
+    passStatus.classList.toggle('is-error', Boolean(error));
+
+    if (checking) {
+      passState.textContent = 'Checking';
+      passDetail.textContent = walletAddress;
+      return;
+    }
+
+    if (active) {
+      passState.textContent = 'Active';
+      passDetail.textContent = `Expires: ${license.expiresAtLabel || '--'} · Wallet: ${walletAddress}`;
+      return;
+    }
+
+    if (error) {
+      passState.textContent = 'Unavailable';
+      passDetail.textContent = error;
+      return;
+    }
+
+    passState.textContent = 'Inactive';
+    passDetail.textContent = 'Signal, replies, quotes and hashtags stay free. Advanced modules require Lab Pass.';
   }
 
   function setBusy(isBusy, label) {
@@ -700,15 +759,18 @@
   }
 
   async function loadPromptFromLibrary(prompt) {
-    const allowed = await core.requirePremium(['aiLabPromptLibrary', 'Unlimited Prompt Library']);
+    const allowed = await requireLabPass(['aiLabPromptLibrary', 'Unlimited Prompt Library'], 'Prompt Library requires active Lab Pass.');
     if (!allowed) {
-      setStatus('Prompt Library requires active Lab Pass.');
       return;
     }
     loadPrompt(prompt);
   }
 
-  function saveCustomPrompt() {
+  async function saveCustomPrompt() {
+    if (!(await requireLabPass(['aiLabPromptLibrary', 'Unlimited Prompt Library'], 'Custom prompts require active Lab Pass.'))) {
+      return;
+    }
+
     const text = (customPromptInput?.value || '').trim();
     if (!text) {
       setStatus('Custom prompt is empty.');
@@ -737,12 +799,20 @@
     return memory;
   }
 
-  function saveMemory() {
+  async function saveMemory() {
+    if (!(await requireLabPass(['aiLabProjectMemory', 'Project Memory'], 'Project Memory requires active Lab Pass.'))) {
+      return;
+    }
+
     storage.saveMemory(collectMemoryForm());
     setStatus('Project memory saved.');
   }
 
-  function resetMemory() {
+  async function resetMemory() {
+    if (!(await requireLabPass(['aiLabProjectMemory', 'Project Memory'], 'Project Memory requires active Lab Pass.'))) {
+      return;
+    }
+
     storage.saveMemory({});
     hydrateMemoryForm();
     setStatus('Project memory reset.');
@@ -794,7 +864,11 @@
     if (personaGuidanceInput) personaGuidanceInput.value = persona.guidance || '';
   }
 
-  function savePersona() {
+  async function savePersona() {
+    if (!(await requireLabPass(['aiLabSavedPersonas', 'Saved Personas'], 'Saved Personas require active Lab Pass.'))) {
+      return;
+    }
+
     const name = (personaNameInput?.value || '').trim();
     const guidance = (personaGuidanceInput?.value || '').trim();
     if (!name || !guidance) {
@@ -812,7 +886,11 @@
     setStatus('Persona saved.');
   }
 
-  function duplicatePersona() {
+  async function duplicatePersona() {
+    if (!(await requireLabPass(['aiLabSavedPersonas', 'Saved Personas'], 'Saved Personas require active Lab Pass.'))) {
+      return;
+    }
+
     const persona = selectedPersona();
     if (!persona) return;
     const copy = {
@@ -827,7 +905,11 @@
     setStatus('Persona duplicated.');
   }
 
-  function deletePersona() {
+  async function deletePersona() {
+    if (!(await requireLabPass(['aiLabSavedPersonas', 'Saved Personas'], 'Saved Personas require active Lab Pass.'))) {
+      return;
+    }
+
     const id = personaSelect?.value || '';
     if (!id.startsWith('custom-')) {
       setStatus('Default personas cannot be deleted.');
@@ -886,7 +968,11 @@
     return storage.readList(key, 30).find((entry) => entry.id === id);
   }
 
-  function saveFavorite() {
+  async function saveFavorite() {
+    if (!(await requireLabPass(['aiLabSavedOutputs', 'Saved Outputs'], 'Saved Outputs require active Lab Pass.'))) {
+      return;
+    }
+
     const entry = buildEntry('favorite');
     storage.remember(storage.keys.favorites, entry, 10);
     renderStoredLists();
@@ -964,9 +1050,8 @@
       setBusy(true, loadingLabel());
       setStatus(`${config.label} running...`);
       if (config.premium) {
-        const allowed = await core.requirePremium(config.premium);
+        const allowed = await requireLabPass(config.premium, `${config.premium[1]} requires active Lab Pass.`);
         if (!allowed) {
-          setStatus(`${config.premium[1]} requires active Lab Pass.`);
           return;
         }
       }
@@ -1029,9 +1114,8 @@
       return original;
     }
 
-    const allowed = await core.requirePremium(['aiLabAdvancedRemix', 'Advanced Remix']);
+    const allowed = await requireLabPass(['aiLabAdvancedRemix', 'Advanced Remix'], 'Advanced Remix requires active Lab Pass.');
     if (!allowed) {
-      setStatus('Advanced Remix requires active Lab Pass.');
       return original;
     }
 
@@ -1152,7 +1236,7 @@
     textarea.style.height = `${Math.min(textarea.scrollHeight, 520)}px`;
   }
 
-  function handleAction(button) {
+  async function handleAction(button) {
     const action = button.dataset.aiAction;
     const index = Number(button.dataset.aiIndex);
     const section = button.dataset.aiSection;
@@ -1166,7 +1250,7 @@
     if (action === 'copy-builder-notes') copyText(summarySectionText('builderNotes'), 'Builder notes copied.');
     if (action === 'copy-hashtags') copyText(state.hashtags.map((tag) => tag.startsWith('#') ? tag : `#${tag}`).join(' '), 'Hashtags copied.');
     if (action === 'copy-hashtag') copyText(button.dataset.aiValue || '', 'Hashtag copied.');
-    if (action === 'save-favorite') saveFavorite();
+    if (action === 'save-favorite') await saveFavorite();
     if (action === 'generate-post') generatePost();
     if (action === 'regenerate-hashtags') generateSelected();
     if (action === 'generate-more-replies') generateMoreReplies();
@@ -1192,6 +1276,8 @@
     }
     if (action === 'load-prompt') loadPromptFromLibrary(button.dataset.aiPrompt);
     if (action === 'delete-custom-prompt') {
+      const allowed = await requireLabPass(['aiLabPromptLibrary', 'Unlimited Prompt Library'], 'Prompt Library requires active Lab Pass.');
+      if (!allowed) return;
       storage.deleteCustomPrompt(button.dataset.aiPrompt);
       renderPromptLibrary();
       setStatus('Custom prompt deleted.');
@@ -1259,9 +1345,8 @@
     });
 
     loadPromptButton?.addEventListener('click', async () => {
-      const allowed = await core.requirePremium(['aiLabPromptLibrary', 'Unlimited Prompt Library']);
+      const allowed = await requireLabPass(['aiLabPromptLibrary', 'Unlimited Prompt Library'], 'Prompt Library requires active Lab Pass.');
       if (!allowed) {
-        setStatus('Prompt Library requires active Lab Pass.');
         return;
       }
       const firstPrompt = promptList?.querySelector('[data-ai-prompt]')?.dataset.aiPrompt;
@@ -1273,19 +1358,30 @@
     saveCustomPromptButton?.addEventListener('click', saveCustomPrompt);
     saveMemoryButton?.addEventListener('click', saveMemory);
     resetMemoryButton?.addEventListener('click', resetMemory);
-    exportMemoryButton?.addEventListener('click', () => downloadJson('0xb20-ai-memory.json', currentMemory()));
-    importMemoryButton?.addEventListener('click', () => importJson((json) => {
+    exportMemoryButton?.addEventListener('click', async () => {
+      if (!(await requireLabPass(['aiLabProjectMemory', 'Project Memory'], 'Project Memory requires active Lab Pass.'))) return;
+      downloadJson('0xb20-ai-memory.json', currentMemory());
+    });
+    importMemoryButton?.addEventListener('click', async () => {
+      if (!(await requireLabPass(['aiLabProjectMemory', 'Project Memory'], 'Project Memory requires active Lab Pass.'))) return;
+      importJson((json) => {
       storage.saveMemory(json && typeof json === 'object' ? json : {});
       hydrateMemoryForm();
       setStatus('Project memory imported.');
-    }));
+      });
+    });
 
     personaSelect?.addEventListener('change', syncPersonaFields);
     savePersonaButton?.addEventListener('click', savePersona);
     duplicatePersonaButton?.addEventListener('click', duplicatePersona);
     deletePersonaButton?.addEventListener('click', deletePersona);
-    exportPersonasButton?.addEventListener('click', () => downloadJson('0xb20-ai-personas.json', customPersonas()));
-    importPersonasButton?.addEventListener('click', () => importJson((json) => {
+    exportPersonasButton?.addEventListener('click', async () => {
+      if (!(await requireLabPass(['aiLabSavedPersonas', 'Saved Personas'], 'Saved Personas require active Lab Pass.'))) return;
+      downloadJson('0xb20-ai-personas.json', customPersonas());
+    });
+    importPersonasButton?.addEventListener('click', async () => {
+      if (!(await requireLabPass(['aiLabSavedPersonas', 'Saved Personas'], 'Saved Personas require active Lab Pass.'))) return;
+      importJson((json) => {
       const personas = Array.isArray(json) ? json.filter((item) => item && item.name && item.guidance).map((item, index) => ({
         id: item.id?.startsWith('custom-') ? item.id : `custom-${Date.now()}-${index}`,
         name: String(item.name),
@@ -1294,7 +1390,8 @@
       storage.writePersonas(personas);
       renderPersonas();
       setStatus('Personas imported.');
-    }));
+      });
+    });
 
     historySearch?.addEventListener('input', renderStoredLists);
 
@@ -1312,8 +1409,18 @@
 
   async function initPremium() {
     try {
+      if (window.B20Premium?.subscribe) {
+        window.B20Premium.subscribe(renderLabPassStatus);
+      }
       await core.initPremium();
+      renderLabPassStatus(window.B20Premium?.getState?.());
     } catch (error) {
+      renderLabPassStatus({
+        license: { active: false, error: 'Lab Pass status unavailable.' },
+        wallet: null,
+        checking: false,
+        error: 'Lab Pass status unavailable.'
+      });
       setStatus('Lab Pass status unavailable. Free tools remain active.');
     }
   }

@@ -226,6 +226,48 @@
     color:var(--cyan);
 }
 
+.ai-pass-status{
+    display:grid;
+    grid-template-columns:auto minmax(120px,auto) 1fr;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+    border:1px solid rgba(103,179,255,.2);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.5);
+    color:var(--muted-strong);
+    font-family:Consolas,monospace;
+    padding:12px 14px;
+}
+
+.ai-pass-status span,
+.ai-pass-status small{
+    color:var(--cyan);
+    font-size:12px;
+}
+
+.ai-pass-status strong{
+    color:var(--text);
+    font-size:15px;
+}
+
+.ai-pass-status.is-active{
+    border-color:rgba(90,242,155,.38);
+    box-shadow:0 0 22px rgba(90,242,155,.08);
+}
+
+.ai-pass-status.is-active strong{
+    color:var(--green);
+}
+
+.ai-pass-status.is-inactive strong{
+    color:var(--muted-strong);
+}
+
+.ai-pass-status.is-error strong{
+    color:var(--danger);
+}
+
 .ai-form{
     display:grid;
     gap:14px;
@@ -837,6 +879,10 @@
 
     .ai-console-header{
         flex-direction:column;
+    }
+
+    .ai-pass-status{
+        grid-template-columns:1fr;
     }
 
     .ai-actions-row{
