@@ -91,6 +91,10 @@
     setText(query(selectors.state), value);
   }
 
+  function activeProviderLabel() {
+    return state.meta?.provider || provider.label;
+  }
+
   function renderLabPassStatus(premiumState) {
     const target = query(selectors.labPassStatus);
 
@@ -208,7 +212,7 @@
     setText(exportStat('duplicates'), String(stats.duplicatesRemoved ?? 0));
     setText(exportStat('filteredOut'), String(stats.filteredOut ?? 0));
     setText(exportStat('elapsed'), stats.elapsed || '--');
-    setText(exportStat('provider'), stats.provider || provider.label);
+    setText(exportStat('provider'), stats.provider || activeProviderLabel());
   }
 
   function setProgress(value, text) {
@@ -251,7 +255,7 @@
       `Total Supply: ${token.totalSupply}`,
       `Estimated Holders: ${token.holdersCount || '--'}`,
       `Network: ${provider.network}`,
-      `Source: ${provider.label}`,
+      `Source: ${activeProviderLabel()}`,
       `Contract: ${utils.shortAddress(token.address)}`
     ] : [
       'Name: --',
@@ -260,7 +264,7 @@
       'Total Supply: --',
       'Estimated Holders: --',
       `Network: ${provider.network}`,
-      `Source: ${provider.label}`,
+      `Source: ${activeProviderLabel()}`,
       'Contract: --'
     ];
 
@@ -323,7 +327,7 @@
     setText(stat('visible'), String(visible));
     setText(stat('page'), currentPageLabel());
     setText(stat('contractFilter'), state.activeFilters.hideContracts ? 'ON' : 'OFF');
-    setText(stat('source'), provider.label);
+    setText(stat('source'), activeProviderLabel());
     setText(stat('contract'), contract);
     setText(query(selectors.count), `${visible} VISIBLE`);
 
@@ -643,7 +647,7 @@
       renderTokenReadout(state.token);
       applyView();
       setParserState('READY');
-      setMessage(`Scan complete. ${state.holders.length} useful holder wallets loaded from ${provider.label}.`);
+      setMessage(`Scan complete. ${state.holders.length} useful holder wallets loaded from ${activeProviderLabel()}.`);
     } catch (error) {
       setParserState(error && error.name === 'AbortError' ? 'CANCELLED' : 'ERROR');
       setMessage(errorMessage(error, 'Wallet parser failed.'));
@@ -765,7 +769,7 @@
         source: 'wallet-parser',
         tokenAddress: state.token?.address || '',
         tokenSymbol: state.token?.symbol || '',
-        filtersActive: activeFiltersEnabled(),
+        filtersActive: hasActiveFilters(),
         count: addresses.length,
         addresses
       });
@@ -818,7 +822,7 @@
       duplicatesRemoved,
       filteredOut: 0,
       elapsed: exportElapsed(startedAt),
-      provider: provider.label
+      provider: activeProviderLabel()
     });
 
     try {
@@ -839,7 +843,7 @@
               duplicatesRemoved,
               filteredOut: 0,
               elapsed: exportElapsed(startedAt),
-              provider: progress.provider || provider.label
+              provider: progress.provider || activeProviderLabel()
             });
           }
         });
@@ -865,7 +869,7 @@
         duplicatesRemoved,
         filteredOut,
         elapsed: exportElapsed(startedAt),
-        provider: provider.label
+        provider: activeProviderLabel()
       });
 
       setProgress(96, `Preparing ${typeLabel}...`);
@@ -915,7 +919,7 @@
         duplicatesRemoved: state.meta?.duplicatesRemoved || 0,
         filteredOut: Math.max(0, state.holders.length - prepared.holders.length),
         elapsed: exportElapsed(prepared.startedAt),
-        provider: provider.label
+        provider: activeProviderLabel()
       });
       renderStats();
     }

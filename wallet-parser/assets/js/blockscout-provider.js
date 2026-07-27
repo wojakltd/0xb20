@@ -25,8 +25,10 @@
       this.timeoutMs = config.timeoutMs || 30000;
       this.pageSize = Math.min(Number(config.pageSize) || 50, 50);
       this.maxExportPages = Number(config.maxExportPages) || 1000;
+      this.maxTransferPages = Number(config.maxTransferPages) || 400;
       this.retryDelaysMs = config.retryDelaysMs || [800, 1600, 3200];
       this.holderPageCache = new Map();
+      this.transferReconstructionCache = new Map();
     }
 
     async scanToken(address, options = {}) {
@@ -43,6 +45,9 @@
       const holderResponse = await this.readHolderBatch(normalizedAddress, token, null, options);
 
       this.progress(options, 82, 'Filtering holder list...');
+      if (holderResponse.totalHolders) {
+        token.holdersCount = holderResponse.totalHolders;
+      }
 
       this.progress(options, 100, 'Wallet parser scan complete.');
 
@@ -50,14 +55,16 @@
         token,
         holders: holderResponse.holders,
         meta: {
-          provider: this.label,
-          providerId: this.id,
+          provider: holderResponse.provider || this.label,
+          providerId: holderResponse.providerId || this.id,
           network: this.network,
           durationMs: Date.now() - startedAt,
           lastUpdated: new Date().toISOString(),
           moreAvailable: Boolean(holderResponse.nextPageParams),
           nextPageParams: holderResponse.nextPageParams,
-          rawHolderCount: holderResponse.rawItemCount
+          rawHolderCount: holderResponse.rawItemCount,
+          totalHolders: holderResponse.totalHolders || null,
+          partialError: holderResponse.partialError || ''
         }
       };
     }
@@ -74,14 +81,16 @@
       return {
         holders: holderResponse.holders,
         meta: {
-          provider: this.label,
-          providerId: this.id,
+          provider: holderResponse.provider || this.label,
+          providerId: holderResponse.providerId || this.id,
           network: this.network,
           durationMs: Date.now() - startedAt,
           lastUpdated: new Date().toISOString(),
           moreAvailable: Boolean(holderResponse.nextPageParams),
           nextPageParams: holderResponse.nextPageParams,
-          rawHolderCount: holderResponse.rawItemCount
+          rawHolderCount: holderResponse.rawItemCount,
+          totalHolders: holderResponse.totalHolders || null,
+          partialError: holderResponse.partialError || ''
         }
       };
     }
@@ -291,6 +300,10 @@
     }
 
     async readHolderBatch(address, token, pageParams, options) {
+      if (pageParams && pageParams.source === 'blockscout-transfers') {
+        return this.readTransferHolderBatch(address, token, pageParams, options);
+      }
+
       const key = this.cacheKey(address, pageParams);
 
       if (this.holderPageCache.has(key)) {
@@ -301,27 +314,192 @@
       let nextPageParams = pageParams || null;
       let rawItemCount = 0;
 
-      do {
-        const remaining = this.maxHolders - collected.length;
-        const url = this.holdersUrl(address, nextPageParams, remaining);
-        const response = await this.fetchJson(url, options.signal);
-        const items = Array.isArray(response.items) ? response.items : [];
+      try {
+        do {
+          const remaining = this.maxHolders - collected.length;
+          const url = this.holdersUrl(address, nextPageParams, remaining);
+          const response = await this.fetchJson(url, options.signal);
+          const items = Array.isArray(response.items) ? response.items : [];
 
-        rawItemCount += items.length;
-        collected.push(...items);
-        nextPageParams = response.next_page_params || null;
+          rawItemCount += items.length;
+          collected.push(...items);
+          nextPageParams = response.next_page_params || null;
 
-        this.progress(options, Math.min(78, 50 + collected.length), `Indexed holders loaded: ${Math.min(collected.length, this.maxHolders)} / ${this.maxHolders}`);
-      } while (collected.length < this.maxHolders && nextPageParams);
+          this.progress(options, Math.min(78, 50 + collected.length), `Indexed holders loaded: ${Math.min(collected.length, this.maxHolders)} / ${this.maxHolders}`);
+        } while (collected.length < this.maxHolders && nextPageParams);
+      } catch (error) {
+        if (this.isAbort(error) || pageParams) {
+          throw error;
+        }
+
+        this.progress(options, 52, 'Holder index unavailable. Reconstructing from transfers...');
+        return this.readTransferHolderBatch(address, token, null, options, error.message);
+      }
 
       const result = {
         holders: this.normalizeHolders(collected.slice(0, this.maxHolders), token),
         nextPageParams,
-        rawItemCount
+        rawItemCount,
+        provider: this.label,
+        providerId: this.id
       };
+
+      if (!result.holders.length && !result.nextPageParams && !pageParams) {
+        this.progress(options, 52, 'Holder index empty. Reconstructing from transfers...');
+        return this.readTransferHolderBatch(address, token, null, options, 'Indexed holder list returned empty.');
+      }
 
       this.holderPageCache.set(key, this.cloneHolderResponse(result));
       return result;
+    }
+
+    async readTransferHolderBatch(address, token, pageParams, options, fallbackReason = '') {
+      const reconstruction = await this.reconstructTransferHolders(address, token, options, fallbackReason);
+      const offset = Math.max(0, Number(pageParams?.offset) || 0);
+      const nextOffset = offset + this.maxHolders;
+      const holders = reconstruction.holders.slice(offset, nextOffset);
+
+      return {
+        holders,
+        nextPageParams: nextOffset < reconstruction.holders.length
+          ? { source: 'blockscout-transfers', offset: nextOffset }
+          : null,
+        rawItemCount: reconstruction.rawItemCount,
+        provider: 'Blockscout Transfers',
+        providerId: 'blockscout-transfers',
+        totalHolders: reconstruction.holders.length,
+        partialError: reconstruction.partialError
+      };
+    }
+
+    async reconstructTransferHolders(address, token, options, fallbackReason = '') {
+      const cacheKey = addressKey(address);
+
+      if (this.transferReconstructionCache.has(cacheKey)) {
+        return this.cloneReconstruction(this.transferReconstructionCache.get(cacheKey));
+      }
+
+      const balances = new Map();
+      const addressInfo = new Map();
+      let nextPageParams = null;
+      let pagesLoaded = 0;
+      let rawItemCount = 0;
+      let partialError = '';
+
+      this.progress(options, 54, 'Reconstructing balances from Transfer events...');
+
+      do {
+        pagesLoaded += 1;
+        const url = this.transfersUrl(address, nextPageParams);
+        const response = await this.fetchJson(url, options.signal);
+        const items = Array.isArray(response.items) ? response.items : [];
+
+        rawItemCount += items.length;
+
+        items.forEach((item) => this.applyTransferItem(item, balances, addressInfo));
+        nextPageParams = response.next_page_params || null;
+
+        this.progress(
+          options,
+          Math.min(92, 54 + pagesLoaded),
+          `Transfer pages scanned: ${pagesLoaded}. Events: ${rawItemCount.toLocaleString('en-US')}`
+        );
+      } while (nextPageParams && pagesLoaded < this.maxTransferPages);
+
+      if (nextPageParams) {
+        partialError = `Transfer reconstruction stopped at ${this.maxTransferPages} pages. More provider data may exist.`;
+      }
+
+      const holders = this.holdersFromBalances(balances, addressInfo, token);
+      const reconstruction = {
+        holders,
+        rawItemCount,
+        partialError: partialError || fallbackReason || '',
+        pagesLoaded,
+        completed: !nextPageParams
+      };
+
+      this.transferReconstructionCache.set(cacheKey, this.cloneReconstruction(reconstruction));
+      return reconstruction;
+    }
+
+    applyTransferItem(item, balances, addressInfo) {
+      const valueRaw = this.transferValueRaw(item);
+
+      if (valueRaw <= 0n) {
+        return;
+      }
+
+      this.applyTransferSide(item?.from, -valueRaw, balances, addressInfo);
+      this.applyTransferSide(item?.to, valueRaw, balances, addressInfo);
+    }
+
+    applyTransferSide(account, delta, balances, addressInfo) {
+      const address = this.accountAddress(account);
+      const key = addressKey(address);
+
+      if (!isAddress(address) || key === addressKey(window.B20ParserUtils.zeroAddress)) {
+        return;
+      }
+
+      balances.set(key, (balances.get(key) || 0n) + delta);
+
+      if (account && typeof account === 'object') {
+        addressInfo.set(key, account);
+      }
+    }
+
+    accountAddress(account) {
+      if (typeof account === 'string') {
+        return account;
+      }
+
+      return account?.hash || account?.address_hash || '';
+    }
+
+    transferValueRaw(item) {
+      try {
+        return BigInt(String(item?.total?.value || item?.value || '0'));
+      } catch (error) {
+        return 0n;
+      }
+    }
+
+    holdersFromBalances(balances, addressInfo, token) {
+      const holders = [];
+
+      balances.forEach((valueRaw, key) => {
+        if (valueRaw <= 0n) {
+          return;
+        }
+
+        const info = addressInfo.get(key) || {};
+        const address = this.accountAddress(info) || key;
+        const normalizedHolder = {
+          rank: 0,
+          address,
+          valueRaw: valueRaw.toString(),
+          balance: formatTokenAmount(valueRaw.toString(), token.decimals, 6),
+          percentage: formatPercentage(valueRaw.toString(), token.totalSupplyRaw),
+          percentageValue: percentageNumber(valueRaw.toString(), token.totalSupplyRaw),
+          isContract: info?.is_contract === true,
+          label: info?.name || this.readTagName(info)
+        };
+
+        normalizedHolder.labels = labels.labelsForHolder(normalizedHolder);
+        holders.push(normalizedHolder);
+      });
+
+      holders.sort((left, right) => {
+        const leftValue = BigInt(left.valueRaw);
+        const rightValue = BigInt(right.valueRaw);
+        return leftValue === rightValue ? 0 : leftValue > rightValue ? -1 : 1;
+      });
+
+      return holders.map((holder, index) => ({
+        ...holder,
+        rank: index + 1
+      }));
     }
 
     async readHolderBatchWithRetry(address, token, pageParams, options) {
@@ -365,7 +543,24 @@
           labels: [...(holder.labels || [])]
         })),
         nextPageParams: response.nextPageParams ? { ...response.nextPageParams } : null,
-        rawItemCount: response.rawItemCount || 0
+        rawItemCount: response.rawItemCount || 0,
+        provider: response.provider,
+        providerId: response.providerId,
+        totalHolders: response.totalHolders || 0,
+        partialError: response.partialError || ''
+      };
+    }
+
+    cloneReconstruction(reconstruction) {
+      return {
+        holders: (reconstruction.holders || []).map((holder) => ({
+          ...holder,
+          labels: [...(holder.labels || [])]
+        })),
+        rawItemCount: reconstruction.rawItemCount || 0,
+        partialError: reconstruction.partialError || '',
+        pagesLoaded: reconstruction.pagesLoaded || 0,
+        completed: Boolean(reconstruction.completed)
       };
     }
 
@@ -420,6 +615,20 @@
       const url = new URL(`${this.apiBase}/tokens/${address}/holders`);
       const itemsCount = Math.max(1, Math.min(this.pageSize, remaining || this.pageSize));
       url.searchParams.set('items_count', String(itemsCount));
+
+      if (pageParams && typeof pageParams === 'object') {
+        Object.entries(pageParams).forEach(([key, value]) => {
+          if (value !== null && value !== undefined) {
+            url.searchParams.set(key, String(value));
+          }
+        });
+      }
+
+      return url.toString();
+    }
+
+    transfersUrl(address, pageParams) {
+      const url = new URL(`${this.apiBase}/tokens/${address}/transfers`);
 
       if (pageParams && typeof pageParams === 'object') {
         Object.entries(pageParams).forEach(([key, value]) => {
