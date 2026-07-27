@@ -1127,8 +1127,32 @@
     try {
       setText(query(selectors.importMessage), `Importing ${state.importMode.toUpperCase()} file...`);
       const text = await modules.importer().readFile(file);
-      query(selectors.recipients).value = text.trim();
+      const imported = modules.importer().normalizeImportText(text, state.importMode);
+      query(selectors.recipients).value = imported.text.trim();
       resetTransactionState();
+
+      if (state.importMode === 'csv') {
+        const notes = [];
+        notes.push(`${imported.addresses.toLocaleString('en-US')} addresses extracted`);
+
+        if (imported.amountRows) {
+          notes.push(`${imported.amountRows.toLocaleString('en-US')} rows include custom amounts`);
+        } else {
+          notes.push('fill Amount Per Wallet before validation');
+        }
+
+        if (imported.duplicatesRemoved) {
+          notes.push(`${imported.duplicatesRemoved.toLocaleString('en-US')} duplicates removed`);
+        }
+
+        if (imported.invalidRows) {
+          notes.push(`${imported.invalidRows.toLocaleString('en-US')} non-recipient rows ignored`);
+        }
+
+        setText(query(selectors.importMessage), `CSV normalized. ${notes.join('. ')}.`);
+        return;
+      }
+
       setText(query(selectors.importMessage), `${state.importMode.toUpperCase()} imported. Validate preview before approval.`);
     } catch (error) {
       setText(query(selectors.importMessage), modules.core().errorMessage(error, 'Import failed.'));

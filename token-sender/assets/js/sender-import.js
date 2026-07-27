@@ -35,9 +35,9 @@
   }
 
   function detectHeader(cells) {
-    const normalized = cells.map((cell) => String(cell || '').trim().toLowerCase());
-    const addressIndex = normalized.findIndex((cell) => ['wallet', 'address', 'recipient'].includes(cell));
-    const amountIndex = normalized.findIndex((cell) => cell === 'amount' || cell === 'tokens');
+    const normalized = cells.map((cell) => String(cell || '').trim().replace(/^\uFEFF/, '').toLowerCase());
+    const addressIndex = normalized.findIndex((cell) => ['wallet', 'address', 'recipient', 'holder'].includes(cell));
+    const amountIndex = normalized.findIndex((cell) => ['amount', 'tokens', 'token amount', 'send amount'].includes(cell));
 
     if (addressIndex === -1) {
       return null;
@@ -64,6 +64,110 @@
     }
 
     return [cells[0] || '', cells[1] || defaultAmount];
+  }
+
+  function isAmountLike(value) {
+    return /^\d+(\.\d+)?$/.test(String(value || '').trim().replace(',', '.'));
+  }
+
+  function normalizeImportText(text, mode) {
+    if (mode !== 'csv') {
+      return {
+        text: String(text || '').trim(),
+        addresses: 0,
+        amountRows: 0,
+        duplicatesRemoved: 0,
+        invalidRows: 0,
+        parserCsv: false
+      };
+    }
+
+    const wallet = global.B20Wallet;
+    const output = [];
+    const seen = new Set();
+    const lines = String(text || '').split(/\r?\n/);
+    let header = null;
+    let headerLineIndex = -1;
+    let amountRows = 0;
+    let duplicatesRemoved = 0;
+    let invalidRows = 0;
+    let parserCsv = false;
+
+    if (!wallet) {
+      throw new Error('Wallet utilities unavailable.');
+    }
+
+    for (let index = 0; index < lines.length; index += 1) {
+      const trimmed = lines[index].trim();
+
+      if (!trimmed) {
+        continue;
+      }
+
+      const cells = trimmed.includes(',') ? splitCsvLine(trimmed) : [trimmed];
+      const detectedHeader = detectHeader(cells);
+
+      if (detectedHeader && header === null && index <= 5) {
+        header = detectedHeader;
+        headerLineIndex = index;
+        parserCsv = cells
+          .map((cell) => String(cell || '').trim().toLowerCase())
+          .some((cell) => ['rank', 'balance', 'supply %', 'labels'].includes(cell));
+        continue;
+      }
+
+      let addressInput = '';
+      let amountInput = '';
+
+      if (header && index > headerLineIndex) {
+        addressInput = cells[header.addressIndex] || '';
+        amountInput = header.amountIndex >= 0 ? cells[header.amountIndex] || '' : '';
+      } else if (cells.length === 1) {
+        addressInput = cells[0] || '';
+      } else {
+        const addressIndex = cells.findIndex((cell) => wallet.isAddress(String(cell || '').trim()));
+        addressInput = addressIndex >= 0 ? cells[addressIndex] : '';
+
+        if (addressIndex === 0 && cells[1] && isAmountLike(cells[1])) {
+          amountInput = cells[1];
+        }
+      }
+
+      try {
+        const address = wallet.normalizeAddress(addressInput);
+        const key = address.toLowerCase();
+
+        if (seen.has(key)) {
+          duplicatesRemoved += 1;
+          continue;
+        }
+
+        seen.add(key);
+
+        if (amountInput && isAmountLike(amountInput)) {
+          const normalizedAmount = amountInput.trim().replace(',', '.');
+          amountRows += 1;
+          output.push(`${address},${normalizedAmount}`);
+        } else {
+          output.push(address);
+        }
+      } catch (error) {
+        invalidRows += 1;
+      }
+    }
+
+    if (!output.length) {
+      throw new Error('CSV import did not contain usable wallet addresses.');
+    }
+
+    return {
+      text: output.join('\n'),
+      addresses: output.length,
+      amountRows,
+      duplicatesRemoved,
+      invalidRows,
+      parserCsv
+    };
   }
 
   function parseRecipients(options) {
@@ -181,6 +285,7 @@
 
   global.B20SenderImport = {
     parseRecipients,
+    normalizeImportText,
     recipientsToText,
     readFile
   };
