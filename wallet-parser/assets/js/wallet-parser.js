@@ -1,6 +1,6 @@
 (function () {
   const accessPassword = '0xb20.lol';
-  const accessGateEnabled = true;
+  const accessGateEnabled = false;
   const pageSize = 100;
 
   const selectors = {
