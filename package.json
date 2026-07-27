@@ -23,6 +23,9 @@
     "wallet-tools"
   ],
   "author": "0XB20 Laboratory contributors",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1"
+  },
   "scripts": {
     "research:fetch": "npm --prefix research/backend run fetch",
     "research:install": "npm --prefix research/backend ci"

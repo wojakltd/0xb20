@@ -200,8 +200,9 @@ Required production environment variables:
 - `OPENAI_MODEL` — optional model override.
 - `AI_RATE_LIMIT_PER_MINUTE` — optional per-IP throttle for AI Lab.
 - `AI_RATE_LIMIT_PER_DAY` — optional per-IP daily budget guard for AI Lab.
-- `KV_REST_API_URL` — optional Vercel KV / Upstash Redis REST URL for persistent referral data.
-- `KV_REST_API_TOKEN` — optional Vercel KV / Upstash Redis REST token for persistent referral data.
+- `DATABASE_URL` — recommended Neon Postgres connection string for persistent referral accounting.
+- `KV_REST_API_URL` — optional Vercel KV / Upstash Redis REST URL fallback for referral data.
+- `KV_REST_API_TOKEN` — optional Vercel KV / Upstash Redis REST token fallback for referral data.
 - `REFERRAL_ADMIN_SECRET` — optional server-side secret for trusted referral purchase ingest workers.
 
 AI Lab uses a single serverless endpoint with an `action` parameter. Supported actions are `generateSignal`, `generatePost`, `generateThread`, `generateReplies`, `generateQuote`, `generateCampaign`, `summarizeResearch`, `generateHashtags`, and `remixContent`.
@@ -213,7 +214,7 @@ GitHub Actions secrets used by automation:
 
 The Research workflow runs inside GitHub Actions, so the X bearer token must be stored in GitHub repository Actions secrets. Adding it only to Vercel environment variables will not update the Research cache.
 
-Referral APIs use volatile serverless memory if KV variables are missing. This is acceptable for local testing only. Production partner rewards require persistent KV storage and a purchase-event indexer.
+Referral APIs use Neon Postgres when `DATABASE_URL` exists. If it is missing, the service can fall back to KV/Upstash REST, then volatile serverless memory. Memory is acceptable for local testing only. Production partner rewards require persistent storage and a purchase-event indexer.
 
 Optional temporary Research fallbacks:
 

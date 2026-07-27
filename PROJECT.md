@@ -397,15 +397,20 @@ The Partner Program is the ecosystem account layer. It does not replace LAB PASS
 - `?ref=0xWallet` is captured once and only bound after wallet connection.
 - Referrals must reject self-referrals, duplicate assignment, and circular trees.
 - Purchase reward ingestion is admin-only through `/api/referral/purchase`.
-- Production persistence requires Vercel KV or Upstash REST environment variables.
-- Without persistent KV, serverless memory is for local/demo behavior only and must not be treated as production accounting.
+- Production persistence should use Neon Postgres through `DATABASE_URL`.
+- Vercel KV / Upstash REST remains supported as a fallback.
+- Without persistent storage, serverless memory is for local/demo behavior only and must not be treated as production accounting.
 - `contracts/LaboratoryReferralVault.sol` is only a payout container. It must not contain referral trees, percentages, or partner logic.
 
 Required production environment variables:
 
+- `DATABASE_URL`
+- `REFERRAL_ADMIN_SECRET`
+
+Optional fallback storage variables:
+
 - `KV_REST_API_URL`
 - `KV_REST_API_TOKEN`
-- `REFERRAL_ADMIN_SECRET`
 
 ## How To Update Token Sender
 

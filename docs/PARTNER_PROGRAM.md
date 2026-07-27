@@ -56,9 +56,17 @@ Rules:
 
 ## Database
 
-The service supports a Vercel KV / Upstash Redis compatible REST database.
+The service uses Neon Postgres when `DATABASE_URL` exists. This is the recommended production path because referral balances, purchases and withdrawals are accounting data and should live in a durable transactional database.
 
 Environment variables:
+
+```text
+DATABASE_URL=
+```
+
+The backend automatically creates a simple `referral_records` JSONB table on first use.
+
+Vercel KV / Upstash Redis remains supported as a fallback:
 
 ```text
 KV_REST_API_URL=
@@ -136,7 +144,7 @@ Security properties:
 
 Before public revenue sharing:
 
-1. Configure persistent KV storage.
+1. Configure `DATABASE_URL` with a Neon pooled Postgres connection string.
 2. Add a purchase-event indexer that watches `LaboratoryLicenseManager` events.
 3. Send verified purchases into `/api/referral/purchase`.
 4. Add owner payout tooling for pending withdrawals.

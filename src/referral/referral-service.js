@@ -18,6 +18,8 @@ const defaultConfig = {
   labPassReferenceUsd: 10
 };
 
+const postgresStore = require('./postgres-store');
+
 const memory = {
   users: new Map(),
   rewards: new Map(),
@@ -70,6 +72,24 @@ function hasRedis() {
   return Boolean(env.url && env.token && typeof fetch === 'function');
 }
 
+function storageInfo() {
+  if (postgresStore.isEnabled()) {
+    return postgresStore.providerInfo();
+  }
+
+  if (hasRedis()) {
+    return {
+      provider: 'Vercel KV / Upstash Redis',
+      persistent: true
+    };
+  }
+
+  return {
+    provider: 'Volatile serverless memory',
+    persistent: false
+  };
+}
+
 async function redisCommand(command) {
   const env = redisEnv();
   const response = await fetch(env.url, {
@@ -95,6 +115,10 @@ async function redisCommand(command) {
 }
 
 async function getJson(key, fallback) {
+  if (postgresStore.isEnabled()) {
+    return postgresStore.getJson(key, fallback);
+  }
+
   if (hasRedis()) {
     const raw = await redisCommand(['GET', key]);
     return raw ? JSON.parse(raw) : fallback;
@@ -111,6 +135,10 @@ async function getJson(key, fallback) {
 }
 
 async function setJson(key, value) {
+  if (postgresStore.isEnabled()) {
+    return postgresStore.setJson(key, value);
+  }
+
   if (hasRedis()) {
     await redisCommand(['SET', key, JSON.stringify(value)]);
     return value;
@@ -445,10 +473,7 @@ async function dashboard(wallet, referrer, origin) {
       lifetimeSavings: Number((toolsUnlocked * defaultConfig.labPassReferenceUsd).toFixed(2)),
       lifetimeEarnings: Number(rewards.earned.toFixed(2))
     },
-    database: {
-      provider: hasRedis() ? 'Vercel KV / Upstash Redis' : 'Volatile serverless memory',
-      persistent: hasRedis()
-    }
+    database: storageInfo()
   };
 }
 
