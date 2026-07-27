@@ -20,7 +20,7 @@ Research never ends.
 
 - Static Laboratory terminal built with HTML, CSS, and vanilla JavaScript.
 - Research Terminal that renders ecosystem observations from a generated cache.
-- AI Lab serverless instrument for multilingual idea synthesis and X-ready transmissions.
+- AI Lab Growth Laboratory for signals, X posts, threads, replies, campaigns, summaries, personas, project memory and local output history.
 - Prototype Records archive rendered from JSON.
 - Evolution Tree rendered from structured project data.
 - Shared wallet layer for Web3 experiments.
@@ -43,6 +43,7 @@ Static shell
 ├─ logs/
 ├─ research/
 ├─ ai/
+│  └─ assets/js/ai-*.js
 ├─ profile/
 ├─ test/
 ├─ token-sender/
@@ -79,7 +80,21 @@ The live observation terminal. The frontend reads only `research/backend/cache/f
 
 ### AI Lab
 
-An idea synthesis instrument with language selection. The browser calls `/api/ai/generate`; the OpenAI key remains server-side only.
+Premium AI Growth Laboratory for Web3 project communication. It provides:
+
+- Signal Generator for short original ideas.
+- Thread Generator for 2, 4, 8 or 12-part X threads.
+- Reply Generator for multiple response angles.
+- Quote Generator for quote-post drafts.
+- Campaign Generator for launch sequences.
+- Prompt Library for reusable starting points.
+- Project Memory stored locally in the browser.
+- Saved Personas for reusable writing voices.
+- Research Summary conversion into posts, threads, bullets and builder notes.
+- Advanced Remix controls.
+- X Preview, character counter, copy tools and local saved outputs.
+
+The browser calls only `/api/ai/generate`; the OpenAI key remains server-side only. Premium-only modules use the existing Lab Pass system through shared Premium Core feature checks.
 
 ### Profile
 
@@ -180,6 +195,8 @@ Required production environment variables:
 - `OPENAI_MODEL` — optional model override.
 - `AI_RATE_LIMIT_PER_MINUTE` — optional per-IP throttle for AI Lab.
 - `AI_RATE_LIMIT_PER_DAY` — optional per-IP daily budget guard for AI Lab.
+
+AI Lab uses a single serverless endpoint with an `action` parameter. Supported actions are `generateSignal`, `generatePost`, `generateThread`, `generateReplies`, `generateQuote`, `generateCampaign`, `summarizeResearch`, `generateHashtags`, and `remixContent`.
 
 GitHub Actions secrets used by automation:
 

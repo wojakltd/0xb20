@@ -13,7 +13,17 @@ type VercelResponse = {
   setHeader: (name: string, value: string) => void;
 };
 
-type Action = 'generateSignal' | 'generatePost' | 'remixSignal';
+type Action =
+  | 'generateSignal'
+  | 'generatePost'
+  | 'remixSignal'
+  | 'remixContent'
+  | 'generateThread'
+  | 'generateReplies'
+  | 'generateQuote'
+  | 'generateCampaign'
+  | 'summarizeResearch'
+  | 'generateHashtags';
 
 type GenerateBody = {
   action?: unknown;
@@ -21,6 +31,11 @@ type GenerateBody = {
   signal?: unknown;
   style?: unknown;
   language?: unknown;
+  count?: unknown;
+  agent?: unknown;
+  memory?: unknown;
+  persona?: unknown;
+  remixMode?: unknown;
   options?: unknown;
 };
 
@@ -33,8 +48,14 @@ type PostOptions = {
 type AiPayload = {
   signal?: string;
   post?: string;
+  items?: string[];
+  campaign?: Record<string, string | string[]>;
+  summary?: string;
+  bullets?: string[];
+  notes?: string[];
   hashtags?: string[];
   emojis?: string[];
+  characterCount?: number;
 };
 
 type RateEntry = {
@@ -42,8 +63,34 @@ type RateEntry = {
   resetAt: number;
 };
 
-const allowedActions = new Set<Action>(['generateSignal', 'generatePost', 'remixSignal']);
-const allowedStyles = new Set(['minimal', 'funny', 'philosophy', 'brutal', 'builder']);
+const allowedActions = new Set<Action>([
+  'generateSignal',
+  'generatePost',
+  'remixSignal',
+  'remixContent',
+  'generateThread',
+  'generateReplies',
+  'generateQuote',
+  'generateCampaign',
+  'summarizeResearch',
+  'generateHashtags'
+]);
+const allowedStyles = new Set([
+  'builder',
+  'minimal',
+  'professional',
+  'technical',
+  'funny',
+  'bullish',
+  'neutral',
+  'meme',
+  'founder',
+  'visionary',
+  'random',
+  'philosophy',
+  'brutal'
+]);
+const allowedAgents = new Set(['builder', 'marketing', 'research', 'growth', 'launch', 'meme']);
 const outputLanguages: Record<string, string> = {
   auto: 'Auto. Detect the user input language and write naturally in that language. If the language is unclear, use English.',
   en: 'English. Write naturally in English.',
@@ -63,15 +110,16 @@ const outputLanguages: Record<string, string> = {
   ko: 'Korean. Write naturally in Korean.'
 };
 const fallbackModel = 'gpt-4.1-mini';
-const maxTopicLength = 180;
-const maxSignalLength = 320;
-const maxRequestBytes = 4096;
+const maxTopicLength = 2400;
+const maxSignalLength = 2200;
+const maxContextLength = 1200;
+const maxRequestBytes = 12000;
 const rateWindowMs = 60 * 1000;
 const dailyWindowMs = 24 * 60 * 60 * 1000;
 const defaultMinuteLimit = 20;
 const defaultDailyLimit = 300;
 const maxRateEntries = 1000;
-const openAiTimeoutMs = 15 * 1000;
+const openAiTimeoutMs = 18 * 1000;
 const attributionText = 'Generated with https://0xb20.lol/ai';
 const minuteRate = new Map<string, RateEntry>();
 const dailyRate = new Map<string, RateEntry>();
@@ -229,16 +277,27 @@ function normalizeText(value: unknown, maxLength: number): string {
     return '';
   }
 
-  return value.trim().replace(/\s+/g, ' ').slice(0, maxLength);
+  return value
+    .trim()
+    .replace(/\r/g, '')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{4,}/g, '\n\n\n')
+    .slice(0, maxLength);
+}
+
+function normalizeInlineText(value: unknown, maxLength: number): string {
+  return normalizeText(value, maxLength)
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function normalizeStyle(style: unknown): string {
   if (typeof style !== 'string') {
-    return 'minimal';
+    return 'builder';
   }
 
   const normalized = style.trim().toLowerCase();
-  return allowedStyles.has(normalized) ? normalized : 'minimal';
+  return allowedStyles.has(normalized) ? normalized : 'builder';
 }
 
 function normalizeLanguage(language: unknown): string {
@@ -250,8 +309,49 @@ function normalizeLanguage(language: unknown): string {
   return outputLanguages[normalized] ? normalized : 'auto';
 }
 
-function languageInstruction(language: string): string {
-  return `output language: ${outputLanguages[normalizeLanguage(language)]}`;
+function normalizeAgent(agent: unknown): string {
+  if (typeof agent !== 'string') {
+    return 'builder';
+  }
+
+  const normalized = agent.trim().toLowerCase();
+  return allowedAgents.has(normalized) ? normalized : 'builder';
+}
+
+function normalizeCount(action: Action, count: unknown): number {
+  const value = Number(count);
+
+  if (action === 'generateThread') {
+    const allowed = [2, 4, 8, 12];
+    return allowed.includes(value) ? value : 4;
+  }
+
+  if (action === 'generateReplies' || action === 'generateHashtags') {
+    const allowed = [5, 10, 20];
+    return allowed.includes(value) ? value : 5;
+  }
+
+  return Math.min(20, Math.max(1, Number.isFinite(value) ? Math.floor(value) : 4));
+}
+
+function normalizeRecord(value: unknown, maxEntries: number): Record<string, string> {
+  const source = value && typeof value === 'object' ? value as Record<string, unknown> : {};
+  const output: Record<string, string> = {};
+
+  for (const [key, field] of Object.entries(source).slice(0, maxEntries)) {
+    if (typeof field !== 'string') {
+      continue;
+    }
+
+    const normalizedKey = key.replace(/[^\w-]/g, '').slice(0, 32);
+    const normalizedValue = normalizeInlineText(field, 220);
+
+    if (normalizedKey && normalizedValue) {
+      output[normalizedKey] = normalizedValue;
+    }
+  }
+
+  return output;
 }
 
 function normalizeOptions(options: unknown): PostOptions {
@@ -262,6 +362,10 @@ function normalizeOptions(options: unknown): PostOptions {
     hashtags: source.hashtags === true,
     attribution: source.attribution === true
   };
+}
+
+function languageInstruction(language: string): string {
+  return `output language: ${outputLanguages[normalizeLanguage(language)]}`;
 }
 
 function getOutputText(payload: any): string {
@@ -338,25 +442,25 @@ function uniqueStrings(values: unknown, maxCount: number): string[] {
   return normalized;
 }
 
-function normalizeHashtags(values: unknown): string[] {
-  return uniqueStrings(values, 5)
+function normalizeHashtags(values: unknown, maxCount = 5): string[] {
+  return uniqueStrings(values, maxCount)
     .map((tag) => tag.replace(/\s+/g, '').replace(/^#?/, '#'))
-    .filter((tag) => /^#[\p{L}\p{N}_]{2,32}$/u.test(tag));
+    .filter((tag) => /^#[\p{L}\p{N}_]{2,40}$/u.test(tag));
 }
 
 function normalizeEmojis(values: unknown): string[] {
-  return uniqueStrings(values, 3).filter((emoji) => emoji.length <= 8);
+  return uniqueStrings(values, 5).filter((emoji) => emoji.length <= 12);
 }
 
 function splitSentences(text: string): string[] {
   return text
-    .split(/(?<=[.!?])\s+/)
+    .split(/(?<=[.!?。！？])\s+/)
     .map((sentence) => sentence.trim())
     .filter(Boolean);
 }
 
 function normalizeSignal(value: unknown): string {
-  let signal = normalizeText(value, maxSignalLength);
+  let signal = normalizeInlineText(value, 420);
 
   if (!signal) {
     return '';
@@ -374,19 +478,54 @@ function normalizeSignal(value: unknown): string {
     signal = words.slice(0, 35).join(' ');
   }
 
-  return signal.replace(/\s+([,.!?])/g, '$1').trim();
+  return signal.replace(/\s+([,.!?;:])/g, '$1').trim();
 }
 
-function normalizePost(value: unknown): string {
+function normalizePost(value: unknown, maxLength = 520): string {
   if (typeof value !== 'string') {
     return '';
   }
 
   return value
     .trim()
-    .replace(/\s+/g, ' ')
-    .replace(/\s+([,.!?])/g, '$1')
+    .replace(/\r/g, '')
+    .split('\n')
+    .map((line) => line.trim().replace(/[ \t]+/g, ' '))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/\s+([,.!?;:])/g, '$1')
+    .slice(0, maxLength)
     .trim();
+}
+
+function normalizeItems(values: unknown, maxCount: number, maxLength: number): string[] {
+  return uniqueStrings(values, maxCount)
+    .map((item) => normalizePost(item, maxLength))
+    .filter(Boolean);
+}
+
+function normalizeCampaign(value: unknown): Record<string, string | string[]> {
+  const source = value && typeof value === 'object' ? value as Record<string, unknown> : {};
+  const keys = ['launchPost', 'launchThread', 'replies', 'quoteTweet', 'followUp', 'reminder', 'lastChance', 'finalUpdate'];
+  const output: Record<string, string | string[]> = {};
+
+  keys.forEach((key) => {
+    const entry = source[key];
+    if (Array.isArray(entry)) {
+      const items = normalizeItems(entry, key === 'replies' ? 5 : 12, 300);
+      if (items.length) {
+        output[key] = items;
+      }
+      return;
+    }
+
+    const text = normalizePost(entry, 360);
+    if (text) {
+      output[key] = text;
+    }
+  });
+
+  return output;
 }
 
 function assemblePost(post: string, hashtags: string[], emojis: string[], options: PostOptions): string {
@@ -404,65 +543,216 @@ function assemblePost(post: string, hashtags: string[], emojis: string[], option
   return parts.filter(Boolean).join('\n\n');
 }
 
+function formatMemory(memory: Record<string, string>): string {
+  const entries = Object.entries(memory)
+    .filter(([, value]) => value)
+    .map(([key, value]) => `${key}: ${value}`);
+
+  return entries.length ? entries.join('\n') : 'none';
+}
+
+function personaInstruction(persona: Record<string, string>): string {
+  const name = persona.name || 'Laboratory';
+  const guidance = persona.guidance || 'Independent researcher. Minimal, direct, no hype.';
+  return `persona: ${name}\npersona guidance: ${guidance}`;
+}
+
+function agentInstruction(agent: string): string {
+  const map: Record<string, string> = {
+    builder: 'Builder AI: practical, product-first, shipping-focused.',
+    marketing: 'Marketing AI: clear growth communication without hype.',
+    research: 'Research AI: precise, analytical, signal over noise.',
+    growth: 'Growth AI: distribution-aware, concise, conversion-oriented.',
+    launch: 'Launch AI: launch sequencing, CTA discipline, public release clarity.',
+    meme: 'Meme AI: crypto-native humor, sharp but not spammy.'
+  };
+
+  return map[normalizeAgent(agent)] || map.builder;
+}
+
 function buildJsonShape(action: Action): string {
-  if (action === 'generatePost') {
+  if (action === 'generatePost' || action === 'generateQuote' || action === 'remixContent' || action === 'remixSignal') {
     return '{"signal":"","post":"...","hashtags":["#Base"],"emojis":["🧪"],"characterCount":0}';
   }
 
-  return '{"signal":"...","post":"","hashtags":[],"emojis":[],"characterCount":0}';
-}
-
-function buildSystemPrompt(action: Action): string {
-  const base =
-    'You are the 0XB20 Laboratory idea synthesis engine: experienced independent researcher, minimalist writer, builder, crypto observer. Write natively in the requested output language; never translate literally. No hype, moon language, price predictions, financial advice, fake confidence, roleplay, greetings, explanations, famous quotes, LinkedIn tone, influencer language, or "As an AI". Return valid JSON only.';
-
-  if (action === 'generatePost') {
-    return `${base} Generate one shareable X transmission from the provided signal. Return emojis as subtle inline ending accents only; do not put them inside post text. Return hashtags only as an array.`;
+  if (action === 'generateThread' || action === 'generateReplies') {
+    return '{"items":["..."],"post":"","hashtags":["#Base"],"emojis":["🧪"],"characterCount":0}';
   }
 
-  if (action === 'remixSignal') {
-    return `${base} Remix the provided signal into a genuinely different angle, structure, and perspective. Do not perform synonym replacement.`;
+  if (action === 'generateCampaign') {
+    return '{"campaign":{"launchPost":"...","launchThread":["1/4 ..."],"replies":["..."],"quoteTweet":"...","followUp":"...","reminder":"...","lastChance":"...","finalUpdate":"..."},"hashtags":["#Base"],"emojis":["🧪"],"characterCount":0}';
+  }
+
+  if (action === 'summarizeResearch') {
+    return '{"summary":"...","post":"...","items":["1/4 ..."],"bullets":["..."],"notes":["..."],"hashtags":["#Base"],"emojis":["🧪"],"characterCount":0}';
+  }
+
+  if (action === 'generateHashtags') {
+    return '{"hashtags":["#Base"],"signal":"","post":"","emojis":[],"characterCount":0}';
+  }
+
+  return '{"signal":"...","post":"","hashtags":["#Base"],"emojis":["🧪"],"characterCount":0}';
+}
+
+function buildSystemPrompt(action: Action, agent: string, persona: Record<string, string>): string {
+  const base = [
+    'You are the 0XB20 Laboratory AI Growth engine.',
+    'Act as an experienced independent researcher, minimalist writer, builder, and crypto observer.',
+    'Write natively in the requested output language; never translate literally.',
+    'No hype, moon language, price predictions, financial advice, fake confidence, roleplay, greetings, explanations, famous quotes, LinkedIn tone, influencer language, or "As an AI".',
+    'Never mention being an AI.',
+    'Return valid JSON only.',
+    agentInstruction(agent),
+    personaInstruction(persona)
+  ].join(' ');
+
+  if (action === 'generatePost') {
+    return `${base} Generate one shareable X transmission from the provided source. Return emojis as subtle ending accents only; do not place emojis randomly. Return hashtags only as an array.`;
+  }
+
+  if (action === 'generateThread') {
+    return `${base} Generate compact X thread items with natural progression. Number every item. Final item must include a concise CTA.`;
+  }
+
+  if (action === 'generateReplies') {
+    return `${base} Generate distinct replies. They must feel human, useful, and non-spammy.`;
+  }
+
+  if (action === 'generateCampaign') {
+    return `${base} Generate a compact release campaign with launch post, thread, replies, quote tweet, follow-up, reminder, last chance, and final update.`;
+  }
+
+  if (action === 'summarizeResearch') {
+    return `${base} Summarize source material into practical builder-facing X content and notes.`;
+  }
+
+  if (action === 'generateHashtags') {
+    return `${base} Generate only highly relevant hashtags. No generic spam tags.`;
+  }
+
+  if (action === 'remixContent' || action === 'remixSignal') {
+    return `${base} Remix the provided content into a genuinely different angle, structure, and perspective. Do not perform synonym replacement.`;
   }
 
   return `${base} Generate one memorable screenshot-worthy signal.`;
 }
 
-function buildUserPrompt(action: Action, topic: string, signal: string, style: string, language: string, options: PostOptions): string {
+function buildUserPrompt(
+  action: Action,
+  topic: string,
+  signal: string,
+  style: string,
+  language: string,
+  count: number,
+  memory: Record<string, string>,
+  persona: Record<string, string>,
+  agent: string,
+  remixMode: string,
+  options: PostOptions
+): string {
+  const context = [
+    languageInstruction(language),
+    `style: ${style}`,
+    `agent: ${agent}`,
+    `project memory:\n${formatMemory(memory)}`,
+    personaInstruction(persona)
+  ].join('\n');
+
   if (action === 'generatePost') {
     const maxBaseLength = options.attribution || options.hashtags || options.emojis ? 175 : 220;
 
     return [
-      languageInstruction(language),
-      `signal: ${signal}`,
-      `style: ${style}`,
+      context,
+      `source content: ${signal}`,
       `topic context for relevance only: ${topic || 'none'}`,
       `base post max characters: ${maxBaseLength}`,
-      'Write one original X post based only on the signal.',
+      'Write one original X post based only on the source content.',
       'No thread, no essay, no greeting, no generic crypto slogan.',
-      'If emojis truly fit, return 1-3 intelligent emojis for the end of the main post. If none fit, return [].',
-      'Never return random decorative emojis, object spam, or emojis that feel disconnected from the post.',
-      'If hashtags fit, return 1-4 highly relevant hashtags, max 5. If none fit, return [].',
+      'Return 0-3 intelligent emojis if they truly fit. Return 0-5 highly relevant hashtags.',
       `JSON shape: ${buildJsonShape(action)}`
     ].join('\n');
   }
 
-  if (action === 'remixSignal') {
+  if (action === 'generateThread') {
     return [
-      languageInstruction(language),
-      `current signal: ${signal}`,
+      context,
+      `topic: ${topic}`,
+      `thread length: exactly ${count} posts`,
+      'Each item must fit X. Number every post like 1/4, 2/4.',
+      'Build a clear progression: hook, context, insight, CTA.',
+      'No filler. No hype. No promises.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'generateReplies') {
+    return [
+      context,
+      `tweet or URL: ${topic}`,
+      `reply count: exactly ${count}`,
+      'Generate distinct replies with different angles.',
+      'Replies must not look copied, spammy, or automated.',
+      'Use the requested style category.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'generateQuote') {
+    return [
+      context,
+      `post to quote: ${topic}`,
+      'Generate one quote tweet. Add a fresh angle, not a summary.',
+      'Maximum 230 characters before optional hashtags/emojis.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'generateCampaign') {
+    return [
+      context,
+      `campaign objective: ${topic}`,
+      'Generate: launch post, 4-post launch thread, 3 replies, quote tweet, follow-up, reminder, last chance, final update.',
+      'Every item must be concise and X-ready.',
+      'No fake urgency unless the topic explicitly includes a real deadline.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'summarizeResearch') {
+    return [
+      context,
+      `source material:\n${topic}`,
+      'Return a concise summary, one X post, a 4-post thread, 5 bullet points, and 5 builder notes.',
+      'Preserve facts. Do not invent claims.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'generateHashtags') {
+    return [
+      context,
+      `topic or post: ${topic}`,
+      `hashtag count: exactly ${count}`,
+      'Generate highly relevant hashtags only. No generic spam. No duplicates.',
+      `JSON shape: ${buildJsonShape(action)}`
+    ].join('\n');
+  }
+
+  if (action === 'remixContent' || action === 'remixSignal') {
+    return [
+      context,
+      `current content: ${signal}`,
       `topic context: ${topic || 'none'}`,
-      `style: ${style}`,
-      'Create one new signal with a different angle and structure.',
-      'Maximum 35 words. Maximum two short sentences. No paragraph.',
-      'Make it memorable, concrete, and screenshot-worthy.',
+      `remix direction: ${remixMode || 'different angle'}`,
+      'Create a new version with different wording, structure, and perspective.',
+      'Keep it concise. No explanation.',
       `JSON shape: ${buildJsonShape(action)}`
     ].join('\n');
   }
 
   return [
-    languageInstruction(language),
+    context,
     `topic: ${topic}`,
-    `style: ${style}`,
     'Create one signal only.',
     'Maximum 35 words. Maximum two short sentences. Shorter is better.',
     'It must feel memorable, concrete, and screenshot-worthy.',
@@ -471,21 +761,58 @@ function buildUserPrompt(action: Action, topic: string, signal: string, style: s
   ].join('\n');
 }
 
-function buildPrompt(action: Action, topic: string, signal: string, style: string, language: string, options: PostOptions) {
+function buildPrompt(
+  action: Action,
+  topic: string,
+  signal: string,
+  style: string,
+  language: string,
+  count: number,
+  memory: Record<string, string>,
+  persona: Record<string, string>,
+  agent: string,
+  remixMode: string,
+  options: PostOptions
+) {
   return [
     {
       role: 'system',
-      content: buildSystemPrompt(action)
+      content: buildSystemPrompt(action, agent, persona)
     },
     {
       role: 'user',
-      content: buildUserPrompt(action, topic, signal, style, language, options)
+      content: buildUserPrompt(action, topic, signal, style, language, count, memory, persona, agent, remixMode, options)
     }
   ];
 }
 
 function maxOutputTokensFor(action: Action): number {
-  return action === 'generatePost' ? 190 : 90;
+  const map: Record<Action, number> = {
+    generateSignal: 150,
+    generatePost: 230,
+    remixSignal: 230,
+    remixContent: 300,
+    generateThread: 900,
+    generateReplies: 900,
+    generateQuote: 230,
+    generateCampaign: 1300,
+    summarizeResearch: 1000,
+    generateHashtags: 180
+  };
+
+  return map[action] || 300;
+}
+
+function temperatureFor(action: Action): number {
+  if (action === 'generateHashtags' || action === 'summarizeResearch') {
+    return 0.55;
+  }
+
+  if (action === 'remixContent' || action === 'remixSignal' || action === 'generateReplies') {
+    return 0.92;
+  }
+
+  return 0.78;
 }
 
 async function requestOpenAI(
@@ -495,14 +822,19 @@ async function requestOpenAI(
   signal: string,
   style: string,
   language: string,
+  count: number,
+  memory: Record<string, string>,
+  persona: Record<string, string>,
+  agent: string,
+  remixMode: string,
   options: PostOptions,
   useJsonFormat: boolean
 ) {
   const body: Record<string, unknown> = {
     model: process.env.OPENAI_MODEL || fallbackModel,
-    input: buildPrompt(action, topic, signal, style, language, options),
+    input: buildPrompt(action, topic, signal, style, language, count, memory, persona, agent, remixMode, options),
     max_output_tokens: maxOutputTokensFor(action),
-    temperature: action === 'remixSignal' ? 0.94 : 0.82
+    temperature: temperatureFor(action)
   };
 
   if (useJsonFormat) {
@@ -531,22 +863,133 @@ async function requestOpenAI(
   }
 }
 
-function respondWithAiOutput(res: VercelResponse, payload: {
-  signal?: string;
-  post?: string;
-  hashtags?: string[];
-  emojis?: string[];
-  characterCount?: number;
-}) {
+function respondWithAiOutput(res: VercelResponse, payload: AiPayload) {
   const response = {
     signal: payload.signal || '',
     post: payload.post || '',
+    items: payload.items || [],
+    campaign: payload.campaign || null,
+    summary: payload.summary || '',
+    bullets: payload.bullets || [],
+    notes: payload.notes || [],
     hashtags: payload.hashtags || [],
     emojis: payload.emojis || [],
     characterCount: payload.characterCount || 0
   };
 
   res.status(200).json(response);
+}
+
+function requireInput(action: Action, topic: string, signal: string, res: VercelResponse): boolean {
+  if ((action === 'generatePost' || action === 'remixSignal' || action === 'remixContent') && !signal) {
+    res.status(400).json({ error: 'Source signal required.' });
+    return false;
+  }
+
+  if (action !== 'generatePost' && action !== 'remixSignal' && action !== 'remixContent' && !topic) {
+    res.status(400).json({ error: 'Input signal required.' });
+    return false;
+  }
+
+  return true;
+}
+
+function normalizeParsedPayload(action: Action, parsed: AiPayload, count: number, options: PostOptions): AiPayload | null {
+  const hashtags = normalizeHashtags(parsed.hashtags, action === 'generateHashtags' ? count : 5);
+  const emojis = normalizeEmojis(parsed.emojis);
+
+  if (action === 'generatePost' || action === 'generateQuote' || action === 'remixContent' || action === 'remixSignal') {
+    const post = normalizePost(parsed.post || parsed.signal, 300);
+    const finalPost = assemblePost(post, hashtags, emojis, options);
+
+    if (!post || finalPost.length > 280) {
+      return null;
+    }
+
+    return {
+      post,
+      hashtags,
+      emojis,
+      characterCount: finalPost.length
+    };
+  }
+
+  if (action === 'generateThread' || action === 'generateReplies') {
+    const items = normalizeItems(parsed.items, count, 300);
+
+    if (!items.length) {
+      return null;
+    }
+
+    return {
+      items,
+      hashtags,
+      emojis,
+      characterCount: items.join('\n\n').length
+    };
+  }
+
+  if (action === 'generateCampaign') {
+    const campaign = normalizeCampaign(parsed.campaign);
+
+    if (!Object.keys(campaign).length) {
+      return null;
+    }
+
+    return {
+      campaign,
+      hashtags,
+      emojis,
+      characterCount: JSON.stringify(campaign).length
+    };
+  }
+
+  if (action === 'summarizeResearch') {
+    const summary = normalizePost(parsed.summary, 520);
+    const post = normalizePost(parsed.post, 300);
+    const items = normalizeItems(parsed.items, 4, 300);
+    const bullets = normalizeItems(parsed.bullets, 8, 180);
+    const notes = normalizeItems(parsed.notes, 8, 180);
+
+    if (!summary && !post && !items.length && !bullets.length && !notes.length) {
+      return null;
+    }
+
+    return {
+      summary,
+      post,
+      items,
+      bullets,
+      notes,
+      hashtags,
+      emojis,
+      characterCount: [summary, post, ...items, ...bullets, ...notes].filter(Boolean).join('\n').length
+    };
+  }
+
+  if (action === 'generateHashtags') {
+    if (!hashtags.length) {
+      return null;
+    }
+
+    return {
+      hashtags,
+      characterCount: hashtags.join(' ').length
+    };
+  }
+
+  const signal = normalizeSignal(parsed.signal || parsed.post);
+
+  if (!signal) {
+    return null;
+  }
+
+  return {
+    signal,
+    hashtags,
+    emojis,
+    characterCount: signal.length
+  };
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -575,23 +1018,50 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const signalInput = normalizeText(body.signal, maxSignalLength);
   const style = normalizeStyle(body.style);
   const language = normalizeLanguage(body.language);
+  const count = normalizeCount(action, body.count);
+  const agent = normalizeAgent(body.agent);
+  const memory = normalizeRecord(body.memory, 12);
+  const persona = normalizeRecord(body.persona, 4);
+  const remixMode = normalizeInlineText(body.remixMode, 60);
   const options = normalizeOptions(body.options);
 
-  if (action === 'generateSignal' && !topic) {
-    res.status(400).json({ error: 'Input signal required.' });
-    return;
-  }
-
-  if ((action === 'generatePost' || action === 'remixSignal') && !signalInput) {
-    res.status(400).json({ error: 'Source signal required.' });
+  if (!requireInput(action, topic, signalInput, res)) {
     return;
   }
 
   try {
-    let response = await requestOpenAI(apiKey, action, topic, signalInput, style, language, options, true);
+    let response = await requestOpenAI(
+      apiKey,
+      action,
+      topic,
+      signalInput,
+      style,
+      language,
+      count,
+      memory,
+      persona,
+      agent,
+      remixMode,
+      options,
+      true
+    );
 
     if (response.status === 400) {
-      response = await requestOpenAI(apiKey, action, topic, signalInput, style, language, options, false);
+      response = await requestOpenAI(
+        apiKey,
+        action,
+        topic,
+        signalInput,
+        style,
+        language,
+        count,
+        memory,
+        persona,
+        agent,
+        remixMode,
+        options,
+        false
+      );
     }
 
     if (response.status === 429) {
@@ -605,38 +1075,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const parsed = parseJsonOutput(getOutputText(await response.json()));
+    const payload = normalizeParsedPayload(action, parsed, count, options);
 
-    if (action === 'generatePost') {
-      const post = normalizePost(parsed.post);
-      const hashtags = normalizeHashtags(parsed.hashtags);
-      const emojis = normalizeEmojis(parsed.emojis);
-      const finalPost = assemblePost(post, hashtags, emojis, options);
-
-      if (!post || finalPost.length > 280) {
-        res.status(422).json({ error: 'Transmission exceeded X limit.' });
-        return;
-      }
-
-      respondWithAiOutput(res, {
-        post,
-        hashtags,
-        emojis,
-        characterCount: finalPost.length
-      });
+    if (!payload) {
+      res.status(422).json({ error: 'AI engine returned unusable output.' });
       return;
     }
 
-    const signal = normalizeSignal(parsed.signal);
-
-    if (!signal) {
-      res.status(502).json({ error: 'AI engine returned unreadable signal.' });
-      return;
-    }
-
-    respondWithAiOutput(res, {
-      signal,
-      characterCount: signal.length
-    });
+    respondWithAiOutput(res, payload);
   } catch (error) {
     res.status(502).json({ error: 'AI engine unavailable.' });
   }

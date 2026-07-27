@@ -38,7 +38,16 @@
       "tokenSenderHistory": true,
       "tokenSenderImport": true,
       "tokenSenderAddressBook": true,
-      "tokenSenderRetryFailed": true
+      "tokenSenderRetryFailed": true,
+      "aiLabUnlimitedGenerations": true,
+      "aiLabThreadGenerator": true,
+      "aiLabCampaignGenerator": true,
+      "aiLabProjectMemory": true,
+      "aiLabSavedPersonas": true,
+      "aiLabSavedOutputs": true,
+      "aiLabAdvancedRemix": true,
+      "aiLabResearchSummary": true,
+      "aiLabPromptLibrary": true
     }
   }
 }

@@ -2,161 +2,93 @@
 
 ## Overview
 
-AI Lab is a public Laboratory instrument at `/ai/`.
-It is an idea synthesis engine, not a chatbot.
-The tool generates short signals, remixes them into different angles, and turns the current signal into X-ready transmissions.
+AI Lab is the 0XB20 Laboratory AI Growth instrument at `/ai/`.
+
+It is not a chatbot. It is a modular content synthesis engine for Web3 builders that generates:
+
+- short signals;
+- X posts;
+- threads;
+- replies;
+- quote posts;
+- launch campaigns;
+- hashtag sets;
+- research summaries;
+- remixes of existing outputs.
+
+The module preserves the Laboratory visual language and uses the existing Lab Pass licensing system.
 
 ## Architecture
 
-The module keeps the existing 0XB20 frontend architecture:
-
 ```text
 /ai/
-  static browser UI
-  ↓ POST action payload
-/api/ai/generate
-  single server-only OpenAI bridge
+  index.html
   ↓
-OpenAI Responses API
+ai/assets/js/ai-lab.js
+  orchestration only
+  ↓
+ai/assets/js/ai-generator.js
+  action dispatch + Lab Pass checks
+  ↓
+ai/assets/js/ai-core.js
+  POST /api/ai/generate
+  ↓
+api/ai/generate.ts
+  server-side OpenAI Responses API bridge
 ```
 
-No new endpoint was added.
-The existing endpoint now supports multiple actions through the `action` parameter.
+Supporting browser modules:
+
+```text
+ai-features.js   feature registry, modes, styles, languages, agents, prompt presets
+ai-storage.js    LocalStorage memory, personas, outputs, posts, favourites
+ai-preview.js    X preview assembly, character counting, local analysis
+ai-library.js    prompt library access
+```
+
+No OpenAI key reaches the browser.
 
 ## Files Created
 
-- `ai/index.html`
-- `ai/assets/css/ai.css`
-- `ai/assets/js/ai-lab.js`
-- `api/ai/generate.ts`
-- `assets/js/access-gate.js`
-- `.env.example`
-- `AI_LAB_REPORT.md`
+- `ai/assets/js/ai-core.js`
+- `ai/assets/js/ai-features.js`
+- `ai/assets/js/ai-generator.js`
+- `ai/assets/js/ai-library.js`
+- `ai/assets/js/ai-preview.js`
+- `ai/assets/js/ai-storage.js`
 
 ## Files Modified
 
-- `index.html`
-- `logs/index.html`
-- `research/index.html`
-- `evolution/index.html`
-- `README.md`
-- `PROJECT.md`
-- `.gitignore`
-- `vercel.json`
 - `ai/index.html`
 - `ai/assets/css/ai.css`
 - `ai/assets/js/ai-lab.js`
 - `api/ai/generate.ts`
+- `data/web3-tools.json`
+- `README.md`
+- `AI_LAB_REPORT.md`
 
 ## API Flow
 
-### Generate Signal
+The endpoint remains:
 
 ```text
-topic + style
-language
-↓
 POST /api/ai/generate
-action: generateSignal
-↓
-OpenAI request
-↓
-{ signal, post:"", hashtags:[], emojis:[], characterCount }
 ```
 
-This request returns only a concise signal.
-
-### Remix Signal
-
-```text
-current signal + style
-language
-↓
-POST /api/ai/generate
-action: remixSignal
-↓
-OpenAI request
-↓
-new signal with different angle
-```
-
-The remix prompt asks for a genuinely different perspective, not synonym replacement.
-
-### Generate X Post
-
-```text
-current signal + style + language + selected options
-↓
-POST /api/ai/generate
-action: generatePost
-↓
-OpenAI request
-↓
-{ post, hashtags, emojis, characterCount }
-↓
-frontend assembles final post
-```
-
-Every `Generate X Post` click makes a fresh API request.
-No previous post is reused.
-
-## New UI Elements
-
-- Optional `Add emojis` checkbox.
-- Optional `Add hashtags` checkbox.
-- Optional `Append AI LAB attribution` checkbox.
-- `Output Language` selector for Auto Detect, English, Russian, Spanish, Portuguese, French, German, Italian, Turkish, Indonesian, Vietnamese, Arabic, Hindi, Chinese, Japanese, and Korean.
-- Live `current / 280` character counter.
-- `Publish to X` button using `https://twitter.com/intent/tweet?text=...`.
-- Tweet-like preview formatting that preserves the same line breaks sent to X.
-- Separate `Copy Signal` and `Copy X Post` buttons.
-- Local memory panels for recent signals, recent X posts, and favourite signals.
-- `Save Favourite` action for signals.
-
-## Prompt Strategy
-
-The system prompt defines the engine as:
-
-- experienced independent researcher
-- minimalist writer
-- builder
-- crypto observer
-
-It explicitly rejects:
-
-- chatbot behavior
-- greetings
-- "As an AI"
-- hype language
-- price predictions
-- financial advice
-- LinkedIn style
-- influencer phrasing
-- generic crypto slogans
-- copied famous quotes
-
-Signals are constrained to:
-
-- maximum 35 words
-- maximum two short sentences
-- no paragraphs
-- no essays
-- no threads
-
-X posts are generated from the current signal and remain compact enough for optional additions.
-Language selection is injected as a short instruction in every action. The model is told to write natively in the selected language and avoid literal translation.
-
-## API Improvements
-
-The endpoint now supports:
+The request body uses one `action` field:
 
 ```json
 {
-  "action": "generateSignal | generatePost | remixSignal",
-  "topic": "optional topic context",
-  "signal": "current signal for post/remix",
-  "style": "minimal",
+  "action": "generateSignal",
+  "topic": "Base builders",
+  "signal": "",
+  "style": "builder",
   "language": "auto",
+  "agent": "builder",
+  "count": 4,
+  "memory": {},
+  "persona": {},
+  "remixMode": "",
   "options": {
     "emojis": false,
     "hashtags": false,
@@ -165,87 +97,242 @@ The endpoint now supports:
 }
 ```
 
-The response shape is always:
+Supported actions:
+
+- `generateSignal`
+- `generatePost`
+- `generateThread`
+- `generateReplies`
+- `generateQuote`
+- `generateCampaign`
+- `summarizeResearch`
+- `generateHashtags`
+- `remixContent`
+- `remixSignal` legacy-compatible alias
+
+The response is always structured JSON:
 
 ```json
 {
   "signal": "",
   "post": "",
+  "items": [],
+  "campaign": null,
+  "summary": "",
+  "bullets": [],
+  "notes": [],
   "hashtags": [],
   "emojis": [],
   "characterCount": 0
 }
 ```
 
+## Generation Flow
+
+### Signal
+
+```text
+topic + style + language + agent + optional memory/persona
+↓
+generateSignal
+↓
+short memorable signal
+```
+
+### X Post
+
+```text
+current output
+↓
+generatePost
+↓
+post + hashtags + emojis
+↓
+frontend assembles final X preview based on selected options
+```
+
+### Thread
+
+```text
+topic + count
+↓
+generateThread
+↓
+numbered X thread items
+```
+
+### Replies
+
+```text
+tweet text or URL + count
+↓
+generateReplies
+↓
+distinct reply options
+```
+
+### Campaign
+
+```text
+launch objective
+↓
+generateCampaign
+↓
+launch post, launch thread, replies, quote tweet, follow-up, reminder, last chance, final update
+```
+
+### Research Summary
+
+```text
+article / long text / thread
+↓
+summarizeResearch
+↓
+summary, X post, thread, bullets, builder notes
+```
+
+## Premium Integration
+
+AI Lab uses the existing Premium Core and Lab Pass contract.
+
+It does not implement licensing internally.
+
+Premium feature IDs are configured in `data/web3-tools.json`:
+
+- `aiLabUnlimitedGenerations`
+- `aiLabThreadGenerator`
+- `aiLabCampaignGenerator`
+- `aiLabProjectMemory`
+- `aiLabSavedPersonas`
+- `aiLabSavedOutputs`
+- `aiLabAdvancedRemix`
+- `aiLabResearchSummary`
+- `aiLabPromptLibrary`
+
+The frontend calls `window.B20Premium.requireAccess(featureId, label)` through `ai-core.js`.
+
+## Project Memory
+
+Project Memory is stored locally in the browser.
+
+Fields:
+
+- project;
+- ticker;
+- mission;
+- website;
+- GitHub;
+- Base context;
+- narrative;
+- tone;
+- target audience.
+
+The data is optional and sent only as compact prompt context.
+
+## Saved Personas
+
+Default personas:
+
+- Laboratory
+- Brian
+- Jesse
+- Vitalik
+- Professional
+- Builder
+- Founder
+- Minimal
+- Meme
+
+Users can save custom personas locally. Persona access is gated through Lab Pass.
+
+## Prompt Strategy
+
+The system prompt defines the engine as:
+
+- independent researcher;
+- minimalist writer;
+- builder;
+- crypto observer.
+
+It explicitly rejects:
+
+- chatbot behavior;
+- greetings;
+- "As an AI";
+- hype language;
+- moon language;
+- price predictions;
+- financial advice;
+- LinkedIn style;
+- influencer phrasing;
+- fake urgency;
+- generic crypto slogans.
+
+Every output must be original and concise.
+
 ## Cost Optimization
 
-The cheapest stable flow is preserved:
+The module uses the standard OpenAI Responses API.
 
-- `Generate Signal` = one OpenAI request returning only `signal`.
-- `Generate X Post` = one OpenAI request returning `post`, `hashtags`, and `emojis`.
-- `Remix` = one OpenAI request returning only a new `signal`.
+Cost controls:
 
-There are no separate emoji or hashtag requests.
-Language selection does not add additional requests.
-There is no memory sent to the model.
-There are no assistants, threads, embeddings, vector databases, or streaming.
+- one endpoint;
+- no assistants API;
+- no threads API;
+- no embeddings;
+- no vector database;
+- no streaming;
+- no chat history;
+- compact prompts;
+- low `max_output_tokens` per action;
+- per-IP minute throttling;
+- per-IP daily budget guard;
+- request size limit;
+- server-side timeout.
 
-Current token caps:
+Estimated token usage:
 
-- Signal/remix: `max_output_tokens` 90.
-- X post: `max_output_tokens` 190.
-- Default rate limits: 20 requests per minute and 300 requests per day per client IP. Both can be overridden with environment variables.
+- Signal: roughly 150–350 input tokens and up to 150 output tokens.
+- X Post: roughly 220–450 input tokens and up to 230 output tokens.
+- Thread: roughly 300–650 input tokens and up to 900 output tokens.
+- Campaign: roughly 350–750 input tokens and up to 1300 output tokens.
 
-Estimated usage:
+Actual cost depends on the configured `OPENAI_MODEL`.
 
-- Signal: ~90-170 input tokens, up to 90 output tokens.
-- X post: ~130-240 input tokens, up to 190 output tokens.
+## LocalStorage
 
-## LocalStorage Implementation
+The browser stores:
 
-The browser stores only local user output:
+- recent outputs;
+- recent X posts;
+- favourites;
+- project memory;
+- custom personas;
+- selected mode;
+- selected style;
+- selected language;
+- selected agent.
 
-- `b20-ai-lab-signals`
-- `b20-ai-lab-posts`
-- `b20-ai-lab-favorites`
-- `b20-ai-lab-language`
-
-Each list keeps the latest 10 entries.
-The language key stores only the selected output language preference.
-No backend database is used.
-No generated history is sent back to OpenAI.
-
-## Why Hashtags Are AI-Generated
-
-Hardcoded hashtag dictionaries would create generic spam.
-The model infers hashtags from the current signal, style, topic context, and generated post in the same post-generation request.
-The endpoint normalizes the result and caps hashtags at five.
-
-## Why Emojis Are AI-Generated
-
-Emoji selection depends on the actual tone and subject.
-The model decides whether emojis fit and returns a capped array.
-The frontend appends approved emojis inline at the end of the main post paragraph, so they do not float as a disconnected standalone line.
-There is no static emoji dictionary.
+No secrets are stored.
 
 ## Security
 
 - `OPENAI_API_KEY` is read only inside `api/ai/generate.ts`.
-- The browser never receives the key.
-- `.env`, `.env.local`, `.env.*`, and `*.env` remain ignored.
-- `.env.example` contains only empty placeholders.
-- The endpoint applies per-IP request throttling, daily budget protection, origin checks, request size limits, and OpenAI request timeouts.
-- Provider errors are converted into Laboratory-style public errors and surfaced directly in the UI instead of being hidden behind generic failure text.
+- The frontend never calls OpenAI directly.
+- The endpoint checks allowed origins.
+- The endpoint limits request size.
+- The endpoint rate-limits per client IP.
+- The endpoint has a daily budget guard.
+- The endpoint times out OpenAI requests.
+- Lab Pass checks are on-chain through the existing Premium Core.
+- AI Lab never requests wallet signatures, approvals, private keys, seed phrases, or transactions.
 
-## Password Protection
+## Future Extension Points
 
-AI Lab is currently public for release.
-The reusable `assets/js/access-gate.js` mechanism remains available for protected future instruments.
-
-## Future Ideas
-
-- Admin-editable prompt presets.
-- Optional prompt telemetry without storing user secrets.
-- Research-derived topic suggestions.
-- Saved favourite posts.
-- Export local memory as JSON.
+- Admin-managed prompt packs.
+- Premium generation quotas.
+- Research module context import.
+- Token Sender campaign presets.
+- Wallet Parser airdrop campaign generation.
+- Team-shared project memory.
+- Export/import of local AI workspace.

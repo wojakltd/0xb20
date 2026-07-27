@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="0XB20 AI Lab: an experimental idea synthesis terminal for Laboratory signals.">
+  <meta name="description" content="0XB20 AI Lab: a premium AI Growth Laboratory for Web3 project signals, threads, replies, campaigns and research summaries.">
   <meta name="b20-root" content="/">
   <title>0XB20 AI Lab</title>
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/effects.css">
+  <link rel="stylesheet" href="/premium/premium.css">
   <link rel="stylesheet" href="/ai/assets/css/ai.css">
 </head>
 <body class="ai-body">
@@ -47,14 +48,14 @@
 
   <div data-ai-content hidden>
     <section class="ai-hero" data-reveal>
-      <span class="eyebrow">Internal Instrument</span>
+      <span class="eyebrow">Premium Growth Instrument</span>
       <h1>AI LAB</h1>
-      <p class="ai-subtitle">Experimental Idea Synthesis Terminal</p>
-      <p class="ai-copy">Generate original observations, memorable one-liners and X-ready posts using the Laboratory AI engine.</p>
+      <p class="ai-subtitle">AI Growth Laboratory</p>
+      <p class="ai-copy">Generate posts, threads, replies, campaigns, launch content and research summaries from one Laboratory interface.</p>
       <div class="ai-status-strip" aria-label="AI Lab status">
         <span>AI Engine: Online</span>
-        <span>Generation: Active</span>
-        <span>Mode: Experimental</span>
+        <span>Growth Mode: Active</span>
+        <span>Lab Pass: Integrated</span>
       </div>
     </section>
 
@@ -62,55 +63,82 @@
       <div class="ai-console-header">
         <div>
           <span class="eyebrow">Synthesis Core</span>
-          <h2>Generate Signal</h2>
+          <h2>Generate Output</h2>
         </div>
         <span class="ai-console-state" data-ai-engine-state>STANDBY</span>
       </div>
 
       <form class="ai-form" data-ai-form>
-        <label for="ai-topic">Input Signal</label>
-        <textarea id="ai-topic" data-ai-topic rows="4" maxlength="180" dir="auto" placeholder="What are you thinking about?"></textarea>
+        <fieldset class="ai-style-field">
+          <legend>Laboratory Module</legend>
+          <div class="ai-style-grid" data-ai-mode-options>
+            <button class="ai-style-button is-active" type="button" data-ai-mode="signal">Signal</button>
+            <button class="ai-style-button" type="button" data-ai-mode="thread">Thread</button>
+            <button class="ai-style-button" type="button" data-ai-mode="replies">Replies</button>
+            <button class="ai-style-button" type="button" data-ai-mode="quote">Quote</button>
+            <button class="ai-style-button" type="button" data-ai-mode="campaign">Campaign</button>
+            <button class="ai-style-button" type="button" data-ai-mode="summary">Summary</button>
+            <button class="ai-style-button" type="button" data-ai-mode="hashtags">Hashtags</button>
+          </div>
+        </fieldset>
 
-        <p class="ai-examples">
+        <label for="ai-topic" data-ai-primary-label>Input Signal</label>
+        <textarea id="ai-topic" data-ai-topic rows="4" maxlength="2400" dir="auto" placeholder="What are you thinking about?"></textarea>
+
+        <p class="ai-examples" data-ai-context-help>
           Examples: builders, airdrops, fear, liquidity, Base, memecoins, decentralization, AI, crypto, markets
         </p>
 
         <fieldset class="ai-style-field">
           <legend>Signal Style</legend>
           <div class="ai-style-grid" data-ai-style-options>
-            <button class="ai-style-button is-active" type="button" data-ai-style="minimal">Minimal</button>
+            <button class="ai-style-button is-active" type="button" data-ai-style="builder">Builder</button>
+            <button class="ai-style-button" type="button" data-ai-style="minimal">Minimal</button>
+            <button class="ai-style-button" type="button" data-ai-style="professional">Professional</button>
+            <button class="ai-style-button" type="button" data-ai-style="technical">Technical</button>
             <button class="ai-style-button" type="button" data-ai-style="funny">Funny</button>
-            <button class="ai-style-button" type="button" data-ai-style="philosophy">Philosophy</button>
-            <button class="ai-style-button" type="button" data-ai-style="brutal">Brutal</button>
-            <button class="ai-style-button" type="button" data-ai-style="builder">Builder</button>
+            <button class="ai-style-button" type="button" data-ai-style="bullish">Bullish</button>
+            <button class="ai-style-button" type="button" data-ai-style="neutral">Neutral</button>
+            <button class="ai-style-button" type="button" data-ai-style="meme">Meme</button>
+            <button class="ai-style-button" type="button" data-ai-style="founder">Founder</button>
+            <button class="ai-style-button" type="button" data-ai-style="visionary">Visionary</button>
             <button class="ai-style-button" type="button" data-ai-style="random">Random</button>
           </div>
         </fieldset>
 
-        <fieldset class="ai-language-field">
-          <legend>Output Language</legend>
-          <div class="ai-language-control">
-            <select data-ai-language aria-label="AI Lab output language">
-              <option value="auto">Auto Detect</option>
-              <option value="en">English</option>
-              <option value="ru">Русский</option>
-              <option value="es">Español</option>
-              <option value="pt">Português</option>
-              <option value="fr">Français</option>
-              <option value="de">Deutsch</option>
-              <option value="it">Italiano</option>
-              <option value="tr">Türkçe</option>
-              <option value="id">Bahasa Indonesia</option>
-              <option value="vi">Tiếng Việt</option>
-              <option value="ar">العربية</option>
-              <option value="hi">हिन्दी</option>
-              <option value="zh">中文</option>
-              <option value="ja">日本語</option>
-              <option value="ko">한국어</option>
-            </select>
-            <span>Controls both signal and X-ready transmission.</span>
-          </div>
-        </fieldset>
+        <div class="ai-controls-grid">
+          <fieldset class="ai-language-field">
+            <legend>Output Language</legend>
+            <div class="ai-language-control">
+              <select data-ai-language aria-label="AI Lab output language"></select>
+              <span>Controls all generated output.</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="ai-language-field">
+            <legend>Agent</legend>
+            <div class="ai-language-control">
+              <select data-ai-agent aria-label="AI Lab agent"></select>
+              <span>Switches prompt behavior without changing the page.</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="ai-language-field">
+            <legend>Volume</legend>
+            <div class="ai-language-control">
+              <select data-ai-count aria-label="AI Lab output count">
+                <option value="2">2</option>
+                <option value="4" selected>4</option>
+                <option value="5">5</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="20">20</option>
+              </select>
+              <span>Used by threads, replies and hashtag batches.</span>
+            </div>
+          </fieldset>
+        </div>
 
         <fieldset class="ai-options-field">
           <legend>X Post Options</legend>
@@ -131,27 +159,78 @@
         </fieldset>
 
         <div class="ai-actions-row">
-          <button class="ai-generate-button" type="submit" data-ai-submit>Generate Signal</button>
+          <button class="ai-generate-button" type="submit" data-ai-submit>Generate Laboratory Output</button>
           <p class="ai-status" data-ai-status aria-live="polite">Engine idle.</p>
         </div>
       </form>
     </section>
 
+    <section class="ai-workbench-grid" data-reveal>
+      <article class="ai-memory-panel ai-prompt-library">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Prompt Library</span>
+          <h2>Launch Prompts</h2>
+        </div>
+        <div class="ai-library-controls">
+          <select data-ai-library-category aria-label="Prompt library category"></select>
+          <button type="button" data-ai-load-prompt>Load Prompt</button>
+        </div>
+        <div class="ai-memory-list" data-ai-prompt-list></div>
+      </article>
+
+      <article class="ai-memory-panel">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Project Memory</span>
+          <h2>Context Core</h2>
+        </div>
+        <div class="ai-mini-grid" data-ai-memory-form>
+          <input data-ai-memory-field="project" placeholder="Project">
+          <input data-ai-memory-field="ticker" placeholder="Ticker">
+          <input data-ai-memory-field="mission" placeholder="Mission">
+          <input data-ai-memory-field="website" placeholder="Website">
+          <input data-ai-memory-field="github" placeholder="GitHub">
+          <input data-ai-memory-field="base" placeholder="Base context">
+          <input data-ai-memory-field="narrative" placeholder="Narrative">
+          <input data-ai-memory-field="tone" placeholder="Tone">
+          <input data-ai-memory-field="audience" placeholder="Target audience">
+          <button type="button" data-ai-save-memory>Save Memory</button>
+        </div>
+      </article>
+
+      <article class="ai-memory-panel">
+        <div class="ai-memory-header">
+          <span class="eyebrow">Saved Personas</span>
+          <h2>Voice Layer</h2>
+        </div>
+        <div class="ai-mini-grid">
+          <select data-ai-persona aria-label="Saved persona"></select>
+          <input data-ai-persona-name placeholder="Custom persona name">
+          <textarea data-ai-persona-guidance rows="3" placeholder="Writing rules for this persona"></textarea>
+          <button type="button" data-ai-save-persona>Save Persona</button>
+        </div>
+      </article>
+    </section>
+
     <section class="ai-output" data-ai-output hidden aria-live="polite">
-      <article class="ai-output-card" data-ai-signal-card hidden>
-        <span class="ai-output-kicker" data-ai-signal-number>SIGNAL #00000</span>
-        <p class="ai-output-text" data-ai-signal-text dir="auto"></p>
+      <article class="ai-output-card" data-ai-result-card hidden>
+        <span class="ai-output-kicker" data-ai-result-kicker>RESULT #00000</span>
+        <pre class="ai-output-text" data-ai-result-text dir="auto"></pre>
         <div class="ai-output-actions">
-          <button type="button" data-ai-copy="signal">Copy Signal</button>
-          <button type="button" data-ai-remix>Remix</button>
+          <button type="button" data-ai-copy="result">Copy Output</button>
+          <button type="button" data-ai-remix="shorter">Shorter</button>
+          <button type="button" data-ai-remix="longer">Longer</button>
+          <button type="button" data-ai-remix="funnier">Funnier</button>
+          <button type="button" data-ai-remix="technical">Technical</button>
+          <button type="button" data-ai-remix="viral">More Viral</button>
           <button type="button" data-ai-favorite>Save Favourite</button>
           <button type="button" data-ai-post-generate>Generate X Post</button>
         </div>
       </article>
 
       <article class="ai-output-card ai-post-card" data-ai-post-card hidden>
-        <span class="ai-output-kicker">X-READY TRANSMISSION</span>
+        <span class="ai-output-kicker">X Preview</span>
         <p class="ai-output-text" data-ai-post-text dir="auto"></p>
+        <div class="ai-analysis-grid" data-ai-analysis></div>
         <p class="ai-counter" data-ai-counter>0 / 280</p>
         <div class="ai-output-actions">
           <button type="button" data-ai-copy="post">Copy X Post</button>
@@ -163,18 +242,19 @@
     <section class="ai-memory-grid" data-reveal>
       <article class="ai-memory-panel">
         <div class="ai-memory-header">
-          <span class="eyebrow">Local Memory</span>
-          <h2>Recent Signals</h2>
+          <span class="eyebrow">Saved Outputs</span>
+          <h2>History</h2>
         </div>
-        <div class="ai-memory-list" data-ai-signal-history>
-          <p class="ai-memory-empty">No restored signals yet.</p>
+        <input class="ai-memory-search" data-ai-history-search placeholder="Search generated outputs">
+        <div class="ai-memory-list" data-ai-output-history>
+          <p class="ai-memory-empty">No outputs generated yet.</p>
         </div>
       </article>
 
       <article class="ai-memory-panel">
         <div class="ai-memory-header">
           <span class="eyebrow">Transmission Cache</span>
-          <h2>Recent X Posts</h2>
+          <h2>X Posts</h2>
         </div>
         <div class="ai-memory-list" data-ai-post-history>
           <p class="ai-memory-empty">No transmissions yet.</p>
@@ -183,8 +263,8 @@
 
       <article class="ai-memory-panel">
         <div class="ai-memory-header">
-          <span class="eyebrow">Saved Signals</span>
-          <h2>Favourites</h2>
+          <span class="eyebrow">Favorites</span>
+          <h2>Saved Signals</h2>
         </div>
         <div class="ai-memory-list" data-ai-favorites>
           <p class="ai-memory-empty">No favourites saved.</p>
@@ -204,8 +284,20 @@
 <script src="/assets/js/ui.js" defer></script>
 <script src="/assets/js/access-gate.js" defer></script>
 <script src="/assets/js/interactions.js" defer></script>
-<script src="/assets/js/wallet-service.js" defer></script>
-<script src="/ai/assets/js/ai-lab.js" defer></script>
+<script src="/assets/js/wallet-service.js?v=20260723-1" defer></script>
+<script src="/premium/premium-utils.js?v=20260723-1" defer></script>
+<script src="/premium/premium-wallet.js?v=20260723-1" defer></script>
+<script src="/premium/premium-contract.js?v=20260723-1" defer></script>
+<script src="/premium/premium-license.js?v=20260723-1" defer></script>
+<script src="/premium/premium-modal.js?v=20260723-1" defer></script>
+<script src="/premium/premium-core.js?v=20260723-1" defer></script>
+<script src="/ai/assets/js/ai-features.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-storage.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-preview.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-core.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-generator.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-library.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-lab.js?v=20260727-1" defer></script>
 
 </body>
 </html>
