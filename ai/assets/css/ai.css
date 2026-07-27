@@ -615,6 +615,28 @@
     pointer-events:none;
 }
 
+.ai-thread-link-input{
+    min-width:min(100%, 280px);
+    border:1px solid rgba(103,179,255,.22);
+    border-radius:var(--radius);
+    background:rgba(3,10,24,.86);
+    color:var(--text);
+    font-family:Consolas,monospace;
+    font-size:12px;
+    padding:9px 12px;
+}
+
+.ai-thread-link-input:focus-visible{
+    border-color:rgba(128,215,255,.7);
+    box-shadow:0 0 18px rgba(59,130,246,.18);
+    outline:none;
+}
+
+.ai-thread-link-input.is-invalid{
+    border-color:rgba(255,105,105,.76);
+    color:#ffb2b2;
+}
+
 .ai-result-container{
     display:grid;
     gap:14px;

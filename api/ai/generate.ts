@@ -504,6 +504,13 @@ function normalizeItems(values: unknown, maxCount: number, maxLength: number): s
     .filter(Boolean);
 }
 
+function stripThreadNumber(value: string): string {
+  return value
+    .replace(/^\s*(?:tweet\s*)?\d+\s*\/\s*\d+\s*[:.)-]?\s*/i, '')
+    .replace(/^\s*(?:tweet\s*)?\d+\s*[:.)-]\s*/i, '')
+    .trim();
+}
+
 function normalizeCampaign(value: unknown): Record<string, string | string[]> {
   const source = value && typeof value === 'object' ? value as Record<string, unknown> : {};
   const keys = ['launchPost', 'launchThread', 'replies', 'quoteTweet', 'followUp', 'reminder', 'lastChance', 'finalUpdate'];
@@ -611,7 +618,7 @@ function buildSystemPrompt(action: Action, agent: string, persona: Record<string
   }
 
   if (action === 'generateThread') {
-    return `${base} Generate compact X thread items with natural progression. Number every item. Final item must include a concise CTA.`;
+    return `${base} Generate compact X thread items with natural progression. Do not write numbering inside item text; the UI handles sequence labels. Final item must include a concise CTA.`;
   }
 
   if (action === 'generateReplies') {
@@ -678,8 +685,9 @@ function buildUserPrompt(
       context,
       `topic: ${topic}`,
       `thread length: exactly ${count} posts`,
-      'Each item must fit X. Number every post like 1/4, 2/4.',
+      'Each item must fit X. Do not prefix items with 1/4, 2/4, "Tweet 1", or any other numbering.',
       'Build a clear progression: hook, context, insight, CTA.',
+      'Return optional emojis and hashtags separately for the final tweet only; do not place them inside thread items.',
       'No filler. No hype. No promises.',
       `JSON shape: ${buildJsonShape(action)}`
     ].join('\n');
@@ -915,7 +923,9 @@ function normalizeParsedPayload(action: Action, parsed: AiPayload, count: number
   }
 
   if (action === 'generateThread' || action === 'generateReplies') {
-    const items = normalizeItems(parsed.items, count, 300);
+    const items = normalizeItems(parsed.items, count, 300)
+      .map((item) => action === 'generateThread' ? stripThreadNumber(item) : item)
+      .filter(Boolean);
 
     if (!items.length) {
       return null;

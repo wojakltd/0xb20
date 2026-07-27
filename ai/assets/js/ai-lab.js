@@ -23,6 +23,7 @@
     signal: null,
     post: null,
     thread: [],
+    emojis: [],
     replies: [],
     quote: null,
     campaign: null,
@@ -32,6 +33,7 @@
     preview: '',
     activeEntry: null,
     abortController: null,
+    threadReplyTargets: {},
     initialized: false
   };
 
@@ -242,8 +244,64 @@
     return [];
   }
 
+  function stripThreadNumber(value) {
+    return String(value || '')
+      .trim()
+      .replace(/^\s*(?:tweet\s*)?\d+\s*\/\s*\d+\s*[:.)-]?\s*/i, '')
+      .replace(/^\s*(?:tweet\s*)?\d+\s*[:.)-]\s*/i, '')
+      .trim();
+  }
+
+  function cleanThreadItems(items = state.thread) {
+    return ensureArray(items).map(stripThreadNumber).filter(Boolean);
+  }
+
+  function appendIfFits(base, addition) {
+    const cleanBase = String(base || '').trim();
+    const cleanAddition = String(addition || '').trim();
+    if (!cleanAddition) return cleanBase;
+
+    const candidate = `${cleanBase}\n\n${cleanAddition}`.trim();
+    return candidate.length <= preview.postLimit ? candidate : cleanBase;
+  }
+
+  function threadTweetText(index) {
+    const items = cleanThreadItems();
+    const base = items[index] || '';
+    if (!base || index !== items.length - 1) return base;
+
+    const options = selectedOptions();
+    let output = base;
+
+    if (options.emojis && state.emojis.length) {
+      const emojiText = state.emojis.slice(0, 3).join(' ');
+      const inlineCandidate = `${output} ${emojiText}`.trim();
+      output = inlineCandidate.length <= preview.postLimit ? inlineCandidate : output;
+    }
+
+    if (options.hashtags && state.hashtags.length) {
+      output = appendIfFits(output, state.hashtags.slice(0, 5).join(' '));
+    }
+
+    if (options.attribution) {
+      output = appendIfFits(output, 'Generated with https://0xb20.lol/ai');
+    }
+
+    return output;
+  }
+
+  function threadPayload() {
+    const items = cleanThreadItems().map((_, index) => threadTweetText(index));
+    return {
+      items,
+      hashtags: state.hashtags,
+      emojis: state.emojis,
+      replyTargets: state.threadReplyTargets
+    };
+  }
+
   function payloadForMode() {
-    if (state.mode === 'thread') return { items: state.thread };
+    if (state.mode === 'thread') return threadPayload();
     if (state.mode === 'replies') return { items: state.replies };
     if (state.mode === 'campaign') return { campaign: state.campaign || {} };
     if (state.mode === 'summary') return state.summary || {};
@@ -475,18 +533,37 @@
   }
 
   async function publishThread() {
-    const items = ensureArray(state.thread);
+    const items = cleanThreadItems().map((_, index) => threadTweetText(index));
     if (!items.length) {
       setStatus('No thread available.');
       return;
     }
-    const remaining = items.slice(1).join('\n\n');
-    if (remaining) {
-      await copyText(remaining, 'Tweet 2+ copied. Opening first transmission.');
-    } else {
-      setStatus('Opening thread starter.');
-    }
+    setStatus('Opening thread starter. Paste the published tweet link back into the next step.');
     publishText(items[0]);
+  }
+
+  function extractTweetId(url) {
+    const source = String(url || '').trim();
+    const match = source.match(/(?:twitter\.com|x\.com)\/[^/]+\/status\/(\d+)/i) || source.match(/\b(\d{10,})\b/);
+    return match ? match[1] : '';
+  }
+
+  function publishThreadReply(index) {
+    const tweetId = extractTweetId(state.threadReplyTargets[index]);
+    const text = threadTweetText(index);
+
+    if (!text) {
+      setStatus('No tweet available.');
+      return;
+    }
+
+    if (!tweetId) {
+      setStatus(`Paste tweet ${index} link before publishing tweet ${index + 1}.`);
+      return;
+    }
+
+    window.open(`${preview.tweetIntent(text)}&in_reply_to=${encodeURIComponent(tweetId)}`, '_blank', 'noopener,noreferrer');
+    setStatus(`Opening tweet ${index + 1} as thread reply.`);
   }
 
   function summarySectionText(section) {
@@ -503,7 +580,7 @@
   }
 
   function collectCurrentCopy() {
-    if (state.mode === 'thread') return ensureArray(state.thread).join('\n\n');
+    if (state.mode === 'thread') return cleanThreadItems().map((_, index) => threadTweetText(index)).join('\n\n');
     if (state.mode === 'replies') return ensureArray(state.replies).join('\n\n');
     if (state.mode === 'campaign') return renderCampaign.text({ campaign: state.campaign || {} });
     if (state.mode === 'summary') return renderSummary.text(state.summary || {});
@@ -786,11 +863,13 @@
     const payload = entry.payload || {};
     state.signal = payload.signal || payload.post || entry.text || null;
     state.thread = ensureArray(payload.items);
+    state.emojis = ensureArray(payload.emojis);
     state.replies = state.mode === 'replies' ? ensureArray(payload.items) : [];
     state.quote = payload.post || payload.signal || entry.text || null;
     state.campaign = payload.campaign || null;
     state.summary = state.mode === 'summary' ? payload : null;
     state.hashtags = ensureArray(payload.hashtags);
+    state.threadReplyTargets = payload.replyTargets || {};
     state.post = entry.postPayload || null;
     state.preview = entry.preview || '';
     state.analysis = entry.analysis || null;
@@ -819,12 +898,17 @@
 
     if (state.mode === 'thread') {
       state.thread = ensureArray(payload.thread || payload.items);
+      state.hashtags = ensureArray(payload.hashtags);
+      state.emojis = ensureArray(payload.emojis);
+      state.threadReplyTargets = {};
       if (!state.thread.length) throw new Error('Thread response malformed.');
       return;
     }
 
     if (state.mode === 'replies') {
       state.replies = ensureArray(payload.replies || payload.items);
+      state.hashtags = ensureArray(payload.hashtags);
+      state.emojis = ensureArray(payload.emojis);
       if (!state.replies.length) throw new Error('Replies response malformed.');
       return;
     }
@@ -1075,7 +1159,7 @@
     const mode = button.dataset.aiRemixMode || 'builder';
 
     if (action === 'copy-output') copyText(collectCurrentCopy(), 'Output copied.');
-    if (action === 'copy-thread') copyText(ensureArray(state.thread).join('\n\n'), 'Thread copied.');
+    if (action === 'copy-thread') copyText(cleanThreadItems().map((_, itemIndex) => threadTweetText(itemIndex)).join('\n\n'), 'Thread copied.');
     if (action === 'publish-thread') publishThread();
     if (action === 'copy-replies') copyText(ensureArray(state.replies).join('\n\n'), 'Replies copied.');
     if (action === 'copy-summary') copyText(summarySectionText('summary'), 'Summary copied.');
@@ -1087,8 +1171,14 @@
     if (action === 'regenerate-hashtags') generateSelected();
     if (action === 'generate-more-replies') generateMoreReplies();
     if (action === 'remix-output') remixOutput(mode);
-    if (action === 'copy-item') copyText((state.mode === 'thread' ? state.thread[index] : state.replies[index]) || '', 'Item copied.');
-    if (action === 'publish-item') publishText((state.mode === 'thread' ? state.thread[index] : state.replies[index]) || '');
+    if (action === 'copy-item') copyText((state.mode === 'thread' ? threadTweetText(index) : state.replies[index]) || '', 'Item copied.');
+    if (action === 'publish-item') {
+      if (state.mode === 'thread') {
+        index === 0 ? publishThread() : publishThreadReply(index);
+      } else {
+        publishText(state.replies[index] || '');
+      }
+    }
     if (action === 'remix-item') remixArrayItem(state.mode === 'thread' ? 'thread' : 'replies', index, mode);
     if (action === 'copy-section') copyText(summarySectionText(section), 'Section copied.');
     if (action === 'remix-section') remixSummarySection(section, mode);
@@ -1120,6 +1210,20 @@
       event.preventDefault();
       if (button.disabled) return;
       handleAction(button);
+    });
+
+    document.addEventListener('input', (event) => {
+      const input = event.target.closest('[data-ai-thread-target]');
+      if (!input) return;
+
+      const index = Number(input.dataset.aiThreadTarget);
+      state.threadReplyTargets[index] = input.value.trim();
+
+      const card = input.closest('.ai-output-subcard');
+      const button = card?.querySelector(`[data-ai-action="publish-item"][data-ai-index="${index}"]`);
+      const enabled = Boolean(extractTweetId(input.value));
+      if (button) button.disabled = !enabled;
+      input.classList.toggle('is-invalid', input.value.trim().length > 0 && !enabled);
     });
 
     modeButtons.forEach((button) => button.addEventListener('click', () => updateMode(button.dataset.aiMode)));
