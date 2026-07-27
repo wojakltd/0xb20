@@ -6,6 +6,9 @@
     favorites: 'b20-ai-lab-favorites',
     memory: 'b20-ai-lab-project-memory',
     personas: 'b20-ai-lab-personas',
+    prompts: 'b20-ai-lab-custom-prompts',
+    promptRecent: 'b20-ai-lab-recent-prompts',
+    promptUsage: 'b20-ai-lab-prompt-usage',
     language: 'b20-ai-lab-language',
     mode: 'b20-ai-lab-mode',
     agent: 'b20-ai-lab-agent',
@@ -39,7 +42,8 @@
   }
 
   function remember(key, entry) {
-    const existing = readList(key).filter((item) => item.text !== entry.text);
+    const fingerprint = entry.id || entry.text || JSON.stringify(entry.payload || entry);
+    const existing = readList(key).filter((item) => (item.id || item.text || JSON.stringify(item.payload || item)) !== fingerprint);
     const next = [{ ...entry, savedAt: new Date().toISOString() }, ...existing];
     writeList(key, next);
     return next;
@@ -89,6 +93,55 @@
     writeList(keys.personas, [persona, ...custom]);
   }
 
+  function deletePersona(id) {
+    writeList(keys.personas, readList(keys.personas).filter((item) => item.id !== id));
+  }
+
+  function writePersonas(personas) {
+    writeList(keys.personas, Array.isArray(personas) ? personas : []);
+  }
+
+  function readCustomPrompts() {
+    return readList(keys.prompts);
+  }
+
+  function saveCustomPrompt(prompt) {
+    const text = String(prompt || '').trim();
+
+    if (!text) {
+      return readCustomPrompts();
+    }
+
+    const id = `prompt-${Date.now()}`;
+    const existing = readCustomPrompts().filter((item) => item.text !== text);
+    const next = [{ id, text, uses: 0 }, ...existing];
+    writeList(keys.prompts, next);
+    return next;
+  }
+
+  function deleteCustomPrompt(idOrText) {
+    writeList(keys.prompts, readCustomPrompts().filter((item) => item.id !== idOrText && item.text !== idOrText));
+  }
+
+  function rememberPrompt(prompt) {
+    const text = String(prompt || '').trim();
+
+    if (!text) {
+      return;
+    }
+
+    remember(keys.promptRecent, { id: text, text });
+
+    const usage = readJson(keys.promptUsage, {});
+    usage[text] = Number(usage[text] || 0) + 1;
+    writeJson(keys.promptUsage, usage);
+  }
+
+  function readPromptUsage() {
+    const usage = readJson(keys.promptUsage, {});
+    return usage && typeof usage === 'object' ? usage : {};
+  }
+
   global.B20AiStorage = {
     keys,
     readList,
@@ -99,6 +152,15 @@
     readMemory,
     saveMemory,
     readPersonas,
-    savePersona
+    savePersona,
+    deletePersona,
+    writePersonas,
+    readCustomPrompts,
+    saveCustomPrompt,
+    deleteCustomPrompt,
+    rememberPrompt,
+    readPromptUsage,
+    readJson,
+    writeJson
   };
 })(window);

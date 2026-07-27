@@ -6,6 +6,12 @@
   const core = window.B20AiCore;
   const generator = window.B20AiGenerator;
   const library = window.B20AiLibrary;
+  const dom = window.B20AiRenderDom;
+  const renderThread = window.B20AiRenderThread;
+  const renderReplies = window.B20AiRenderReplies;
+  const renderSummary = window.B20AiRenderSummary;
+  const renderCampaign = window.B20AiRenderCampaign;
+  const renderHistory = window.B20AiRenderHistory;
 
   const state = {
     mode: features.normalizeMode(storage.readPreference(storage.keys.mode, 'signal')),
@@ -14,10 +20,18 @@
     agent: features.normalizeAgent(storage.readPreference(storage.keys.agent, 'builder')),
     count: 4,
     topic: '',
-    resultPayload: null,
-    resultText: '',
-    postPayload: null,
-    finalPost: '',
+    signal: null,
+    post: null,
+    thread: [],
+    replies: [],
+    quote: null,
+    campaign: null,
+    summary: null,
+    hashtags: [],
+    analysis: null,
+    preview: '',
+    activeEntry: null,
+    abortController: null,
     initialized: false
   };
 
@@ -31,7 +45,8 @@
   const outputTarget = document.querySelector('[data-ai-output]');
   const resultCard = document.querySelector('[data-ai-result-card]');
   const resultKicker = document.querySelector('[data-ai-result-kicker]');
-  const resultText = document.querySelector('[data-ai-result-text]');
+  const resultContainer = document.querySelector('[data-ai-result-container]');
+  const resultActions = document.querySelector('[data-ai-result-actions]');
   const postCard = document.querySelector('[data-ai-post-card]');
   const postText = document.querySelector('[data-ai-post-text]');
   const counterTarget = document.querySelector('[data-ai-counter]');
@@ -45,17 +60,63 @@
   const countSelect = document.querySelector('[data-ai-count]');
   const promptCategorySelect = document.querySelector('[data-ai-library-category]');
   const promptList = document.querySelector('[data-ai-prompt-list]');
+  const librarySearch = document.querySelector('[data-ai-library-search]');
   const loadPromptButton = document.querySelector('[data-ai-load-prompt]');
+  const customPromptInput = document.querySelector('[data-ai-custom-prompt]');
+  const saveCustomPromptButton = document.querySelector('[data-ai-save-prompt]');
   const memoryForm = document.querySelector('[data-ai-memory-form]');
   const saveMemoryButton = document.querySelector('[data-ai-save-memory]');
+  const resetMemoryButton = document.querySelector('[data-ai-reset-memory]');
+  const exportMemoryButton = document.querySelector('[data-ai-export-memory]');
+  const importMemoryButton = document.querySelector('[data-ai-import-memory]');
   const personaSelect = document.querySelector('[data-ai-persona]');
   const personaNameInput = document.querySelector('[data-ai-persona-name]');
   const personaGuidanceInput = document.querySelector('[data-ai-persona-guidance]');
   const savePersonaButton = document.querySelector('[data-ai-save-persona]');
+  const duplicatePersonaButton = document.querySelector('[data-ai-duplicate-persona]');
+  const deletePersonaButton = document.querySelector('[data-ai-delete-persona]');
+  const exportPersonasButton = document.querySelector('[data-ai-export-personas]');
+  const importPersonasButton = document.querySelector('[data-ai-import-personas]');
   const historySearch = document.querySelector('[data-ai-history-search]');
   const outputHistoryTarget = document.querySelector('[data-ai-output-history]');
   const postHistoryTarget = document.querySelector('[data-ai-post-history]');
   const favoritesTarget = document.querySelector('[data-ai-favorites]');
+
+  const remixModes = [
+    'Shorter',
+    'Longer',
+    'Technical',
+    'Funny',
+    'Builder',
+    'Professional',
+    'More Viral',
+    'Less Promotional',
+    'Founder',
+    'Minimal'
+  ];
+
+  const sectionKeys = {
+    summary: 'summary',
+    'generated post': 'post',
+    post: 'post',
+    'bullet list': 'bullets',
+    bullets: 'bullets',
+    'builder notes': 'notes',
+    buildernotes: 'notes',
+    builderNotes: 'notes',
+    notes: 'notes'
+  };
+
+  const campaignLabels = {
+    launchPost: 'Launch',
+    launchThread: 'Thread',
+    replies: 'Replies',
+    quoteTweet: 'Quote',
+    followUp: 'Follow-up',
+    reminder: 'Reminder',
+    lastChance: 'Last Chance',
+    finalUpdate: 'Final Update'
+  };
 
   function setStatus(text) {
     if (statusTarget) {
@@ -66,7 +127,7 @@
   function setBusy(isBusy, label) {
     const buttons = [
       submitButton,
-      ...Array.from(document.querySelectorAll('[data-ai-remix], [data-ai-post-generate], [data-ai-favorite], [data-ai-copy]'))
+      ...Array.from(document.querySelectorAll('[data-ai-action], [data-ai-copy], [data-ai-load-prompt], [data-ai-save-prompt], [data-ai-save-memory], [data-ai-save-persona]'))
     ];
 
     buttons.forEach((button) => {
@@ -76,83 +137,399 @@
     });
 
     if (engineState) {
-      engineState.textContent = isBusy ? label || 'SYNTHESIZING' : 'ONLINE';
+      engineState.textContent = isBusy ? label || 'WORKING' : 'ONLINE';
       engineState.classList.toggle('is-busy', isBusy);
     }
   }
 
-  function createResultNumber(mode) {
-    const value = Math.floor(10000 + Math.random() * 89999);
-    return `${features.byId(features.modes, mode).label.toUpperCase()} #${value}`;
+  function showContent() {
+    const gate = document.querySelector('[data-ai-gate]');
+    const content = document.querySelector('[data-ai-content]');
+    if (gate) gate.hidden = true;
+    if (content) content.hidden = false;
   }
 
-  function getOptions() {
-    return optionInputs.reduce((options, input) => {
-      options[input.dataset.aiOption] = input.checked;
-      return options;
-    }, {
-      emojis: false,
-      hashtags: false,
-      attribution: false
+  function initGate() {
+    if (!accessGateEnabled) {
+      showContent();
+      return true;
+    }
+
+    if (!window.B20AccessGate) {
+      showContent();
+      return true;
+    }
+
+    const allowed = window.B20AccessGate.protect({
+      gateSelector: '[data-ai-gate]',
+      contentSelector: '[data-ai-content]',
+      formSelector: '[data-ai-gate-form]',
+      inputSelector: '[data-ai-password]',
+      errorSelector: '[data-ai-gate-error]',
+      storageKey: 'b20-ai-lab-access',
+      password: '0xb20.lol'
     });
+
+    return allowed;
+  }
+
+  function currentModeConfig() {
+    return features.modes.find((mode) => mode.id === state.mode) || features.modes[0];
+  }
+
+  function currentMemory() {
+    return storage.readMemory();
+  }
+
+  function customPersonas() {
+    return storage.readList(storage.keys.personas);
   }
 
   function selectedPersona() {
-    const personas = storage.readPersonas();
-    return personas.find((persona) => persona.id === personaSelect?.value) || personas[0] || null;
+    const custom = customPersonas();
+    const all = [...features.defaultPersonas, ...custom];
+    return all.find((persona) => persona.id === personaSelect?.value) || all.find((persona) => persona.id === state.agent) || all[0];
   }
 
-  function currentRequestState() {
+  function selectedOptions() {
+    return optionInputs.reduce((options, input) => {
+      options[input.dataset.aiOption] = input.checked;
+      return options;
+    }, {});
+  }
+
+  function makeAbortSignal() {
+    if (state.abortController) {
+      state.abortController.abort();
+    }
+    state.abortController = new AbortController();
+    return state.abortController.signal;
+  }
+
+  function releaseAbort() {
+    state.abortController = null;
+  }
+
+  function requestState(signal) {
+    state.topic = (topicInput?.value || '').trim();
+    const persona = selectedPersona();
     return {
-      ...state,
-      topic: topicInput ? topicInput.value.trim() : '',
-      style: features.resolveStyle(state.style),
-      count: Number(countSelect?.value || state.count || 4),
-      memory: storage.readMemory(),
-      persona: selectedPersona(),
-      options: getOptions()
+      mode: state.mode,
+      action: currentModeConfig().action,
+      topic: state.topic,
+      style: state.style,
+      language: state.language,
+      agent: state.agent,
+      count: Number(state.count || 4),
+      options: selectedOptions(),
+      memory: currentMemory(),
+      persona,
+      abortSignal: signal
     };
   }
 
-  function renderSelect(select, entries, selectedValue) {
-    if (!select) {
-      return;
+  function outputId(prefix) {
+    return `${prefix.toUpperCase()} #${String(Math.floor(Math.random() * 90000) + 10000)}`;
+  }
+
+  function ensureArray(value) {
+    if (Array.isArray(value)) {
+      return value.filter(Boolean).map(String);
+    }
+    if (typeof value === 'string' && value.trim()) {
+      return value.split(/\n+/).map((item) => item.trim()).filter(Boolean);
+    }
+    return [];
+  }
+
+  function payloadForMode() {
+    if (state.mode === 'thread') return { items: state.thread };
+    if (state.mode === 'replies') return { items: state.replies };
+    if (state.mode === 'campaign') return { campaign: state.campaign || {} };
+    if (state.mode === 'summary') return state.summary || {};
+    if (state.mode === 'hashtags') return { hashtags: state.hashtags };
+    if (state.mode === 'quote') return { post: state.quote || '' };
+    return { signal: state.signal || '' };
+  }
+
+  function textForMode(mode = state.mode, payload = payloadForMode()) {
+    return preview.formatPayload(payload, mode);
+  }
+
+  function clearNode(node) {
+    if (node) {
+      node.innerHTML = '';
+    }
+  }
+
+  function createAction(label, action, data = {}) {
+    return dom.button(label, action, data);
+  }
+
+  function appendActions(actions) {
+    clearNode(resultActions);
+    if (!resultActions) return;
+    actions.filter(Boolean).forEach((button) => resultActions.append(button));
+  }
+
+  function primaryActions() {
+    if (state.mode === 'thread') {
+      return [
+        createAction('Copy Thread', 'copy-thread'),
+        createAction('Publish Thread', 'publish-thread'),
+        createAction('Save Favourite', 'save-favorite')
+      ];
     }
 
-    select.innerHTML = '';
-    entries.forEach(([value, label]) => {
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = label;
-      option.selected = value === selectedValue;
-      select.appendChild(option);
+    if (state.mode === 'replies') {
+      return [
+        createAction('Copy Replies', 'copy-replies'),
+        createAction('Generate More', 'generate-more-replies'),
+        createAction('Save Favourite', 'save-favorite')
+      ];
+    }
+
+    if (state.mode === 'campaign') {
+      return [
+        createAction('Copy Campaign', 'copy-campaign'),
+        createAction('Save Favourite', 'save-favorite')
+      ];
+    }
+
+    if (state.mode === 'summary') {
+      return [
+        createAction('Copy Summary', 'copy-summary'),
+        createAction('Copy Builder Notes', 'copy-builder-notes'),
+        createAction('Generate X Post', 'generate-post'),
+        createAction('Save Favourite', 'save-favorite')
+      ];
+    }
+
+    if (state.mode === 'hashtags') {
+      return [
+        createAction('Copy Tags', 'copy-hashtags'),
+        createAction('Regenerate', 'regenerate-hashtags'),
+        createAction('Save Favourite', 'save-favorite')
+      ];
+    }
+
+    return [
+      createAction('Copy Output', 'copy-output'),
+      ...remixModes.map((mode) => createAction(mode, 'remix-output', { aiRemixMode: mode.toLowerCase() })),
+      createAction('Save Favourite', 'save-favorite'),
+      createAction('Generate X Post', 'generate-post')
+    ];
+  }
+
+  function renderHashtags() {
+    const grid = dom.el('div', 'ai-hashtag-grid');
+    if (!state.hashtags.length) {
+      grid.append(dom.el('p', 'ai-memory-empty', 'No hashtags generated.'));
+      return grid;
+    }
+
+    state.hashtags.forEach((tag) => {
+      const clean = tag.startsWith('#') ? tag : `#${tag}`;
+      const pill = dom.el('button', 'ai-hashtag-pill', clean);
+      pill.type = 'button';
+      pill.dataset.aiAction = 'copy-hashtag';
+      pill.dataset.aiValue = clean;
+      grid.append(pill);
     });
+    return grid;
+  }
+
+  function renderSimpleOutput(text) {
+    const block = dom.textBlock(text || 'No output generated.', 'ai-content-block ai-output-text');
+    return block;
+  }
+
+  function renderCurrent(remember = true) {
+    if (!outputTarget || !resultCard || !resultContainer) return;
+    outputTarget.hidden = false;
+    resultCard.hidden = false;
+    clearNode(resultContainer);
+
+    const payload = payloadForMode();
+    const text = textForMode(state.mode, payload);
+    if (resultKicker) {
+      resultKicker.textContent = outputId(currentModeConfig().label);
+    }
+
+    if (state.mode === 'thread') {
+      renderThread.render(resultContainer, payload);
+    } else if (state.mode === 'replies') {
+      renderReplies.render(resultContainer, payload);
+    } else if (state.mode === 'campaign') {
+      renderCampaign.render(resultContainer, payload);
+    } else if (state.mode === 'summary') {
+      renderSummary.render(resultContainer, payload);
+    } else if (state.mode === 'hashtags') {
+      resultContainer.append(renderHashtags());
+    } else {
+      resultContainer.append(renderSimpleOutput(text));
+    }
+
+    appendActions(primaryActions());
+    state.activeEntry = buildEntry('output');
+
+    if (remember && text.trim()) {
+      storage.remember(storage.keys.outputs, state.activeEntry, 20);
+      renderStoredLists();
+    }
+  }
+
+  function buildEntry(kind) {
+    const payload = payloadForMode();
+    return {
+      id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      kind,
+      mode: state.mode,
+      topic: state.topic,
+      style: state.style,
+      language: state.language,
+      agent: state.agent,
+      payload,
+      postPayload: state.post ? { ...state.post } : null,
+      preview: state.preview,
+      analysis: state.analysis,
+      text: textForMode(state.mode, payload),
+      createdAt: new Date().toISOString()
+    };
+  }
+
+  function currentSourceText() {
+    if (state.mode === 'summary' && state.summary?.post) return state.summary.post;
+    if (state.mode === 'quote') return state.quote || '';
+    if (state.mode === 'signal') return state.signal || '';
+    return textForMode();
+  }
+
+  function renderPost(payload, remember = true) {
+    const finalPost = preview.assemblePost(payload, selectedOptions());
+    state.post = payload;
+    state.preview = finalPost;
+    state.analysis = preview.analyze(finalPost);
+
+    if (!postCard || !postText) return;
+    outputTarget.hidden = false;
+    postCard.hidden = false;
+    postText.textContent = finalPost || 'Transmission unavailable.';
+
+    if (counterTarget) {
+      counterTarget.textContent = `${finalPost.length} / ${preview.postLimit}`;
+      counterTarget.classList.toggle('is-over', finalPost.length > preview.postLimit);
+    }
+
+    dom.renderAnalysis(analysisTarget, finalPost);
+
+    if (publishLink) {
+      publishLink.hidden = finalPost.length === 0 || finalPost.length > preview.postLimit;
+      publishLink.href = preview.tweetIntent(finalPost);
+    }
+
+    if (remember && finalPost.trim()) {
+      storage.remember(storage.keys.posts, {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        kind: 'post',
+        mode: state.mode,
+        topic: state.topic,
+        payload,
+        text: finalPost,
+        analysis: state.analysis,
+        createdAt: new Date().toISOString()
+      }, 10);
+      renderStoredLists();
+    }
+  }
+
+  function hidePost() {
+    if (postCard) postCard.hidden = true;
+    state.post = null;
+    state.preview = '';
+    state.analysis = null;
+  }
+
+  async function copyText(text, success = 'Copied.') {
+    if (!text || !text.trim()) {
+      setStatus('Nothing to copy.');
+      return false;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      setStatus(success);
+      return true;
+    } catch (error) {
+      setStatus('Clipboard unavailable. Select and copy manually.');
+      return false;
+    }
+  }
+
+  function publishText(text) {
+    if (!text || !text.trim()) {
+      setStatus('Nothing to publish.');
+      return;
+    }
+    window.open(preview.tweetIntent(text), '_blank', 'noopener,noreferrer');
+  }
+
+  async function publishThread() {
+    const items = ensureArray(state.thread);
+    if (!items.length) {
+      setStatus('No thread available.');
+      return;
+    }
+    const remaining = items.slice(1).join('\n\n');
+    if (remaining) {
+      await copyText(remaining, 'Tweet 2+ copied. Opening first transmission.');
+    } else {
+      setStatus('Opening thread starter.');
+    }
+    publishText(items[0]);
+  }
+
+  function summarySectionText(section) {
+    const key = sectionKeys[String(section || '').toLowerCase()] || section;
+    const value = state.summary?.[key];
+    if (Array.isArray(value)) return value.map((item) => `• ${item}`).join('\n');
+    return String(value || '');
+  }
+
+  function campaignSectionText(section) {
+    const value = state.campaign?.[section];
+    if (Array.isArray(value)) return value.join('\n\n');
+    return String(value || '');
+  }
+
+  function collectCurrentCopy() {
+    if (state.mode === 'thread') return ensureArray(state.thread).join('\n\n');
+    if (state.mode === 'replies') return ensureArray(state.replies).join('\n\n');
+    if (state.mode === 'campaign') return renderCampaign.text({ campaign: state.campaign || {} });
+    if (state.mode === 'summary') return renderSummary.text(state.summary || {});
+    if (state.mode === 'hashtags') return state.hashtags.map((tag) => tag.startsWith('#') ? tag : `#${tag}`).join(' ');
+    return currentSourceText();
   }
 
   function updateMode(mode) {
     state.mode = features.normalizeMode(mode);
     storage.writePreference(storage.keys.mode, state.mode);
 
-    const config = features.byId(features.modes, state.mode);
+    const config = currentModeConfig();
+    if (primaryLabel) primaryLabel.textContent = config.label;
+    if (topicInput) topicInput.placeholder = config.placeholder;
+    if (submitButton) submitButton.textContent = `Generate ${config.label.replace(' Generator', '')}`;
+    if (contextHelp) {
+      contextHelp.textContent = state.mode === 'summary'
+        ? 'Paste article, long post, notes or research material.'
+        : state.mode === 'replies'
+          ? 'Paste a post, X URL, or the idea you want to reply to.'
+          : 'Examples: builders, airdrops, fear, liquidity, Base, memecoins, decentralization, AI, crypto, markets';
+    }
+
     modeButtons.forEach((button) => {
       button.classList.toggle('is-active', button.dataset.aiMode === state.mode);
     });
-
-    if (topicInput) {
-      topicInput.placeholder = config.placeholder;
-    }
-
-    if (primaryLabel) {
-      primaryLabel.textContent = config.label.replace(' Generator', '').replace('Research ', 'Research ');
-    }
-
-    if (contextHelp) {
-      contextHelp.textContent = state.mode === 'campaign'
-        ? 'Campaign generates launch post, thread, replies, quote, follow-up, reminder, last chance and final update.'
-        : state.mode === 'summary'
-          ? 'Paste source material. The Laboratory returns an X post, thread, bullets and builder notes.'
-          : 'Examples: builders, airdrops, fear, liquidity, Base, memecoins, decentralization, AI, crypto, markets';
-    }
   }
 
   function updateStyle(style) {
@@ -163,523 +540,704 @@
     });
   }
 
-  function updateLanguage(language) {
-    state.language = features.normalizeLanguage(language);
-    storage.writePreference(storage.keys.language, state.language);
-    if (languageSelect) {
-      languageSelect.value = state.language;
-    }
-    updatePostPreview();
+  function hydrateSelect(select, entries, value) {
+    if (!select) return;
+    select.innerHTML = entries.map(([id, label]) => `<option value="${id}">${label}</option>`).join('');
+    select.value = value;
   }
 
-  function updateAgent(agent) {
-    state.agent = features.normalizeAgent(agent);
-    storage.writePreference(storage.keys.agent, state.agent);
-    if (agentSelect) {
-      agentSelect.value = state.agent;
-    }
+  function hydrateControls() {
+    hydrateSelect(languageSelect, features.languages, state.language);
+    hydrateSelect(agentSelect, features.agents, state.agent);
+    if (countSelect) countSelect.value = String(state.count);
+    updateMode(state.mode);
+    updateStyle(state.style);
   }
 
-  function renderAnalysis(text) {
-    if (!analysisTarget) {
+  function readPromptGroups() {
+    const builtIn = library.categories().map((name) => [name, library.prompts(name)]);
+    const custom = storage.readCustomPrompts().map((entry) => entry.text);
+    const recent = storage.readJson(storage.keys.promptRecent, []);
+    const usage = storage.readPromptUsage();
+    const mostUsed = Object.entries(usage)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 12)
+      .map(([text]) => text);
+
+    return new Map([
+      ...builtIn,
+      ['Custom', custom],
+      ['Recent', recent],
+      ['Most Used', mostUsed]
+    ]);
+  }
+
+  function hydratePromptCategories() {
+    if (!promptCategorySelect) return;
+    const groups = readPromptGroups();
+    const current = promptCategorySelect.value;
+    promptCategorySelect.innerHTML = Array.from(groups.keys())
+      .map((name) => `<option value="${name}">${name}</option>`)
+      .join('');
+    promptCategorySelect.value = groups.has(current) ? current : 'Launch';
+  }
+
+  function renderPromptLibrary() {
+    if (!promptList) return;
+    hydratePromptCategories();
+    const groups = readPromptGroups();
+    const category = promptCategorySelect?.value || 'Launch';
+    const search = (librarySearch?.value || '').toLowerCase();
+    const prompts = (groups.get(category) || []).filter((prompt) => prompt.toLowerCase().includes(search));
+    promptList.innerHTML = '';
+
+    if (!prompts.length) {
+      promptList.append(dom.el('p', 'ai-memory-empty', 'No prompts found.'));
       return;
     }
 
-    const data = preview.analyze(text);
-    const rows = [
-      ['Readability', data.readability],
-      ['Engagement', `${data.engagementScore}/100`],
-      ['Builder', `${data.builderScore}/100`],
-      ['Virality', `${data.virality}/100`],
-      ['Length', String(data.characterCount)],
-      ['Hashtags', String(data.hashtags)],
-      ['Mentions', String(data.mentions)]
-    ];
+    prompts.forEach((prompt) => {
+      const row = dom.el('div', 'ai-memory-row');
+      const load = dom.el('button', 'ai-memory-item', prompt);
+      load.type = 'button';
+      load.dataset.aiAction = 'load-prompt';
+      load.dataset.aiPrompt = prompt;
+      row.append(load);
 
-    analysisTarget.innerHTML = '';
-    rows.forEach(([label, value]) => {
-      const item = document.createElement('div');
-      const key = document.createElement('span');
-      const strong = document.createElement('strong');
-      key.textContent = label;
-      strong.textContent = value;
-      item.append(key, strong);
-      analysisTarget.appendChild(item);
+      if (category === 'Custom') {
+        const remove = createAction('Delete', 'delete-custom-prompt', { aiPrompt: prompt });
+        row.append(remove);
+      }
+
+      promptList.append(row);
     });
   }
 
-  function updatePostPreview() {
-    if (!state.postPayload) {
+  function loadPrompt(prompt) {
+    if (!topicInput || !prompt) return;
+    topicInput.value = prompt;
+    autosizeTextarea(topicInput);
+    storage.rememberPrompt(prompt);
+    renderPromptLibrary();
+    setStatus('Prompt loaded.');
+  }
+
+  async function loadPromptFromLibrary(prompt) {
+    const allowed = await core.requirePremium(['aiLabPromptLibrary', 'Unlimited Prompt Library']);
+    if (!allowed) {
+      setStatus('Prompt Library requires active Lab Pass.');
+      return;
+    }
+    loadPrompt(prompt);
+  }
+
+  function saveCustomPrompt() {
+    const text = (customPromptInput?.value || '').trim();
+    if (!text) {
+      setStatus('Custom prompt is empty.');
+      return;
+    }
+    storage.saveCustomPrompt(text);
+    if (customPromptInput) customPromptInput.value = '';
+    renderPromptLibrary();
+    setStatus('Custom prompt saved.');
+  }
+
+  function hydrateMemoryForm() {
+    const memory = currentMemory();
+    if (!memoryForm) return;
+    memoryForm.querySelectorAll('[data-ai-memory-field]').forEach((input) => {
+      input.value = memory[input.dataset.aiMemoryField] || '';
+    });
+  }
+
+  function collectMemoryForm() {
+    const memory = {};
+    if (!memoryForm) return memory;
+    memoryForm.querySelectorAll('[data-ai-memory-field]').forEach((input) => {
+      memory[input.dataset.aiMemoryField] = input.value.trim();
+    });
+    return memory;
+  }
+
+  function saveMemory() {
+    storage.saveMemory(collectMemoryForm());
+    setStatus('Project memory saved.');
+  }
+
+  function resetMemory() {
+    storage.saveMemory({});
+    hydrateMemoryForm();
+    setStatus('Project memory reset.');
+  }
+
+  function downloadJson(filename, payload) {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(link.href);
+  }
+
+  function importJson(handler) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.className = 'ai-hidden-file';
+    input.addEventListener('change', async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      try {
+        handler(JSON.parse(await file.text()));
+      } catch (error) {
+        setStatus('JSON import failed.');
+      } finally {
+        input.remove();
+      }
+    });
+    document.body.append(input);
+    input.click();
+  }
+
+  function renderPersonas() {
+    if (!personaSelect) return;
+    const all = [...features.defaultPersonas, ...customPersonas()];
+    const selected = personaSelect.value || 'default';
+    personaSelect.innerHTML = all.map((persona) => `<option value="${persona.id}">${persona.name}</option>`).join('');
+    personaSelect.value = all.some((persona) => persona.id === selected) ? selected : 'default';
+    syncPersonaFields();
+  }
+
+  function syncPersonaFields() {
+    const persona = selectedPersona();
+    if (personaNameInput) personaNameInput.value = persona.id?.startsWith('custom-') ? persona.name : '';
+    if (personaGuidanceInput) personaGuidanceInput.value = persona.guidance || '';
+  }
+
+  function savePersona() {
+    const name = (personaNameInput?.value || '').trim();
+    const guidance = (personaGuidanceInput?.value || '').trim();
+    if (!name || !guidance) {
+      setStatus('Persona needs name and rules.');
+      return;
+    }
+    const current = personaSelect?.value || '';
+    const personas = customPersonas();
+    const id = current.startsWith('custom-') ? current : `custom-${Date.now()}`;
+    const next = personas.filter((persona) => persona.id !== id);
+    next.push({ id, name, guidance });
+    storage.writePersonas(next);
+    renderPersonas();
+    if (personaSelect) personaSelect.value = id;
+    setStatus('Persona saved.');
+  }
+
+  function duplicatePersona() {
+    const persona = selectedPersona();
+    if (!persona) return;
+    const copy = {
+      id: `custom-${Date.now()}`,
+      name: `${persona.name} Copy`,
+      guidance: persona.guidance
+    };
+    storage.writePersonas([...customPersonas(), copy]);
+    renderPersonas();
+    if (personaSelect) personaSelect.value = copy.id;
+    syncPersonaFields();
+    setStatus('Persona duplicated.');
+  }
+
+  function deletePersona() {
+    const id = personaSelect?.value || '';
+    if (!id.startsWith('custom-')) {
+      setStatus('Default personas cannot be deleted.');
+      return;
+    }
+    storage.deletePersona(id);
+    renderPersonas();
+    setStatus('Custom persona deleted.');
+  }
+
+  function renderStoredLists() {
+    const search = historySearch?.value || '';
+    if (renderHistory) {
+      renderHistory.renderList(outputHistoryTarget, storage.readList(storage.keys.outputs, 20), 'No outputs generated yet.', 'output', search);
+      renderHistory.renderList(postHistoryTarget, storage.readList(storage.keys.posts, 10), 'No transmissions yet.', 'post', search);
+      renderHistory.renderList(favoritesTarget, storage.readList(storage.keys.favorites, 10), 'No favourites saved.', 'favorite', search);
+    }
+  }
+
+  function restoreEntry(entry) {
+    if (!entry) return;
+    updateMode(entry.mode || 'signal');
+    updateStyle(entry.style || state.style);
+    state.language = features.normalizeLanguage(entry.language || state.language);
+    state.agent = features.normalizeAgent(entry.agent || state.agent);
+    if (languageSelect) languageSelect.value = state.language;
+    if (agentSelect) agentSelect.value = state.agent;
+    if (topicInput) {
+      topicInput.value = entry.topic || '';
+      autosizeTextarea(topicInput);
+    }
+
+    const payload = entry.payload || {};
+    state.signal = payload.signal || payload.post || entry.text || null;
+    state.thread = ensureArray(payload.items);
+    state.replies = state.mode === 'replies' ? ensureArray(payload.items) : [];
+    state.quote = payload.post || payload.signal || entry.text || null;
+    state.campaign = payload.campaign || null;
+    state.summary = state.mode === 'summary' ? payload : null;
+    state.hashtags = ensureArray(payload.hashtags);
+    state.post = entry.postPayload || null;
+    state.preview = entry.preview || '';
+    state.analysis = entry.analysis || null;
+
+    renderCurrent(false);
+    if (entry.kind === 'post' || entry.postPayload || entry.preview) {
+      renderPost(entry.postPayload || { post: entry.text || entry.preview || '', hashtags: [], emojis: [] }, false);
+    }
+    setStatus('Stored output restored.');
+  }
+
+  function findStoredEntry(id, type) {
+    const key = type === 'post' ? storage.keys.posts : type === 'favorite' ? storage.keys.favorites : storage.keys.outputs;
+    return storage.readList(key, 30).find((entry) => entry.id === id);
+  }
+
+  function saveFavorite() {
+    const entry = buildEntry('favorite');
+    storage.remember(storage.keys.favorites, entry, 10);
+    renderStoredLists();
+    setStatus('Favorite saved.');
+  }
+
+  function applyPayload(payload) {
+    hidePost();
+
+    if (state.mode === 'thread') {
+      state.thread = ensureArray(payload.thread || payload.items);
+      if (!state.thread.length) throw new Error('Thread response malformed.');
       return;
     }
 
-    state.finalPost = preview.assemblePost(state.postPayload, getOptions());
-
-    if (postText) {
-      postText.textContent = state.finalPost;
+    if (state.mode === 'replies') {
+      state.replies = ensureArray(payload.replies || payload.items);
+      if (!state.replies.length) throw new Error('Replies response malformed.');
+      return;
     }
 
-    if (counterTarget) {
-      counterTarget.textContent = `${state.finalPost.length} / ${preview.postLimit}`;
-      counterTarget.classList.toggle('is-over', state.finalPost.length > preview.postLimit);
+    if (state.mode === 'campaign') {
+      state.campaign = payload.campaign || payload;
+      if (!state.campaign || typeof state.campaign !== 'object') throw new Error('Campaign response malformed.');
+      return;
     }
 
-    if (publishLink) {
-      const overLimit = state.finalPost.length > preview.postLimit;
-      publishLink.hidden = !state.finalPost || overLimit;
-      publishLink.href = preview.tweetIntent(state.finalPost);
-      publishLink.setAttribute('aria-disabled', overLimit ? 'true' : 'false');
+    if (state.mode === 'summary') {
+      state.summary = payload.summary && typeof payload.summary === 'object' ? payload.summary : payload;
+      if (!state.summary || typeof state.summary !== 'object') throw new Error('Summary response malformed.');
+      return;
     }
 
-    renderAnalysis(state.finalPost);
+    if (state.mode === 'hashtags') {
+      state.hashtags = ensureArray(payload.hashtags);
+      if (!state.hashtags.length) throw new Error('Hashtag response malformed.');
+      return;
+    }
+
+    if (state.mode === 'quote') {
+      state.quote = payload.post || payload.signal || payload.quote || '';
+      if (!state.quote.trim()) throw new Error('Quote response malformed.');
+      return;
+    }
+
+    state.signal = payload.signal || payload.post || '';
+    if (!state.signal.trim()) throw new Error('Signal response malformed.');
   }
 
-  function renderResult(payload, mode, remember = true) {
-    state.resultPayload = payload || {};
-    state.resultText = preview.formatPayload(payload);
-    state.postPayload = null;
-    state.finalPost = '';
-
-    if (resultKicker) {
-      resultKicker.textContent = createResultNumber(mode);
-    }
-
-    if (resultText) {
-      resultText.textContent = state.resultText;
-    }
-
-    if (outputTarget) {
-      outputTarget.hidden = false;
-    }
-
-    if (resultCard) {
-      resultCard.hidden = false;
-    }
-
-    if (postCard) {
-      postCard.hidden = true;
-    }
-
-    if (remember) {
-      storage.remember(storage.keys.outputs, {
-        type: mode,
-        text: state.resultText,
-        payload,
-        topic: state.topic,
-        style: state.style,
-        language: state.language,
-        agent: state.agent
-      });
-      renderMemory();
-    }
-
-    setStatus('Output acquired.');
-  }
-
-  function renderPost(payload, remember = true) {
-    state.postPayload = {
-      post: payload.post || payload.signal || payload.text || '',
-      hashtags: Array.isArray(payload.hashtags) ? payload.hashtags : [],
-      emojis: Array.isArray(payload.emojis) ? payload.emojis : []
-    };
-
-    if (postCard) {
-      postCard.hidden = false;
-    }
-
-    updatePostPreview();
-
-    if (remember) {
-      storage.remember(storage.keys.posts, {
-        type: 'post',
-        text: state.finalPost,
-        payload: state.postPayload,
-        source: state.resultText,
-        language: state.language
-      });
-      renderMemory();
-    }
-
-    setStatus('Transmission ready.');
+  function loadingLabel() {
+    if (state.mode === 'thread') return 'PREPARING THREAD';
+    if (state.mode === 'replies') return 'PREPARING REPLIES';
+    if (state.mode === 'campaign') return 'PREPARING CAMPAIGN';
+    if (state.mode === 'summary') return 'ANALYZING';
+    if (state.mode === 'hashtags') return 'PREPARING TAGS';
+    return 'SYNTHESIZING';
   }
 
   async function generateSelected(event) {
-    event.preventDefault();
-
-    const requestState = currentRequestState();
-    state.topic = requestState.topic;
-
-    if (!requestState.topic) {
+    event?.preventDefault();
+    const config = currentModeConfig();
+    const topic = (topicInput?.value || '').trim();
+    if (!topic) {
       setStatus('Input signal required.');
       topicInput?.focus();
       return;
     }
 
-    setBusy(true, 'SYNTHESIZING');
-    setStatus('Synthesizing laboratory output...');
-
     try {
-      const payload = await generator.generate(requestState);
-      renderResult(payload, state.mode);
-
-      if (state.mode === 'signal') {
-        renderPost({ post: payload.signal || state.resultText, hashtags: payload.hashtags || [], emojis: payload.emojis || [] }, false);
-      }
-    } catch (error) {
-      setStatus(core.errorMessage(error, 'Synthesis failed. Laboratory signal unstable.'));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function generateXPost() {
-    if (!state.resultText) {
-      setStatus('Generate output first.');
-      return;
-    }
-
-    const requestState = currentRequestState();
-    setBusy(true, 'TRANSMITTING');
-    setStatus('Preparing X transmission...');
-
-    try {
-      const payload = await generator.generatePost(requestState, state.resultText);
-      const assembled = preview.assemblePost(payload, getOptions());
-
-      if (!payload.post || assembled.length > preview.postLimit) {
-        throw new Error('Transmission exceeded X limit. Try fewer options.');
-      }
-
-      renderPost(payload);
-    } catch (error) {
-      setStatus(core.errorMessage(error, 'Transmission failed. Laboratory channel unstable.'));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function remixOutput(remixMode) {
-    if (!state.resultText) {
-      setStatus('No output available for remix.');
-      return;
-    }
-
-    const requestState = currentRequestState();
-    setBusy(true, 'REMIXING');
-    setStatus('Remixing output...');
-
-    try {
-      const payload = await generator.remix(requestState, state.resultText, remixMode);
-      renderResult(payload, state.mode);
-    } catch (error) {
-      setStatus(core.errorMessage(error, 'Remix failed. Signal rejected.'));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function copyText(text, successMessage) {
-    if (!text) {
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(text);
-      setStatus(successMessage);
-    } catch (error) {
-      setStatus('Copy unavailable. Select output manually.');
-    }
-  }
-
-  function renderMemoryList(target, items, emptyText, type, search = '') {
-    if (!target) {
-      return;
-    }
-
-    const query = search.trim().toLowerCase();
-    const filtered = query
-      ? items.filter((item) => String(item.text || '').toLowerCase().includes(query))
-      : items;
-
-    target.innerHTML = '';
-
-    if (!filtered.length) {
-      const empty = document.createElement('p');
-      empty.className = 'ai-memory-empty';
-      empty.textContent = emptyText;
-      target.appendChild(empty);
-      return;
-    }
-
-    filtered.forEach((item) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'ai-memory-item';
-      button.dataset.aiRestoreType = type;
-      button.dataset.aiRestoreId = item.savedAt || item.text;
-      button.textContent = item.text;
-      target.appendChild(button);
-    });
-  }
-
-  function renderMemory() {
-    renderMemoryList(
-      outputHistoryTarget,
-      storage.readList(storage.keys.outputs),
-      'No outputs generated yet.',
-      'output',
-      historySearch?.value || ''
-    );
-    renderMemoryList(
-      postHistoryTarget,
-      storage.readList(storage.keys.posts),
-      'No transmissions yet.',
-      'post'
-    );
-    renderMemoryList(
-      favoritesTarget,
-      storage.readList(storage.keys.favorites),
-      'No favourites saved.',
-      'favorite'
-    );
-  }
-
-  function findStoredEntry(type, id) {
-    const key = type === 'post' ? storage.keys.posts : type === 'favorite' ? storage.keys.favorites : storage.keys.outputs;
-    return storage.readList(key).find((item) => (item.savedAt || item.text) === id);
-  }
-
-  function restoreEntry(event) {
-    const button = event.target instanceof Element ? event.target.closest('[data-ai-restore-type]') : null;
-
-    if (!button) {
-      return;
-    }
-
-    const entry = findStoredEntry(button.dataset.aiRestoreType, button.dataset.aiRestoreId);
-
-    if (!entry) {
-      return;
-    }
-
-    if (button.dataset.aiRestoreType === 'post') {
-      state.resultText = entry.source || entry.text;
-      renderPost(entry.payload || { post: entry.text }, false);
-      setStatus('Transmission restored.');
-      return;
-    }
-
-    renderResult(entry.payload || { signal: entry.text }, entry.type || state.mode, false);
-    setStatus(button.dataset.aiRestoreType === 'favorite' ? 'Favourite restored.' : 'Output restored.');
-  }
-
-  async function saveFavorite() {
-    if (!state.resultText) {
-      setStatus('No output available to save.');
-      return;
-    }
-
-    if (!(await core.requirePremium(['aiLabSavedOutputs', 'Saved Outputs']))) {
-      return;
-    }
-
-    storage.remember(storage.keys.favorites, {
-      type: state.mode,
-      text: state.resultText,
-      payload: state.resultPayload,
-      topic: state.topic,
-      style: state.style,
-      language: state.language
-    });
-    renderMemory();
-    setStatus('Favourite saved.');
-  }
-
-  function renderPromptLibrary() {
-    if (!promptCategorySelect || !promptList) {
-      return;
-    }
-
-    const selected = promptCategorySelect.value || library.categories()[0];
-    promptList.innerHTML = '';
-
-    library.prompts(selected).forEach((prompt) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'ai-memory-item';
-      button.textContent = prompt;
-      button.addEventListener('click', () => {
-        if (topicInput) {
-          topicInput.value = prompt;
-          topicInput.focus();
+      setBusy(true, loadingLabel());
+      setStatus(`${config.label} running...`);
+      if (config.premium) {
+        const allowed = await core.requirePremium(config.premium);
+        if (!allowed) {
+          setStatus(`${config.premium[1]} requires active Lab Pass.`);
+          return;
         }
-        setStatus('Prompt loaded.');
-      });
-      promptList.appendChild(button);
-    });
-
-    if (!promptList.children.length) {
-      const empty = document.createElement('p');
-      empty.className = 'ai-memory-empty';
-      empty.textContent = 'No saved prompts in this category.';
-      promptList.appendChild(empty);
-    }
-  }
-
-  async function saveMemory() {
-    if (!(await core.requirePremium(['aiLabProjectMemory', 'Project Memory']))) {
-      return;
-    }
-
-    const memory = {};
-    memoryForm?.querySelectorAll('[data-ai-memory-field]').forEach((input) => {
-      memory[input.dataset.aiMemoryField] = input.value.trim();
-    });
-    storage.saveMemory(memory);
-    setStatus('Project memory saved.');
-  }
-
-  function hydrateMemoryForm() {
-    const memory = storage.readMemory();
-    memoryForm?.querySelectorAll('[data-ai-memory-field]').forEach((input) => {
-      input.value = memory[input.dataset.aiMemoryField] || '';
-    });
-  }
-
-  function renderPersonas() {
-    if (!personaSelect) {
-      return;
-    }
-
-    const previousValue = personaSelect.value;
-    const personas = storage.readPersonas();
-    personaSelect.innerHTML = '';
-    personas.forEach((persona) => {
-      const option = document.createElement('option');
-      option.value = persona.id;
-      option.textContent = persona.name;
-      personaSelect.appendChild(option);
-    });
-
-    const current = personas.find((persona) => persona.id === previousValue) || personas[0];
-    if (current) {
-      personaSelect.value = current.id;
-      if (personaNameInput) {
-        personaNameInput.value = current.name;
       }
-      if (personaGuidanceInput) {
-        personaGuidanceInput.value = current.guidance;
+
+      const signal = makeAbortSignal();
+      const payload = await generator.generate(requestState(signal));
+      applyPayload(payload);
+      renderCurrent(true);
+      setStatus(`${config.label} ready.`);
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        setStatus('Previous request aborted.');
+      } else {
+        setStatus(error.message || 'Synthesis failed. Existing output preserved.');
       }
+    } finally {
+      releaseAbort();
+      setBusy(false);
     }
   }
 
-  async function savePersona() {
-    if (!(await core.requirePremium(['aiLabSavedPersonas', 'Saved Personas']))) {
+  async function generatePost(sourceText) {
+    if (state.mode === 'thread') {
+      publishThread();
+      return;
+    }
+    if (state.mode === 'hashtags') {
+      setStatus('Hashtag mode has no X post conversion.');
       return;
     }
 
-    const name = personaNameInput?.value.trim() || '';
-    const guidance = personaGuidanceInput?.value.trim() || '';
-
-    if (!name || !guidance) {
-      setStatus('Persona name and guidance required.');
+    const source = sourceText || currentSourceText();
+    if (!source.trim()) {
+      setStatus('Generate an output first.');
       return;
     }
 
-    const id = `custom-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-') || Date.now()}`;
-    storage.savePersona({ id, name, guidance });
-    renderPersonas();
-    personaSelect.value = id;
-    setStatus('Persona saved.');
+    try {
+      setBusy(true, 'PREPARING TRANSMISSION');
+      setStatus('Preparing X transmission...');
+      const signal = makeAbortSignal();
+      const payload = await generator.generatePost(requestState(signal), source);
+      if (!payload.post || !String(payload.post).trim()) {
+        throw new Error('Transmission response malformed.');
+      }
+      renderPost(payload, true);
+      setStatus('Transmission ready.');
+    } catch (error) {
+      setStatus(error.name === 'AbortError' ? 'Transmission aborted.' : error.message || 'Transmission failed. Existing output preserved.');
+    } finally {
+      releaseAbort();
+      setBusy(false);
+    }
   }
 
-  function initControls() {
-    renderSelect(languageSelect, features.languages, state.language);
-    renderSelect(agentSelect, features.agents, state.agent);
-    renderSelect(promptCategorySelect, library.categories().map((item) => [item, item]), library.categories()[0]);
+  async function remixText(source, remixMode) {
+    const original = String(source || '');
+    if (!original.trim()) {
+      setStatus('Nothing to remix.');
+      return original;
+    }
 
-    updateMode(state.mode);
-    updateStyle(state.style);
-    updateLanguage(state.language);
-    updateAgent(state.agent);
-    hydrateMemoryForm();
-    renderPersonas();
-    renderPromptLibrary();
-    renderMemory();
+    const allowed = await core.requirePremium(['aiLabAdvancedRemix', 'Advanced Remix']);
+    if (!allowed) {
+      setStatus('Advanced Remix requires active Lab Pass.');
+      return original;
+    }
+
+    let latest = original;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const signal = makeAbortSignal();
+      const payload = await generator.remix(requestState(signal), latest, remixMode);
+      const next = payload.signal || payload.post || payload.text || '';
+      if (preview.isMeaningfullyDifferent(original, next)) {
+        return next;
+      }
+      latest = `${original}\n\nChange the angle completely.`;
+    }
+
+    throw new Error('Remix did not change enough. Try another angle.');
+  }
+
+  async function remixOutput(mode) {
+    try {
+      setBusy(true, 'REMIXING');
+      setStatus('Remixing output...');
+      const next = await remixText(currentSourceText(), mode);
+      if (state.mode === 'quote') state.quote = next;
+      else state.signal = next;
+      renderCurrent(true);
+      setStatus('Remix ready.');
+    } catch (error) {
+      setStatus(error.message || 'Remix failed.');
+    } finally {
+      releaseAbort();
+      setBusy(false);
+    }
+  }
+
+  async function remixArrayItem(type, index, mode) {
+    const list = type === 'thread' ? state.thread : state.replies;
+    if (!list[index]) return;
+    try {
+      setBusy(true, 'REMIXING');
+      const next = await remixText(list[index], mode);
+      list[index] = next;
+      renderCurrent(true);
+      setStatus('Item remixed.');
+    } catch (error) {
+      setStatus(error.message || 'Remix failed.');
+    } finally {
+      releaseAbort();
+      setBusy(false);
+    }
+  }
+
+  async function remixSummarySection(section, mode) {
+    const key = sectionKeys[String(section || '').toLowerCase()] || section;
+    const source = summarySectionText(key);
+    try {
+      setBusy(true, 'REMIXING');
+      const next = await remixText(source, mode);
+      if (Array.isArray(state.summary?.[key])) {
+        state.summary[key] = next.split(/\n+/).map((item) => item.replace(/^[-•]\s*/, '').trim()).filter(Boolean);
+      } else {
+        state.summary[key] = next;
+      }
+      renderCurrent(true);
+      setStatus('Section remixed.');
+    } catch (error) {
+      setStatus(error.message || 'Remix failed.');
+    } finally {
+      releaseAbort();
+      setBusy(false);
+    }
+  }
+
+  async function remixCampaignSection(section, mode) {
+    const source = campaignSectionText(section);
+    try {
+      setBusy(true, 'REMIXING');
+      const next = await remixText(source, mode);
+      if (Array.isArray(state.campaign?.[section])) {
+        state.campaign[section] = next.split(/\n+/).map((item) => item.replace(/^\d+[.)]\s*/, '').trim()).filter(Boolean);
+      } else {
+        state.campaign[section] = next;
+      }
+      renderCurrent(true);
+      setStatus(`${campaignLabels[section] || 'Campaign block'} remixed.`);
+    } catch (error) {
+      setStatus(error.message || 'Remix failed.');
+    } finally {
+      releaseAbort();
+      setBusy(false);
+    }
+  }
+
+  async function generateMoreReplies() {
+    const previousCount = state.replies.length;
+    const originalCount = state.count;
+    state.count = Math.max(Number(originalCount || 5), 5);
+    await generateSelected();
+    if (state.replies.length <= previousCount) {
+      setStatus('Replies refreshed.');
+    }
+    state.count = originalCount;
+  }
+
+  function publishCampaignSection(section) {
+    publishText(campaignSectionText(section));
+  }
+
+  function copyCampaignItem(section, index) {
+    const value = state.campaign?.[section];
+    if (Array.isArray(value)) {
+      copyText(String(value[index] || ''), 'Campaign item copied.');
+    }
+  }
+
+  function autosizeTextarea(textarea) {
+    if (!textarea) return;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 520)}px`;
+  }
+
+  function handleAction(button) {
+    const action = button.dataset.aiAction;
+    const index = Number(button.dataset.aiIndex);
+    const section = button.dataset.aiSection;
+    const mode = button.dataset.aiRemixMode || 'builder';
+
+    if (action === 'copy-output') copyText(collectCurrentCopy(), 'Output copied.');
+    if (action === 'copy-thread') copyText(ensureArray(state.thread).join('\n\n'), 'Thread copied.');
+    if (action === 'publish-thread') publishThread();
+    if (action === 'copy-replies') copyText(ensureArray(state.replies).join('\n\n'), 'Replies copied.');
+    if (action === 'copy-summary') copyText(summarySectionText('summary'), 'Summary copied.');
+    if (action === 'copy-builder-notes') copyText(summarySectionText('builderNotes'), 'Builder notes copied.');
+    if (action === 'copy-hashtags') copyText(state.hashtags.map((tag) => tag.startsWith('#') ? tag : `#${tag}`).join(' '), 'Hashtags copied.');
+    if (action === 'copy-hashtag') copyText(button.dataset.aiValue || '', 'Hashtag copied.');
+    if (action === 'save-favorite') saveFavorite();
+    if (action === 'generate-post') generatePost();
+    if (action === 'regenerate-hashtags') generateSelected();
+    if (action === 'generate-more-replies') generateMoreReplies();
+    if (action === 'remix-output') remixOutput(mode);
+    if (action === 'copy-item') copyText((state.mode === 'thread' ? state.thread[index] : state.replies[index]) || '', 'Item copied.');
+    if (action === 'publish-item') publishText((state.mode === 'thread' ? state.thread[index] : state.replies[index]) || '');
+    if (action === 'remix-item') remixArrayItem(state.mode === 'thread' ? 'thread' : 'replies', index, mode);
+    if (action === 'copy-section') copyText(summarySectionText(section), 'Section copied.');
+    if (action === 'remix-section') remixSummarySection(section, mode);
+    if (action === 'copy-campaign') copyText(section ? campaignSectionText(section) : renderCampaign.text({ campaign: state.campaign || {} }), 'Campaign copied.');
+    if (action === 'remix-campaign') remixCampaignSection(section, mode);
+    if (action === 'preview-campaign') generatePost(campaignSectionText(section));
+    if (action === 'copy-campaign-item') copyCampaignItem(button.dataset.aiSection, index);
+    if (action === 'publish-campaign-item') {
+      const value = state.campaign?.[button.dataset.aiSection];
+      publishText(Array.isArray(value) ? value[index] : value);
+    }
+    if (action === 'load-prompt') loadPromptFromLibrary(button.dataset.aiPrompt);
+    if (action === 'delete-custom-prompt') {
+      storage.deleteCustomPrompt(button.dataset.aiPrompt);
+      renderPromptLibrary();
+      setStatus('Custom prompt deleted.');
+    }
+    if (action === 'restore') {
+      restoreEntry(findStoredEntry(button.dataset.aiRestoreId, button.dataset.aiRestoreType));
+    }
   }
 
   function bindEvents() {
+    form?.addEventListener('submit', generateSelected);
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-ai-action]');
+      if (!button) return;
+      event.preventDefault();
+      if (button.disabled) return;
+      handleAction(button);
+    });
+
     modeButtons.forEach((button) => button.addEventListener('click', () => updateMode(button.dataset.aiMode)));
     styleButtons.forEach((button) => button.addEventListener('click', () => updateStyle(button.dataset.aiStyle)));
-    optionInputs.forEach((input) => input.addEventListener('change', updatePostPreview));
-    languageSelect?.addEventListener('change', () => updateLanguage(languageSelect.value));
-    agentSelect?.addEventListener('change', () => updateAgent(agentSelect.value));
-    promptCategorySelect?.addEventListener('change', renderPromptLibrary);
+
+    languageSelect?.addEventListener('change', () => {
+      state.language = features.normalizeLanguage(languageSelect.value);
+      storage.writePreference(storage.keys.language, state.language);
+    });
+
+    agentSelect?.addEventListener('change', () => {
+      state.agent = features.normalizeAgent(agentSelect.value);
+      storage.writePreference(storage.keys.agent, state.agent);
+    });
+
+    countSelect?.addEventListener('change', () => {
+      state.count = Number(countSelect.value || 4);
+    });
+
+    topicInput?.addEventListener('input', () => autosizeTextarea(topicInput));
+    topicInput?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        generateSelected(event);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && state.abortController) {
+        state.abortController.abort();
+        setStatus('Request aborted.');
+      }
+    });
+
     loadPromptButton?.addEventListener('click', async () => {
-      if (!(await core.requirePremium(['aiLabPromptLibrary', 'Unlimited Prompt Library']))) {
+      const allowed = await core.requirePremium(['aiLabPromptLibrary', 'Unlimited Prompt Library']);
+      if (!allowed) {
+        setStatus('Prompt Library requires active Lab Pass.');
         return;
       }
-      const prompt = library.prompts(promptCategorySelect.value)[0];
-      if (prompt && topicInput) {
-        topicInput.value = prompt;
-        setStatus('Prompt loaded.');
-      }
+      const firstPrompt = promptList?.querySelector('[data-ai-prompt]')?.dataset.aiPrompt;
+      loadPrompt(firstPrompt);
     });
-    form?.addEventListener('submit', generateSelected);
-    document.querySelector('[data-ai-post-generate]')?.addEventListener('click', generateXPost);
-    document.querySelector('[data-ai-favorite]')?.addEventListener('click', saveFavorite);
-    document.querySelectorAll('[data-ai-remix]').forEach((button) => {
-      button.addEventListener('click', () => remixOutput(button.dataset.aiRemix));
-    });
-    document.querySelectorAll('[data-ai-copy]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const text = button.dataset.aiCopy === 'post' ? state.finalPost : state.resultText;
-        copyText(text, button.dataset.aiCopy === 'post' ? 'X post copied.' : 'Output copied.');
+
+    promptCategorySelect?.addEventListener('change', renderPromptLibrary);
+    librarySearch?.addEventListener('input', renderPromptLibrary);
+    saveCustomPromptButton?.addEventListener('click', saveCustomPrompt);
+    saveMemoryButton?.addEventListener('click', saveMemory);
+    resetMemoryButton?.addEventListener('click', resetMemory);
+    exportMemoryButton?.addEventListener('click', () => downloadJson('0xb20-ai-memory.json', currentMemory()));
+    importMemoryButton?.addEventListener('click', () => importJson((json) => {
+      storage.saveMemory(json && typeof json === 'object' ? json : {});
+      hydrateMemoryForm();
+      setStatus('Project memory imported.');
+    }));
+
+    personaSelect?.addEventListener('change', syncPersonaFields);
+    savePersonaButton?.addEventListener('click', savePersona);
+    duplicatePersonaButton?.addEventListener('click', duplicatePersona);
+    deletePersonaButton?.addEventListener('click', deletePersona);
+    exportPersonasButton?.addEventListener('click', () => downloadJson('0xb20-ai-personas.json', customPersonas()));
+    importPersonasButton?.addEventListener('click', () => importJson((json) => {
+      const personas = Array.isArray(json) ? json.filter((item) => item && item.name && item.guidance).map((item, index) => ({
+        id: item.id?.startsWith('custom-') ? item.id : `custom-${Date.now()}-${index}`,
+        name: String(item.name),
+        guidance: String(item.guidance)
+      })) : [];
+      storage.writePersonas(personas);
+      renderPersonas();
+      setStatus('Personas imported.');
+    }));
+
+    historySearch?.addEventListener('input', renderStoredLists);
+
+    document.querySelector('[data-ai-copy="post"]')?.addEventListener('click', () => copyText(state.preview, 'X post copied.'));
+
+    optionInputs.forEach((input) => {
+      input.addEventListener('change', () => {
+        if (state.post) {
+          renderPost(state.post, false);
+          setStatus('Preview updated.');
+        }
       });
     });
-    saveMemoryButton?.addEventListener('click', saveMemory);
-    savePersonaButton?.addEventListener('click', savePersona);
-    personaSelect?.addEventListener('change', renderPersonas);
-    historySearch?.addEventListener('input', renderMemory);
-    [outputHistoryTarget, postHistoryTarget, favoritesTarget].forEach((target) => {
-      target?.addEventListener('click', restoreEntry);
-    });
   }
 
-  async function initAiLab() {
-    if (state.initialized) {
+  async function initPremium() {
+    try {
+      await core.initPremium();
+    } catch (error) {
+      setStatus('Lab Pass status unavailable. Free tools remain active.');
+    }
+  }
+
+  function init() {
+    if (!features || !storage || !preview || !core || !generator || !library || !dom) {
       return;
     }
 
-    state.initialized = true;
-
-    if (window.B20UI && typeof window.B20UI.initReveal === 'function') {
-      window.B20UI.initReveal();
+    if (!initGate()) {
+      return;
     }
 
-    initControls();
+    hydrateControls();
+    hydrateMemoryForm();
+    renderPersonas();
+    renderPromptLibrary();
+    renderStoredLists();
     bindEvents();
-    setBusy(false);
+    initPremium();
     setStatus('Engine idle.');
-    await core.initPremium();
+    if (engineState) engineState.textContent = 'ONLINE';
+    state.initialized = true;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (!window.B20AccessGate) {
-      initAiLab();
-      return;
-    }
-
-    window.B20AccessGate.init({
-      enabled: accessGateEnabled,
-      password: '0xb20.lol',
-      storageKey: 'b20-ai-lab-access',
-      gateSelector: '[data-ai-gate]',
-      contentSelector: '[data-ai-content]',
-      formSelector: '[data-ai-gate-form]',
-      inputSelector: '[data-ai-password]',
-      errorSelector: '[data-ai-gate-error]',
-      onUnlock: initAiLab
-    });
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

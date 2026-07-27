@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/effects.css">
   <link rel="stylesheet" href="/premium/premium.css">
-  <link rel="stylesheet" href="/ai/assets/css/ai.css">
+  <link rel="stylesheet" href="/ai/assets/css/ai.css?v=20260727-3">
 </head>
 <body class="ai-body">
 
@@ -175,6 +175,11 @@
           <select data-ai-library-category aria-label="Prompt library category"></select>
           <button type="button" data-ai-load-prompt>Load Prompt</button>
         </div>
+        <input class="ai-memory-search" data-ai-library-search placeholder="Search prompts">
+        <div class="ai-library-controls ai-library-custom">
+          <input data-ai-custom-prompt placeholder="Save custom prompt">
+          <button type="button" data-ai-save-prompt>Save Prompt</button>
+        </div>
         <div class="ai-memory-list" data-ai-prompt-list></div>
       </article>
 
@@ -194,6 +199,9 @@
           <input data-ai-memory-field="tone" placeholder="Tone">
           <input data-ai-memory-field="audience" placeholder="Target audience">
           <button type="button" data-ai-save-memory>Save Memory</button>
+          <button type="button" data-ai-reset-memory>Reset Memory</button>
+          <button type="button" data-ai-export-memory>Export JSON</button>
+          <button type="button" data-ai-import-memory>Import JSON</button>
         </div>
       </article>
 
@@ -207,6 +215,10 @@
           <input data-ai-persona-name placeholder="Custom persona name">
           <textarea data-ai-persona-guidance rows="3" placeholder="Writing rules for this persona"></textarea>
           <button type="button" data-ai-save-persona>Save Persona</button>
+          <button type="button" data-ai-duplicate-persona>Duplicate</button>
+          <button type="button" data-ai-delete-persona>Delete Custom</button>
+          <button type="button" data-ai-export-personas>Export JSON</button>
+          <button type="button" data-ai-import-personas>Import JSON</button>
         </div>
       </article>
     </section>
@@ -214,17 +226,8 @@
     <section class="ai-output" data-ai-output hidden aria-live="polite">
       <article class="ai-output-card" data-ai-result-card hidden>
         <span class="ai-output-kicker" data-ai-result-kicker>RESULT #00000</span>
-        <pre class="ai-output-text" data-ai-result-text dir="auto"></pre>
-        <div class="ai-output-actions">
-          <button type="button" data-ai-copy="result">Copy Output</button>
-          <button type="button" data-ai-remix="shorter">Shorter</button>
-          <button type="button" data-ai-remix="longer">Longer</button>
-          <button type="button" data-ai-remix="funnier">Funnier</button>
-          <button type="button" data-ai-remix="technical">Technical</button>
-          <button type="button" data-ai-remix="viral">More Viral</button>
-          <button type="button" data-ai-favorite>Save Favourite</button>
-          <button type="button" data-ai-post-generate>Generate X Post</button>
-        </div>
+        <div class="ai-result-container" data-ai-result-container dir="auto"></div>
+        <div class="ai-output-actions" data-ai-result-actions></div>
       </article>
 
       <article class="ai-output-card ai-post-card" data-ai-post-card hidden>
@@ -292,12 +295,18 @@
 <script src="/premium/premium-modal.js?v=20260723-1" defer></script>
 <script src="/premium/premium-core.js?v=20260723-1" defer></script>
 <script src="/ai/assets/js/ai-features.js?v=20260727-1" defer></script>
-<script src="/ai/assets/js/ai-storage.js?v=20260727-1" defer></script>
-<script src="/ai/assets/js/ai-preview.js?v=20260727-1" defer></script>
-<script src="/ai/assets/js/ai-core.js?v=20260727-1" defer></script>
-<script src="/ai/assets/js/ai-generator.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-storage.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/ai-preview.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-preview.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-thread.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-replies.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-summary.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-campaign.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/render-history.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/ai-core.js?v=20260727-3" defer></script>
+<script src="/ai/assets/js/ai-generator.js?v=20260727-3" defer></script>
 <script src="/ai/assets/js/ai-library.js?v=20260727-1" defer></script>
-<script src="/ai/assets/js/ai-lab.js?v=20260727-1" defer></script>
+<script src="/ai/assets/js/ai-lab.js?v=20260727-3" defer></script>
 
 </body>
 </html>

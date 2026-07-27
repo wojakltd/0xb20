@@ -22,17 +22,23 @@
       throw new Error('Lab Pass required for this Laboratory module.');
     }
 
-    return global.B20AiCore.request({
+    return global.B20AiCore.requestWithRetry({
       action: mode.action,
       ...buildContext(state)
+    }, {
+      signal: state.abortSignal,
+      attempts: 2
     });
   }
 
   async function generatePost(state, sourceText) {
-    return global.B20AiCore.request({
+    return global.B20AiCore.requestWithRetry({
       action: 'generatePost',
       ...buildContext(state),
       signal: sourceText
+    }, {
+      signal: state.abortSignal,
+      attempts: 2
     });
   }
 
@@ -43,11 +49,14 @@
       throw new Error('Lab Pass required for Advanced Remix.');
     }
 
-    return global.B20AiCore.request({
+    return global.B20AiCore.requestWithRetry({
       action: 'remixContent',
       ...buildContext(state),
       signal: sourceText,
       remixMode
+    }, {
+      signal: state.abortSignal,
+      attempts: 2
     });
   }
 
