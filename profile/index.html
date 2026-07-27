@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/ai/assets/css/ai.css">
   <link rel="stylesheet" href="/premium/premium.css">
   <link rel="stylesheet" href="/test/assets/css/test.css">
+  <link rel="stylesheet" href="/profile/assets/css/profile.css">
 </head>
 <body class="test-body">
 
@@ -145,11 +146,173 @@ Timestamp: pending</pre>
           </div>
         </article>
       </div>
+
+      <section class="profile-dashboard" data-profile-dashboard>
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Account Progress</span>
+              <h3>Laboratory Account</h3>
+            </div>
+            <span class="test-state" data-profile-field="databaseProvider">SYNCING</span>
+          </div>
+          <div class="profile-metric-grid">
+            <div class="profile-metric">
+              <span>LAB PASS</span>
+              <strong data-profile-field="accountLabPass">Unknown</strong>
+            </div>
+            <div class="profile-metric">
+              <span>Partner Rank</span>
+              <strong data-profile-field="partnerRank">Explorer</strong>
+            </div>
+            <div class="profile-metric">
+              <span>Tools Unlocked</span>
+              <strong data-profile-field="toolsUnlocked">0 / 8</strong>
+            </div>
+            <div class="profile-metric">
+              <span>Lifetime Savings</span>
+              <strong data-profile-field="lifetimeSavings">$0</strong>
+            </div>
+            <div class="profile-metric">
+              <span>Lifetime Earnings</span>
+              <strong data-profile-field="lifetimeEarnings">$0</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">LAB PASS</span>
+              <h3>Membership Core</h3>
+            </div>
+            <button class="test-secondary" type="button" data-profile-lab-pass-action>Inspect Pass</button>
+          </div>
+          <div class="profile-metric-grid">
+            <div class="profile-metric"><span>Status</span><strong data-profile-field="profileLabPassStatus">Unknown</strong></div>
+            <div class="profile-metric"><span>Expires</span><strong data-profile-field="profileLabPassExpires">--</strong></div>
+            <div class="profile-metric"><span>Last Payment</span><strong data-profile-field="profileLastPayment">--</strong></div>
+            <div class="profile-metric"><span>Payment Token</span><strong data-profile-field="profilePaymentToken">ETH / BASE</strong></div>
+            <div class="profile-metric"><span>License Source</span><strong>On-chain</strong></div>
+          </div>
+          <div class="profile-table" data-profile-purchases>
+            <p class="profile-empty">No indexed Lab Pass purchases yet.</p>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Partner Program</span>
+              <h3>Referral Relay</h3>
+            </div>
+            <span class="test-state">ECOSYSTEM</span>
+          </div>
+          <p class="profile-muted">One partner account. One referral link. One earnings balance across every Laboratory tool.</p>
+          <div class="profile-referral-grid">
+            <label class="profile-input-wrap">
+              <span>Referral Link</span>
+              <input data-profile-referral-link readonly value="Connect wallet to generate link">
+            </label>
+            <div class="profile-qr" data-profile-qr>QR</div>
+          </div>
+          <div class="test-action-row">
+            <button class="test-secondary" type="button" data-profile-copy="referral">Copy Link</button>
+            <button class="test-secondary" type="button" data-profile-share="x">Share to X</button>
+            <button class="test-secondary" type="button" data-profile-share="telegram">Share to Telegram</button>
+            <button class="test-secondary" type="button" data-profile-copy="invitation">Copy Invitation</button>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Partner Statistics</span>
+              <h3>Referral Observatory</h3>
+            </div>
+            <span class="test-state" data-profile-field="statsStatus">WAITING</span>
+          </div>
+          <div class="profile-metric-grid">
+            <div class="profile-metric"><span>Total Referrals</span><strong data-profile-field="totalReferrals">0</strong></div>
+            <div class="profile-metric"><span>Active</span><strong data-profile-field="activeReferrals">0</strong></div>
+            <div class="profile-metric"><span>Inactive</span><strong data-profile-field="inactiveReferrals">0</strong></div>
+            <div class="profile-metric"><span>Level 1</span><strong data-profile-field="level1">0</strong></div>
+            <div class="profile-metric"><span>Level 2</span><strong data-profile-field="level2">0</strong></div>
+            <div class="profile-metric"><span>Level 3</span><strong data-profile-field="level3">0</strong></div>
+            <div class="profile-metric"><span>Conversion</span><strong data-profile-field="conversionRate">0%</strong></div>
+            <div class="profile-metric"><span>Lifetime Revenue</span><strong data-profile-field="lifetimeRevenue">$0</strong></div>
+            <div class="profile-metric"><span>Pending</span><strong data-profile-field="pendingRewards">$0</strong></div>
+            <div class="profile-metric"><span>Available</span><strong data-profile-field="availableRewards">$0</strong></div>
+            <div class="profile-metric"><span>Withdrawn</span><strong data-profile-field="withdrawnRewards">$0</strong></div>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Recent Earnings</span>
+              <h3>Commission Log</h3>
+            </div>
+          </div>
+          <div class="profile-table" data-profile-earnings>
+            <p class="profile-empty">No partner earnings recorded yet.</p>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Withdraw</span>
+              <h3>Reward Vault</h3>
+            </div>
+            <span class="test-state" data-profile-field="minimumWithdraw">20 USDC MIN</span>
+          </div>
+          <div class="profile-metric-grid profile-metric-grid-small">
+            <div class="profile-metric"><span>Available Balance</span><strong data-profile-field="withdrawAvailable">0 USDC</strong></div>
+            <div class="profile-metric"><span>Minimum Withdraw</span><strong data-profile-field="withdrawMinimum">20 USDC</strong></div>
+          </div>
+          <div class="test-action-row">
+            <button class="test-primary" type="button" data-profile-withdraw disabled>Request Withdraw</button>
+          </div>
+          <p class="test-message" data-profile-withdraw-message>Connect wallet to inspect withdrawal status.</p>
+          <div class="profile-table" data-profile-withdrawals>
+            <p class="profile-empty">No withdrawal requests yet.</p>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Analytics</span>
+              <h3>Partner Telemetry</h3>
+            </div>
+          </div>
+          <div class="profile-bars">
+            <div><span>Daily</span><i style="--value:8%"></i></div>
+            <div><span>Weekly</span><i style="--value:18%"></i></div>
+            <div><span>Monthly</span><i style="--value:28%"></i></div>
+            <div><span>Lifetime</span><i style="--value:34%"></i></div>
+          </div>
+        </article>
+
+        <article class="test-panel profile-card profile-card-wide">
+          <div class="test-panel-header">
+            <div>
+              <span class="eyebrow">Partner Materials</span>
+              <h3>Share Kit</h3>
+            </div>
+          </div>
+          <div class="profile-materials" data-profile-materials>
+            <p class="profile-empty">Connect wallet to generate partner materials.</p>
+          </div>
+        </article>
+      </section>
     </section>
   </div>
 </main>
 
 <script src="/assets/js/ui.js" defer></script>
+<script src="/assets/js/referral-capture.js" defer></script>
 <script src="/assets/js/interactions.js" defer></script>
 <script src="/assets/js/access-gate.js" defer></script>
 <script src="/assets/js/wallet-service.js" defer></script>
@@ -160,6 +323,7 @@ Timestamp: pending</pre>
 <script src="/premium/premium-modal.js" defer></script>
 <script src="/premium/premium-core.js" defer></script>
 <script src="/test/assets/js/test-wallet.js" defer></script>
+<script src="/profile/assets/js/profile-referral.js" defer></script>
 
 </body>
 </html>

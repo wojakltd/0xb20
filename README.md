@@ -28,6 +28,7 @@ Research never ends.
 - Token Sender Premium Edition for exact-approval ERC-20 batch distribution, imports, local history, address books, retry handling and automatic safe batching.
 - Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
 - Premium Core v1 foundation for one reusable on-chain Lab Pass across current and future tools.
+- Partner Dashboard foundation for ecosystem-wide referral links, partner stats, share materials and withdrawal requests.
 - Vercel-compatible deployment and GitHub Actions research cache automation.
 
 ## Architecture
@@ -45,6 +46,8 @@ Static shell
 ├─ ai/
 │  └─ assets/js/ai-*.js
 ├─ profile/
+├─ src/referral/
+├─ api/referral/
 ├─ test/
 ├─ token-sender/
 ├─ wallet-parser/
@@ -98,7 +101,9 @@ The browser calls only `/api/ai/generate`; the OpenAI key remains server-side on
 
 ### Profile
 
-Unified wallet profile terminal for connection status, identity reads, Lab Pass status and signature experiments.
+Unified wallet and partner dashboard for connection status, identity reads, Lab Pass status, referral links, partner statistics, share materials and withdrawal requests.
+
+The Profile dashboard uses the referral backend in `src/referral/referral-service.js`. Referral configuration is backend-owned; frontend code never hardcodes commission percentages.
 
 ### Token Sender
 
@@ -195,6 +200,9 @@ Required production environment variables:
 - `OPENAI_MODEL` — optional model override.
 - `AI_RATE_LIMIT_PER_MINUTE` — optional per-IP throttle for AI Lab.
 - `AI_RATE_LIMIT_PER_DAY` — optional per-IP daily budget guard for AI Lab.
+- `KV_REST_API_URL` — optional Vercel KV / Upstash Redis REST URL for persistent referral data.
+- `KV_REST_API_TOKEN` — optional Vercel KV / Upstash Redis REST token for persistent referral data.
+- `REFERRAL_ADMIN_SECRET` — optional server-side secret for trusted referral purchase ingest workers.
 
 AI Lab uses a single serverless endpoint with an `action` parameter. Supported actions are `generateSignal`, `generatePost`, `generateThread`, `generateReplies`, `generateQuote`, `generateCampaign`, `summarizeResearch`, `generateHashtags`, and `remixContent`.
 
@@ -204,6 +212,8 @@ GitHub Actions secrets used by automation:
 - `X_BEARER_TOKEN` or `X_API_BEARER_TOKEN` — X API bearer token for Laboratory Research import.
 
 The Research workflow runs inside GitHub Actions, so the X bearer token must be stored in GitHub repository Actions secrets. Adding it only to Vercel environment variables will not update the Research cache.
+
+Referral APIs use volatile serverless memory if KV variables are missing. This is acceptable for local testing only. Production partner rewards require persistent KV storage and a purchase-event indexer.
 
 Optional temporary Research fallbacks:
 

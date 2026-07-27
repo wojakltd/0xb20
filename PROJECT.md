@@ -53,10 +53,13 @@ HTML should define module shells only. Expandable content should come from `data
 - `assets/js/` contains independent browser modules.
 - `src/wallet/` contains TypeScript contracts for the shared Web3 wallet layer.
 - `src/contracts/` contains TypeScript contracts for future smart contract adapters.
+- `src/referral/` contains the backend Partner Program and referral service.
 - `contracts/` contains reviewed smart contract source and deployment notes.
 - `data/` contains the editable source of truth for live content.
 - `research/backend/` contains the provider-agnostic Research fetcher.
 - `api/ai/generate.ts` contains the server-only OpenAI bridge for AI Lab.
+- `api/referral/` contains serverless Partner Program endpoints.
+- `profile/assets/` contains Profile-specific Partner Dashboard UI modules.
 - `test/assets/` contains the shared Web3 profile/runtime assets reused by Web3 tools.
 
 ## JSON Schemas
@@ -265,8 +268,10 @@ Never use:
 - `assets/js/logs-page.js` renders the `/logs/` archive.
 - `assets/js/evolution-page.js` renders `/evolution/` from `data/evolution.json`.
 - `assets/js/access-gate.js` contains reusable client-side access-gate behavior.
+- `assets/js/referral-capture.js` captures the first valid `?ref=` wallet locally without overwriting it.
 - `assets/js/wallet-service.js` owns global wallet discovery, persistent connection restore, profile reads, token reads, Base switching, and exact approval requests.
 - `ai/assets/js/ai-lab.js` renders `/ai/` and calls only the server endpoint.
+- `profile/assets/js/profile-referral.js` renders Partner Dashboard data from referral API endpoints.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
 - `test/assets/js/test-wallet.js` renders `/profile/` wallet identity through the shared wallet service.
 - `token-sender/assets/js/token-sender.js` renders `/token-sender/` Token Sender v1 through the shared wallet service.
@@ -368,12 +373,39 @@ AI Lab lives at `/ai/` and is public. The shared access gate mechanism is preser
 The Profile terminal lives at `/profile/`. `/test/` is kept as a legacy redirect.
 
 - Browser code lives in `test/assets/js/test-wallet.js`.
+- Partner Dashboard code lives in `profile/assets/js/profile-referral.js`.
+- Partner Dashboard styles live in `profile/assets/css/profile.css`.
 - Visual module styles live in `test/assets/css/test.css`.
 - TypeScript contracts live in `test/src/wallet-contracts.ts`.
 - Wallet state comes from `assets/js/wallet-service.js`.
+- LAB PASS state comes from `premium/premium-core.js`.
+- Referral dashboard data comes from `/api/referral/dashboard`.
+- Referral capture is global through `assets/js/referral-capture.js`.
 - Current Profile methods are read-only except `personal_sign` for the signature demo.
 - Never add `approve`, `permit`, `transfer`, or `eth_sendTransaction` to this sandbox without explicit review.
 - WalletConnect QR support requires a public WalletConnect/Reown project id before enabling the adapter.
+
+## How To Update Partner Program
+
+The Partner Program is the ecosystem account layer. It does not replace LAB PASS and does not modify `LaboratoryLicenseManager`.
+
+- Backend service lives in `src/referral/referral-service.js`.
+- API endpoints live in `api/referral/`.
+- Detailed documentation lives in `docs/PARTNER_PROGRAM.md`.
+- Referral percentages, minimum withdrawal, rank thresholds, and account progress defaults are backend configuration.
+- Frontend must never calculate commissions, approve withdrawals, or trust local storage for balances.
+- `?ref=0xWallet` is captured once and only bound after wallet connection.
+- Referrals must reject self-referrals, duplicate assignment, and circular trees.
+- Purchase reward ingestion is admin-only through `/api/referral/purchase`.
+- Production persistence requires Vercel KV or Upstash REST environment variables.
+- Without persistent KV, serverless memory is for local/demo behavior only and must not be treated as production accounting.
+- `contracts/LaboratoryReferralVault.sol` is only a payout container. It must not contain referral trees, percentages, or partner logic.
+
+Required production environment variables:
+
+- `KV_REST_API_URL`
+- `KV_REST_API_TOKEN`
+- `REFERRAL_ADMIN_SECRET`
 
 ## How To Update Token Sender
 
