@@ -942,6 +942,8 @@
       totalFormatted: state.preview.totalFormatted,
       totalLabel: state.preview.totalLabel,
       requiresApproval: state.preview.requiresApproval,
+      allowanceRaw: state.preview.allowanceRaw,
+      allowanceReady: state.preview.allowanceReady,
       batchStatuses: state.preview.plan.batches.map((batch) => ({
         number: batch.number,
         status: batch.status,
@@ -949,6 +951,50 @@
         error: batch.error
       }))
     };
+  }
+
+  async function refreshApprovalState(adapter, successMessage) {
+    if (!adapter || !state.preview || !state.token) {
+      return false;
+    }
+
+    if (!adapter.requiresApproval) {
+      state.preview.allowanceReady = true;
+      updateExecutionState();
+      renderExecutionDetails();
+      modules.session().save(selectors, { preview: minimalPreviewSession() });
+      return true;
+    }
+
+    try {
+      const approval = await adapter.readApprovalState({
+        parsed: state.preview,
+        token: state.token,
+        wallet: state.wallet,
+        senderConfig: senderConfig(),
+        assetSenderConfig: assetSenderConfig()
+      });
+
+      state.preview.allowanceRaw = approval.raw || '0';
+      state.preview.allowanceReady = Boolean(approval.ready);
+      updateExecutionState();
+      renderExecutionDetails();
+      modules.session().save(selectors, { preview: minimalPreviewSession() });
+
+      if (state.preview.allowanceReady && successMessage) {
+        setText(query(selectors.executionMessage), successMessage);
+      }
+
+      return state.preview.allowanceReady;
+    } catch (error) {
+      updateExecutionState();
+      renderExecutionDetails();
+      setText(
+        query(selectors.executionMessage),
+        modules.core().errorMessage(error, 'Authorization submitted, but on-chain approval could not be refreshed. Reconnect wallet and press Validate Preview.')
+      );
+      return false;
+    }
   }
 
   async function approveExactAmount() {
@@ -986,17 +1032,29 @@
       renderExecutionDetails();
       setText(query(selectors.executionMessage), `Asset authorization submitted. Full hash: ${txHash}. Waiting for confirmation...`);
 
-      const receipt = await window.B20Wallet.waitForTransactionReceipt(txHash);
+      let receipt = null;
 
-      if (receipt.status && receipt.status !== '0x1') {
+      try {
+        receipt = await window.B20Wallet.waitForTransactionReceipt(txHash);
+      } catch (waitError) {
+        setText(
+          query(selectors.executionMessage),
+          `Authorization transaction submitted. Full hash: ${txHash}. Refreshing approval state from Base...`
+        );
+      }
+
+      if (receipt && receipt.status && receipt.status !== '0x1') {
         throw new Error('Authorization transaction failed.');
       }
 
-      state.preview.allowanceReady = true;
-      updateExecutionState();
-      renderExecutionDetails();
-      modules.session().save(selectors, { preview: minimalPreviewSession() });
-      setText(query(selectors.executionMessage), 'Asset authorization confirmed. Now press Send Assets.');
+      const approved = await refreshApprovalState(adapter, 'Asset authorization confirmed on-chain. Press Send Assets to start distribution.');
+
+      if (!approved) {
+        setText(
+          query(selectors.executionMessage),
+          `Authorization transaction submitted. Full hash: ${txHash}. If Base is still indexing it, press Validate Preview again in a few seconds.`
+        );
+      }
     } catch (error) {
       setText(query(selectors.executionMessage), modules.core().errorMessage(error, 'Authorization rejected.'));
     }
@@ -1035,7 +1093,11 @@
       await requireAdapterReadiness(adapter);
 
       if (adapter.requiresApproval && !state.preview.allowanceReady) {
-        throw new Error('Authorize exact amount before sending.');
+        const approved = await refreshApprovalState(adapter, 'Authorization found on-chain. Starting distribution...');
+
+        if (!approved) {
+          throw new Error('Authorize asset before sending. If authorization was already confirmed, press Validate Preview and try again.');
+        }
       }
 
       state.sending = true;
