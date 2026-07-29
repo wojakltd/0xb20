@@ -97,6 +97,50 @@
     }
   }
 
+  async function canReadErc1155Item(address, tokenId, owner) {
+    if (!String(tokenId || '').trim()) {
+      return false;
+    }
+
+    try {
+      const id = normalizeId(tokenId);
+      const uriResult = await abi().safeCall(address, abi().encodeUri(id));
+
+      if (uriResult && uriResult !== '0x') {
+        return true;
+      }
+
+      if (owner && wallet().isAddress(owner)) {
+        const balanceResult = await abi().safeCall(address, abi().encodeBalanceOf1155(owner, id));
+        return Boolean(balanceResult && balanceResult !== '0x');
+      }
+    } catch (error) {
+      return false;
+    }
+
+    return false;
+  }
+
+  async function canReadErc721Item(address, tokenId) {
+    if (!String(tokenId || '').trim()) {
+      return false;
+    }
+
+    try {
+      const id = normalizeId(tokenId);
+      const ownerResult = await abi().safeCall(address, abi().encodeOwnerOf(id));
+
+      if (ownerResult && ownerResult !== '0x') {
+        return true;
+      }
+
+      const uriResult = await abi().safeCall(address, abi().encodeTokenUri(id));
+      return Boolean(uriResult && uriResult !== '0x');
+    } catch (error) {
+      return false;
+    }
+  }
+
   function configuredAddress(config = {}) {
     if (!config.contractAddress || !wallet().isAddress(config.contractAddress)) {
       return '';
@@ -308,11 +352,15 @@
           symbol: 'NFT',
           decimals: 0
         });
+        const selectedTokenId = String(context.tokenId || '').trim()
+          ? normalizeId(context.tokenId)
+          : '';
 
         return {
           ...metadata,
           type: this.type,
           assetType: this.label,
+          selectedTokenId,
           balance: `${metadata.balanceRaw} NFTs`
         };
       },
@@ -516,11 +564,34 @@
           decimals: 0,
           balanceLabel: 'Scan IDs below'
         });
+        const selectedTokenId = String(context.tokenId || '').trim()
+          ? normalizeId(context.tokenId)
+          : '';
+        let selectedUri = '';
+        let selectedBalanceRaw = '';
+        let balanceLabel = 'Select or paste item ID';
+
+        if (selectedTokenId) {
+          selectedUri = await abi().readString(context.address, abi().encodeUri(selectedTokenId), '');
+
+          if (context.owner && wallet().isAddress(context.owner)) {
+            selectedBalanceRaw = (
+              await abi().readUint(context.address, abi().encodeBalanceOf1155(context.owner, selectedTokenId), 0n)
+            ).toString();
+            balanceLabel = `${selectedBalanceRaw} units of ID ${selectedTokenId}`;
+          } else {
+            balanceLabel = `ID ${selectedTokenId} queued`;
+          }
+        }
 
         return {
           ...metadata,
           type: this.type,
-          assetType: this.label
+          assetType: this.label,
+          selectedTokenId,
+          selectedUri,
+          selectedBalanceRaw,
+          balanceLabel
         };
       },
       parseRecipients(context) {
@@ -696,6 +767,7 @@
 
   async function detect(context) {
     const address = wallet().normalizeAddress(context.address);
+    const tokenId = String(context.tokenId || '').trim();
     const code = await wallet().readContractCode(address);
 
     if (!code || code === '0x') {
@@ -710,6 +782,18 @@
 
     if (await supportsInterface(address, abi().SELECTORS.erc1155InterfaceId)) {
       return createErc1155Adapter(address, {
+        useUniversalSender: Boolean(universalSenderAddress(context))
+      });
+    }
+
+    if (tokenId && await canReadErc1155Item(address, tokenId, context.owner)) {
+      return createErc1155Adapter(address, {
+        useUniversalSender: Boolean(universalSenderAddress(context))
+      });
+    }
+
+    if (tokenId && await canReadErc721Item(address, tokenId)) {
+      return createErc721Adapter(address, {
         useUniversalSender: Boolean(universalSenderAddress(context))
       });
     }

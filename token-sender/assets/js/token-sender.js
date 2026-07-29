@@ -153,6 +153,14 @@
     };
   }
 
+  function formatAssetTargetInput(target) {
+    if (!target?.address) {
+      return '';
+    }
+
+    return target.tokenId ? `${target.address}/${target.tokenId}` : target.address;
+  }
+
   function queueDetectedAssetId(tokenId) {
     const target = query(selectors.assetTokenIds);
 
@@ -595,8 +603,9 @@
           `Asset Type: ${activeAssetLabel()}`,
           `Symbol: ${state.token.symbol}`,
           `Name: ${state.token.name}`,
+          state.token.selectedTokenId ? `Selected ID: ${state.token.selectedTokenId}` : '',
           `Wallet Balance: ${state.token.balanceLabel || `${state.token.balance} ${state.token.symbol}`}`
-        ]
+        ].filter(Boolean)
       : ['Asset Type: --', 'Symbol: --', 'Name: --', 'Wallet Balance: --'];
 
     target.replaceChildren(...values.map((value) => {
@@ -759,17 +768,19 @@
         throw new Error('Asset adapter layer unavailable.');
       }
 
-      targetInput.value = address;
+      targetInput.value = formatAssetTargetInput(parsedTarget);
       const queuedTokenId = queueDetectedAssetId(parsedTarget.tokenId);
 
       state.assetAdapter = await modules.adapters().detect({
         address,
+        tokenId: parsedTarget.tokenId,
         owner: state.wallet.address,
         senderConfig: senderConfig(),
         assetSenderConfig: assetSenderConfig()
       });
       state.token = await state.assetAdapter.readMetadata({
         address: state.assetAdapter.address,
+        tokenId: parsedTarget.tokenId,
         owner: state.wallet.address,
         wallet: state.wallet
       });
