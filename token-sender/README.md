@@ -1,109 +1,61 @@
-# 0XB20 Token Sender
+# 0XB20 Asset Sender
 
-`/token-sender/` is the first premium Web3 application built on top of the shared Laboratory wallet layer.
+`/token-sender/` is the Laboratory asset distribution instrument on Base.
 
-It is intentionally conservative. The page can connect wallets, read ERC-20 metadata, parse recipients, build a validated preview, request exact approval and send through the configured sender contract. Premium capabilities are exposed through the existing Lab Pass system only; Token Sender does not own licensing logic.
+The route stays `/token-sender/` for backward compatibility, but the product is now **Asset Sender**. The module supports the existing ERC-20 workflow and introduces an adapter foundation for ERC-721 and ERC-1155 transfers.
 
-## Access
+## Core Principle
 
-The page reuses `assets/js/access-gate.js`.
+Asset Sender does not own wallet state, licensing, or chain-specific standards directly.
 
-Current password:
+It consumes shared layers:
 
-```text
-0xb20.lol
-```
+- `assets/js/wallet-service.js` for wallet state, Base switching and wallet-confirmed transactions.
+- `premium/premium-core.js` for Lab Pass feature checks.
+- `data/web3-tools.json` for public contract configuration.
+- `sender-adapters.js` for asset-standard behavior.
 
-It consumes the same shared wallet layer as `/profile/`, so the connected wallet identity stays consistent across Web3 instruments.
+## Asset Adapter Architecture
 
-## Wallet Layer
-
-The page does not own wallet state.
-
-It consumes:
+The frontend uses one adapter interface:
 
 ```text
-assets/js/wallet-service.js
+detect()
+readMetadata()
+parseRecipients()
+validateRecipients()
+describeRecipient()
+buildBatches()
+approveIfNeeded()
+buildTransferTransaction()
 ```
 
-The shared service handles:
+Current adapters:
 
-- wallet discovery
-- WalletConnect adapter initialization
-- persistent wallet session restore
-- address, chain, balance and profile reads
-- Base network switching
-- exact ERC-20 approval transaction requests
+- `ERC20Adapter` — preserves the existing exact-approval ERC-20 batch sender flow.
+- `ERC721Adapter` — supports manual NFT token ID assignment and safe transfer calls.
+- `ERC1155Adapter` — supports `address,id,amount` transfer rows and safe transfer calls.
 
-## Configuration
+UI code must not call ERC-721 or ERC-1155 selectors directly. Standard-specific logic belongs in adapters.
 
-Runtime configuration lives in:
+## Automatic Detection
 
-```text
-data/web3-tools.json
-```
+When a contract address is entered, Asset Sender attempts:
 
-To activate transactions later, set:
+1. ERC-165 `supportsInterface(0x80ac58cd)` for ERC-721.
+2. ERC-165 `supportsInterface(0xd9b67a26)` for ERC-1155.
+3. ERC-20 metadata fallback.
 
-```json
-{
-  "tokenSender": {
-    "contractAddress": "0x..."
-  }
-}
-```
+If metadata fails, the UI reports a readable error instead of sending anything.
 
-The contract is expected to expose:
+## ERC-20 Compatibility
 
-```solidity
-send(address token, address[] recipients, uint256[] amounts)
-```
-
-Reference contract:
-
-```text
-contracts/B20TokenSender.sol
-```
-
-Deployment instructions:
-
-```text
-contracts/README.md
-```
-
-## Premium Edition
-
-Token Sender uses the same Premium Core as Wallet Parser. It calls `B20Premium.requireAccess(...)` for premium capabilities and never implements payment, subscription or license verification itself.
-
-Current feature gates are configured in `data/web3-tools.json`:
-
-- `tokenSenderUnlimitedBatch` — remove the 250-wallet UI limit by splitting into safe sequential batches.
-- `tokenSenderImport` — TXT and CSV recipient imports.
-- `tokenSenderAddressBook` — local saved recipient lists.
-- `tokenSenderRetryFailed` — retry/export failed recipient batches.
-- `tokenSenderHistory` — local transaction memory.
-
-The global Lab Pass is still verified on-chain by Premium Core.
-
-## Batch Engine
-
-The sender separates validation, batching and execution:
-
-- `sender-import.js` parses TXT/CSV/address lists and removes duplicates.
-- `sender-batcher.js` splits recipients into safe blockchain batches.
-- `sender-progress.js` renders live batch progress.
-- `sender-history.js` stores local transaction history.
-- `sender-addressbook.js` stores reusable recipient lists.
-- `sender-export.js` exports failed recipients.
-- `sender-session.js` restores token, amount and recipient input after refresh.
-- `sender-storage.js` provides shared storage, including Wallet Parser handoff.
-
-User flow remains strict:
+The original ERC-20 workflow remains unchanged:
 
 ```text
 Connect
 ↓
-Read Token
+Detect Asset
 ↓
 Validate Preview
 ↓
@@ -112,55 +64,107 @@ Approve Exact Amount
 Send Sequential Batches
 ```
 
-Successful batches are never resent during retry. Failed recipients can be exported or retried separately.
-
-## Recipient Input
-
-Simple mode:
+Current ERC-20 execution contract:
 
 ```text
-Amount Per Wallet: 100
-
-0x1111111111111111111111111111111111111111
-0x2222222222222222222222222222222222222222
+contracts/B20TokenSender.sol
 ```
 
-Advanced mode:
+Configured under:
 
 ```text
-0x1111111111111111111111111111111111111111,100
+data/web3-tools.json → tokenSender.contractAddress
+```
+
+## Asset Sender V2 Contract
+
+The new reference contract is:
+
+```text
+contracts/B20AssetSenderV2.sol
+```
+
+It is stateless and supports:
+
+- `batchERC20`
+- `batchERC721`
+- `batchERC1155`
+
+The contract has:
+
+- no owner
+- no upgradeability
+- no fees
+- no custody
+- no withdrawal path
+- native ETH rejection
+- reentrancy protection
+- custom errors
+- separate events per asset type
+
+Configured under:
+
+```text
+data/web3-tools.json → assetSender.contractAddress
+```
+
+If V2 is not configured, ERC-721 and ERC-1155 adapters can still use direct wallet-confirmed `safeTransferFrom` calls one batch at a time.
+
+## Recipient Formats
+
+ERC-20:
+
+```text
+0x1111111111111111111111111111111111111111
 0x2222222222222222222222222222222222222222,50
 ```
 
-Advanced line amounts override the default amount.
-
-CSV import accepts common headers:
+ERC-721:
 
 ```text
-wallet,amount
-address,amount
-recipient,amount
+0x1111111111111111111111111111111111111111,101
+0x2222222222222222222222222222222222222222,102
 ```
 
-Wallet Parser can transfer currently filtered loaded holders directly into Token Sender through shared browser storage. No copy/paste is required.
+or paste one recipient per line and put matching token IDs in the Token IDs field.
+
+ERC-1155:
+
+```text
+0x1111111111111111111111111111111111111111,7,1
+0x2222222222222222222222222222222222222222,7,2
+```
+
+## Premium Features
+
+Asset Sender uses the same Lab Pass system as Wallet Parser. It calls existing Premium Core feature checks and never implements payment or license validation itself.
+
+Current feature gates remain under `tokenSender*` keys for backward compatibility:
+
+- unlimited safe batching
+- TXT/CSV imports
+- address books
+- retry failed batches
+- transaction history
+
+## Wallet Parser Handoff
+
+Wallet Parser sends parsed holder addresses through shared browser storage. The storage key remains legacy-compatible, while the visible tool name is Asset Sender.
 
 ## Security Rules
 
 - No private keys are stored.
 - No seed phrases are requested.
 - No transaction is sent automatically.
-- Approval is disabled until preview succeeds.
-- Approval is exact-amount only.
+- ERC-20 approvals are exact-amount only.
+- NFT approvals are never hidden.
 - Sending requires explicit wallet confirmation for every batch.
-- Unlimited sending is implemented as sequential safe batches, not a single unsafe transaction.
+- Failed batches can be retried without resending successful batches.
 
-## Future Extensions
+## Known V2 Limitations
 
-- audited batch sender contract
-- gas estimation through the contract adapter
-- NFT sender
-- wallet scanner
-- portfolio reader
-- token-gated research profiles
+- ERC-721 owned token ID discovery requires an indexer for collections without enumerable methods. V2 supports manual token ID input.
+- NFT image metadata is best-effort and must never block transfers.
+- ERC-721 and ERC-1155 direct mode may require more wallet confirmations until the V2 sender contract is deployed and configured.
 
 Research never ends.

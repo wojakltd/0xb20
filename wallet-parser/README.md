@@ -176,7 +176,7 @@ Format:
 
 No balances, ranks, commas, JSON, or formatting are included.
 
-This output is intentionally compatible with Token Sender.
+This output is intentionally compatible with Asset Sender.
 
 ## Export Format
 

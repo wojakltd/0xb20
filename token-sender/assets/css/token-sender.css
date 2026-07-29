@@ -95,6 +95,22 @@
     resize:vertical;
 }
 
+.sender-textarea-small{
+    min-height:96px;
+}
+
+.sender-asset-options{
+    border:1px solid rgba(103,179,255,.14);
+    border-radius:var(--radius);
+    background:rgba(2,6,14,.38);
+    margin:14px 0 6px;
+    padding:14px;
+}
+
+.sender-asset-options[hidden]{
+    display:none;
+}
+
 .sender-token-readout,
 .sender-preview-stats{
     display:grid;

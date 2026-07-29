@@ -9,10 +9,24 @@
     "chainId": "0x2105",
     "network": "BASE",
     "contractAddress": "0x1b763d93ac6d0029aA88AD4066AB7731Dc9e03C0",
-    "contractName": "0XB20 Token Sender",
+    "contractName": "0XB20 Asset Sender Legacy ERC20",
     "approvalMode": "exact",
     "maxRecipients": 250,
     "safeBatchSize": 120
+  },
+  "assetSender": {
+    "enabled": true,
+    "chainId": "0x2105",
+    "network": "BASE",
+    "contractAddress": "0xF3e04B93Ce19dc1172C2554D71867F61094597e2",
+    "contractName": "0XB20 Asset Sender V2",
+    "approvalMode": "adapter",
+    "directTransferFallback": true,
+    "safeBatchSize": {
+      "erc20": 120,
+      "erc721": 40,
+      "erc1155": 60
+    }
   },
   "premium": {
     "enabled": true,

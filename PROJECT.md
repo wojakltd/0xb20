@@ -44,7 +44,7 @@ HTML should define module shells only. Expandable content should come from `data
 - `ai/index.html` is the public AI Lab idea synthesis terminal at `/ai/`.
 - `profile/index.html` is the wallet Profile terminal at `/profile/`.
 - `test/index.html` is a legacy redirect to `/profile/`.
-- `token-sender/index.html` is the protected Token Sender v1 instrument at `/token-sender/`.
+- `token-sender/index.html` is the Asset Sender instrument at `/token-sender/`.
 - `evolution/index.html` is the Laboratory Evolution Tree page at `/evolution/`.
 - `protocol/index.html` is a legacy redirect to `/evolution/`.
 - `style.css` is a compatibility stylesheet that imports modular CSS.
@@ -210,7 +210,7 @@ Drives protected Web3 tool configuration.
     "chainId": "0x2105",
     "network": "BASE",
     "contractAddress": "0x...",
-    "contractName": "0XB20 Token Sender",
+    "contractName": "0XB20 Asset Sender Legacy ERC20",
     "approvalMode": "exact",
     "maxRecipients": 250
   }
@@ -274,7 +274,7 @@ Never use:
 - `profile/assets/js/profile-referral.js` renders Partner Dashboard data from referral API endpoints.
 - `research/assets/js/research.js` renders `/research/` from `research/backend/cache/feed.json`.
 - `test/assets/js/test-wallet.js` renders `/profile/` wallet identity through the shared wallet service.
-- `token-sender/assets/js/token-sender.js` renders `/token-sender/` Token Sender v1 through the shared wallet service.
+- `token-sender/assets/js/token-sender.js` renders `/token-sender/` Asset Sender through the shared wallet service.
 - `assets/js/interactions.js` adds pointer-reactive glow effects.
 
 ## How To Add A New Legacy Record
@@ -426,18 +426,23 @@ Optional purchase sync variables:
 - `REFERRAL_SYNC_MAX_CHUNKS`
 - `REFERRAL_SYNC_URL`
 
-## How To Update Token Sender
+## How To Update Asset Sender
 
-The Token Sender lives at `/token-sender/` and consumes the same shared wallet layer as `/profile/`.
+The Asset Sender lives at `/token-sender/` for backward compatibility and consumes the same shared wallet layer as `/profile/`.
 
 - Browser code lives in `token-sender/assets/js/token-sender.js`.
 - Visual module styles live in `token-sender/assets/css/token-sender.css`.
+- Asset-standard logic lives in `token-sender/assets/js/sender-adapters.js`.
+- ABI helpers live in `token-sender/assets/js/sender-abi.js`.
 - Shared wallet runtime lives in `assets/js/wallet-service.js`.
 - Tool config lives in `data/web3-tools.json`.
 - Reference smart contract lives in `contracts/B20TokenSender.sol`.
+- Universal V2 smart contract lives in `contracts/B20AssetSenderV2.sol`.
 - TypeScript contracts live in `src/wallet/` and `src/contracts/`.
-- `contractAddress` must point only to a reviewed and verified Token Sender smart contract on the configured network.
+- `tokenSender.contractAddress` must point only to a reviewed and verified ERC-20 sender contract on the configured network.
+- `assetSender.contractAddress` is reserved for the reviewed and verified universal sender V2 contract.
 - Approval must remain exact amount only.
+- ERC-721 and ERC-1155 transfers must use adapter-controlled safe transfer flows.
 - Never auto-send transactions.
 - Never request unlimited approvals by default.
 - Never store private keys, seed phrases, signatures, or wallet credentials.

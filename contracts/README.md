@@ -1,6 +1,10 @@
-# B20 Token Sender Contract
+# B20 Sender Contracts
 
-This contract is the execution layer expected by `/token-sender/`.
+This folder contains the reviewed sender contracts used by `/token-sender/`.
+
+## B20TokenSender
+
+`B20TokenSender.sol` is the legacy ERC-20 execution layer expected by the original Asset Sender flow.
 
 It is deliberately small:
 
@@ -76,6 +80,71 @@ Research never ends.
 
 ---
 
+# B20 Asset Sender V2
+
+`B20AssetSenderV2.sol` is the universal Base asset sender reference contract.
+
+It extends the sender model from ERC-20-only distribution into a single stateless contract for:
+
+- ERC-20 token batches;
+- ERC-721 NFT batches;
+- ERC-1155 asset batches.
+
+## Security Model
+
+The V2 contract remains deliberately small:
+
+- no owner;
+- no admin;
+- no fees;
+- no upgradeability;
+- no token custody;
+- no withdrawal functions;
+- no native ETH receive path;
+- no delegatecall;
+- custom errors;
+- separate events per asset type;
+- reentrancy protection.
+
+Every transfer moves assets directly from `msg.sender` to recipients. The contract cannot move assets from wallets that did not approve or call it.
+
+## Contract Interfaces
+
+```solidity
+batchERC20(address token, address[] recipients, uint256[] amounts)
+batchERC721(address collection, address[] recipients, uint256[] tokenIds)
+batchERC1155(address collection, address[] recipients, uint256[] ids, uint256[] amounts)
+```
+
+## Deploy With Remix
+
+1. Open `https://remix.ethereum.org`.
+2. Create `B20AssetSenderV2.sol`.
+3. Paste `contracts/B20AssetSenderV2.sol`.
+4. Compile with Solidity `0.8.24` or newer.
+5. Enable optimizer with `200` runs.
+6. Connect wallet to Base mainnet.
+7. Deploy `B20AssetSenderV2`.
+8. Copy the deployed contract address.
+9. Verify the contract on BaseScan with the same compiler and optimizer settings.
+10. Put the verified contract address into `data/web3-tools.json`:
+
+```json
+{
+  "assetSender": {
+    "contractAddress": "0xDEPLOYED_CONTRACT"
+  }
+}
+```
+
+The existing `tokenSender.contractAddress` should remain configured for ERC-20 backward compatibility until the frontend fully switches ERC-20 execution to V2.
+
+## Wallet Warning Notes
+
+The V2 contract avoids admin controls and custody. Wallets may still show generic warnings for newly deployed contracts, especially for NFT approvals. Users must manually confirm every approval and transfer.
+
+---
+
 # Laboratory License Manager
 
 `LaboratoryLicenseManager.sol` is the shared Lab Pass contract for Premium Core.
@@ -83,7 +152,7 @@ Research never ends.
 It is designed as one reusable licensing contract for every Laboratory tool:
 
 - Wallet Parser
-- Token Sender
+- Asset Sender
 - AI LAB
 - Research
 - future experiments

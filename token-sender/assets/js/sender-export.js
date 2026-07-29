@@ -35,8 +35,15 @@
     }
 
     const content = [
-      ['Batch', 'Address', 'Amount', 'Error'],
-      ...rows.map((row) => [row.batch, row.address, row.amount, row.error])
+      ['Batch', 'Asset Type', 'Address', 'Amount', 'Token ID', 'Error'],
+      ...rows.map((row) => [
+        row.batch,
+        row.assetType || token?.type || 'erc20',
+        row.address,
+        row.amount,
+        row.tokenId || '',
+        row.error
+      ])
     ].map((row) => row.map(csvCell).join(',')).join('\n');
     const symbol = core.safeFilename(token?.symbol, 'TOKEN');
     core.download(`${symbol}_failed_wallets.csv`, 'text/csv', `\uFEFF${content}\n`);

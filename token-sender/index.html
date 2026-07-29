@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="0XB20 Laboratory Token Sender: a protected Web3 distribution instrument.">
+  <meta name="description" content="0XB20 Laboratory Asset Sender: a protected universal Base asset distribution instrument.">
   <meta name="b20-root" content="/">
-  <title>0XB20 Token Sender</title>
+  <title>0XB20 Asset Sender</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/ai/assets/css/ai.css">
   <link rel="stylesheet" href="/test/assets/css/test.css">
   <link rel="stylesheet" href="/premium/premium.css">
-  <link rel="stylesheet" href="/token-sender/assets/css/token-sender.css?v=20260721-4">
+  <link rel="stylesheet" href="/token-sender/assets/css/token-sender.css?v=20260729-1">
 </head>
 <body class="test-body token-sender-body">
 
@@ -25,7 +25,7 @@
     <a href="/" data-module-route="/">Home</a>
     <a href="/research/" data-module-route="/research">Research</a>
     <a href="/ai/" data-module-route="/ai">AI LAB</a>
-    <a href="/token-sender/" data-module-route="/token-sender" aria-current="page">Token Sender</a>
+    <a href="/token-sender/" data-module-route="/token-sender" aria-current="page">Asset Sender</a>
     <a href="/wallet-parser/" data-module-route="/wallet-parser">Wallet Parser</a>
     <a href="/evolution/" data-module-route="/evolution">Evolution</a>
     <a href="/logs/" data-module-route="/logs">Archive</a>
@@ -36,13 +36,13 @@
 <main class="test-page token-sender-page">
   <section class="research-gate ai-gate test-gate" data-token-gate hidden>
     <span class="eyebrow">Protected Instrument</span>
-    <h1>TOKEN SENDER LOCKED</h1>
-    <p>Batch transaction experiments require the current Laboratory access key.</p>
+    <h1>ASSET SENDER LOCKED</h1>
+    <p>Universal Base asset experiments require the current Laboratory access key.</p>
     <form class="research-gate-form" data-token-gate-form>
       <label for="token-sender-password">Access key</label>
       <div class="research-gate-controls">
         <input id="token-sender-password" data-token-password type="password" autocomplete="current-password" spellcheck="false" placeholder="Laboratory key">
-        <button type="submit">Unlock Token Sender</button>
+        <button type="submit">Unlock Asset Sender</button>
       </div>
       <p class="research-gate-error" data-token-gate-error hidden>ACCESS DENIED. Key rejected.</p>
     </form>
@@ -51,22 +51,22 @@
   <div data-token-content hidden>
     <section class="test-hero token-hero lab-reactive" data-reveal>
       <span class="eyebrow">WEB3 FOUNDATION</span>
-      <h1>Token Sender</h1>
-      <p class="test-subtitle">Batch Distribution Instrument v1</p>
-      <div class="test-status-strip" aria-label="Token sender status">
+      <h1>Asset Sender</h1>
+      <p class="test-subtitle">Universal Base Asset Sender v2</p>
+      <div class="test-status-strip" aria-label="Asset sender status">
         <span>Status: PROTECTED</span>
         <span>Network: BASE</span>
-        <span>Approval: EXACT ONLY</span>
+        <span>Mode: UNIVERSAL</span>
       </div>
     </section>
 
     <section class="sender-shell lab-reactive" data-reveal>
-      <div class="sender-flow" aria-label="Token sender transaction flow">
+      <div class="sender-flow" aria-label="Asset sender transaction flow">
         <span>Connect Wallet</span>
-        <span>Token Contract</span>
+        <span>Asset Contract</span>
         <span>Recipients</span>
         <span>Preview</span>
-        <span>Approve</span>
+        <span>Authorize</span>
         <span>Send</span>
       </div>
 
@@ -123,17 +123,17 @@
         <article class="test-panel sender-panel-wide">
           <div class="test-panel-header">
             <div>
-              <span class="eyebrow">Token Contract</span>
-              <h3>ERC-20 Target</h3>
+              <span class="eyebrow">Asset Contract</span>
+              <h3>Universal Asset Target</h3>
             </div>
-            <button class="test-secondary" type="button" data-token-load>Read Token</button>
+            <button class="test-secondary" type="button" data-token-load>Detect Asset</button>
           </div>
-          <label class="sender-label" for="token-address">Token Address</label>
+          <label class="sender-label" for="token-address">Asset Contract Address</label>
           <input id="token-address" class="sender-input" data-token-address type="text" inputmode="text" spellcheck="false" placeholder="0x...">
           <div class="sender-token-readout" data-token-readout>
-            <span>Name: --</span>
+            <span>Asset Type: --</span>
             <span>Symbol: --</span>
-            <span>Decimals: --</span>
+            <span>Name: --</span>
             <span>Wallet Balance: --</span>
           </div>
         </article>
@@ -152,9 +152,14 @@
               <input id="recipient-default-amount" class="sender-input" data-default-amount type="text" inputmode="decimal" spellcheck="false" placeholder="Example: 100">
             </div>
             <p class="test-muted">
-              Paste one address per line, import Wallet Parser CSV, or use advanced format:
-              <strong>address,amount</strong>. Parser CSV uses Amount Per Wallet.
+              ERC20: <strong>address</strong> or <strong>address,amount</strong>.
+              ERC721: <strong>address,tokenId</strong>. ERC1155: <strong>address,id,amount</strong>.
             </p>
+          </div>
+          <div class="sender-asset-options" data-asset-token-id-panel hidden>
+            <label class="sender-label" for="asset-token-ids">Token IDs / Asset IDs</label>
+            <textarea id="asset-token-ids" class="sender-textarea sender-textarea-small" data-asset-token-ids spellcheck="false" placeholder="ERC721 bare recipient rows use one token ID per line&#10;1&#10;2&#10;3&#10;&#10;ERC1155 can use the first ID here as default."></textarea>
+            <p class="test-muted">Metadata is optional. Transfers never fail only because image or URI data is unavailable.</p>
           </div>
           <div class="sender-tool-row">
             <input type="file" accept=".txt,.csv,text/plain,text/csv" data-token-import-file hidden>
@@ -189,7 +194,7 @@
               <strong data-preview-wallets>0</strong>
             </div>
             <div>
-              <span>Total Tokens</span>
+              <span>Total Assets</span>
               <strong data-preview-total>0</strong>
             </div>
             <div>
@@ -218,17 +223,17 @@
           <div class="test-panel-header">
             <div>
               <span class="eyebrow">Execution</span>
-              <h3>Approval Flow</h3>
+              <h3>Authorization Flow</h3>
             </div>
             <span class="test-state">MANUAL CONFIRMATION ONLY</span>
           </div>
           <div class="test-muted sender-contract-status" data-contract-status>
-            Distribution contract not configured. Preview mode is active.
+            Asset sender not configured. Preview mode is active.
           </div>
           <div class="sender-execution-details" data-token-execution-details></div>
           <div class="test-action-row">
-            <button class="test-primary" type="button" data-token-approve disabled>Approve Exact Amount</button>
-            <button class="test-primary" type="button" data-token-send disabled>Send Batch</button>
+            <button class="test-primary" type="button" data-token-approve disabled>Authorize Asset</button>
+            <button class="test-primary" type="button" data-token-send disabled>Send Assets</button>
             <button class="test-secondary" type="button" data-token-retry-failed disabled>Retry Failed</button>
             <button class="test-secondary" type="button" data-token-export-failed-txt disabled>Export Failed TXT</button>
             <button class="test-secondary" type="button" data-token-export-failed-csv disabled>Export Failed CSV</button>
@@ -268,15 +273,17 @@
 <script src="/token-sender/assets/js/sender-core.js?v=20260727-1" defer></script>
 <script src="/token-sender/assets/js/sender-storage.js?v=20260727-1" defer></script>
 <script src="/token-sender/assets/js/sender-import.js?v=20260727-2" defer></script>
-<script src="/token-sender/assets/js/sender-batcher.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-batcher.js?v=20260729-1" defer></script>
 <script src="/token-sender/assets/js/sender-history.js?v=20260727-1" defer></script>
 <script src="/token-sender/assets/js/sender-addressbook.js?v=20260727-1" defer></script>
-<script src="/token-sender/assets/js/sender-export.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-export.js?v=20260729-1" defer></script>
 <script src="/token-sender/assets/js/sender-progress.js?v=20260727-1" defer></script>
-<script src="/token-sender/assets/js/sender-session.js?v=20260727-1" defer></script>
+<script src="/token-sender/assets/js/sender-session.js?v=20260729-1" defer></script>
 <script src="/token-sender/assets/js/sender-gas.js?v=20260727-1" defer></script>
 <script src="/token-sender/assets/js/sender-validator.js?v=20260727-1" defer></script>
-<script src="/token-sender/assets/js/token-sender.js?v=20260727-2" defer></script>
+<script src="/token-sender/assets/js/sender-abi.js?v=20260729-1" defer></script>
+<script src="/token-sender/assets/js/sender-adapters.js?v=20260729-1" defer></script>
+<script src="/token-sender/assets/js/token-sender.js?v=20260729-1" defer></script>
 
 </body>
 </html>

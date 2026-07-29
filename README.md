@@ -25,7 +25,7 @@ Research never ends.
 - Evolution Tree rendered from structured project data.
 - Shared wallet layer for Web3 experiments.
 - Profile terminal for read-only wallet identity, Lab Pass status and signature testing.
-- Token Sender Premium Edition for exact-approval ERC-20 batch distribution, imports, local history, address books, retry handling and automatic safe batching.
+- Asset Sender Premium Edition for Base ERC-20, ERC-721 and ERC-1155 distribution through a shared adapter layer.
 - Wallet Parser v1 for read-only Base ERC-20 holder extraction, filtering and exports.
 - Premium Core v1 foundation for one reusable on-chain Lab Pass across current and future tools.
 - Partner Dashboard foundation for ecosystem-wide referral links, partner stats, share materials and withdrawal requests.
@@ -105,14 +105,16 @@ Unified wallet and partner dashboard for connection status, identity reads, Lab 
 
 The Profile dashboard uses the referral backend in `src/referral/referral-service.js`. Referral configuration is backend-owned; frontend code never hardcodes commission percentages.
 
-### Token Sender
+### Asset Sender
 
-ERC-20 batch sender interface built on the shared wallet and Lab Pass layers. It uses:
+Universal Base asset sender built on the shared wallet and Lab Pass layers. It uses:
 
 - shared wallet service;
 - existing Premium Core feature checks;
 - Base mainnet;
-- exact approval only;
+- ERC-20 exact approval only;
+- ERC-721 and ERC-1155 safe transfer adapters;
+- automatic asset detection through ERC-165 and ERC-20 fallback;
 - preview before approval;
 - TXT/CSV imports with duplicate removal;
 - local transaction history and address books;
@@ -265,7 +267,7 @@ Do not leave unrestricted wildcard domains enabled for public release.
 - Third-party API keys stay server-side.
 - Client-side password gates are UX barriers, not authentication.
 - Wallet tools never request private keys or seed phrases.
-- Token Sender uses exact approvals only.
+- Asset Sender uses exact ERC-20 approvals only and never hides NFT approvals.
 - Premium Core uses on-chain license checks only.
 - No hidden approvals.
 - No automatic transaction execution.

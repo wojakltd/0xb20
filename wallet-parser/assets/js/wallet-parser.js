@@ -344,8 +344,8 @@
       const transferable = state.filteredHolders.length;
       sendTokenSenderButton.disabled = transferable === 0 || state.exporting || scanner.isActive();
       sendTokenSenderButton.textContent = transferable
-        ? `Send ${transferable.toLocaleString('en-US')} To Token Sender`
-        : 'Send To Token Sender';
+        ? `Send ${transferable.toLocaleString('en-US')} To Asset Sender`
+        : 'Send To Asset Sender';
     }
 
     if (exportTxtButton) {
@@ -753,7 +753,7 @@
   function sendToTokenSender() {
     try {
       if (!window.B20SenderStorage || typeof window.B20SenderStorage.sendParserRecipients !== 'function') {
-        throw new Error('Token Sender storage bridge unavailable.');
+        throw new Error('Asset Sender storage bridge unavailable.');
       }
 
       const addresses = state.filteredHolders
@@ -761,7 +761,7 @@
         .filter(Boolean);
 
       if (!addresses.length) {
-        setMessage('No parsed holders available for Token Sender.');
+        setMessage('No parsed holders available for Asset Sender.');
         return;
       }
 
@@ -778,10 +778,10 @@
         throw new Error('Browser storage rejected the transfer.');
       }
 
-      setMessage(`Prepared ${addresses.length.toLocaleString('en-US')} addresses for Token Sender.`);
+      setMessage(`Prepared ${addresses.length.toLocaleString('en-US')} addresses for Asset Sender.`);
       window.location.href = '/token-sender/';
     } catch (error) {
-      setMessage(errorMessage(error, 'Token Sender transfer unavailable.'));
+      setMessage(errorMessage(error, 'Asset Sender transfer unavailable.'));
     }
   }
 

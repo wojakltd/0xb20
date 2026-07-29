@@ -5,11 +5,13 @@
     const tokenInput = document.querySelector(selectors.tokenAddress);
     const amountInput = document.querySelector(selectors.defaultAmount);
     const recipientsInput = document.querySelector(selectors.recipients);
+    const tokenIdsInput = selectors.assetTokenIds ? document.querySelector(selectors.assetTokenIds) : null;
 
     return {
       tokenAddress: tokenInput ? tokenInput.value : '',
       defaultAmount: amountInput ? amountInput.value : '',
-      recipientsText: recipientsInput ? recipientsInput.value : ''
+      recipientsText: recipientsInput ? recipientsInput.value : '',
+      assetTokenIds: tokenIdsInput ? tokenIdsInput.value : ''
     };
   }
 
@@ -30,6 +32,7 @@
     const tokenInput = document.querySelector(selectors.tokenAddress);
     const amountInput = document.querySelector(selectors.defaultAmount);
     const recipientsInput = document.querySelector(selectors.recipients);
+    const tokenIdsInput = selectors.assetTokenIds ? document.querySelector(selectors.assetTokenIds) : null;
 
     if (tokenInput && session.tokenAddress) {
       tokenInput.value = session.tokenAddress;
@@ -41,6 +44,10 @@
 
     if (recipientsInput && session.recipientsText) {
       recipientsInput.value = session.recipientsText;
+    }
+
+    if (tokenIdsInput && session.assetTokenIds) {
+      tokenIdsInput.value = session.assetTokenIds;
     }
 
     return session;

@@ -2,7 +2,10 @@
   const core = global.B20SenderCore;
 
   function batchTotalRaw(recipients) {
-    return (recipients || []).reduce((total, recipient) => total + BigInt(recipient.amountRaw || 0), 0n);
+    return (recipients || []).reduce((total, recipient) => {
+      const raw = recipient.amountRaw ?? recipient.unitsRaw ?? '1';
+      return total + BigInt(raw || 0);
+    }, 0n);
   }
 
   function buildPlan(recipients, options = {}) {
