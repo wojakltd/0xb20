@@ -26,7 +26,8 @@ const memory = {
   purchases: new Map(),
   earnings: new Map(),
   withdrawals: new Map(),
-  referralChildren: new Map()
+  referralChildren: new Map(),
+  sync: new Map()
 };
 
 function nowIso() {
@@ -214,6 +215,14 @@ async function setArray(collection, wallet, value) {
   return setJson(key(collection, wallet), value);
 }
 
+async function getSyncState(name) {
+  return getJson(key('sync', String(name || 'default')), {});
+}
+
+async function setSyncState(name, value) {
+  return setJson(key('sync', String(name || 'default')), value);
+}
+
 async function referrerChain(wallet, maxDepth = 3) {
   const chain = [];
   let cursor = normalizeAddress(wallet);
@@ -369,7 +378,13 @@ async function recordPurchase(body) {
     currency,
     txHash,
     timestamp,
-    status: 'verified'
+    status: 'verified',
+    source: body.source || 'manual',
+    eventName: body.eventName || '',
+    blockNumber: body.blockNumber ? safeNumber(body.blockNumber) : 0,
+    paymentToken: body.paymentToken || '',
+    paymentRaw: body.paymentRaw ? String(body.paymentRaw) : '',
+    labPassExpiration: body.labPassExpiration ? safeNumber(body.labPassExpiration) : 0
   };
   purchases.push(purchase);
   await setArray('purchases', wallet, purchases);
@@ -584,6 +599,22 @@ function createHandler(action) {
         return;
       }
 
+      if (action === 'bind') {
+        if (req.method !== 'POST') {
+          res.status(405).json({ error: 'Method not allowed.' });
+          return;
+        }
+
+        if (!wallet || !isAddress(wallet)) {
+          res.status(400).json({ error: 'Wallet address required.' });
+          return;
+        }
+
+        const user = await bindReferral(wallet, referrer);
+        res.status(200).json({ profile: user, database: storageInfo() });
+        return;
+      }
+
       if (!wallet || !isAddress(wallet)) {
         res.status(400).json({ error: 'Wallet address required.' });
         return;
@@ -636,6 +667,8 @@ module.exports = {
   bindReferral,
   calculateRewards,
   recordPurchase,
+  getSyncState,
+  setSyncState,
   defaultConfig,
   normalizeAddress,
   shortAddress

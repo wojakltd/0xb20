@@ -203,7 +203,13 @@ Required production environment variables:
 - `DATABASE_URL` — recommended Neon Postgres connection string for persistent referral accounting.
 - `KV_REST_API_URL` — optional Vercel KV / Upstash Redis REST URL fallback for referral data.
 - `KV_REST_API_TOKEN` — optional Vercel KV / Upstash Redis REST token fallback for referral data.
-- `REFERRAL_ADMIN_SECRET` — optional server-side secret for trusted referral purchase ingest workers.
+- `REFERRAL_ADMIN_SECRET` — required server-side secret for trusted referral purchase sync workers.
+- `BASE_RPC_URL` — optional Base RPC override for the Lab Pass purchase indexer.
+- `LAB_PASS_ACCOUNTING_USD` — optional accounting value per Lab Pass purchase, defaults to `10`.
+- `LAB_PASS_ACCOUNTING_CURRENCY` — optional referral reward accounting currency, defaults to `USDC`.
+- `REFERRAL_SYNC_CONFIRMATIONS` — optional Base block confirmations before indexing, defaults to `3`.
+- `REFERRAL_SYNC_BLOCK_CHUNK` — optional indexer block range per RPC request, defaults to `5000`.
+- `REFERRAL_SYNC_MAX_CHUNKS` — optional max chunks per sync run, defaults to `30`.
 
 AI Lab uses a single serverless endpoint with an `action` parameter. Supported actions are `generateSignal`, `generatePost`, `generateThread`, `generateReplies`, `generateQuote`, `generateCampaign`, `summarizeResearch`, `generateHashtags`, and `remixContent`.
 
@@ -211,10 +217,26 @@ GitHub Actions secrets used by automation:
 
 - `VERCEL_DEPLOY_HOOK_URL` — Vercel Deploy Hook.
 - `X_BEARER_TOKEN` or `X_API_BEARER_TOKEN` — X API bearer token for Laboratory Research import.
+- `REFERRAL_ADMIN_SECRET` — same value as Vercel, used by scheduled referral sync.
+- `REFERRAL_SYNC_URL` — optional override for the deployed sync endpoint. Defaults to `https://0xb20.lol/api/referral/sync-purchases`.
 
 The Research workflow runs inside GitHub Actions, so the X bearer token must be stored in GitHub repository Actions secrets. Adding it only to Vercel environment variables will not update the Research cache.
 
-Referral APIs use Neon Postgres when `DATABASE_URL` exists. If it is missing, the service can fall back to KV/Upstash REST, then volatile serverless memory. Memory is acceptable for local testing only. Production partner rewards require persistent storage and a purchase-event indexer.
+Referral APIs use Neon Postgres when `DATABASE_URL` exists. If it is missing, the service can fall back to KV/Upstash REST, then volatile serverless memory. Memory is acceptable for local testing only.
+
+The referral purchase indexer lives in `src/referral/license-indexer.js` and reads `LaboratoryLicenseManager` events from Base. It stores sync state in the same referral database and records each `LicensePurchased` / `LicenseExtended` event through the existing referral purchase ingest path.
+
+Manual production sync:
+
+```powershell
+$env:REFERRAL_ADMIN_SECRET="same-secret-as-vercel"
+Invoke-RestMethod `
+  -Uri "https://0xb20.lol/api/referral/sync-purchases" `
+  -Method Post `
+  -Headers @{ "x-referral-admin-secret" = $env:REFERRAL_ADMIN_SECRET } `
+  -ContentType "application/json" `
+  -Body '{"maxChunks":30}'
+```
 
 Optional temporary Research fallbacks:
 

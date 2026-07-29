@@ -20,6 +20,7 @@
     "network": "BASE",
     "contractAddress": "0xe4a16552EF03C7933031e87161c8C572E50318D5",
     "contractName": "Laboratory License Manager",
+    "deploymentBlock": 48995732,
     "paymentMode": "native",
     "paymentToken": {
       "address": "0x0000000000000000000000000000000000000000",

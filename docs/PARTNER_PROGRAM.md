@@ -24,6 +24,16 @@ Referral Service
 Referral Database
         ↓
 Profile Partner Dashboard
+
+LaboratoryLicenseManager
+  LicensePurchased / LicenseExtended events
+        ↓
+Referral Purchase Sync
+  src/referral/license-indexer.js
+        ↓
+POST /api/referral/purchase logic
+        ↓
+Reward Engine
 ```
 
 The frontend never owns referral business rules. Percentages, minimum withdrawal amounts and rank thresholds come from the backend response.
@@ -32,7 +42,9 @@ The frontend never owns referral business rules. Percentages, minimum withdrawal
 
 - `assets/js/referral-capture.js` — captures `?ref=` and stores it once.
 - `src/referral/referral-service.js` — backend referral service and dashboard model.
+- `src/referral/license-indexer.js` — reads Lab Pass purchase events from Base and records verified purchases.
 - `api/referral/*.js` — Vercel API routes.
+- `.github/workflows/referral-sync.yml` — scheduled GitHub Actions worker for purchase synchronization.
 - `profile/assets/js/profile-referral.js` — Profile dashboard client.
 - `profile/assets/css/profile.css` — Profile dashboard layout.
 - `contracts/LaboratoryReferralVault.sol` — payout vault contract.
@@ -92,11 +104,33 @@ If no database variables exist, the service falls back to volatile serverless me
 - `GET /api/referral/dashboard?wallet=0x...`
 - `GET /api/referral/tree?wallet=0x...`
 - `POST /api/referral/withdraw`
+- `POST /api/referral/bind`
 - `POST /api/referral/purchase`
+- `POST /api/referral/sync-purchases`
 
 `/api/referral/dashboard` is the preferred frontend endpoint because it returns the full Profile dashboard model in one request.
 
 `/api/referral/purchase` is reserved for a trusted backend worker or manual admin tooling. It requires the `REFERRAL_ADMIN_SECRET` server environment variable and the `x-referral-admin-secret` request header. Browsers should never call it.
+
+`/api/referral/bind` safely binds a captured referral wallet to a connected user wallet before purchase. It preserves first-touch attribution, rejects self-referrals, and never overwrites an existing referrer.
+
+`/api/referral/sync-purchases` is the trusted watcher endpoint. It reads `LaboratoryLicenseManager` events from Base, stores sync progress in the referral database, and records each unique Lab Pass purchase through the same purchase ingestion path.
+
+## Purchase Sync
+
+Lab Pass purchases are indexed automatically by `src/referral/license-indexer.js`.
+
+Flow:
+
+1. Visitor arrives with `?ref=0xPartner`.
+2. Browser stores the referrer locally.
+3. Before Lab Pass purchase, Premium Core binds the referrer through `/api/referral/bind`.
+4. `LaboratoryLicenseManager` emits `LicensePurchased` or `LicenseExtended`.
+5. Scheduled sync calls `/api/referral/sync-purchases`.
+6. The indexer reads Base logs, deduplicates by transaction hash, and records the purchase.
+7. The reward engine credits level 1 / 2 / 3 partner balances.
+
+The watcher does not change `LaboratoryLicenseManager`. The license contract remains responsible only for selling and extending Lab Pass.
 
 ## Withdrawal Model
 
@@ -145,9 +179,10 @@ Security properties:
 Before public revenue sharing:
 
 1. Configure `DATABASE_URL` with a Neon pooled Postgres connection string.
-2. Add a purchase-event indexer that watches `LaboratoryLicenseManager` events.
-3. Send verified purchases into `/api/referral/purchase`.
-4. Add owner payout tooling for pending withdrawals.
-5. Consider EIP-712 signed withdrawals for a later trust-minimized version.
+2. Configure `REFERRAL_ADMIN_SECRET` in both Vercel and GitHub Actions.
+3. Optionally configure `BASE_RPC_URL` for a more reliable Base RPC provider.
+4. Confirm `.github/workflows/referral-sync.yml` is succeeding on schedule.
+5. Add owner payout tooling for pending withdrawals.
+6. Consider EIP-712 signed withdrawals for a later trust-minimized version.
 
 Research never ends.

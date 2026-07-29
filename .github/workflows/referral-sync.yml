@@ -1,0 +1,34 @@
+name: Referral Purchase Sync
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: referral-purchase-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      REFERRAL_ADMIN_SECRET: ${{ secrets.REFERRAL_ADMIN_SECRET }}
+      REFERRAL_SYNC_URL: ${{ secrets.REFERRAL_SYNC_URL }}
+    steps:
+      - name: Sync Laboratory License purchases
+        run: |
+          if [ -z "$REFERRAL_ADMIN_SECRET" ]; then
+            echo "::error::REFERRAL_ADMIN_SECRET is missing. Add the same value used in Vercel Environment Variables."
+            exit 1
+          fi
+
+          TARGET_URL="${REFERRAL_SYNC_URL:-https://0xb20.lol/api/referral/sync-purchases}"
+
+          curl --fail --show-error --silent \
+            --request POST "$TARGET_URL" \
+            --header "content-type: application/json" \
+            --header "x-referral-admin-secret: $REFERRAL_ADMIN_SECRET" \
+            --data '{"maxChunks":30}'
+
+          echo "Referral purchase sync completed."

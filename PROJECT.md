@@ -390,6 +390,7 @@ The Profile terminal lives at `/profile/`. `/test/` is kept as a legacy redirect
 The Partner Program is the ecosystem account layer. It does not replace LAB PASS and does not modify `LaboratoryLicenseManager`.
 
 - Backend service lives in `src/referral/referral-service.js`.
+- Lab Pass purchase watcher lives in `src/referral/license-indexer.js`.
 - API endpoints live in `api/referral/`.
 - Detailed documentation lives in `docs/PARTNER_PROGRAM.md`.
 - Referral percentages, minimum withdrawal, rank thresholds, and account progress defaults are backend configuration.
@@ -397,6 +398,9 @@ The Partner Program is the ecosystem account layer. It does not replace LAB PASS
 - `?ref=0xWallet` is captured once and only bound after wallet connection.
 - Referrals must reject self-referrals, duplicate assignment, and circular trees.
 - Purchase reward ingestion is admin-only through `/api/referral/purchase`.
+- Automatic purchase reward sync is admin-only through `/api/referral/sync-purchases`.
+- Premium Core binds captured referrers through `/api/referral/bind` before a Lab Pass purchase.
+- `.github/workflows/referral-sync.yml` calls the sync endpoint on schedule.
 - Production persistence should use Neon Postgres through `DATABASE_URL`.
 - Vercel KV / Upstash REST remains supported as a fallback.
 - Without persistent storage, serverless memory is for local/demo behavior only and must not be treated as production accounting.
@@ -411,6 +415,16 @@ Optional fallback storage variables:
 
 - `KV_REST_API_URL`
 - `KV_REST_API_TOKEN`
+
+Optional purchase sync variables:
+
+- `BASE_RPC_URL`
+- `LAB_PASS_ACCOUNTING_USD`
+- `LAB_PASS_ACCOUNTING_CURRENCY`
+- `REFERRAL_SYNC_CONFIRMATIONS`
+- `REFERRAL_SYNC_BLOCK_CHUNK`
+- `REFERRAL_SYNC_MAX_CHUNKS`
+- `REFERRAL_SYNC_URL`
 
 ## How To Update Token Sender
 

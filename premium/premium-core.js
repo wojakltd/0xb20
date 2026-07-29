@@ -107,6 +107,36 @@
     return refreshLicense();
   }
 
+  function capturedReferrer() {
+    if (!global.B20ReferralCapture || typeof global.B20ReferralCapture.readStoredReferrer !== 'function') {
+      return '';
+    }
+
+    return global.B20ReferralCapture.readStoredReferrer();
+  }
+
+  async function bindCapturedReferral(account, progress) {
+    const referrer = capturedReferrer();
+
+    if (!referrer || !account || referrer.toLowerCase() === account.toLowerCase()) {
+      return;
+    }
+
+    if (typeof progress === 'function') {
+      progress('Linking referral signal...');
+    }
+
+    try {
+      await fetch('/api/referral/bind', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ wallet: account, referrer })
+      });
+    } catch (error) {
+      // Referral attribution must never block a legitimate Lab Pass purchase.
+    }
+  }
+
   async function ensureUnlocked(featureId, featureLabel) {
     if (!state.config || !state.config.enabled || !utils.featureEnabled(state.config, featureId)) {
       return true;
@@ -141,6 +171,7 @@
           return;
         }
 
+        await bindCapturedReferral(state.wallet.address, progress);
         await contract.approveExactPayment(state.config, state.wallet.address, progress);
         await contract.purchaseLicense(state.config, progress);
 
