@@ -756,13 +756,29 @@
     modules.session().save(selectors);
   }
 
+  async function ensureFreshBaseWallet() {
+    if (!window.B20Wallet) {
+      throw new Error('Wallet service unavailable.');
+    }
+
+    let wallet = window.B20Wallet.getState();
+
+    if (!wallet.connected && typeof window.B20Wallet.restoreConnection === 'function') {
+      wallet = await window.B20Wallet.restoreConnection();
+    }
+
+    state.wallet = wallet;
+    modules.validator().ensureBaseWallet(wallet);
+    return wallet;
+  }
+
   async function loadToken() {
     const targetInput = query(selectors.tokenAddress);
     const parsedTarget = parseAssetTargetInput(targetInput.value);
     const address = parsedTarget.address;
 
     try {
-      modules.validator().ensureBaseWallet(state.wallet);
+      const wallet = await ensureFreshBaseWallet();
 
       if (!modules.adapters()) {
         throw new Error('Asset adapter layer unavailable.');
@@ -774,15 +790,15 @@
       state.assetAdapter = await modules.adapters().detect({
         address,
         tokenId: parsedTarget.tokenId,
-        owner: state.wallet.address,
+        owner: wallet.address,
         senderConfig: senderConfig(),
         assetSenderConfig: assetSenderConfig()
       });
       state.token = await state.assetAdapter.readMetadata({
         address: state.assetAdapter.address,
         tokenId: parsedTarget.tokenId,
-        owner: state.wallet.address,
-        wallet: state.wallet
+        owner: wallet.address,
+        wallet
       });
       resetTransactionState();
       renderTokenReadout();
@@ -798,13 +814,14 @@
       state.assetAdapter = null;
       resetTransactionState();
       renderTokenReadout();
+      showErrors([modules.core().errorMessage(error, 'Asset read failed.')]);
       setText(query(selectors.executionMessage), modules.core().errorMessage(error, 'Asset read failed.'));
     }
   }
 
   async function validatePreview() {
     try {
-      modules.validator().ensureBaseWallet(state.wallet);
+      const wallet = await ensureFreshBaseWallet();
 
       if (!state.token) {
         throw new Error('Detect asset contract before preview.');
@@ -830,7 +847,7 @@
       await adapter.validateTransfer({
         parsed,
         token: state.token,
-        wallet: state.wallet,
+        wallet,
         senderConfig: senderConfig(),
         assetSenderConfig: assetSenderConfig()
       });
@@ -860,7 +877,7 @@
       const senderStatus = await adapter.getReadiness({
         parsed,
         token: state.token,
-        wallet: state.wallet,
+        wallet,
         senderConfig: senderConfig(),
         assetSenderConfig: assetSenderConfig()
       });
@@ -868,7 +885,7 @@
         ? await adapter.readApprovalState({
             parsed,
             token: state.token,
-            wallet: state.wallet,
+            wallet,
             senderConfig: senderConfig(),
             assetSenderConfig: assetSenderConfig()
           })
@@ -925,6 +942,7 @@
       renderPreview();
       renderExecutionDetails();
       updateExecutionState();
+      showErrors([modules.core().errorMessage(error, 'Preview failed.')]);
       setText(query(selectors.executionMessage), modules.core().errorMessage(error, 'Preview failed.'));
     }
   }
@@ -1002,6 +1020,8 @@
       if (!state.preview || !state.token) {
         throw new Error('Validate preview before approval.');
       }
+
+      await ensureFreshBaseWallet();
 
       const adapter = currentAdapter();
 
@@ -1083,6 +1103,8 @@
       if (!state.preview || !state.token) {
         throw new Error('Validate preview before sending.');
       }
+
+      await ensureFreshBaseWallet();
 
       const adapter = currentAdapter();
 
@@ -1201,6 +1223,8 @@
       if (!state.preview || !state.token) {
         throw new Error('No failed batch state available.');
       }
+
+      await ensureFreshBaseWallet();
 
       const failed = modules.batcher().failedRecipients(state.preview.plan);
 

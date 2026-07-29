@@ -7,7 +7,8 @@
     appDescription: 'Global wallet infrastructure for 0XB20 Laboratory tools.',
     appUrl: 'https://0xb20.lol',
     appIcon: 'https://0xb20.lol/favicon.png',
-    autoRestore: true
+    autoRestore: true,
+    discoveryDelayMs: 850
   };
 
   const baseChainParams = {
@@ -260,6 +261,8 @@
         rdns: provider.rdns,
         walletName: provider.name,
         type: provider.type,
+        address: state.address,
+        chainId: state.chainId,
         updatedAt: new Date().toISOString()
       }));
     } catch (error) {
@@ -518,7 +521,7 @@
         discoveryPromise = null;
         emit();
         resolve(snapshot().providers);
-      }, 350);
+      }, Number(config.discoveryDelayMs) || 850);
     });
 
     return discoveryPromise;
@@ -638,6 +641,21 @@
     });
   }
 
+  function preserveStoredDisconnect(stored, message) {
+    setState({
+      provider: null,
+      walletName: stored && stored.walletName ? stored.walletName : state.walletName,
+      address: stored && stored.address ? stored.address : state.address,
+      chainId: stored && stored.chainId ? stored.chainId : state.chainId,
+      balance: '',
+      profile: null,
+      status: 'DISCONNECTED',
+      message,
+      error: '',
+      connected: false
+    });
+  }
+
   function attachProviderEvents(provider) {
     if (!provider || typeof provider.on !== 'function' || attachedProviders.has(provider)) {
       return;
@@ -647,8 +665,7 @@
 
     provider.on('accountsChanged', (accounts) => {
       if (!accounts || !accounts[0]) {
-        clearStoredSession();
-        resetConnection('Wallet disconnected.');
+        preserveStoredDisconnect(readStoredSession(), 'Wallet locked or temporarily unavailable. Unlock wallet or reconnect.');
         return;
       }
 
@@ -664,8 +681,7 @@
     });
 
     provider.on('disconnect', () => {
-      clearStoredSession();
-      resetConnection('Wallet session closed.');
+      preserveStoredDisconnect(readStoredSession(), 'Wallet session paused. Stored connection preserved.');
     });
   }
 
@@ -726,8 +742,7 @@
       }
 
       if (!selected || selected.disabled) {
-        clearStoredSession();
-        resetConnection('Stored wallet provider unavailable.');
+        preserveStoredDisconnect(stored, 'Stored wallet provider unavailable. Refresh wallets or reconnect.');
         return snapshot();
       }
 
@@ -738,14 +753,14 @@
         const accounts = await request(provider, 'eth_accounts');
 
         if (!accounts || !accounts[0]) {
-          clearStoredSession();
-          resetConnection('Wallet permission expired. Reconnect required.');
+          preserveStoredDisconnect(stored, 'Wallet permission paused. Unlock wallet or reconnect.');
           return snapshot();
         }
 
         attachProviderEvents(provider);
         setState({ selectedProviderId: selected.id });
         await readWalletState(provider, selected.name || stored.walletName);
+        writeStoredSession(selected);
         return snapshot();
       } catch (error) {
         const message = error && error.message ? error.message : 'Wallet restore failed.';
