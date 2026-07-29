@@ -131,6 +131,39 @@
     setText(walletField(name), value || 'Unknown');
   }
 
+  function parseAssetTargetInput(value) {
+    const raw = String(value || '').trim();
+    const sanitized = raw.split(/[?#]/)[0].trim();
+    const addressMatch = sanitized.match(/0x[a-fA-F0-9]{40}/);
+
+    if (!addressMatch) {
+      return {
+        address: raw,
+        tokenId: ''
+      };
+    }
+
+    const address = addressMatch[0];
+    const suffix = sanitized.slice(addressMatch.index + address.length);
+    const tokenIdMatch = suffix.match(/^\/+(\d+)\/?$/);
+
+    return {
+      address,
+      tokenId: tokenIdMatch ? tokenIdMatch[1] : ''
+    };
+  }
+
+  function queueDetectedAssetId(tokenId) {
+    const target = query(selectors.assetTokenIds);
+
+    if (!target || !tokenId) {
+      return false;
+    }
+
+    target.value = tokenId;
+    return true;
+  }
+
   function premiumConfig() {
     return state.config.premium || {};
   }
@@ -715,7 +748,9 @@
   }
 
   async function loadToken() {
-    const address = query(selectors.tokenAddress).value.trim();
+    const targetInput = query(selectors.tokenAddress);
+    const parsedTarget = parseAssetTargetInput(targetInput.value);
+    const address = parsedTarget.address;
 
     try {
       modules.validator().ensureBaseWallet(state.wallet);
@@ -723,6 +758,9 @@
       if (!modules.adapters()) {
         throw new Error('Asset adapter layer unavailable.');
       }
+
+      targetInput.value = address;
+      const queuedTokenId = queueDetectedAssetId(parsedTarget.tokenId);
 
       state.assetAdapter = await modules.adapters().detect({
         address,
@@ -738,7 +776,12 @@
       resetTransactionState();
       renderTokenReadout();
       showErrors([]);
-      setText(query(selectors.executionMessage), `${state.assetAdapter.label} specimen loaded. Recipient validation can begin.`);
+      setText(
+        query(selectors.executionMessage),
+        queuedTokenId
+          ? `${state.assetAdapter.label} specimen loaded. Token ID #${parsedTarget.tokenId} queued from item link.`
+          : `${state.assetAdapter.label} specimen loaded. Recipient validation can begin.`
+      );
     } catch (error) {
       state.token = null;
       state.assetAdapter = null;
