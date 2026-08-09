@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+playwright",
+    "backendProvider": "laboratory+playwright",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-09T14:28:27.283Z",
-    "durationMs": 195239,
+    "generatedAt": "2026-08-09T16:36:40.486Z",
+    "durationMs": 836793,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 589,
-    "postsCollected": 80,
-    "latestObservationAt": "2026-08-09T06:54:58.017Z",
+    "posts": 593,
+    "postsCollected": 135,
+    "latestObservationAt": "2026-08-09T15:07:40.471Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -34,32 +34,72 @@
     "failures": [
       {
         "provider": "playwright",
-        "username": "base",
+        "username": "robertsun",
+        "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
+      },
+      {
+        "provider": "playwright",
+        "username": "Lennart_up",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "buildonbase",
+        "username": "AerodromeFinance",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "jessepollak",
+        "username": "SeamlessProtocol",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "message": "Provider returned zero posts."
+        "username": "talentprotocol",
+        "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
       },
       {
         "provider": "reader",
-        "username": "buildonbase",
+        "username": "Lennart_up",
         "message": "Reader returned no parseable status posts."
       },
       {
+        "provider": "reader",
+        "username": "AerodromeFinance",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "SeamlessProtocol",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "talentprotocol",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
         "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/buildonbase/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/t"
+        "username": "Lennart_up",
+        "message": "https://nitter.net/Lennart_up/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/Lennart_up/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitt"
+      },
+      {
+        "provider": "rss",
+        "username": "AerodromeFinance",
+        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | "
+      },
+      {
+        "provider": "rss",
+        "username": "SeamlessProtocol",
+        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "message": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
@@ -70,71 +110,412 @@
       {
         "provider": "playwright",
         "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+        "returned": 5
       },
       {
         "provider": "playwright",
         "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+        "returned": 4
       },
       {
         "provider": "playwright",
         "username": "jessepollak",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "brad_or_bradley",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "therymac",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "HorinekPM",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "donofbase",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "BronheimDaniel",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "AhaanRaizada",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "robertsun",
+        "returned": 0,
+        "error": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
+      },
+      {
+        "provider": "playwright",
+        "username": "RVanGrack",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "jonroethke",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "austinvalleskey",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "catferdon",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "ZacPrater",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "base_vietnam",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "Little_Dogx",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "Sir_Damilare",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "basedsnipez",
+        "returned": 1
+      },
+      {
+        "provider": "playwright",
+        "username": "inversebrah",
+        "returned": 2
+      },
+      {
+        "provider": "playwright",
+        "username": "dannyvayne",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "raymdong",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "darkohh",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "Lennart_up",
         "returned": 0,
         "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
-        "provider": "reader",
-        "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 2
+        "provider": "playwright",
+        "username": "iruletrenches",
+        "returned": 1
+      },
+      {
+        "provider": "playwright",
+        "username": "Schoen_xyz",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "o1_exchange",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "degentokenbase",
+        "returned": 4
+      },
+      {
+        "provider": "playwright",
+        "username": "AerodromeFinance",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "virtuals_io",
+        "returned": 5
+      },
+      {
+        "provider": "playwright",
+        "username": "SeamlessProtocol",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "talentprotocol",
+        "returned": 0,
+        "error": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
+      },
+      {
+        "provider": "playwright",
+        "username": "jpegapp",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "cbventures",
+        "returned": 3
+      },
+      {
+        "provider": "playwright",
+        "username": "a16zcrypto",
+        "returned": 5
       },
       {
         "provider": "reader",
-        "username": "buildonbase",
+        "username": "robertsun",
+        "parsed": 1,
+        "returned": 1,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "Lennart_up",
         "parsed": 0,
         "returned": 0,
         "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
-        "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 3
+        "username": "AerodromeFinance",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "SeamlessProtocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "talentprotocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
-        "username": "buildonbase",
+        "username": "Lennart_up",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/buildonbase/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/buildonbase/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/Lennart_up/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/Lennart_up/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=Lennart_up attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "AerodromeFinance",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "SeamlessProtocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=talentprotocol attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-09T12:29:43.488Z",
-      "nextSyncAt": "2026-08-09T14:29:43.488Z",
+      "lastSyncAt": "2026-08-09T16:22:43.977Z",
+      "nextSyncAt": "2026-08-09T18:22:43.977Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-09T12:29:43.488Z",
+    "lastLaboratorySyncAt": "2026-08-09T16:22:43.977Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-09T14:25:12.044Z",
-    "previousGeneratedAt": "2026-08-09T12:43:39.572Z"
+    "startedAt": "2026-08-09T16:22:43.693Z",
+    "previousGeneratedAt": "2026-08-09T14:28:27.283Z"
   },
   "posts": [
+    {
+      "id": "buildonbase-2086469467643539784",
+      "author": "buildonbase",
+      "displayName": "buildonbase",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-09T15:07:40.471Z",
+      "createdAt": "2026-08-09T15:07:40.471Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2085770150507057152/img/GSxHQYBwRmcRaRe5.jpg"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2086469467643539784",
+      "url": "https://x.com/buildonbase/status/2086469467643539784",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "base-2086467540084281752",
+      "author": "base",
+      "displayName": "base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-09T15:00:00.905Z",
+      "createdAt": "2026-08-09T15:00:00.905Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2085770150507057152/img/GSxHQYBwRmcRaRe5.jpg"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2086467540084281752",
+      "url": "https://x.com/base/status/2086467540084281752",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "virtuals_io-2086466951237574775",
+      "author": "virtuals_io",
+      "displayName": "virtuals_io",
+      "username": "virtuals_io",
+      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-09T14:57:40.513Z",
+      "createdAt": "2026-08-09T14:57:40.513Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPSeof3aUAABbhO?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/virtuals_io/status/2086466951237574775",
+      "url": "https://x.com/virtuals_io/status/2086466951237574775",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "protocols",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "basedsnipez-2086438862616695239",
+      "author": "basedsnipez",
+      "displayName": "basedsnipez",
+      "username": "basedsnipez",
+      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-09T13:06:03.664Z",
+      "createdAt": "2026-08-09T13:06:03.664Z",
+      "relative_time": "3h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPSFFkzXwAEPDxR?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/basedsnipez/status/2086438862616695239",
+      "url": "https://x.com/basedsnipez/status/2086438862616695239",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "inversebrah-2086345473724719546",
       "author": "inversebrah",
@@ -145,7 +526,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T06:54:58.017Z",
       "createdAt": "2026-08-09T06:54:58.017Z",
-      "relative_time": "5h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HPQwI1ZaUAAf3mW?format=webp&name=small",
         "https://pbs.twimg.com/media/HPQwJReacAAMKTf?format=webp&name=small"
@@ -254,7 +635,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T06:44:46.530Z",
       "createdAt": "2026-08-09T06:44:46.530Z",
-      "relative_time": "5h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HPQtzytb0AAEC30?format=webp&name=medium"
       ],
@@ -290,7 +671,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T06:23:01.979Z",
       "createdAt": "2026-08-09T06:23:01.979Z",
-      "relative_time": "6h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2086337324279832578/img/R6xQJLhKS9kZNGGF.jpg"
       ],
@@ -326,7 +707,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T05:58:29.837Z",
       "createdAt": "2026-08-09T05:58:29.837Z",
-      "relative_time": "6h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085761787526299648/img/E-PvXSjPVWkXydi_.jpg"
       ],
@@ -731,7 +1112,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T22:38:14.905Z",
       "createdAt": "2026-08-08T22:38:14.905Z",
-      "relative_time": "14h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HPO-dj8XYAA4j73?format=webp&name=medium"
       ],
@@ -767,7 +1148,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T20:48:23.671Z",
       "createdAt": "2026-08-08T20:48:23.671Z",
-      "relative_time": "15h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HPOlUI0W0AAULqV?format=webp&name=medium"
       ],
@@ -803,7 +1184,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T20:37:00.233Z",
       "createdAt": "2026-08-08T20:37:00.233Z",
-      "relative_time": "16h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HPOEeebaAAAz02i?format=webp&name=medium"
       ],
@@ -912,7 +1293,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T18:24:38.927Z",
       "createdAt": "2026-08-08T18:24:38.927Z",
-      "relative_time": "18h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HPOEarxbgAAJup2?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPJUO8IbAAAKnsQ?format=webp&name=small"
@@ -1093,7 +1474,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T16:10:53.700Z",
       "createdAt": "2026-08-08T16:10:53.700Z",
-      "relative_time": "20h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
       ],
@@ -1157,15 +1538,15 @@
     },
     {
       "id": "base-2086105157289341117",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Don from @virtuals_io talks physical AI on Base \"Our ecosystem of founders keeps expanding. They're building in the physical world as well\"",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T15:00:02.114Z",
       "createdAt": "2026-08-08T15:00:02.114Z",
-      "relative_time": "23h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085761787526299648/img/E-PvXSjPVWkXydi_.jpg"
       ],
@@ -1189,7 +1570,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "iruletrenches-2086081338457698748",
@@ -1744,12 +2125,12 @@
     },
     {
       "id": "base-2086000799902015520",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Builder calls, Morpho milestones, and more News: ■ We had the first Base Global Builder Call with updates from the team, spotlights of emerging projects and interviews with top builders featuring @wagmialexander from @aerodromefi,... 88 158 562 95K",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T08:05:21.374Z",
       "createdAt": "2026-08-08T08:05:21.374Z",
       "relative_time": "1d ago",
@@ -1776,7 +2157,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "basedsnipez-2085998860204228999",
@@ -1852,12 +2233,12 @@
     },
     {
       "id": "base-2085984358897205279",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Merlin announces that @Morpho has crossed $5B in deposits on Base \"We just crossed $5 billion total deposits on Base, which is insane, and almost bigger than the main instance on Ethereum\"",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T07:00:01.533Z",
       "createdAt": "2026-08-08T07:00:01.533Z",
       "relative_time": "1d ago",
@@ -1884,7 +2265,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "inversebrah-2085976740745412728",
@@ -2394,12 +2775,12 @@
     },
     {
       "id": "base-2085786549891866875",
-      "author": "Base",
-      "displayName": "Base",
+      "author": "base",
+      "displayName": "base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Alex from @AerodromeFi on what more trading volume means for users \"More volume means more fees, and more value flows to our users.\"",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-07T17:54:00.191Z",
       "createdAt": "2026-08-07T17:54:00.191Z",
       "relative_time": "1d ago",
@@ -2426,7 +2807,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "darkohh-2085777277648822720",
@@ -2582,7 +2963,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-07T16:20:31.771Z",
       "createdAt": "2026-08-07T16:20:31.771Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085759836772560896/img/cJzcNecEzwbQE0bm.jpg"
       ],
@@ -2762,7 +3143,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-07T14:45:14.019Z",
       "createdAt": "2026-08-07T14:45:14.019Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085733485516607488/img/tbE_raB6suxoJHmb.jpg"
       ],
@@ -2870,7 +3251,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-07T13:48:25.117Z",
       "createdAt": "2026-08-07T13:48:25.117Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HPH7mFUXwAAnyKC?format=webp&name=medium"
       ],
@@ -3987,12 +4368,12 @@
     },
     {
       "id": "jessepollak-2085506653664018576",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
+      "author": "jessepollak",
+      "displayName": "jessepollak",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
       "verified": false,
-      "text": "all these things are true",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-06T23:21:47.730Z",
       "createdAt": "2026-08-06T23:21:47.730Z",
       "relative_time": "2d ago",
@@ -4019,16 +4400,16 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "jessepollak-2085501680540582128",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
+      "author": "jessepollak",
+      "displayName": "jessepollak",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
       "verified": false,
-      "text": "$5B of total deposits on @Morpho on @base",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-06T23:02:02.045Z",
       "createdAt": "2026-08-06T23:02:02.045Z",
       "relative_time": "2d ago",
@@ -4055,7 +4436,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "inversebrah-2085501671782932860",
@@ -5980,12 +6361,12 @@
     },
     {
       "id": "jessepollak-2085049702475874491",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
+      "author": "jessepollak",
+      "displayName": "jessepollak",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
       "verified": false,
-      "text": "[](https://twitter.com/jessepollak/status/2085049702475874491/photo/1)",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T17:06:02.077Z",
       "createdAt": "2026-08-05T17:06:02.077Z",
       "relative_time": "3d ago",
@@ -6012,7 +6393,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "degentokenbase-2085048947744313472",
@@ -6096,7 +6477,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T16:16:56.333Z",
       "createdAt": "2026-08-05T16:16:56.333Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HO-KagaawAAgOM6?format=webp&name=medium"
       ],
@@ -6124,15 +6505,15 @@
     },
     {
       "id": "jessepollak-2085026759884607983",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
+      "author": "jessepollak",
+      "displayName": "jessepollak",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
       "verified": false,
-      "text": "we now have 20+ currencies on @base",
+      "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T15:34:52.137Z",
       "createdAt": "2026-08-05T15:34:52.137Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HO81PfyWgAEmoO4?format=webp&name=medium"
       ],
@@ -6156,7 +6537,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "reader"
+      "source": "playwright"
     },
     {
       "id": "jessepollak-2085023438784327918",
@@ -6276,7 +6657,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T14:01:57.262Z",
       "createdAt": "2026-08-05T14:01:57.262Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HO9ra0jWAAAJ2TC?format=webp&name=medium"
       ],
@@ -6348,7 +6729,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T13:30:00.506Z",
       "createdAt": "2026-08-05T13:30:00.506Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HO8rDJAbAAA8zQN?format=webp&name=medium"
       ],
@@ -9219,7 +9600,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-03T12:33:38.768Z",
       "createdAt": "2026-08-03T12:33:38.768Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/media/HOzDQsMWUAALtfW?format=webp&name=medium"
       ],
@@ -10996,7 +11377,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-01T15:42:36.538Z",
       "createdAt": "2026-08-01T15:42:36.538Z",
-      "relative_time": "7d ago",
+      "relative_time": "8d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2083575746485010432/img/9LxQ0fp3JQLuTgUT.jpg"
       ],
@@ -11140,7 +11521,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-01T14:48:54.297Z",
       "createdAt": "2026-08-01T14:48:54.297Z",
-      "relative_time": "7d ago",
+      "relative_time": "8d ago",
       "images": [
         "https://pbs.twimg.com/media/HOn2XyYasAA_rAp?format=webp&name=medium"
       ],
@@ -12338,7 +12719,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-31T16:01:36.962Z",
       "createdAt": "2026-07-31T16:01:36.962Z",
-      "relative_time": "8d ago",
+      "relative_time": "9d ago",
       "images": [
         "https://pbs.twimg.com/media/HOfD82sWYAAWb_O?format=webp&name=small",
         "https://pbs.twimg.com/media/HOfD9C6WwAAkebW?format=webp&name=small"
@@ -15116,7 +15497,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-28T15:40:23.482Z",
       "createdAt": "2026-07-28T15:40:23.482Z",
-      "relative_time": "11d ago",
+      "relative_time": "12d ago",
       "images": [
         "https://pbs.twimg.com/media/HOU0W4wW0AAA0bX.jpg"
       ],
@@ -15152,7 +15533,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-28T15:39:20.226Z",
       "createdAt": "2026-07-28T15:39:20.226Z",
-      "relative_time": "11d ago",
+      "relative_time": "12d ago",
       "images": [
         "https://pbs.twimg.com/media/HOU0W4wW0AAA0bX.jpg"
       ],
