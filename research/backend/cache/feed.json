@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+playwright+reader",
-    "backendProvider": "laboratory+playwright+reader",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-09T12:43:39.572Z",
-    "durationMs": 836488,
+    "generatedAt": "2026-08-09T14:28:27.283Z",
+    "durationMs": 195239,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 588,
-    "postsCollected": 135,
+    "posts": 589,
+    "postsCollected": 80,
     "latestObservationAt": "2026-08-09T06:54:58.017Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -34,58 +34,32 @@
     "failures": [
       {
         "provider": "playwright",
-        "username": "robertsun",
-        "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
-      },
-      {
-        "provider": "playwright",
-        "username": "Lennart_up",
+        "username": "base",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "AerodromeFinance",
+        "username": "buildonbase",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "SeamlessProtocol",
+        "username": "jessepollak",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "talentprotocol",
-        "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
+        "message": "Provider returned zero posts."
       },
       {
         "provider": "reader",
-        "username": "Lennart_up",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "AerodromeFinance",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "SeamlessProtocol",
+        "username": "buildonbase",
         "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
-        "username": "Lennart_up",
-        "message": "https://nitter.net/Lennart_up/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/Lennart_up/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitt"
-      },
-      {
-        "provider": "rss",
-        "username": "AerodromeFinance",
-        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | "
-      },
-      {
-        "provider": "rss",
-        "username": "SeamlessProtocol",
-        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/buildonbase/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/t"
       },
       {
         "provider": "rss",
@@ -96,250 +70,60 @@
       {
         "provider": "playwright",
         "username": "base",
-        "returned": 4
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "playwright",
         "username": "buildonbase",
-        "returned": 3
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "playwright",
         "username": "jessepollak",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "brad_or_bradley",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "therymac",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "HorinekPM",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "donofbase",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "BronheimDaniel",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "AhaanRaizada",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "robertsun",
-        "returned": 0,
-        "error": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
-      },
-      {
-        "provider": "playwright",
-        "username": "RVanGrack",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "jonroethke",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "austinvalleskey",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "catferdon",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "ZacPrater",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "base_vietnam",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "Little_Dogx",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "Sir_Damilare",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "basedsnipez",
-        "returned": 1
-      },
-      {
-        "provider": "playwright",
-        "username": "inversebrah",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "dannyvayne",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "raymdong",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "darkohh",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "Lennart_up",
         "returned": 0,
         "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
-        "provider": "playwright",
-        "username": "iruletrenches",
-        "returned": 1
-      },
-      {
-        "provider": "playwright",
-        "username": "Schoen_xyz",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "o1_exchange",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "degentokenbase",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "AerodromeFinance",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "virtuals_io",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "SeamlessProtocol",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "talentprotocol",
-        "returned": 0,
-        "error": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
-      },
-      {
-        "provider": "playwright",
-        "username": "jpegapp",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "cbventures",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "a16zcrypto",
-        "returned": 5
-      },
-      {
         "provider": "reader",
-        "username": "robertsun",
-        "parsed": 1,
-        "returned": 1,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "Lennart_up",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "AerodromeFinance",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "SeamlessProtocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "talentprotocol",
+        "username": "base",
         "parsed": 5,
         "returned": 5,
-        "attempts": 1
+        "attempts": 2
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 3
       },
       {
         "provider": "rss",
-        "username": "Lennart_up",
+        "username": "buildonbase",
         "parsed": 0,
         "returned": 0,
-        "error": "https://nitter.net/Lennart_up/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/Lennart_up/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=Lennart_up attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "AerodromeFinance",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "SeamlessProtocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/buildonbase/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "online",
+      "status": "skipped",
       "refreshIntervalMinutes": 120,
       "lastSyncAt": "2026-08-09T12:29:43.488Z",
       "nextSyncAt": "2026-08-09T14:29:43.488Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": false,
+      "skipped": true,
       "forced": false,
       "error": ""
     },
@@ -347,8 +131,8 @@
     "apiStatus": "online",
     "lastLaboratorySyncAt": "2026-08-09T12:29:43.488Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-09T12:29:43.084Z",
-    "previousGeneratedAt": "2026-08-09T10:37:21.952Z"
+    "startedAt": "2026-08-09T14:25:12.044Z",
+    "previousGeneratedAt": "2026-08-09T12:43:39.572Z"
   },
   "posts": [
     {
@@ -1373,15 +1157,15 @@
     },
     {
       "id": "base-2086105157289341117",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Don from @virtuals_io talks physical AI on Base \"Our ecosystem of founders keeps expanding. They're building in the physical world as well\"",
       "created_at": "2026-08-08T15:00:02.114Z",
       "createdAt": "2026-08-08T15:00:02.114Z",
-      "relative_time": "21h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085761787526299648/img/E-PvXSjPVWkXydi_.jpg"
       ],
@@ -1405,7 +1189,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "iruletrenches-2086081338457698748",
@@ -1960,12 +1744,12 @@
     },
     {
       "id": "base-2086000799902015520",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Article This Week on Base: Builder calls, Morpho milestones, and more News: ■ We had the first Base Global Builder Call with updates from the team, spotlights of emerging projects and interviews with top builders featuring @wagmialexander from @aerodromefi,... 88 158 562 95K",
       "created_at": "2026-08-08T08:05:21.374Z",
       "createdAt": "2026-08-08T08:05:21.374Z",
       "relative_time": "1d ago",
@@ -1992,7 +1776,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "basedsnipez-2085998860204228999",
@@ -2068,12 +1852,12 @@
     },
     {
       "id": "base-2085984358897205279",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Merlin announces that @Morpho has crossed $5B in deposits on Base \"We just crossed $5 billion total deposits on Base, which is insane, and almost bigger than the main instance on Ethereum\"",
       "created_at": "2026-08-08T07:00:01.533Z",
       "createdAt": "2026-08-08T07:00:01.533Z",
       "relative_time": "1d ago",
@@ -2100,7 +1884,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "inversebrah-2085976740745412728",
@@ -2610,12 +2394,12 @@
     },
     {
       "id": "base-2085786549891866875",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Alex from @AerodromeFi on what more trading volume means for users \"More volume means more fees, and more value flows to our users.\"",
       "created_at": "2026-08-07T17:54:00.191Z",
       "createdAt": "2026-08-07T17:54:00.191Z",
       "relative_time": "1d ago",
@@ -2642,7 +2426,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "darkohh-2085777277648822720",
@@ -4203,12 +3987,12 @@
     },
     {
       "id": "jessepollak-2085506653664018576",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "all these things are true",
       "created_at": "2026-08-06T23:21:47.730Z",
       "createdAt": "2026-08-06T23:21:47.730Z",
       "relative_time": "2d ago",
@@ -4235,16 +4019,16 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2085501680540582128",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "$5B of total deposits on @Morpho on @base",
       "created_at": "2026-08-06T23:02:02.045Z",
       "createdAt": "2026-08-06T23:02:02.045Z",
       "relative_time": "2d ago",
@@ -4271,7 +4055,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "inversebrah-2085501671782932860",
@@ -4706,6 +4490,40 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
+    },
+    {
+      "id": "base-2085381551437570256",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Tune in to the Base Global Builder Call ↓",
+      "created_at": "2026-08-06T15:04:41.035Z",
+      "createdAt": "2026-08-06T15:04:41.035Z",
+      "relative_time": "2d ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2085381551437570256",
+      "url": "https://x.com/base/status/2085381551437570256",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
     },
     {
       "id": "a16zcrypto-2085381271967142232",
@@ -6162,12 +5980,12 @@
     },
     {
       "id": "jessepollak-2085049702475874491",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "[](https://twitter.com/jessepollak/status/2085049702475874491/photo/1)",
       "created_at": "2026-08-05T17:06:02.077Z",
       "createdAt": "2026-08-05T17:06:02.077Z",
       "relative_time": "3d ago",
@@ -6194,7 +6012,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "degentokenbase-2085048947744313472",
@@ -6306,12 +6124,12 @@
     },
     {
       "id": "jessepollak-2085026759884607983",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "we now have 20+ currencies on @base",
       "created_at": "2026-08-05T15:34:52.137Z",
       "createdAt": "2026-08-05T15:34:52.137Z",
       "relative_time": "3d ago",
@@ -6338,7 +6156,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2085023438784327918",
