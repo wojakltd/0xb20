@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-15T18:29:01.312Z",
-    "durationMs": 862946,
+    "generatedAt": "2026-08-15T20:26:11.919Z",
+    "durationMs": 835391,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 800,
-    "postsCollected": 132,
-    "latestObservationAt": "2026-08-15T17:38:44.473Z",
+    "posts": 797,
+    "postsCollected": 128,
+    "latestObservationAt": "2026-08-15T20:19:47.431Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -36,6 +36,11 @@
         "provider": "playwright",
         "username": "robertsun",
         "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
+      },
+      {
+        "provider": "playwright",
+        "username": "dannyvayne",
+        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
@@ -74,6 +79,11 @@
       },
       {
         "provider": "reader",
+        "username": "talentprotocol",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
         "message": "Provider returned zero posts."
       },
       {
@@ -90,6 +100,11 @@
         "provider": "rss",
         "username": "SeamlessProtocol",
         "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "message": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
@@ -201,7 +216,8 @@
       {
         "provider": "playwright",
         "username": "dannyvayne",
-        "returned": 3
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "playwright",
@@ -222,7 +238,7 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 3
+        "returned": 1
       },
       {
         "provider": "playwright",
@@ -286,6 +302,13 @@
       },
       {
         "provider": "reader",
+        "username": "dannyvayne",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
         "username": "Lennart_up",
         "parsed": 0,
         "returned": 0,
@@ -308,9 +331,9 @@
       {
         "provider": "reader",
         "username": "talentprotocol",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 2
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -332,18 +355,25 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=talentprotocol attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "online",
+      "status": "skipped",
       "refreshIntervalMinutes": 120,
       "lastSyncAt": "2026-08-15T18:14:38.782Z",
       "nextSyncAt": "2026-08-15T20:14:38.782Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": false,
+      "skipped": true,
       "forced": false,
       "error": ""
     },
@@ -351,10 +381,46 @@
     "apiStatus": "online",
     "lastLaboratorySyncAt": "2026-08-15T18:14:38.782Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-15T18:14:38.366Z",
-    "previousGeneratedAt": "2026-08-15T16:27:06.626Z"
+    "startedAt": "2026-08-15T20:12:16.528Z",
+    "previousGeneratedAt": "2026-08-15T18:29:01.312Z"
   },
   "posts": [
+    {
+      "id": "darkohh-2088722341400330502",
+      "author": "darkohh",
+      "displayName": "darkohh",
+      "username": "darkohh",
+      "avatar": "https://pbs.twimg.com/profile_images/2075794393139671040/gFxmru0r_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-15T20:19:47.431Z",
+      "createdAt": "2026-08-15T20:19:47.431Z",
+      "relative_time": "1m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPyh4zGXAAAp4E2?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/darkohh/status/2088722341400330502",
+      "url": "https://x.com/darkohh/status/2088722341400330502",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "iruletrenches-2088681812016923031",
       "author": "iruletrenches",
@@ -437,7 +503,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T14:42:42.979Z",
       "createdAt": "2026-08-15T14:42:42.979Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/media/HPxUwAeW0AAGJT5?format=webp&name=medium"
       ],
@@ -473,7 +539,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T13:25:08.185Z",
       "createdAt": "2026-08-15T13:25:08.185Z",
-      "relative_time": "4h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/media/HPxC_aqbUAAEsUL?format=webp&name=medium"
       ],
@@ -509,7 +575,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T13:23:46.869Z",
       "createdAt": "2026-08-15T13:23:46.869Z",
-      "relative_time": "4h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/media/HPw6-WyXkAAgRFF?format=webp&name=medium"
       ],
@@ -545,7 +611,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T12:18:09.880Z",
       "createdAt": "2026-08-15T12:18:09.880Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwzqcLWYAAqytk?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPjDVssW0AAaPSA?format=webp&name=small"
@@ -582,7 +648,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T11:37:28.472Z",
       "createdAt": "2026-08-15T11:37:28.472Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwqWaMWUAEnp2g?format=webp&name=medium"
       ],
@@ -654,7 +720,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T11:31:52.919Z",
       "createdAt": "2026-08-15T11:31:52.919Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwpElXXcAAUoyZ?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPr-uTEWkAABrsS?format=webp&name=small"
@@ -985,7 +1051,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T07:58:01.992Z",
       "createdAt": "2026-08-15T07:58:01.992Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HPv2LU-WIAAptmx.jpg"
       ],
@@ -3600,7 +3666,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-13T19:26:54.165Z",
       "createdAt": "2026-08-13T19:26:54.165Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HPn5Od1acAASQ49?format=webp&name=medium"
       ],
@@ -4759,7 +4825,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T20:11:58.326Z",
       "createdAt": "2026-08-12T20:11:58.326Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HPjDVssW0AAaPSA?format=webp&name=small"
       ],
@@ -4795,7 +4861,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T19:45:07.612Z",
       "createdAt": "2026-08-12T19:45:07.612Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2087619718001885185/img/NWUIcb6oiQrp-aFJ.jpg"
       ],
@@ -6583,7 +6649,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T18:40:59.707Z",
       "createdAt": "2026-08-11T18:40:59.707Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HPdaVjqXgAAQ6tG.jpg"
       ],
@@ -6619,7 +6685,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T18:36:34.634Z",
       "createdAt": "2026-08-11T18:36:34.634Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HPdaVjqXgAAQ6tG.jpg"
       ],
@@ -6655,7 +6721,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T18:33:26.328Z",
       "createdAt": "2026-08-11T18:33:26.328Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HPc_CdBacAAK6qA?format=webp&name=medium"
       ],
@@ -16342,7 +16408,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T18:39:30.805Z",
       "createdAt": "2026-08-05T18:39:30.805Z",
-      "relative_time": "9d ago",
+      "relative_time": "10d ago",
       "images": [
         "https://pbs.twimg.com/media/HO-rDIcXcAAlTBM?format=webp&name=medium"
       ],
@@ -24906,7 +24972,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-29T18:22:31.022Z",
       "createdAt": "2026-07-29T18:22:31.022Z",
-      "relative_time": "16d ago",
+      "relative_time": "17d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2082524729177460736/img/HI-vgfMnD_JqSZlR.jpg"
       ],
@@ -29266,156 +29332,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
-    },
-    {
-      "id": "0xb20lol-2077847082073989337",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "🧪 TERMINAL LOG #019\n\nToday's researcher isn't human.\n\nIt's Codex.\n\nTask:\n→ Refactor the Research module.\n→ Improve stability.\n→ Prepare the architecture for future evolution.\nWe're treating AI like another instrument inside the Laboratory.\nNot magic.\nNot hype.\n\nJust another tool helping us build faster.\n\nThe best AI projects won't replace humans.\n\nThey'll amplify curious builders.\n\nResearch never ends.\n\n🌐 https://t.co/zhRsCW6hCj\n\n@OpenAI @github @base @BuildOnBase @jessepollak @o1_exchange\n\n#0XB20 #Codex #OpenAI #AI #BuildInPublic #BuildOnBase #Base #VibeCoding #OpenSource #Research #DevTools #AIEngineering",
-      "created_at": "2026-07-16T20:05:23.555Z",
-      "createdAt": "2026-07-16T20:05:23.555Z",
-      "relative_time": "1h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HNX-u71a4AAX4iW.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2077847082073989337",
-      "url": "https://x.com/0xb20lol/status/2077847082073989337",
-      "likes": 3,
-      "replies": 1,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2077847082073989337",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "xapi"
-    },
-    {
-      "id": "base-2077848151235453296",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "If you're building across: → Tokenization → Stablecoins → Credit → Prediction markets → Institutional markets → Agentic commerce ...or anything amazing on Base, this is for you ↓",
-      "created_at": "2026-07-16T20:09:38.463Z",
-      "createdAt": "2026-07-16T20:09:38.463Z",
-      "relative_time": "6d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HNO_kPMagAAbZ_I.jpg"
-      ],
-      "video": "",
-      "post_url": "https://x.com/base/status/2077848151235453296",
-      "url": "https://x.com/base/status/2077848151235453296",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "source": "reader",
-      "video_preview": "",
-      "videoPreview": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": []
-    },
-    {
-      "id": "a16zcrypto-2077843414658478157",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
-      "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
-      "verified": false,
-      "text": "\"Most people who need a transplant die without getting one.\" Nobel laureate Alvin Roth helped pioneer modern market design — the same toolkit crypto builders use to reason about rules, incentives, and allocation in onchain markets. Here’s what that thinking looks like when",
-      "created_at": "2026-07-16T19:50:49.175Z",
-      "createdAt": "2026-07-16T19:50:49.175Z",
-      "relative_time": "6d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2077843351668465664/img/8Q6pCy2odqfqwmOR.jpg",
-        "https://pbs.twimg.com/amplify_video_thumb/2077060737340456960/img/d8mMm4hKutEHM-gA.jpg"
-      ],
-      "video": "",
-      "post_url": "https://x.com/a16zcrypto/status/2077843414658478157",
-      "url": "https://x.com/a16zcrypto/status/2077843414658478157",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "funds",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "source": "reader",
-      "video_preview": "",
-      "videoPreview": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": []
-    },
-    {
-      "id": "0xb20lol-2077827590509998562",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "🧪 ALGORITHM EXPERIMENT #003\n\nDay 3.\n\nUnexpected observation.\n\nApparently, asking people to take free tokens is harder than expected.\n\nCurrent participant count:\n\n0 🫠\n\nMaybe the reward wasn't interesting enough.\n\nSo the Laboratory is adjusting the parameters.\n\nProtocol Update\n\n🎁 Reward per participant:\n\n100,000 → 200,000 $0XB20\n\n(Laboratory budget remains 3,000,000 $0XB20.)\n\nParticipation protocol:\n\n🔁 Repost this post.\n\n💬 Drop your Base wallet in the comments (or DM if you prefer).\n\nThat's it.\n\nAlso...\n\nToday marks one full week since the experiment began.\n\nThe token survived.\n\nThe Laboratory survived.\n\nAnd we're still building every single day.\n\nResearch never ends. 🧪\n\n🌐 https://t.co/t3CuEMAKCG\n\nCA 0xb200000000000000000000B63a00ad02F2A9c101\n@base @BuildOnBase @jessepollak @o1exchange\n\n#0xb20 #Base #BuildOnBase #BaseBuilders #Onchain #Web3 #Crypto #Memecoin #Experiment #Research #Giveaway",
-      "created_at": "2026-07-16T18:47:56.404Z",
-      "createdAt": "2026-07-16T18:47:56.404Z",
-      "relative_time": "2h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HNXtLH1awAAooJN.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2077827590509998562",
-      "url": "https://x.com/0xb20lol/status/2077827590509998562",
-      "likes": 1,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2077092338510233684",
-      "in_reply_to_user_id": "1790954879864692736",
-      "referenced_tweets": [
-        {
-          "id": "2077443643204583615",
-          "type": "replied_to"
-        }
-      ],
-      "source": "xapi"
     }
   ]
 }
