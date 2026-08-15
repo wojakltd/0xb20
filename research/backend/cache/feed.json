@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-15T14:27:32.080Z",
-    "durationMs": 834493,
+    "generatedAt": "2026-08-15T16:27:06.626Z",
+    "durationMs": 830824,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 803,
-    "postsCollected": 133,
-    "latestObservationAt": "2026-08-15T13:25:08.185Z",
+    "posts": 802,
+    "postsCollected": 131,
+    "latestObservationAt": "2026-08-15T15:00:42.221Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -74,11 +74,6 @@
       },
       {
         "provider": "reader",
-        "username": "talentprotocol",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
         "message": "Provider returned zero posts."
       },
       {
@@ -95,11 +90,6 @@
         "provider": "rss",
         "username": "SeamlessProtocol",
         "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
-      },
-      {
-        "provider": "rss",
-        "username": "talentprotocol",
-        "message": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
@@ -232,7 +222,7 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 3
+        "returned": 2
       },
       {
         "provider": "playwright",
@@ -318,9 +308,9 @@
       {
         "provider": "reader",
         "username": "talentprotocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 2
       },
       {
         "provider": "rss",
@@ -342,36 +332,101 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "talentprotocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=talentprotocol attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-15T12:19:04.033Z",
-      "nextSyncAt": "2026-08-15T14:19:04.033Z",
+      "lastSyncAt": "2026-08-15T16:13:16.163Z",
+      "nextSyncAt": "2026-08-15T18:13:16.163Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-15T12:19:04.033Z",
+    "lastLaboratorySyncAt": "2026-08-15T16:13:16.163Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-15T14:13:37.586Z",
-    "previousGeneratedAt": "2026-08-15T12:33:13.293Z"
+    "startedAt": "2026-08-15T16:13:15.802Z",
+    "previousGeneratedAt": "2026-08-15T14:27:32.080Z"
   },
   "posts": [
+    {
+      "id": "iruletrenches-2088642040569430419",
+      "author": "iruletrenches",
+      "displayName": "iruletrenches",
+      "username": "iruletrenches",
+      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-15T15:00:42.221Z",
+      "createdAt": "2026-08-15T15:00:42.221Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPxY3T4WsAI8aYW?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/iruletrenches/status/2088642040569430419",
+      "url": "https://x.com/iruletrenches/status/2088642040569430419",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "schoen_xyz-2088637513900409140",
+      "author": "Schoen_xyz",
+      "displayName": "Schoen_xyz",
+      "username": "Schoen_xyz",
+      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-15T14:42:42.979Z",
+      "createdAt": "2026-08-15T14:42:42.979Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPxUwAeW0AAGJT5?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/Schoen_xyz/status/2088637513900409140",
+      "url": "https://x.com/Schoen_xyz/status/2088637513900409140",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "inversebrah-2088617990279549148",
       "author": "inversebrah",
@@ -382,7 +437,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T13:25:08.185Z",
       "createdAt": "2026-08-15T13:25:08.185Z",
-      "relative_time": "56m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HPxC_aqbUAAEsUL?format=webp&name=medium"
       ],
@@ -418,7 +473,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T13:23:46.869Z",
       "createdAt": "2026-08-15T13:23:46.869Z",
-      "relative_time": "57m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HPw6-WyXkAAgRFF?format=webp&name=medium"
       ],
@@ -454,7 +509,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T12:18:09.880Z",
       "createdAt": "2026-08-15T12:18:09.880Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwzqcLWYAAqytk?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPjDVssW0AAaPSA?format=webp&name=small"
@@ -491,7 +546,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T11:37:28.472Z",
       "createdAt": "2026-08-15T11:37:28.472Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwqWaMWUAEnp2g?format=webp&name=medium"
       ],
@@ -563,7 +618,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T11:31:52.919Z",
       "createdAt": "2026-08-15T11:31:52.919Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HPwpElXXcAAUoyZ?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPr-uTEWkAABrsS?format=webp&name=small"
@@ -894,7 +949,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T07:58:01.992Z",
       "createdAt": "2026-08-15T07:58:01.992Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HPv2LU-WIAAptmx.jpg"
       ],
@@ -1768,7 +1823,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-14T16:56:02.332Z",
       "createdAt": "2026-08-14T16:56:02.332Z",
-      "relative_time": "21h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/media/HPsprNUbkAAuJC4?format=webp&name=medium"
       ],
@@ -1876,7 +1931,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-14T15:50:21.526Z",
       "createdAt": "2026-08-14T15:50:21.526Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HPq7HtsXsAATupK?format=webp&name=small",
         "https://pbs.twimg.com/media/HPq7JSFWUAATuBZ?format=webp&name=small"
@@ -3618,7 +3673,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-13T15:28:48.987Z",
       "createdAt": "2026-08-13T15:28:48.987Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HPnMFiVbkAI9Lqr?format=webp&name=medium"
       ],
@@ -3654,7 +3709,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-13T14:53:11.571Z",
       "createdAt": "2026-08-13T14:53:11.571Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HPmvOzNaYAEeMs7?format=webp&name=medium"
       ],
@@ -4920,7 +4975,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T15:59:24.618Z",
       "createdAt": "2026-08-12T15:59:24.618Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HPiJcp2a8AA--aS?format=webp&name=medium"
       ],
@@ -4956,7 +5011,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T15:56:50.716Z",
       "createdAt": "2026-08-12T15:56:50.716Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HPh28BlaMAEUKXs?format=webp&name=medium"
       ],
@@ -5028,7 +5083,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T14:55:58.392Z",
       "createdAt": "2026-08-12T14:55:58.392Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/media/HPh7AyXWYAAU9Za?format=webp&name=medium"
       ],
@@ -8815,7 +8870,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-10T15:32:35.422Z",
       "createdAt": "2026-08-10T15:32:35.422Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2086787521791279105/img/m_Ld4tXnRo7-aUog.jpg"
       ],
@@ -10519,7 +10574,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T15:07:40.471Z",
       "createdAt": "2026-08-09T15:07:40.471Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085770150507057152/img/GSxHQYBwRmcRaRe5.jpg"
       ],
@@ -10555,7 +10610,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T15:00:00.905Z",
       "createdAt": "2026-08-09T15:00:00.905Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085770150507057152/img/GSxHQYBwRmcRaRe5.jpg"
       ],
@@ -11608,7 +11663,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-08T16:10:53.700Z",
       "createdAt": "2026-08-08T16:10:53.700Z",
-      "relative_time": "6d ago",
+      "relative_time": "7d ago",
       "images": [
         "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
       ],
@@ -13097,7 +13152,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-07T16:20:31.771Z",
       "createdAt": "2026-08-07T16:20:31.771Z",
-      "relative_time": "7d ago",
+      "relative_time": "8d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085759836772560896/img/cJzcNecEzwbQE0bm.jpg"
       ],
@@ -21511,7 +21566,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-01T15:42:36.538Z",
       "createdAt": "2026-08-01T15:42:36.538Z",
-      "relative_time": "13d ago",
+      "relative_time": "14d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2083575746485010432/img/9LxQ0fp3JQLuTgUT.jpg"
       ],
@@ -21655,7 +21710,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-01T14:48:54.297Z",
       "createdAt": "2026-08-01T14:48:54.297Z",
-      "relative_time": "13d ago",
+      "relative_time": "14d ago",
       "images": [
         "https://pbs.twimg.com/media/HOn2XyYasAA_rAp?format=webp&name=medium"
       ],
@@ -22853,7 +22908,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-31T16:01:36.962Z",
       "createdAt": "2026-07-31T16:01:36.962Z",
-      "relative_time": "14d ago",
+      "relative_time": "15d ago",
       "images": [
         "https://pbs.twimg.com/media/HOfD82sWYAAWb_O?format=webp&name=small",
         "https://pbs.twimg.com/media/HOfD9C6WwAAkebW?format=webp&name=small"
@@ -29423,112 +29478,6 @@
       "website": "",
       "logo": "",
       "source": "reader",
-      "video_preview": "",
-      "videoPreview": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": []
-    },
-    {
-      "id": "0xb20lol-2077780381492011164",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "TERMINAL LOG #018\n\n🧪 RESEARCH TERMINAL IS NOW ONLINE.\n\nToday we're opening the first public version of the Research Module.\n\nIt isn't perfect.\n\nAnd that's exactly the point.\n\nInstead of waiting months to build the \"perfect\" product, we're releasing the prototype now and improving it in public.\n\nCurrent version can already:\n🔹 Observe Base ecosystem accounts.\n🔹 Collect live observations.\n🔹 Search and filter signals.\n🔹 Build the foundation for future research tools.\n\nBehind the scenes we're still fighting X scraping limitations, improving infrastructure and experimenting with different approaches.\nThe Laboratory isn't shipping finished products.\nIt documents evolution.\nEvery update.\nEvery mistake.\nEvery improvement.\n\nResearch never ends.\n\n👀 Curious people might even find a way inside before the official presentation...\n\n🔬 https://t.co/7KFfrol2oj\n\n@base @buildonbase @jessepollak @cbventures @a16zcrypto @o1_exchange\n#BuildOnBase #Base #BaseBuilders #Onchain #Crypto #Research #Web3 #OpenBuild #0XB20",
-      "created_at": "2026-07-16T15:40:20.897Z",
-      "createdAt": "2026-07-16T15:40:20.897Z",
-      "relative_time": "5h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HNXB6B2a4AA4_hi.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2077780381492011164",
-      "url": "https://x.com/0xb20lol/status/2077780381492011164",
-      "likes": 4,
-      "replies": 1,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2077780381492011164",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "xapi"
-    },
-    {
-      "id": "virtuals_io-2077779391246176564",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
-      "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
-      "verified": false,
-      "text": "RT @FundstratDirect: AI agents are becoming a new economic layer: discovering, transacting, and coordinating on-chain with no intermediarie…",
-      "created_at": "2026-07-16T15:36:24.804Z",
-      "createdAt": "2026-07-16T15:36:24.804Z",
-      "relative_time": "5h ago",
-      "images": [],
-      "video": "",
-      "post_url": "https://x.com/virtuals_io/status/2077779391246176564",
-      "url": "https://x.com/virtuals_io/status/2077779391246176564",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "source": "reader",
-      "video_preview": "",
-      "videoPreview": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": []
-    },
-    {
-      "id": "virtuals_io-2077761138432045090",
-      "author": "virtuals_io",
-      "displayName": "virtuals_io",
-      "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-07-16T14:23:52.994Z",
-      "createdAt": "2026-07-16T14:23:52.994Z",
-      "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2077748215936651264/img/oaIU-NkR9Ia-ILHp.jpg"
-      ],
-      "video": "",
-      "post_url": "https://x.com/virtuals_io/status/2077761138432045090",
-      "url": "https://x.com/virtuals_io/status/2077761138432045090",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "source": "playwright",
       "video_preview": "",
       "videoPreview": "",
       "conversation_id": "",
