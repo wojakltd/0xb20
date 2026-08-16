@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+playwright+reader",
-    "backendProvider": "laboratory+playwright+reader",
+    "provider": "laboratory+playwright",
+    "backendProvider": "laboratory+playwright",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-16T16:27:25.205Z",
-    "durationMs": 826407,
+    "generatedAt": "2026-08-16T18:28:55.192Z",
+    "durationMs": 817639,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 815,
-    "postsCollected": 129,
-    "latestObservationAt": "2026-08-16T15:25:49.106Z",
+    "posts": 816,
+    "postsCollected": 128,
+    "latestObservationAt": "2026-08-16T17:54:07.919Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -32,11 +32,6 @@
       "team"
     ],
     "failures": [
-      {
-        "provider": "playwright",
-        "username": "AhaanRaizada",
-        "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
-      },
       {
         "provider": "playwright",
         "username": "robertsun",
@@ -64,18 +59,37 @@
       },
       {
         "provider": "reader",
+        "username": "robertsun",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
         "username": "Lennart_up",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "AerodromeFinance",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "SeamlessProtocol",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "username": "talentprotocol",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "rss",
+        "username": "robertsun",
+        "message": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_u"
       },
       {
         "provider": "rss",
@@ -91,6 +105,11 @@
         "provider": "rss",
         "username": "SeamlessProtocol",
         "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "message": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
@@ -141,8 +160,7 @@
       {
         "provider": "playwright",
         "username": "AhaanRaizada",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+        "returned": 4
       },
       {
         "provider": "playwright",
@@ -193,7 +211,7 @@
       {
         "provider": "playwright",
         "username": "basedsnipez",
-        "returned": 2
+        "returned": 3
       },
       {
         "provider": "playwright",
@@ -229,7 +247,7 @@
       {
         "provider": "playwright",
         "username": "Schoen_xyz",
-        "returned": 5
+        "returned": 3
       },
       {
         "provider": "playwright",
@@ -281,45 +299,45 @@
       },
       {
         "provider": "reader",
-        "username": "AhaanRaizada",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
         "username": "robertsun",
-        "parsed": 1,
-        "returned": 1,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "Lennart_up",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "AerodromeFinance",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "talentprotocol",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Aug 16 2026 19:10:47 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "rss",
+        "username": "robertsun",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/robertsun/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/robertsun/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
@@ -341,6 +359,13 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=talentprotocol attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -348,9 +373,9 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-16T16:13:39.102Z",
-      "nextSyncAt": "2026-08-16T18:13:39.102Z",
-      "importedPosts": 0,
+      "lastSyncAt": "2026-08-16T18:15:18.034Z",
+      "nextSyncAt": "2026-08-16T20:15:18.034Z",
+      "importedPosts": 1,
       "accountsScanned": 1,
       "skipped": false,
       "forced": false,
@@ -358,12 +383,88 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-16T16:13:39.102Z",
-    "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-16T16:13:38.798Z",
-    "previousGeneratedAt": "2026-08-16T14:27:36.435Z"
+    "lastLaboratorySyncAt": "2026-08-16T18:15:18.034Z",
+    "laboratoryImportedPosts": 1,
+    "startedAt": "2026-08-16T18:15:17.553Z",
+    "previousGeneratedAt": "2026-08-16T16:27:25.205Z"
   },
   "posts": [
+    {
+      "id": "basedsnipez-2089048073095798840",
+      "author": "basedsnipez",
+      "displayName": "basedsnipez",
+      "username": "basedsnipez",
+      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-16T17:54:07.919Z",
+      "createdAt": "2026-08-16T17:54:07.919Z",
+      "relative_time": "28m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HP3KJiVWgAAAetz?format=webp&name=medium",
+        "https://pbs.twimg.com/media/HP2oNAuWUAAndoB?format=webp&name=small"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/basedsnipez/status/2089048073095798840",
+      "url": "https://x.com/basedsnipez/status/2089048073095798840",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "0xb20lol-2089043088048263621",
+      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "username": "0xb20lol",
+      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
+      "verified": true,
+      "text": "Which one would you want to see pushed first? 👀👇\n\nSniper/Arb Bot ⚡\nAlchem-Link 🔗\nScylar 🤖\nCurious what the community thinks.\n@scematica is building. 🧠⚡\n#Solana #PumpFun #Crypto #Web3 #DeFi #AI https://t.co/bfEutNWO2I",
+      "created_at": "2026-08-16T17:34:19.391Z",
+      "createdAt": "2026-08-16T17:34:19.391Z",
+      "relative_time": "40m ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/0xb20lol/status/2089043088048263621",
+      "url": "https://x.com/0xb20lol/status/2089043088048263621",
+      "likes": 5,
+      "replies": 1,
+      "reposts": 0,
+      "category": "laboratory",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 3,
+      "favorite": true,
+      "description": "Primary Laboratory relay and public experiment log.",
+      "website": "https://0xb20.lol",
+      "logo": "",
+      "conversation_id": "2089043088048263621",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [
+        {
+          "id": "2089041418610254336",
+          "type": "quoted"
+        }
+      ],
+      "source": "xapi"
+    },
     {
       "id": "basedsnipez-2089010748768793046",
       "author": "basedsnipez",
@@ -374,15 +475,15 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T15:25:49.106Z",
       "createdAt": "2026-08-16T15:25:49.106Z",
-      "relative_time": "55m ago",
+      "relative_time": "2h ago",
       "images": [
-        "https://pbs.twimg.com/media/HP2oNAuWUAAndoB?format=webp&name=medium"
+        "https://pbs.twimg.com/media/HP2oNAuWUAAndoB?format=webp&name=small"
       ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
-      "post_url": "https://x.com/basedsnipez/status/2089010748768793046",
-      "url": "https://x.com/basedsnipez/status/2089010748768793046",
+      "post_url": "https://x.com/basedsnipez/status/2089010748768793046/photo/1",
+      "url": "https://x.com/basedsnipez/status/2089010748768793046/photo/1",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -410,7 +511,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T15:11:58.455Z",
       "createdAt": "2026-08-16T15:11:58.455Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HP2lCIBbkAAOcOI?format=webp&name=medium",
         "https://pbs.twimg.com/media/HP2awzQbcAA_wCM?format=webp&name=small"
@@ -447,7 +548,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T15:03:57.413Z",
       "createdAt": "2026-08-16T15:03:57.413Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HP2jMr5boAApBO3?format=webp&name=medium"
       ],
@@ -483,7 +584,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T14:57:32.970Z",
       "createdAt": "2026-08-16T14:57:32.970Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HP2hu0lbAAAaRoh?format=webp&name=medium"
       ],
@@ -519,7 +620,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T14:21:17.422Z",
       "createdAt": "2026-08-16T14:21:17.422Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HP2Zb27bUAABu4p?format=webp&name=medium"
       ],
@@ -555,7 +656,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T14:13:09.587Z",
       "createdAt": "2026-08-16T14:13:09.587Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HP2XkpuWUAAnaIC?format=webp&name=medium"
       ],
@@ -849,7 +950,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T02:30:20.892Z",
       "createdAt": "2026-08-16T02:30:20.892Z",
-      "relative_time": "13h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/media/HPz2tuNXEAIzIAO?format=webp&name=medium"
       ],
@@ -1174,7 +1275,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-15T20:19:47.431Z",
       "createdAt": "2026-08-15T20:19:47.431Z",
-      "relative_time": "20h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HPyh4zGXAAAp4E2?format=webp&name=medium"
       ],
@@ -2704,7 +2805,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-14T16:56:02.332Z",
       "createdAt": "2026-08-14T16:56:02.332Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HPsprNUbkAAuJC4?format=webp&name=medium"
       ],
@@ -4515,7 +4616,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-13T17:44:11.746Z",
       "createdAt": "2026-08-13T17:44:11.746Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2087958323589185536/img/CZjYnBX5Dxchmwff.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2085759836772560896/img/cJzcNecEzwbQE0bm.jpg"
@@ -5746,7 +5847,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T17:41:45.020Z",
       "createdAt": "2026-08-12T17:41:45.020Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HPig9VtWMAAazHA?format=webp&name=medium"
       ],
@@ -5782,7 +5883,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-12T17:03:02.340Z",
       "createdAt": "2026-08-12T17:03:02.340Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HPiYGNqaAAAXme5?format=webp&name=medium"
       ],
@@ -5845,6 +5946,42 @@
       "source": "playwright"
     },
     {
+      "id": "ahaanraizada-2087569650976776659",
+      "author": "AhaanRaizada",
+      "displayName": "AhaanRaizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-12T15:59:24.618Z",
+      "createdAt": "2026-08-12T15:59:24.618Z",
+      "relative_time": "4d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPiJcp2a8AA--aS?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2087569650976776659",
+      "url": "https://x.com/AhaanRaizada/status/2087569650976776659",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
       "id": "AhaanRaizada-2087569650976776659",
       "author": "Ahaan Raizada",
       "displayName": "Ahaan Raizada",
@@ -5879,42 +6016,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "reader"
-    },
-    {
-      "id": "ahaanraizada-2087569650976776659",
-      "author": "AhaanRaizada",
-      "displayName": "AhaanRaizada",
-      "username": "AhaanRaizada",
-      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-12T15:59:24.618Z",
-      "createdAt": "2026-08-12T15:59:24.618Z",
-      "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPiJcp2a8AA--aS?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/AhaanRaizada/status/2087569650976776659",
-      "url": "https://x.com/AhaanRaizada/status/2087569650976776659",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
     },
     {
       "id": "virtuals_io-2087569005464994007",
@@ -7570,7 +7671,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T17:55:35.165Z",
       "createdAt": "2026-08-11T17:55:35.165Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/media/HPdOKXZaoAA5Nbc?format=webp&name=medium"
       ],
@@ -7606,7 +7707,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T17:30:34.211Z",
       "createdAt": "2026-08-11T17:30:34.211Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/media/HPdUpltagAAdV1A?format=webp&name=medium"
       ],
@@ -7642,7 +7743,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T17:28:09.396Z",
       "createdAt": "2026-08-11T17:28:09.396Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/media/HPdUDisaMAAra0b?format=webp&name=small",
         "https://pbs.twimg.com/media/HPdUKDUasAADxQ0?format=webp&name=small",
@@ -7681,7 +7782,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T16:59:06.418Z",
       "createdAt": "2026-08-11T16:59:06.418Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2087222263569584128/img/MZbX7dtGDI0uqxPD.jpg"
       ],
@@ -7756,7 +7857,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T16:33:21.274Z",
       "createdAt": "2026-08-11T16:33:21.274Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/media/HPbWOlIaoAAjIAe?format=webp&name=medium"
       ],
@@ -9713,7 +9814,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-10T17:05:03.558Z",
       "createdAt": "2026-08-10T17:05:03.558Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2086754224671424512/img/gR220J06T1g7a8HE.jpg"
       ],
@@ -9749,7 +9850,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-10T17:02:02.368Z",
       "createdAt": "2026-08-10T17:02:02.368Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/media/HPYEsEWaIAAcdiJ?format=webp&name=medium"
       ],
@@ -11273,7 +11374,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-09T17:59:50.892Z",
       "createdAt": "2026-08-09T17:59:50.892Z",
-      "relative_time": "6d ago",
+      "relative_time": "7d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085770150507057152/img/GSxHQYBwRmcRaRe5.jpg"
       ],
@@ -12569,6 +12670,42 @@
       "source": "playwright"
     },
     {
+      "id": "ahaanraizada-2086122989733711881",
+      "author": "AhaanRaizada",
+      "displayName": "AhaanRaizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-08T16:10:53.700Z",
+      "createdAt": "2026-08-08T16:10:53.700Z",
+      "relative_time": "8d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2086122989733711881",
+      "url": "https://x.com/AhaanRaizada/status/2086122989733711881",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
       "id": "AhaanRaizada-2086122989733711881",
       "author": "Ahaan Raizada",
       "displayName": "Ahaan Raizada",
@@ -12603,42 +12740,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "reader"
-    },
-    {
-      "id": "ahaanraizada-2086122989733711881",
-      "author": "AhaanRaizada",
-      "displayName": "AhaanRaizada",
-      "username": "AhaanRaizada",
-      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-08T16:10:53.700Z",
-      "createdAt": "2026-08-08T16:10:53.700Z",
-      "relative_time": "7d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/AhaanRaizada/status/2086122989733711881",
-      "url": "https://x.com/AhaanRaizada/status/2086122989733711881",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
     },
     {
       "id": "schoen_xyz-2086110947261755451",
@@ -15874,7 +15975,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-06T17:07:54.859Z",
       "createdAt": "2026-08-06T17:07:54.859Z",
-      "relative_time": "9d ago",
+      "relative_time": "10d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2085409150398242816/img/-ZI2Ojsms_hai8Uf.jpg"
       ],
@@ -17327,7 +17428,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T18:15:09.173Z",
       "createdAt": "2026-08-05T18:15:09.173Z",
-      "relative_time": "10d ago",
+      "relative_time": "11d ago",
       "images": [
         "https://pbs.twimg.com/media/HO-lJvmboAEZW3P?format=webp&name=medium"
       ],
@@ -17462,6 +17563,42 @@
       "source": "playwright"
     },
     {
+      "id": "ahaanraizada-2085055881046315433",
+      "author": "AhaanRaizada",
+      "displayName": "AhaanRaizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-05T17:30:35.163Z",
+      "createdAt": "2026-08-05T17:30:35.163Z",
+      "relative_time": "11d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HO-bRc_aIAAgV1m?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2085055881046315433",
+      "url": "https://x.com/AhaanRaizada/status/2085055881046315433",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
       "id": "AhaanRaizada-2085055881046315433",
       "author": "Ahaan Raizada",
       "displayName": "Ahaan Raizada",
@@ -17496,42 +17633,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "reader"
-    },
-    {
-      "id": "ahaanraizada-2085055881046315433",
-      "author": "AhaanRaizada",
-      "displayName": "AhaanRaizada",
-      "username": "AhaanRaizada",
-      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-05T17:30:35.163Z",
-      "createdAt": "2026-08-05T17:30:35.163Z",
-      "relative_time": "10d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HO-bRc_aIAAgV1m?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/AhaanRaizada/status/2085055881046315433",
-      "url": "https://x.com/AhaanRaizada/status/2085055881046315433",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
     },
     {
       "id": "darkohh-2085049933338444276",
@@ -17651,7 +17752,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-05T16:30:20.633Z",
       "createdAt": "2026-08-05T16:30:20.633Z",
-      "relative_time": "10d ago",
+      "relative_time": "11d ago",
       "images": [
         "https://pbs.twimg.com/media/HO-NfB-XYAAeOTr?format=webp&name=medium"
       ],
@@ -17660,6 +17761,42 @@
       "videoPreview": "",
       "post_url": "https://x.com/therymac/status/2085040720608371007",
       "url": "https://x.com/therymac/status/2085040720608371007",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "ahaanraizada-2085037347130032591",
+      "author": "AhaanRaizada",
+      "displayName": "AhaanRaizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-05T16:16:56.333Z",
+      "createdAt": "2026-08-05T16:16:56.333Z",
+      "relative_time": "11d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HO-KagaawAAgOM6?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2085037347130032591",
+      "url": "https://x.com/AhaanRaizada/status/2085037347130032591",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -17712,42 +17849,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "reader"
-    },
-    {
-      "id": "ahaanraizada-2085037347130032591",
-      "author": "AhaanRaizada",
-      "displayName": "AhaanRaizada",
-      "username": "AhaanRaizada",
-      "avatar": "https://pbs.twimg.com/profile_images/1873606202137190401/zh-avKda_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-05T16:16:56.333Z",
-      "createdAt": "2026-08-05T16:16:56.333Z",
-      "relative_time": "10d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HO-KagaawAAgOM6?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/AhaanRaizada/status/2085037347130032591",
-      "url": "https://x.com/AhaanRaizada/status/2085037347130032591",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
     },
     {
       "id": "jessepollak-2085026759884607983",
@@ -26959,7 +27060,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-27T17:14:05.482Z",
       "createdAt": "2026-07-27T17:14:05.482Z",
-      "relative_time": "19d ago",
+      "relative_time": "20d ago",
       "images": [
         "https://pbs.twimg.com/media/HNcGPvlXsAAKtJx?format=webp&name=medium"
       ],
@@ -26995,7 +27096,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-07-27T17:08:07.327Z",
       "createdAt": "2026-07-27T17:08:07.327Z",
-      "relative_time": "19d ago",
+      "relative_time": "20d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2081708274085433344/img/hHyen3gKh5HKQRJo.jpg"
       ],
@@ -29925,42 +30026,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
-    },
-    {
-      "id": "a16zcrypto-2078159580383867231",
-      "author": "a16z crypto",
-      "displayName": "a16z crypto",
-      "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_400x400.jpg",
-      "verified": false,
-      "text": "Article The time for Clarity is here: The next-generation Telecoms Act Congressman @PatrickMcHenry Spending more than two decades in Congress, I saw firsthand how legislative momentum can propel our country forward — and how legislative inertia can leave us scrambling to... 36 0 3 6 57 0 5 7",
-      "created_at": "2026-07-17T16:47:08.958Z",
-      "createdAt": "2026-07-17T16:47:08.958Z",
-      "relative_time": "5d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HNcZDHCa8AI-C-l.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/a16zcrypto/status/2078159580383867231",
-      "url": "https://x.com/a16zcrypto/status/2078159580383867231",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "funds",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
     }
   ]
 }
