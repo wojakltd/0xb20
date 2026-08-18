@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-18T12:38:52.385Z",
-    "durationMs": 832981,
+    "generatedAt": "2026-08-18T14:37:30.575Z",
+    "durationMs": 848856,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 887,
-    "postsCollected": 132,
-    "latestObservationAt": "2026-08-18T12:29:33.612Z",
+    "posts": 889,
+    "postsCollected": 130,
+    "latestObservationAt": "2026-08-18T14:14:26.017Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -224,7 +224,7 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 4
+        "returned": 2
       },
       {
         "provider": "playwright",
@@ -346,13 +346,13 @@
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "online",
+      "status": "skipped",
       "refreshIntervalMinutes": 120,
       "lastSyncAt": "2026-08-18T12:24:59.778Z",
       "nextSyncAt": "2026-08-18T14:24:59.778Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": false,
+      "skipped": true,
       "forced": false,
       "error": ""
     },
@@ -360,10 +360,83 @@
     "apiStatus": "online",
     "lastLaboratorySyncAt": "2026-08-18T12:24:59.778Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-18T12:24:59.403Z",
-    "previousGeneratedAt": "2026-08-18T10:33:21.497Z"
+    "startedAt": "2026-08-18T14:23:21.718Z",
+    "previousGeneratedAt": "2026-08-18T12:38:52.385Z"
   },
   "posts": [
+    {
+      "id": "basedsnipez-2089717559922704643",
+      "author": "basedsnipez",
+      "displayName": "basedsnipez",
+      "username": "basedsnipez",
+      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-18T14:14:26.017Z",
+      "createdAt": "2026-08-18T14:14:26.017Z",
+      "relative_time": "16m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQArA-UXgAAdF1c?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/basedsnipez/status/2089717559922704643",
+      "url": "https://x.com/basedsnipez/status/2089717559922704643",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "iruletrenches-2089696708582056104",
+      "author": "iruletrenches",
+      "displayName": "iruletrenches",
+      "username": "iruletrenches",
+      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-18T12:51:34.670Z",
+      "createdAt": "2026-08-18T12:51:34.670Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQARIckXAAAG9p4?format=webp&name=small",
+        "https://pbs.twimg.com/media/HQARIciWsAAf0rB?format=webp&name=small"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/iruletrenches/status/2089696708582056104",
+      "url": "https://x.com/iruletrenches/status/2089696708582056104",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "iruletrenches-2089691167663308951",
       "author": "iruletrenches",
@@ -480,10 +553,10 @@
       "username": "donofbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "What's hot in the @base trenches rn? 6 11 109",
+      "text": "What's hot in the @base trenches rn? 15 22 479",
       "created_at": "2026-08-18T12:14:22.615Z",
       "createdAt": "2026-08-18T12:14:22.615Z",
-      "relative_time": "23m ago",
+      "relative_time": "2h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -517,7 +590,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T11:38:00.267Z",
       "createdAt": "2026-08-18T11:38:00.267Z",
-      "relative_time": "47m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089647953614893056/img/GIpeL6dG4m2kgj0_.jpg"
       ],
@@ -550,10 +623,10 @@
       "username": "donofbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "I’m a strong believer that if you’re going to build a startup, build something you’re genuinely in love with. Why? Because when you love what you’re building, work rarely feels like work. You have an almost unlimited supply of energy to keep going, and more importantly, the 6 22 218",
+      "text": "I’m a strong believer that if you’re going to build a startup, build something you’re genuinely in love with. Why? Because when you love what you’re building, work rarely feels like work. You have an almost unlimited supply of energy to keep going, and more importantly, the 10 1 34 579",
       "created_at": "2026-08-18T11:30:04.610Z",
       "createdAt": "2026-08-18T11:30:04.610Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -587,7 +660,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T10:49:12.423Z",
       "createdAt": "2026-08-18T10:49:12.423Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_8EkqbUAAaLYj?format=webp&name=medium"
       ],
@@ -623,7 +696,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T10:46:44.656Z",
       "createdAt": "2026-08-18T10:46:44.656Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_7gbgagAA29zR?format=webp&name=medium",
         "https://pbs.twimg.com/media/HP9Ksv-a4AArDmw?format=webp&name=small",
@@ -661,7 +734,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T10:05:13.483Z",
       "createdAt": "2026-08-18T10:05:13.483Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089534318226161664/img/_ZA5y68AzjDZKeSW.jpg"
       ],
@@ -697,7 +770,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T09:54:04.660Z",
       "createdAt": "2026-08-18T09:54:04.660Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_vc-2awAACs8J?format=webp&name=medium"
       ],
@@ -733,7 +806,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T09:53:08.868Z",
       "createdAt": "2026-08-18T09:53:08.868Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_vMfdXsAAthy-?format=webp&name=medium"
       ],
@@ -769,7 +842,7 @@
       "text": "If we translate this to crypto context If you can survive the bear market you're bound to moon when the bull market comes😂",
       "created_at": "2026-08-18T09:46:52.065Z",
       "createdAt": "2026-08-18T09:46:52.065Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -839,7 +912,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T08:57:04.636Z",
       "createdAt": "2026-08-18T08:57:04.636Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_iZCFXQAAQnq0?format=webp&name=medium",
         "https://pbs.twimg.com/media/HP2oNAuWUAAndoB?format=webp&name=small"
@@ -876,7 +949,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T08:54:48.842Z",
       "createdAt": "2026-08-18T08:54:48.842Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089636949266976768/img/bjo339x_4y5XSMQg.jpg"
       ],
@@ -909,10 +982,10 @@
       "username": "donofbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Was chatting with a pretty cool VC last week. I asked: \"What do you look for when backing founders?\" He answered: \"Their ability to survive\" It's true. Beyond innovation, being a founder is ultimately a game of perseverance. You’ll get punched in the face. Things will go 13 31 1.3K",
+      "text": "Was chatting with a pretty cool VC last week. I asked: \"What do you look for when backing founders?\" He answered: \"Their ability to survive\" It's true. Beyond innovation, being a founder is ultimately a game of perseverance. You’ll get punched in the face. Things will go 15 36 1.8K",
       "created_at": "2026-08-18T08:42:58.646Z",
       "createdAt": "2026-08-18T08:42:58.646Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -946,7 +1019,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T08:33:16.024Z",
       "createdAt": "2026-08-18T08:33:16.024Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_c3VuXAAALuoA?format=webp&name=medium"
       ],
@@ -1090,7 +1163,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T01:59:37.241Z",
       "createdAt": "2026-08-18T01:59:37.241Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089519659636965376/img/0GnGKKv_QzRk42kF.jpg"
       ],
@@ -1235,7 +1308,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T00:33:20.457Z",
       "createdAt": "2026-08-18T00:33:20.457Z",
-      "relative_time": "12h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089484083957035008/img/lImhxmXeRUY4QP65.jpg"
       ],
@@ -1449,9 +1522,8 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T22:47:55.583Z",
       "createdAt": "2026-08-17T22:47:55.583Z",
-      "relative_time": "13h ago",
+      "relative_time": "15h ago",
       "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2089473749615869952/img/1i4zOwd4PzXr6INB.jpg",
         "https://pbs.twimg.com/media/G3yvOe9XEAAS4W7?format=webp&name=small"
       ],
       "video": "",
@@ -1522,7 +1594,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T22:33:59.522Z",
       "createdAt": "2026-08-17T22:33:59.522Z",
-      "relative_time": "13h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089480718179270656/img/of04NAP8L5j9YbIA.jpg"
       ],
@@ -1631,7 +1703,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T21:54:22.389Z",
       "createdAt": "2026-08-17T21:54:22.389Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HP9Ksv-a4AArDmw?format=webp&name=small",
         "https://pbs.twimg.com/amplify_video_thumb/2089470892996993024/img/WKGtF5Kqmn6G4Mpx.jpg"
@@ -1704,7 +1776,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T21:36:27.195Z",
       "createdAt": "2026-08-17T21:36:27.195Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HP9Ga_wboAAsSul?format=webp&name=medium"
       ],
@@ -1777,7 +1849,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T21:16:41.800Z",
       "createdAt": "2026-08-17T21:16:41.800Z",
-      "relative_time": "15h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089461311038005249/img/IBZSrVq-tMoXaAuF.jpg"
       ],
@@ -1813,7 +1885,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T20:51:02.300Z",
       "createdAt": "2026-08-17T20:51:02.300Z",
-      "relative_time": "15h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HP5Qe-PWAAAEHyp?format=webp&name=medium"
       ],
@@ -1849,7 +1921,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T19:14:17.635Z",
       "createdAt": "2026-08-17T19:14:17.635Z",
-      "relative_time": "17h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089428919669997568/img/lyAmgwGaomDKS-Ci.jpg"
       ],
@@ -1885,7 +1957,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T19:08:12.594Z",
       "createdAt": "2026-08-17T19:08:12.594Z",
-      "relative_time": "17h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HP8Cb_ibgAM13Sb?format=webp&name=medium"
       ],
@@ -1957,7 +2029,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T18:34:36.515Z",
       "createdAt": "2026-08-17T18:34:36.515Z",
-      "relative_time": "18h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HP8c4jlXEAAhhBv?format=webp&name=medium"
       ],
@@ -2029,7 +2101,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T17:03:03.544Z",
       "createdAt": "2026-08-17T17:03:03.544Z",
-      "relative_time": "19h ago",
+      "relative_time": "21h ago",
       "images": [
         "https://pbs.twimg.com/media/HP8IDSvbkAA0WBm?format=webp&name=medium"
       ],
@@ -2209,7 +2281,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-17T14:07:51.832Z",
       "createdAt": "2026-08-17T14:07:51.832Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HP61tXrbAAAahsa?format=webp&name=medium"
       ],
@@ -2245,7 +2317,7 @@
       "text": "My timeline is filled with meow szn 25 2 54 2K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
       "created_at": "2026-08-17T14:00:35.830Z",
       "createdAt": "2026-08-17T14:00:35.830Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -3845,7 +3917,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-16T14:21:17.422Z",
       "createdAt": "2026-08-16T14:21:17.422Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HP2Zb27bUAABu4p?format=webp&name=medium"
       ],
@@ -11336,7 +11408,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-11T13:33:39.374Z",
       "createdAt": "2026-08-11T13:33:39.374Z",
-      "relative_time": "6d ago",
+      "relative_time": "7d ago",
       "images": [
         "https://pbs.twimg.com/media/HPbvBS7XgAAaNbL?format=webp&name=medium"
       ],
@@ -24171,7 +24243,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-03T12:33:38.768Z",
       "createdAt": "2026-08-03T12:33:38.768Z",
-      "relative_time": "14d ago",
+      "relative_time": "15d ago",
       "images": [
         "https://pbs.twimg.com/media/HOzDQsMWUAALtfW?format=webp&name=medium"
       ],
