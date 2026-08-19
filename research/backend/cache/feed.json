@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-19T04:42:22.696Z",
-    "durationMs": 845569,
+    "generatedAt": "2026-08-19T06:50:08.234Z",
+    "durationMs": 844856,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 924,
-    "postsCollected": 130,
-    "latestObservationAt": "2026-08-19T04:27:44.165Z",
+    "posts": 927,
+    "postsCollected": 129,
+    "latestObservationAt": "2026-08-19T06:34:42.930Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -70,7 +70,12 @@
       {
         "provider": "reader",
         "username": "SeamlessProtocol",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 19 2026 07:49:37 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "username": "talentprotocol",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 19 2026 07:49:37 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -90,6 +95,11 @@
         "provider": "rss",
         "username": "SeamlessProtocol",
         "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | "
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "message": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://"
       },
       {
         "provider": "rss",
@@ -191,7 +201,7 @@
       {
         "provider": "playwright",
         "username": "basedsnipez",
-        "returned": 7
+        "returned": 4
       },
       {
         "provider": "playwright",
@@ -222,7 +232,7 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 3
+        "returned": 4
       },
       {
         "provider": "playwright",
@@ -303,14 +313,14 @@
         "username": "SeamlessProtocol",
         "parsed": 0,
         "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 19 2026 07:49:37 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "talentprotocol",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 2
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 19 2026 07:49:37 GMT+0000 (Coordinated"
       },
       {
         "provider": "rss",
@@ -332,29 +342,181 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "talentprotocol",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/talentprotocol/rss attempt 1/1: RSS document contained no parseable items. | https://nitter.poast.org/talentprotocol/rss attempt 1/1: HTTP 403 | https://nitter.privacydev.net/talentprotocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/talentprotocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=talentprotocol attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-19T02:57:01.364Z",
-      "nextSyncAt": "2026-08-19T04:57:01.364Z",
+      "lastSyncAt": "2026-08-19T06:36:03.615Z",
+      "nextSyncAt": "2026-08-19T08:36:03.615Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-19T02:57:01.364Z",
+    "lastLaboratorySyncAt": "2026-08-19T06:36:03.615Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-19T04:28:17.127Z",
-    "previousGeneratedAt": "2026-08-19T03:11:17.672Z"
+    "startedAt": "2026-08-19T06:36:03.378Z",
+    "previousGeneratedAt": "2026-08-19T04:42:22.696Z"
   },
   "posts": [
+    {
+      "id": "iruletrenches-2089964255936184602",
+      "author": "iruletrenches",
+      "displayName": "iruletrenches",
+      "username": "iruletrenches",
+      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-19T06:34:42.930Z",
+      "createdAt": "2026-08-19T06:34:42.930Z",
+      "relative_time": "10m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQELaXRWsAA1ESD?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/iruletrenches/status/2089964255936184602",
+      "url": "https://x.com/iruletrenches/status/2089964255936184602",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "inversebrah-2089961758756851785",
+      "author": "inversebrah",
+      "displayName": "inversebrah",
+      "username": "inversebrah",
+      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-19T06:24:47.556Z",
+      "createdAt": "2026-08-19T06:24:47.556Z",
+      "relative_time": "19m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQEJJCLacAAVUU6?format=webp&name=medium",
+        "https://pbs.twimg.com/media/HQCye3CaIAADm83?format=webp&name=small"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/inversebrah/status/2089961758756851785",
+      "url": "https://x.com/inversebrah/status/2089961758756851785",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "inversebrah-2089961688724644000",
+      "author": "inversebrah",
+      "displayName": "inversebrah",
+      "username": "inversebrah",
+      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-19T06:24:30.859Z",
+      "createdAt": "2026-08-19T06:24:30.859Z",
+      "relative_time": "19m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQEJE4baAAAg-6e?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/inversebrah/status/2089961688724644000",
+      "url": "https://x.com/inversebrah/status/2089961688724644000",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "iruletrenches-2089948185317806391",
+      "author": "iruletrenches",
+      "displayName": "iruletrenches",
+      "username": "iruletrenches",
+      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-19T05:30:51.396Z",
+      "createdAt": "2026-08-19T05:30:51.396Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQD8y8_XAAAtUxL?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/iruletrenches/status/2089948185317806391",
+      "url": "https://x.com/iruletrenches/status/2089948185317806391",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "schoen_xyz-2089932300519661959",
       "author": "Schoen_xyz",
@@ -365,7 +527,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T04:27:44.165Z",
       "createdAt": "2026-08-19T04:27:44.165Z",
-      "relative_time": "10m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089932277845225472/img/8yCHzVflBFVEG9mG.jpg",
         "https://pbs.twimg.com/amplify_video_thumb/2089534318226161664/img/_ZA5y68AzjDZKeSW.jpg"
@@ -402,7 +564,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T04:10:21.272Z",
       "createdAt": "2026-08-19T04:10:21.272Z",
-      "relative_time": "25m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HQAxD78XgAAyXTx?format=webp&name=medium"
       ],
@@ -438,7 +600,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T03:49:51.653Z",
       "createdAt": "2026-08-19T03:49:51.653Z",
-      "relative_time": "39m ago",
+      "relative_time": "2h ago",
       "images": [
         "https://pbs.twimg.com/media/HQDHmxIbEAAjCRs?format=webp&name=medium"
       ],
@@ -474,7 +636,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T03:12:56.991Z",
       "createdAt": "2026-08-19T03:12:56.991Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HQDdO_SXsAAAThC?format=webp&name=medium"
       ],
@@ -510,7 +672,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T02:50:48.302Z",
       "createdAt": "2026-08-19T02:50:48.302Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089895536765628416/img/z111niiW2C-k9KsW.jpg"
       ],
@@ -546,7 +708,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T02:30:16.936Z",
       "createdAt": "2026-08-19T02:30:16.936Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HQDTd2_XIAEYzZZ?format=webp&name=medium"
       ],
@@ -726,7 +888,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T01:48:41.387Z",
       "createdAt": "2026-08-19T01:48:41.387Z",
-      "relative_time": "2h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HQDHmxIbEAAjCRs?format=webp&name=medium"
       ],
@@ -762,7 +924,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T01:34:48.680Z",
       "createdAt": "2026-08-19T01:34:48.680Z",
-      "relative_time": "2h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/media/HQBsdpMXUAAl9Ph?format=webp&name=medium"
       ],
@@ -834,7 +996,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T00:18:58.392Z",
       "createdAt": "2026-08-19T00:18:58.392Z",
-      "relative_time": "4h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/media/HQC1acuXEAAfqNu?format=webp&name=small",
         "https://pbs.twimg.com/media/HQC1acmWoAEd7o5?format=webp&name=small"
@@ -871,16 +1033,15 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-19T00:06:14.847Z",
       "createdAt": "2026-08-19T00:06:14.847Z",
-      "relative_time": "42m ago",
+      "relative_time": "6h ago",
       "images": [
-        "https://pbs.twimg.com/media/HQCye3CaIAADm83?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HQCgE45bkAA30dA?format=webp&name=small"
+        "https://pbs.twimg.com/media/HQCye3CaIAADm83?format=webp&name=small"
       ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
-      "post_url": "https://x.com/inversebrah/status/2089866494750736387",
-      "url": "https://x.com/inversebrah/status/2089866494750736387",
+      "post_url": "https://x.com/inversebrah/status/2089866494750736387/photo/1",
+      "url": "https://x.com/inversebrah/status/2089866494750736387/photo/1",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -1088,7 +1249,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T22:22:40.496Z",
       "createdAt": "2026-08-18T22:22:40.496Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HQCayvvXoAAbQt_?format=webp&name=medium",
         "https://pbs.twimg.com/media/HQCEa3cWAAAEdjM?format=webp&name=small"
@@ -1125,7 +1286,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T22:08:12.448Z",
       "createdAt": "2026-08-18T22:08:12.448Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HQCXeyCXoAA3iu9?format=webp&name=medium",
         "https://pbs.twimg.com/media/HP3iOaHWoAAvyOW?format=webp&name=small"
@@ -1198,7 +1359,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T20:44:55.405Z",
       "createdAt": "2026-08-18T20:44:55.405Z",
-      "relative_time": "7h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HQCEa3cWAAAEdjM?format=webp&name=small"
       ],
@@ -1234,7 +1395,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T20:26:02.476Z",
       "createdAt": "2026-08-18T20:26:02.476Z",
-      "relative_time": "8h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089786440263647232/img/RN5zp9Jy_mQmlpIu.jpg"
       ],
@@ -1343,7 +1504,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T19:38:46.018Z",
       "createdAt": "2026-08-18T19:38:46.018Z",
-      "relative_time": "8h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/media/HQByvynbwAAG8PK?format=webp&name=medium",
         "https://pbs.twimg.com/media/HQBsdpMXUAAl9Ph?format=webp&name=small"
@@ -1416,7 +1577,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T18:52:08.314Z",
       "createdAt": "2026-08-18T18:52:08.314Z",
-      "relative_time": "9h ago",
+      "relative_time": "11h ago",
       "images": [
         "https://pbs.twimg.com/media/HP_4SzGbQAASY64?format=webp&name=medium"
       ],
@@ -1560,7 +1721,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T16:28:09.143Z",
       "createdAt": "2026-08-18T16:28:09.143Z",
-      "relative_time": "12h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089647953614893056/img/GIpeL6dG4m2kgj0_.jpg"
       ],
@@ -1596,7 +1757,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T16:17:06.662Z",
       "createdAt": "2026-08-18T16:17:06.662Z",
-      "relative_time": "12h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HQBHH9Sa4AAIBS8?format=webp&name=medium"
       ],
@@ -1921,7 +2082,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T11:38:00.267Z",
       "createdAt": "2026-08-18T11:38:00.267Z",
-      "relative_time": "16h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089647953614893056/img/GIpeL6dG4m2kgj0_.jpg"
       ],
@@ -2280,7 +2441,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-18T08:54:48.842Z",
       "createdAt": "2026-08-18T08:54:48.842Z",
-      "relative_time": "19h ago",
+      "relative_time": "21h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2089636949266976768/img/bjo339x_4y5XSMQg.jpg"
       ],
@@ -33854,40 +34015,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
-    },
-    {
-      "id": "virtuals_io-2079068808204214630",
-      "author": "Virtuals Protocol",
-      "displayName": "Virtuals Protocol",
-      "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_400x400.jpg",
-      "verified": false,
-      "text": "agentic economy is here to stay 44 0 4 4 51 0 5 1",
-      "created_at": "2026-07-20T05:00:05.763Z",
-      "createdAt": "2026-07-20T05:00:05.763Z",
-      "relative_time": "1d ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/virtuals_io/status/2079068808204214630",
-      "url": "https://x.com/virtuals_io/status/2079068808204214630",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
     }
   ]
 }
