@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+playwright",
-    "backendProvider": "laboratory+playwright",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-26T14:49:03.022Z",
-    "durationMs": 803967,
+    "generatedAt": "2026-08-26T16:43:14.238Z",
+    "durationMs": 57959,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1304,
-    "postsCollected": 125,
+    "posts": 1303,
+    "postsCollected": 62,
     "latestObservationAt": "2026-08-26T14:30:58.970Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -34,70 +34,21 @@
     "failures": [
       {
         "provider": "playwright",
-        "username": "robertsun",
-        "message": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
-      },
-      {
-        "provider": "playwright",
-        "username": "Lennart_up",
+        "username": "base",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "AerodromeFinance",
+        "username": "buildonbase",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
         "provider": "playwright",
-        "username": "SeamlessProtocol",
+        "username": "jessepollak",
         "message": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log: - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible"
       },
       {
-        "provider": "reader",
-        "username": "robertsun",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "Lennart_up",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "AerodromeFinance",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "SeamlessProtocol",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "robertsun",
-        "message": "https://nitter.net/robertsun/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/robertsun/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun att"
-      },
-      {
-        "provider": "rss",
-        "username": "Lennart_up",
-        "message": "https://nitter.net/Lennart_up/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/Lennart_up/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=Lennart_u"
-      },
-      {
-        "provider": "rss",
-        "username": "AerodromeFinance",
-        "message": "https://nitter.net/AerodromeFinance/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_use"
-      },
-      {
-        "provider": "rss",
-        "username": "SeamlessProtocol",
-        "message": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_use"
-      },
-      {
-        "provider": "rss",
+        "provider": "playwright",
         "message": "Provider returned zero posts."
       }
     ],
@@ -105,237 +56,41 @@
       {
         "provider": "playwright",
         "username": "base",
-        "returned": 5
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "playwright",
         "username": "buildonbase",
-        "returned": 5
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "playwright",
         "username": "jessepollak",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "brad_or_bradley",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "therymac",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "HorinekPM",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "donofbase",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "BronheimDaniel",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "AhaanRaizada",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "robertsun",
-        "returned": 0,
-        "error": "timeline: No public timeline posts found. X may be blocking anonymous browser access."
-      },
-      {
-        "provider": "playwright",
-        "username": "RVanGrack",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "jonroethke",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "austinvalleskey",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "catferdon",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "ZacPrater",
-        "returned": 1
-      },
-      {
-        "provider": "playwright",
-        "username": "base_vietnam",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "Little_Dogx",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "Sir_Damilare",
-        "returned": 2
-      },
-      {
-        "provider": "playwright",
-        "username": "basedsnipez",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "inversebrah",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "dannyvayne",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "raymdong",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "darkohh",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "Lennart_up",
         "returned": 0,
         "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
-        "provider": "playwright",
-        "username": "iruletrenches",
-        "returned": 1
-      },
-      {
-        "provider": "playwright",
-        "username": "Schoen_xyz",
-        "returned": 6
-      },
-      {
-        "provider": "playwright",
-        "username": "o1_exchange",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "degentokenbase",
-        "returned": 4
-      },
-      {
-        "provider": "playwright",
-        "username": "AerodromeFinance",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "virtuals_io",
-        "returned": 5
-      },
-      {
-        "provider": "playwright",
-        "username": "SeamlessProtocol",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "talentprotocol",
-        "returned": 1
-      },
-      {
-        "provider": "playwright",
-        "username": "jpegapp",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "cbventures",
-        "returned": 3
-      },
-      {
-        "provider": "playwright",
-        "username": "a16zcrypto",
-        "returned": 5
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
-        "username": "robertsun",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
-        "username": "Lennart_up",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "AerodromeFinance",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "SeamlessProtocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Aug 26 2026 15:20:35 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "rss",
-        "username": "robertsun",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/robertsun/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/robertsun/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/robertsun/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/robertsun attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=robertsun attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "Lennart_up",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/Lennart_up/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/Lennart_up/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=Lennart_up attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "AerodromeFinance",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/AerodromeFinance/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/AerodromeFinance/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/AerodromeFinance/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/AerodromeFinance attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=AerodromeFinance attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "SeamlessProtocol",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/SeamlessProtocol/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/SeamlessProtocol/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/SeamlessProtocol/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/SeamlessProtocol attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=SeamlessProtocol attempt 1/1: HTTP 521"
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       }
     ],
     "laboratory": {
@@ -343,8 +98,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-26T14:35:39.402Z",
-      "nextSyncAt": "2026-08-26T16:35:39.402Z",
+      "lastSyncAt": "2026-08-26T16:42:16.525Z",
+      "nextSyncAt": "2026-08-26T18:42:16.525Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -353,10 +108,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-26T14:35:39.402Z",
+    "lastLaboratorySyncAt": "2026-08-26T16:42:16.525Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-26T14:35:39.055Z",
-    "previousGeneratedAt": "2026-08-26T12:45:26.709Z"
+    "startedAt": "2026-08-26T16:42:16.278Z",
+    "previousGeneratedAt": "2026-08-26T14:49:03.022Z"
   },
   "posts": [
     {
@@ -579,15 +334,15 @@
     },
     {
       "id": "base-2092575910847259116",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Turns out people really like trading onchain $1B+ DEX volume on Base 8 days in a row",
       "created_at": "2026-08-26T11:32:29.983Z",
       "createdAt": "2026-08-26T11:32:29.983Z",
-      "relative_time": "3h ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/media/HQpSiIgWoAAqV1R?format=webp&name=medium"
       ],
@@ -611,7 +366,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "0xb20lol-2092543524965388468",
@@ -724,15 +479,15 @@
     },
     {
       "id": "base-2092543242910716134",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Jesse on the growth of Base's DeFi ecosystem \"Base is now the 2nd largest onchain ecosystem\" \"That's mostly being driven by people who are earning yield on their dollars, and people who are borrowing dollars against their crypto\"",
       "created_at": "2026-08-26T09:22:41.340Z",
       "createdAt": "2026-08-26T09:22:41.340Z",
-      "relative_time": "5h ago",
+      "relative_time": "7h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092542936479100928/img/14cWbROXK4uGITaH?format=webp&name=medium"
       ],
@@ -756,7 +511,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "inversebrah-2092542336337346758",
@@ -1410,6 +1165,40 @@
       "source": "playwright"
     },
     {
+      "id": "jessepollak-2092451384776069497",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
+      "username": "jessepollak",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Action produces information. 145 38 533 33K",
+      "created_at": "2026-08-26T03:17:40.654Z",
+      "createdAt": "2026-08-26T03:17:40.654Z",
+      "relative_time": "13h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/jessepollak/status/2092451384776069497",
+      "url": "https://x.com/jessepollak/status/2092451384776069497",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 1,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
       "id": "iruletrenches-2092428234843439240",
       "author": "iruletrenches",
       "displayName": "iruletrenches",
@@ -2028,15 +1817,15 @@
     },
     {
       "id": "buildonbase-2092319367123919092",
-      "author": "buildonbase",
-      "displayName": "buildonbase",
+      "author": "Base Build",
+      "displayName": "Base Build",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "200 teams have already applied If you’re building the future of global finance, there’s still time to apply to Base Batches 004 Applications close September 9",
       "created_at": "2026-08-25T18:33:05.193Z",
       "createdAt": "2026-08-25T18:33:05.193Z",
-      "relative_time": "20h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2090115609635770368/img/XeIRAUBmAJdHSFU4?format=webp&name=medium"
       ],
@@ -2060,7 +1849,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "schoen_xyz-2092312351450038294",
@@ -2283,18 +2072,16 @@
     },
     {
       "id": "jessepollak-2092286305896103995",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "it's time to build with stocks on @base",
       "created_at": "2026-08-25T16:21:42.782Z",
       "createdAt": "2026-08-25T16:21:42.782Z",
-      "relative_time": "22h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2092285939439861760/img/7xsXuTfGHAWR3isg?format=webp&name=medium"
-      ],
+      "relative_time": "1d ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -2315,19 +2102,19 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2092283751334383846",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "automated stock portfolios on @base",
       "created_at": "2026-08-25T16:11:33.727Z",
       "createdAt": "2026-08-25T16:11:33.727Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HQkdKALWQAAB9db?format=webp&name=medium"
       ],
@@ -2351,19 +2138,19 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2092283489257447762",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "stocks on base",
       "created_at": "2026-08-25T16:10:31.243Z",
       "createdAt": "2026-08-25T16:10:31.243Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092246619400060928/img/wbXZPXkSfMzfTXlr?format=webp&name=medium"
       ],
@@ -2387,19 +2174,19 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2092279122177454118",
-      "author": "jessepollak",
-      "displayName": "jessepollak",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
       "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/1879556312822120448/QngrqCSC_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "why we should choose 8130 for every EVM would love any EVM engineers and ethereum core devs to watch and dive in with us to get to the best outcome",
       "created_at": "2026-08-25T15:53:10.050Z",
       "createdAt": "2026-08-25T15:53:10.050Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092233691422412800/img/RlRGoN-epAGITIrQ?format=webp&name=medium"
       ],
@@ -2423,7 +2210,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "a16zcrypto-2092278330104094782",
@@ -2643,12 +2430,12 @@
     },
     {
       "id": "buildonbase-2092257754542985438",
-      "author": "buildonbase",
-      "displayName": "buildonbase",
+      "author": "Base Build",
+      "displayName": "Base Build",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Builders win on Base",
       "created_at": "2026-08-25T14:28:15.609Z",
       "createdAt": "2026-08-25T14:28:15.609Z",
       "relative_time": "1d ago",
@@ -2675,7 +2462,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "schoen_xyz-2092256522415882676",
@@ -2715,12 +2502,12 @@
     },
     {
       "id": "base-2092252916010647978",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Equity portfolios are coming onchain on Base With Automated Token Portfolios (ATPs) by @Bitwise, access equity portfolios that are: - Backed 1:1 by real shares - Held in your own custody - Usable as collateral across DeFi Built with @glider__ using Coinbase Tokenized Stocks",
       "created_at": "2026-08-25T14:09:02.013Z",
       "createdAt": "2026-08-25T14:09:02.013Z",
       "relative_time": "1d ago",
@@ -2747,7 +2534,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "schoen_xyz-2092252465194299895",
@@ -3041,12 +2828,12 @@
     },
     {
       "id": "base-2092211156475679196",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Jesse explains why he's fired up about Coinbase Tokenized Stocks \"We're taking stocks, tokenizing them, and putting them on Base. That makes them 24/7, 365, and globally available\" \"The first thing people are going to do is trade. But that's just the beginning. The worlds",
       "created_at": "2026-08-25T11:23:05.764Z",
       "createdAt": "2026-08-25T11:23:05.764Z",
       "relative_time": "1d ago",
@@ -3073,7 +2860,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "inversebrah-2092201594737889346",
@@ -4821,15 +4608,15 @@
     },
     {
       "id": "buildonbase-2091919750699864160",
-      "author": "buildonbase",
-      "displayName": "buildonbase",
+      "author": "Base Build",
+      "displayName": "Base Build",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "NVDAc, METAc, AAPLc, GOOGLc are live, issued by Coinbase under ADGM FSRA authority If you're a builder looking to integrate Coinbase Tokenized Stocks, check out the docs below",
       "created_at": "2026-08-24T16:05:09.213Z",
       "createdAt": "2026-08-24T16:05:09.213Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2091918227806842880/img/5ogu8J-53QOnRVjQ?format=webp&name=medium"
       ],
@@ -4853,7 +4640,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "jessepollak-2091918879581000090",
@@ -4893,18 +4680,16 @@
     },
     {
       "id": "base-2091918696620896485",
-      "author": "base",
-      "displayName": "base",
+      "author": "Base",
+      "displayName": "Base",
       "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Stocks have been updated Coinbase Tokenized Stocks are live on Base - Available 24/7, 365 - Composable across Base DeFi - Own the underlying share held in a regulated trust, backed 1:1 Live now, with new stocks coming soon",
       "created_at": "2026-08-24T16:00:57.901Z",
       "createdAt": "2026-08-24T16:00:57.901Z",
-      "relative_time": "1d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2091918227806842880/img/5ogu8J-53QOnRVjQ?format=webp&name=medium"
-      ],
+      "relative_time": "2d ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -4925,7 +4710,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "base-2091918568019374542",
@@ -12931,12 +12716,12 @@
     },
     {
       "id": "buildonbase-2090415765065289962",
-      "author": "buildonbase",
-      "displayName": "buildonbase",
+      "author": "Base Build",
+      "displayName": "Base Build",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Base Batches applications are officially open We're looking for 10 early stage teams building the future of global finance on Base If that's you, apply before September 9",
       "created_at": "2026-08-20T12:28:51.095Z",
       "createdAt": "2026-08-20T12:28:51.095Z",
       "relative_time": "6d ago",
@@ -12963,7 +12748,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "inversebrah-2090409713091707273",
@@ -15069,15 +14854,15 @@
     },
     {
       "id": "buildonbase-2090115912162488815",
-      "author": "buildonbase",
-      "displayName": "buildonbase",
+      "author": "Base Build",
+      "displayName": "Base Build",
       "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2059715248584609797/YZBgTH3j_normal.jpg",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Observation captured without readable text.",
+      "text": "Base Batches is back We're funding up to 10 early-stage teams building global finance on Base If you're building in trading, payments, agents, financing, or asset issuance, apply now",
       "created_at": "2026-08-19T16:37:20.592Z",
       "createdAt": "2026-08-19T16:37:20.592Z",
-      "relative_time": "6d ago",
+      "relative_time": "7d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2090115609635770368/img/XeIRAUBmAJdHSFU4?format=webp&name=medium"
       ],
@@ -15101,7 +14886,7 @@
       "conversation_id": "",
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
-      "source": "playwright"
+      "source": "reader"
     },
     {
       "id": "base-2090115624764629058",
@@ -47597,78 +47382,6 @@
       "replies": 0,
       "reposts": 0,
       "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "0xb20lol-2081780039142805520",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "🚧 0XB20 Laboratory enters Beta Week.\n\nI've been unusually quiet on X over the last few weeks.\n\nNot because development stopped.\n\nBecause I was building.\n\nInstead of posting every small update, I focused on shipping the foundation first.\n\nToday the Laboratory already includes:\n\n🧠 AI LAB\n🔍 Wallet Parser\n📤 Token Sender\n🎫 Unified Lab Pass\n🤝 Referral System\n☁️ Cloud Database\nEverything is now available for public testing.\nThis isn't a \"finished product\".\nThis is the beginning of an open beta.\nThere will be bugs.\nThere will be UI changes.\n\nThere will be things that break.\n\nAnd that's exactly the point.\n\nOver the next few days I'll introduce every module separately, explain why it exists, and keep improving it based on your feedback.\n\nThe goal isn't another token website.\n\nThe goal is to build a real Web3 laboratory.\n\n🧪 Welcome to Beta Week.\n\n🌐 https://t.co/zhRsCW6hCj\n\n#Base #BuildOnBase #Web3 #Crypto #BuildInPublic #AI #BaseBuilders\n\ncc:\n@base\n@BuildOnBase\n@jessepollak\n@brian_armstrong\n@o1_exchange\n@stambouli_o1",
-      "created_at": "2026-07-27T16:33:33.591Z",
-      "createdAt": "2026-07-27T16:33:33.591Z",
-      "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HOP35CAbEAEwz0r.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2081780039142805520",
-      "url": "https://x.com/0xb20lol/status/2081780039142805520",
-      "likes": 5,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2081780039142805520",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "xapi"
-    },
-    {
-      "id": "basedsnipez-2081778304298725425",
-      "author": "basedsnipez",
-      "displayName": "basedsnipez",
-      "username": "basedsnipez",
-      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-07-27T16:26:39.972Z",
-      "createdAt": "2026-07-27T16:26:39.972Z",
-      "relative_time": "4d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HOP2VQeWgAAhKoP?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/basedsnipez/status/2081778304298725425",
-      "url": "https://x.com/basedsnipez/status/2081778304298725425",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
       "network": "BASE",
       "partner": false,
       "partner_label": "",
