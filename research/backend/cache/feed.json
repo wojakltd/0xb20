@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+playwright",
-    "backendProvider": "laboratory+playwright",
+    "provider": "laboratory+playwright+reader",
+    "backendProvider": "laboratory+playwright+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-26T10:39:12.593Z",
-    "durationMs": 826949,
+    "generatedAt": "2026-08-26T12:45:26.709Z",
+    "durationMs": 834709,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1297,
-    "postsCollected": 129,
-    "latestObservationAt": "2026-08-26T09:23:48.587Z",
+    "posts": 1304,
+    "postsCollected": 128,
+    "latestObservationAt": "2026-08-26T12:04:57.963Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -32,6 +32,11 @@
       "team"
     ],
     "failures": [
+      {
+        "provider": "playwright",
+        "username": "AhaanRaizada",
+        "message": "timeline: page.goto: Timeout 18000ms exceeded.\nCall log: - navigating to \"https://x.com/AhaanRaizada\", waiting until \"domcontentloaded\""
+      },
       {
         "provider": "playwright",
         "username": "robertsun",
@@ -68,10 +73,6 @@
         "message": "Reader returned no parseable status posts."
       },
       {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
         "provider": "rss",
         "username": "Lennart_up",
         "message": "https://nitter.net/Lennart_up/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/Lennart_up/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/Lennart_up/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/Lennart_up attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=Lennart_u"
@@ -95,7 +96,7 @@
       {
         "provider": "playwright",
         "username": "base",
-        "returned": 4
+        "returned": 5
       },
       {
         "provider": "playwright",
@@ -135,7 +136,8 @@
       {
         "provider": "playwright",
         "username": "AhaanRaizada",
-        "returned": 4
+        "returned": 0,
+        "error": "timeline: page.goto: Timeout 18000ms exceeded.\nCall log:\n  - navigating to \"https://x.com/AhaanRaizada\", waiting until \"domcontentloaded\"\n"
       },
       {
         "provider": "playwright",
@@ -191,7 +193,7 @@
       {
         "provider": "playwright",
         "username": "inversebrah",
-        "returned": 5
+        "returned": 3
       },
       {
         "provider": "playwright",
@@ -217,7 +219,7 @@
       {
         "provider": "playwright",
         "username": "iruletrenches",
-        "returned": 2
+        "returned": 1
       },
       {
         "provider": "playwright",
@@ -270,6 +272,13 @@
         "provider": "playwright",
         "username": "a16zcrypto",
         "returned": 5
+      },
+      {
+        "provider": "reader",
+        "username": "AhaanRaizada",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
@@ -326,9 +335,9 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-26T10:25:26.009Z",
-      "nextSyncAt": "2026-08-26T12:25:26.009Z",
-      "importedPosts": 1,
+      "lastSyncAt": "2026-08-26T12:31:32.324Z",
+      "nextSyncAt": "2026-08-26T14:31:32.324Z",
+      "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
       "forced": false,
@@ -336,12 +345,120 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-26T10:25:26.009Z",
-    "laboratoryImportedPosts": 1,
-    "startedAt": "2026-08-26T10:25:25.644Z",
-    "previousGeneratedAt": "2026-08-26T08:45:57.087Z"
+    "lastLaboratorySyncAt": "2026-08-26T12:31:32.324Z",
+    "laboratoryImportedPosts": 0,
+    "startedAt": "2026-08-26T12:31:32.000Z",
+    "previousGeneratedAt": "2026-08-26T10:39:12.593Z"
   },
   "posts": [
+    {
+      "id": "inversebrah-2092584081267863777",
+      "author": "inversebrah",
+      "displayName": "inversebrah",
+      "username": "inversebrah",
+      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-26T12:04:57.963Z",
+      "createdAt": "2026-08-26T12:04:57.963Z",
+      "relative_time": "34m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQpaIS0bgAAMVBx?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/inversebrah/status/2092584081267863777",
+      "url": "https://x.com/inversebrah/status/2092584081267863777",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "inversebrah-2092580969333371177",
+      "author": "inversebrah",
+      "displayName": "inversebrah",
+      "username": "inversebrah",
+      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-26T11:52:36.020Z",
+      "createdAt": "2026-08-26T11:52:36.020Z",
+      "relative_time": "46m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQpXTL3aIAAVCMx?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/inversebrah/status/2092580969333371177",
+      "url": "https://x.com/inversebrah/status/2092580969333371177",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "builders",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
+    {
+      "id": "base-2092575910847259116",
+      "author": "base",
+      "displayName": "base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Observation captured without readable text.",
+      "created_at": "2026-08-26T11:32:29.983Z",
+      "createdAt": "2026-08-26T11:32:29.983Z",
+      "relative_time": "59m ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQpSiIgWoAAqV1R?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2092575910847259116",
+      "url": "https://x.com/base/status/2092575910847259116",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "playwright"
+    },
     {
       "id": "0xb20lol-2092543524965388468",
       "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
@@ -461,7 +578,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T09:22:41.340Z",
       "createdAt": "2026-08-26T09:22:41.340Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092542936479100928/img/14cWbROXK4uGITaH?format=webp&name=medium"
       ],
@@ -569,7 +686,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T08:49:00.736Z",
       "createdAt": "2026-08-26T08:49:00.736Z",
-      "relative_time": "1h ago",
+      "relative_time": "3h ago",
       "images": [
         "https://pbs.twimg.com/media/HQotSEYawAAB_q0?format=webp&name=medium",
         "https://pbs.twimg.com/media/HQmBjfeWYAAzmJe?format=webp&name=small"
@@ -631,6 +748,42 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
+    },
+    {
+      "id": "AhaanRaizada-2092530963985396105",
+      "author": "Ahaan Raizada",
+      "displayName": "Ahaan Raizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "this is what indiranagar/acc looks like 100ft. times covers: - exclusive events - new startups emerging - VC insights - jobs near you in indiranagar and more banger ship @innercircle_so",
+      "created_at": "2026-08-26T08:33:53.816Z",
+      "createdAt": "2026-08-26T08:33:53.816Z",
+      "relative_time": "4h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQogGoybgAA_FLy?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2092530963985396105",
+      "url": "https://x.com/AhaanRaizada/status/2092530963985396105",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
     },
     {
       "id": "ahaanraizada-2092530963985396105",
@@ -823,7 +976,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T05:10:14.815Z",
       "createdAt": "2026-08-26T05:10:14.815Z",
-      "relative_time": "5h ago",
+      "relative_time": "7h ago",
       "images": [
         "https://pbs.twimg.com/media/HQn7NhQbUAA4AFU?format=webp&name=medium"
       ],
@@ -859,7 +1012,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T05:09:12.678Z",
       "createdAt": "2026-08-26T05:09:12.678Z",
-      "relative_time": "5h ago",
+      "relative_time": "7h ago",
       "images": [
         "https://pbs.twimg.com/media/HQn6-KLXsAAdkwA?format=webp&name=medium",
         "https://pbs.twimg.com/media/HPug7pIW4AAZMf-?format=webp&name=small"
@@ -1040,7 +1193,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T04:13:54.598Z",
       "createdAt": "2026-08-26T04:13:54.598Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HQnRdVqasAAIQH2?format=webp&name=medium"
       ],
@@ -1076,7 +1229,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T03:42:43.256Z",
       "createdAt": "2026-08-26T03:42:43.256Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/media/HQnnLR2XYAA-wYp?format=webp&name=medium"
       ],
@@ -1148,7 +1301,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-26T01:44:46.435Z",
       "createdAt": "2026-08-26T01:44:46.435Z",
-      "relative_time": "8h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/media/HQnMLn1WYAAv7fU?format=webp&name=medium"
       ],
@@ -1620,7 +1773,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T19:39:45.012Z",
       "createdAt": "2026-08-25T19:39:45.012Z",
-      "relative_time": "14h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HQl4oc8XUAAUpNE?format=webp&name=medium",
         "https://pbs.twimg.com/amplify_video_thumb/2091979655037300736/img/JR3ZdXBdStB4y9aY?format=webp&name=medium"
@@ -1657,7 +1810,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T19:36:11.774Z",
       "createdAt": "2026-08-25T19:36:11.774Z",
-      "relative_time": "15h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092334958237097984/img/IzCzSmfIy_gn21Cq?format=webp&name=medium"
       ],
@@ -1693,7 +1846,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T18:42:04.390Z",
       "createdAt": "2026-08-25T18:42:04.390Z",
-      "relative_time": "15h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HQks3l7XwAACEeP?format=webp&name=medium"
       ],
@@ -1729,7 +1882,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T18:33:05.193Z",
       "createdAt": "2026-08-25T18:33:05.193Z",
-      "relative_time": "15h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2090115609635770368/img/XeIRAUBmAJdHSFU4?format=webp&name=medium"
       ],
@@ -1912,7 +2065,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T17:29:03.177Z",
       "createdAt": "2026-08-25T17:29:03.177Z",
-      "relative_time": "17h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092266573423894528/img/qImMze1llosYIKh6?format=webp&name=medium"
       ],
@@ -1948,7 +2101,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T17:09:11.693Z",
       "createdAt": "2026-08-25T17:09:11.693Z",
-      "relative_time": "17h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HQlWLOqWIAA-Z8q?format=webp&name=medium"
       ],
@@ -1984,7 +2137,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T16:21:42.782Z",
       "createdAt": "2026-08-25T16:21:42.782Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092285939439861760/img/7xsXuTfGHAWR3isg?format=webp&name=medium"
       ],
@@ -2020,7 +2173,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T16:11:33.727Z",
       "createdAt": "2026-08-25T16:11:33.727Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HQkdKALWQAAB9db?format=webp&name=medium"
       ],
@@ -2056,7 +2209,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T16:10:31.243Z",
       "createdAt": "2026-08-25T16:10:31.243Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092246619400060928/img/wbXZPXkSfMzfTXlr?format=webp&name=medium"
       ],
@@ -2092,7 +2245,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T15:53:10.050Z",
       "createdAt": "2026-08-25T15:53:10.050Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092233691422412800/img/RlRGoN-epAGITIrQ?format=webp&name=medium"
       ],
@@ -2128,7 +2281,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T15:50:01.205Z",
       "createdAt": "2026-08-25T15:50:01.205Z",
-      "relative_time": "18h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092277670533013504/img/Z8F8JfJQ7BMjLi1x?format=webp&name=medium"
       ],
@@ -2309,7 +2462,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T14:31:18.701Z",
       "createdAt": "2026-08-25T14:31:18.701Z",
-      "relative_time": "19h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092237558491258880/img/Q04icG__yC6ptIVX?format=webp&name=medium"
       ],
@@ -2345,7 +2498,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T14:28:15.609Z",
       "createdAt": "2026-08-25T14:28:15.609Z",
-      "relative_time": "19h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092237558491258880/img/Q04icG__yC6ptIVX?format=webp&name=medium"
       ],
@@ -2417,7 +2570,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T14:09:02.013Z",
       "createdAt": "2026-08-25T14:09:02.013Z",
-      "relative_time": "20h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HQks3l7XwAACEeP?format=webp&name=medium"
       ],
@@ -2489,7 +2642,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T13:59:08.648Z",
       "createdAt": "2026-08-25T13:59:08.648Z",
-      "relative_time": "20h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HQkqq0HbkAALDVh?format=webp&name=medium"
       ],
@@ -2562,7 +2715,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T13:15:59.673Z",
       "createdAt": "2026-08-25T13:15:59.673Z",
-      "relative_time": "21h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/media/HQkgzK_WUAAOpEx?format=webp&name=small",
         "https://pbs.twimg.com/media/HQkgzLDWwAIdlku?format=webp&name=small"
@@ -2743,7 +2896,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-25T11:23:05.764Z",
       "createdAt": "2026-08-25T11:23:05.764Z",
-      "relative_time": "23h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092208166847066112/img/XJVq-NkxABP36xPB?format=webp&name=medium"
       ],
@@ -4404,6 +4557,42 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
+    },
+    {
+      "id": "AhaanRaizada-2091921499016077364",
+      "author": "Ahaan Raizada",
+      "displayName": "Ahaan Raizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Tokenised equities on @base have landed. The most exciting part is not just 1:1 backing but the fact that you get: - underlying real ownership - dividend rights - composability across DeFi straight 🔥🔥",
+      "created_at": "2026-08-24T16:12:06.044Z",
+      "createdAt": "2026-08-24T16:12:06.044Z",
+      "relative_time": "1d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2091918227806842880/img/5ogu8J-53QOnRVjQ?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2091921499016077364",
+      "url": "https://x.com/AhaanRaizada/status/2091921499016077364",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
     },
     {
       "id": "ahaanraizada-2091921499016077364",
@@ -10187,6 +10376,40 @@
       "source": "playwright"
     },
     {
+      "id": "AhaanRaizada-2090830648437268642",
+      "author": "Ahaan Raizada",
+      "displayName": "Ahaan Raizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Good day to remember: Markets remain irrational far longer than whether you’re sidelined or solvent 2 17 625",
+      "created_at": "2026-08-21T15:57:26.999Z",
+      "createdAt": "2026-08-21T15:57:26.999Z",
+      "relative_time": "4d ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2090830648437268642",
+      "url": "https://x.com/AhaanRaizada/status/2090830648437268642",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
       "id": "iruletrenches-2090825864195756090",
       "author": "iruletrenches",
       "displayName": "iruletrenches",
@@ -12563,7 +12786,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-08-20T12:28:51.095Z",
       "createdAt": "2026-08-20T12:28:51.095Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/media/HQKl3l3WwAAqNS9?format=webp&name=medium"
       ],
@@ -14329,6 +14552,42 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
+    },
+    {
+      "id": "AhaanRaizada-2090129363539055081",
+      "author": "Ahaan Raizada",
+      "displayName": "Ahaan Raizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Batches 004 is live. Our biggest one yet. If you’re building the future of global finance on @base go apply 🫡",
+      "created_at": "2026-08-19T17:30:47.650Z",
+      "createdAt": "2026-08-19T17:30:47.650Z",
+      "relative_time": "6d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2090115609635770368/img/XeIRAUBmAJdHSFU4?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2090129363539055081",
+      "url": "https://x.com/AhaanRaizada/status/2090129363539055081",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
     },
     {
       "id": "ahaanraizada-2090129363539055081",
@@ -32710,6 +32969,42 @@
       "source": "playwright"
     },
     {
+      "id": "AhaanRaizada-2086122989733711881",
+      "author": "Ahaan Raizada",
+      "displayName": "Ahaan Raizada",
+      "username": "AhaanRaizada",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "The Builder Call started off as an idea where I told @saxenasaheb that \"we need to bring the whole @base ecosystem together in 1 place\" where we go direct to the community where we show them base is still the best place to build where we bring the old and new guard of builders",
+      "created_at": "2026-08-08T16:10:53.700Z",
+      "createdAt": "2026-08-08T16:10:53.700Z",
+      "relative_time": "17d ago",
+      "images": [
+        "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/AhaanRaizada/status/2086122989733711881",
+      "url": "https://x.com/AhaanRaizada/status/2086122989733711881",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 0,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
       "id": "ahaanraizada-2086122989733711881",
       "author": "AhaanRaizada",
       "displayName": "AhaanRaizada",
@@ -32744,42 +33039,6 @@
       "in_reply_to_user_id": "",
       "referenced_tweets": [],
       "source": "playwright"
-    },
-    {
-      "id": "AhaanRaizada-2086122989733711881",
-      "author": "Ahaan Raizada",
-      "displayName": "Ahaan Raizada",
-      "username": "AhaanRaizada",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "The Builder Call started off as an idea where I told @saxenasaheb that \"we need to bring the whole @base ecosystem together in 1 place\" where we go direct to the community where we show them base is still the best place to build where we bring the old and new guard of builders",
-      "created_at": "2026-08-08T16:10:53.700Z",
-      "createdAt": "2026-08-08T16:10:53.700Z",
-      "relative_time": "8d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPNlKmXacAAg9Ru?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/AhaanRaizada/status/2086122989733711881",
-      "url": "https://x.com/AhaanRaizada/status/2086122989733711881",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
     },
     {
       "id": "schoen_xyz-2086110947261755451",
