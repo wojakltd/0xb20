@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-08-26T22:37:11.682Z",
-    "durationMs": 69504,
+    "generatedAt": "2026-08-27T05:50:55.957Z",
+    "durationMs": 82775,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1305,
-    "postsCollected": 57,
-    "latestObservationAt": "2026-08-26T22:31:18.201Z",
+    "posts": 1306,
+    "postsCollected": 53,
+    "latestObservationAt": "2026-08-27T05:03:14.840Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -57,9 +57,19 @@
         "message": "Reader returned no parseable status posts."
       },
       {
+        "provider": "reader",
+        "username": "jessepollak",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
         "provider": "rss",
         "username": "buildonbase",
         "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
       },
       {
         "provider": "rss",
@@ -102,9 +112,9 @@
       {
         "provider": "reader",
         "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -112,6 +122,13 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -119,9 +136,9 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-08-26T22:36:02.431Z",
-      "nextSyncAt": "2026-08-27T00:36:02.431Z",
-      "importedPosts": 0,
+      "lastSyncAt": "2026-08-27T05:49:33.741Z",
+      "nextSyncAt": "2026-08-27T07:49:33.741Z",
+      "importedPosts": 1,
       "accountsScanned": 1,
       "skipped": false,
       "forced": false,
@@ -129,12 +146,51 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-08-26T22:36:02.431Z",
-    "laboratoryImportedPosts": 0,
-    "startedAt": "2026-08-26T22:36:02.178Z",
-    "previousGeneratedAt": "2026-08-26T19:40:30.052Z"
+    "lastLaboratorySyncAt": "2026-08-27T05:49:33.741Z",
+    "laboratoryImportedPosts": 1,
+    "startedAt": "2026-08-27T05:49:33.182Z",
+    "previousGeneratedAt": "2026-08-26T22:37:11.682Z"
   },
   "posts": [
+    {
+      "id": "0xb20lol-2092840340143353888",
+      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "username": "0xb20lol",
+      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
+      "verified": true,
+      "text": "🔐 100,000,000 $BLOB tokens are now locked with @Streamflow_Fi.\n\nAs one of the people building BLOB, I wanted this to be visible and verifiable.\n\nIt’s on-chain. You can check the amount, time-period and recipients yourself.\n\nWe built the thing.\nWe launched the thing.\nWe locked the tokens.\nNow the interesting part begins. 🫧\nLet’s see what this weird little organism grows into. 🦠\n\nEat. Grow. Survive.\n\n#BLOB #Solana #SolanaEcosystem #PumpFun #Memecoin #Memecoins #Crypto #CryptoTwitter #Web3 #Web3Gaming #GameFi #IndieGameDev #BuildInPublic #SolanaDev",
+      "created_at": "2026-08-27T05:03:14.840Z",
+      "createdAt": "2026-08-27T05:03:14.840Z",
+      "relative_time": "46m ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/0xb20lol/status/2092840340143353888",
+      "url": "https://x.com/0xb20lol/status/2092840340143353888",
+      "likes": 4,
+      "replies": 1,
+      "reposts": 1,
+      "category": "laboratory",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 3,
+      "favorite": true,
+      "description": "Primary Laboratory relay and public experiment log.",
+      "website": "https://0xb20.lol",
+      "logo": "",
+      "conversation_id": "2092840340143353888",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [
+        {
+          "id": "2092839506861044157",
+          "type": "quoted"
+        }
+      ],
+      "source": "xapi"
+    },
     {
       "id": "jessepollak-2092741704210423927",
       "author": "jesse.base.eth",
@@ -215,7 +271,7 @@
       "text": "Portals is running a $10K raffle for users who route through their frontend into eligible Coinbase Tokenized Stock positions Available to eligible users outside the U.S. only",
       "created_at": "2026-08-26T20:11:19.595Z",
       "createdAt": "2026-08-26T20:11:19.595Z",
-      "relative_time": "2h ago",
+      "relative_time": "9h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -322,8 +378,10 @@
       "text": "Powered by Base A series featuring the businesses and institutions shaping the future of finance Tomorrow",
       "created_at": "2026-08-26T19:12:32.609Z",
       "createdAt": "2026-08-26T19:12:32.609Z",
-      "relative_time": "3h ago",
-      "images": [],
+      "relative_time": "10h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HQq7kYqbUAA2yjU?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -610,7 +668,7 @@
       "text": "Turns out people really like trading onchain $1B+ DEX volume on Base 8 days in a row",
       "created_at": "2026-08-26T11:32:29.983Z",
       "createdAt": "2026-08-26T11:32:29.983Z",
-      "relative_time": "11h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/media/HQpSiIgWoAAqV1R?format=webp&name=medium"
       ],
@@ -755,7 +813,7 @@
       "text": "Jesse on the growth of Base's DeFi ecosystem \"Base is now the 2nd largest onchain ecosystem\" \"That's mostly being driven by people who are earning yield on their dollars, and people who are borrowing dollars against their crypto\"",
       "created_at": "2026-08-26T09:22:41.340Z",
       "createdAt": "2026-08-26T09:22:41.340Z",
-      "relative_time": "13h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2092542936479100928/img/14cWbROXK4uGITaH?format=webp&name=medium"
       ],
