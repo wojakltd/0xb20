@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+cache",
+    "backendProvider": "laboratory+cache",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-02T13:59:10.978Z",
-    "durationMs": 73664,
+    "generatedAt": "2026-09-02T17:36:13.787Z",
+    "durationMs": 59886,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1184,
-    "postsCollected": 58,
+    "posts": 1179,
+    "postsCollected": 1179,
     "latestObservationAt": "2026-09-02T13:31:39.157Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -50,56 +50,54 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
-      }
-    ],
-    "coverage": [
-      {
-        "provider": "playwright",
-        "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "jessepollak",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "reader",
         "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 02 2026 17:37:17 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 02 2026 17:37:17 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 02 2026 17:37:17 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
+      },
+      {
+        "provider": "rss",
+        "message": "Provider returned zero posts."
       }
     ],
+    "coverage": [],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-02T13:57:57.598Z",
-      "nextSyncAt": "2026-09-02T15:57:57.598Z",
+      "lastSyncAt": "2026-09-02T17:35:14.202Z",
+      "nextSyncAt": "2026-09-02T19:35:14.202Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -108,10 +106,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-02T13:57:57.598Z",
+    "lastLaboratorySyncAt": "2026-09-02T17:35:14.202Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-02T13:57:57.314Z",
-    "previousGeneratedAt": "2026-09-02T08:15:49.609Z"
+    "startedAt": "2026-09-02T17:35:13.901Z",
+    "previousGeneratedAt": "2026-09-02T13:59:10.978Z"
   },
   "posts": [
     {
@@ -42819,186 +42817,6 @@
       "replies": 0,
       "reposts": 0,
       "category": "funds",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "donofbase-2084327605034160561",
-      "author": "donofbase",
-      "displayName": "donofbase",
-      "username": "donofbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2024003297531838464/29gXb80a_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-03T17:16:40.631Z",
-      "createdAt": "2026-08-03T17:16:40.631Z",
-      "relative_time": "20h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2084286737740926976/img/VgCVNYPk7EH26Sz9.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/donofbase/status/2084327605034160561",
-      "url": "https://x.com/donofbase/status/2084327605034160561",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "degentokenbase-2084323671129350186",
-      "author": "degentokenbase",
-      "displayName": "degentokenbase",
-      "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-03T17:01:02.715Z",
-      "createdAt": "2026-08-03T17:01:02.715Z",
-      "relative_time": "5d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HO0BVRgaYAEB5yc?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/degentokenbase/status/2084323671129350186",
-      "url": "https://x.com/degentokenbase/status/2084323671129350186",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "rvangrack-2084316479848161287",
-      "author": "RVanGrack",
-      "displayName": "RVanGrack",
-      "username": "RVanGrack",
-      "avatar": "https://pbs.twimg.com/profile_images/1837168448725512192/rn0fzhB6_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-03T16:32:28.180Z",
-      "createdAt": "2026-08-03T16:32:28.180Z",
-      "relative_time": "10d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2084304067451408384/img/4PFnZfOVjM2g5dqc.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/RVanGrack/status/2084316479848161287",
-      "url": "https://x.com/RVanGrack/status/2084316479848161287",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "iruletrenches-2084310960727073168",
-      "author": "iruletrenches",
-      "displayName": "iruletrenches",
-      "username": "iruletrenches",
-      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-03T16:10:32.319Z",
-      "createdAt": "2026-08-03T16:10:32.319Z",
-      "relative_time": "13m ago",
-      "images": [
-        "https://pbs.twimg.com/media/HOz1gWSWoAAhb08?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/iruletrenches/status/2084310960727073168",
-      "url": "https://x.com/iruletrenches/status/2084310960727073168",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "iruletrenches-2084304711285457253",
-      "author": "iruletrenches",
-      "displayName": "iruletrenches",
-      "username": "iruletrenches",
-      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-03T15:45:42.336Z",
-      "createdAt": "2026-08-03T15:45:42.336Z",
-      "relative_time": "38m ago",
-      "images": [
-        "https://pbs.twimg.com/media/HOzvvuKWcAAHGWE?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/iruletrenches/status/2084304711285457253",
-      "url": "https://x.com/iruletrenches/status/2084304711285457253",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
       "network": "BASE",
       "partner": false,
       "partner_label": "",
