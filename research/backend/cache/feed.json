@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+cache",
+    "backendProvider": "laboratory+cache",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-06T19:48:17.696Z",
-    "durationMs": 99364,
+    "generatedAt": "2026-09-06T21:52:34.748Z",
+    "durationMs": 56912,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1028,
-    "postsCollected": 49,
+    "posts": 1023,
+    "postsCollected": 1023,
     "latestObservationAt": "2026-09-06T13:52:56.334Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -53,8 +53,27 @@
       },
       {
         "provider": "reader",
+        "username": "base",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Sep 06 2026 22:20:33 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Sep 06 2026 22:20:33 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Sep 06 2026 22:20:33 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
@@ -63,76 +82,34 @@
       },
       {
         "provider": "rss",
-        "message": "Provider returned zero posts."
-      }
-    ],
-    "coverage": [
-      {
-        "provider": "playwright",
-        "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
         "username": "jessepollak",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "reader",
-        "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
       },
       {
         "provider": "rss",
-        "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
+        "message": "Provider returned zero posts."
       }
     ],
+    "coverage": [],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-06T17:53:32.979Z",
-      "nextSyncAt": "2026-09-06T19:53:32.979Z",
+      "lastSyncAt": "2026-09-06T21:51:38.291Z",
+      "nextSyncAt": "2026-09-06T23:51:38.291Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-06T17:53:32.979Z",
+    "lastLaboratorySyncAt": "2026-09-06T21:51:38.291Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-06T19:46:38.332Z",
-    "previousGeneratedAt": "2026-09-06T17:54:32.680Z"
+    "startedAt": "2026-09-06T21:51:37.836Z",
+    "previousGeneratedAt": "2026-09-06T19:48:17.696Z"
   },
   "posts": [
     {
@@ -37150,186 +37127,6 @@
       "replies": 0,
       "reposts": 0,
       "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "schoen_xyz-2085846124175245739",
-      "author": "Schoen_xyz",
-      "displayName": "Schoen_xyz",
-      "username": "Schoen_xyz",
-      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T21:50:43.807Z",
-      "createdAt": "2026-08-07T21:50:43.807Z",
-      "relative_time": "16h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPJp-fhXEAAF7fB?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/Schoen_xyz/status/2085846124175245739",
-      "url": "https://x.com/Schoen_xyz/status/2085846124175245739",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "virtuals_io-2085843592598389110",
-      "author": "virtuals_io",
-      "displayName": "virtuals_io",
-      "username": "virtuals_io",
-      "avatar": "https://pbs.twimg.com/profile_images/2009228951621914626/U6ZpmYq3_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T21:40:40.232Z",
-      "createdAt": "2026-08-07T21:40:40.232Z",
-      "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2085820138545385472/img/d4PYD8ha1_qQGd75.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/virtuals_io/status/2085843592598389110",
-      "url": "https://x.com/virtuals_io/status/2085843592598389110",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "schoen_xyz-2085836480312688789",
-      "author": "Schoen_xyz",
-      "displayName": "Schoen_xyz",
-      "username": "Schoen_xyz",
-      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T21:12:24.531Z",
-      "createdAt": "2026-08-07T21:12:24.531Z",
-      "relative_time": "9h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2085836184224219136/img/o3rovdCowrOFtito.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/Schoen_xyz/status/2085836480312688789",
-      "url": "https://x.com/Schoen_xyz/status/2085836480312688789",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "iruletrenches-2085832436164751661",
-      "author": "iruletrenches",
-      "displayName": "iruletrenches",
-      "username": "iruletrenches",
-      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T20:56:20.331Z",
-      "createdAt": "2026-08-07T20:56:20.331Z",
-      "relative_time": "4h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPJdi3cXoAAk6SE?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/iruletrenches/status/2085832436164751661",
-      "url": "https://x.com/iruletrenches/status/2085832436164751661",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "a16zcrypto-2085822242752262572",
-      "author": "a16zcrypto",
-      "displayName": "a16zcrypto",
-      "username": "a16zcrypto",
-      "avatar": "https://pbs.twimg.com/profile_images/1582168997134422016/HcmVyKwV_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T20:15:50.032Z",
-      "createdAt": "2026-08-07T20:15:50.032Z",
-      "relative_time": "2d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPJUO8IbAAAKnsQ?format=webp&name=small"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/a16zcrypto/status/2085822242752262572/photo/1",
-      "url": "https://x.com/a16zcrypto/status/2085822242752262572/photo/1",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "funds",
       "network": "BASE",
       "partner": false,
       "partner_label": "",
