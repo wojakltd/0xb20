@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-07T01:57:40.517Z",
-    "durationMs": 57939,
+    "generatedAt": "2026-09-07T06:54:37.243Z",
+    "durationMs": 64343,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1018,
-    "postsCollected": 1018,
+    "posts": 1015,
+    "postsCollected": 49,
     "latestObservationAt": "2026-09-06T13:52:56.334Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -53,27 +53,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -82,22 +63,64 @@
       },
       {
         "provider": "rss",
-        "username": "jessepollak",
-        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
-      },
-      {
-        "provider": "rss",
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-07T01:56:43.093Z",
-      "nextSyncAt": "2026-09-07T03:56:43.093Z",
+      "lastSyncAt": "2026-09-07T06:53:33.356Z",
+      "nextSyncAt": "2026-09-07T08:53:33.356Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -106,10 +129,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-07T01:56:43.093Z",
+    "lastLaboratorySyncAt": "2026-09-07T06:53:33.356Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-07T01:56:42.578Z",
-    "previousGeneratedAt": "2026-09-06T23:22:44.100Z"
+    "startedAt": "2026-09-07T06:53:32.900Z",
+    "previousGeneratedAt": "2026-09-07T01:57:40.517Z"
   },
   "posts": [
     {
@@ -122,7 +145,7 @@
       "text": "trading, financing, and payments on @base",
       "created_at": "2026-09-06T13:52:56.334Z",
       "createdAt": "2026-09-06T13:52:56.334Z",
-      "relative_time": "5h ago",
+      "relative_time": "17h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -156,7 +179,7 @@
       "text": "global capital markets on @base",
       "created_at": "2026-09-06T13:51:44.806Z",
       "createdAt": "2026-09-06T13:51:44.806Z",
-      "relative_time": "5h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2096397813420904448/img/sM7lGSetTrg3WcZ8?format=webp&name=medium"
       ],
@@ -192,7 +215,7 @@
       "text": "Ben on Base being the global home for finance \"We think about it in 3 different product areas. Trading, financing, and payments\" \"Trading: Every type of asset, both spot and perps\" \"Financing: The ability to do borrow/lend onchain\" \"Payments: Move money 24/7, fast, and cheap\"",
       "created_at": "2026-09-06T11:06:00.265Z",
       "createdAt": "2026-09-06T11:06:00.265Z",
-      "relative_time": "8h ago",
+      "relative_time": "19h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -223,10 +246,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "an attacker posted scam tickers via a third-party app connected to my account. deleted posts (and all app connections) and have full control. stay safe. 239 61 684 117K",
+      "text": "an attacker posted scam tickers via a third-party app connected to my account. deleted posts (and all app connections) and have full control. stay safe. 244 62 718 126K",
       "created_at": "2026-09-05T21:00:36.786Z",
       "createdAt": "2026-09-05T21:00:36.786Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -433,7 +456,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: New cb tokens, Tokenized Stocks, Builder Quests, and more News ■ cbZEC and cbHYPE are live on Base! Now you can unlock liquidity and put your ZEC and HYPE to work across Base's DeFi ecosystem. ■ 6 new Coinbase Tokenized Stocks are now live on Base: Amazon,... 109 98 493 102K",
+      "text": "Article This Week on Base: New cb tokens, Tokenized Stocks, Builder Quests, and more News ■ cbZEC and cbHYPE are live on Base! Now you can unlock liquidity and put your ZEC and HYPE to work across Base's DeFi ecosystem. ■ 6 new Coinbase Tokenized Stocks are now live on Base: Amazon,... 113 109 519 114K",
       "created_at": "2026-09-05T16:36:00.753Z",
       "createdAt": "2026-09-05T16:36:00.753Z",
       "relative_time": "1d ago",
@@ -507,7 +530,9 @@
       "created_at": "2026-09-05T08:02:00.287Z",
       "createdAt": "2026-09-05T08:02:00.287Z",
       "relative_time": "1d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2095890077050171401/img/6U5CPc_Hz303ik9A?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -1065,7 +1090,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Quiet month? Not on Base Here’s 25 things the Base ecosystem launched and announced in August 1) @Bitso made MXNB available through Base. Users can deposit Mexican pesos on Bitso, withdraw MXNB on Base, and use the Juno vault on @Morpho 2) @Bitwise launched Automated Token 266 236 1.2K 274K",
+      "text": "Quiet month? Not on Base Here’s 25 things the Base ecosystem launched and announced in August 1) @Bitso made MXNB available through Base. Users can deposit Mexican pesos on Bitso, withdraw MXNB on Base, and use the Juno vault on @Morpho 2) @Bitwise launched Automated Token 267 237 1.2K 276K",
       "created_at": "2026-09-03T11:53:36.187Z",
       "createdAt": "2026-09-03T11:53:36.187Z",
       "relative_time": "3d ago",
@@ -36841,115 +36866,6 @@
       "partner": false,
       "partner_label": "",
       "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "inversebrah-2085976740745412728",
-      "author": "inversebrah",
-      "displayName": "inversebrah",
-      "username": "inversebrah",
-      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-08T06:29:45.224Z",
-      "createdAt": "2026-08-08T06:29:45.224Z",
-      "relative_time": "13m ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPLgyb6awAApRw6?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/inversebrah/status/2085976740745412728",
-      "url": "https://x.com/inversebrah/status/2085976740745412728",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "inversebrah-2085974905414406554",
-      "author": "inversebrah",
-      "displayName": "inversebrah",
-      "username": "inversebrah",
-      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-08T06:22:27.647Z",
-      "createdAt": "2026-08-08T06:22:27.647Z",
-      "relative_time": "20m ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPLfHoQbEAAf4Ke?format=webp&name=medium",
-        "https://pbs.twimg.com/media/HPK2zkYW0AAOoSD?format=webp&name=small"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/inversebrah/status/2085974905414406554",
-      "url": "https://x.com/inversebrah/status/2085974905414406554",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "iruletrenches-2085932053162287415",
-      "author": "iruletrenches",
-      "displayName": "iruletrenches",
-      "username": "iruletrenches",
-      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-08T03:32:10.874Z",
-      "createdAt": "2026-08-08T03:32:10.874Z",
-      "relative_time": "11h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPK4DZhW8AAzoRI?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/iruletrenches/status/2085932053162287415",
-      "url": "https://x.com/iruletrenches/status/2085932053162287415",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
       "favorite": false,
       "description": "",
       "website": "",
