@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-06T23:22:44.100Z",
-    "durationMs": 55280,
+    "generatedAt": "2026-09-07T01:57:40.517Z",
+    "durationMs": 57939,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 1019,
-    "postsCollected": 1019,
+    "posts": 1018,
+    "postsCollected": 1018,
     "latestObservationAt": "2026-09-06T13:52:56.334Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -54,17 +54,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 00:04:57 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 00:04:57 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 00:04:57 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 07 2026 02:07:50 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -94,22 +94,22 @@
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-06T21:51:38.291Z",
-      "nextSyncAt": "2026-09-06T23:51:38.291Z",
+      "lastSyncAt": "2026-09-07T01:56:43.093Z",
+      "nextSyncAt": "2026-09-07T03:56:43.093Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-06T21:51:38.291Z",
+    "lastLaboratorySyncAt": "2026-09-07T01:56:43.093Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-06T23:21:48.820Z",
-    "previousGeneratedAt": "2026-09-06T21:52:34.748Z"
+    "startedAt": "2026-09-07T01:56:42.578Z",
+    "previousGeneratedAt": "2026-09-06T23:22:44.100Z"
   },
   "posts": [
     {
@@ -36942,42 +36942,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/iruletrenches/status/2085932053162287415",
       "url": "https://x.com/iruletrenches/status/2085932053162287415",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "schoen_xyz-2085869984685646013",
-      "author": "Schoen_xyz",
-      "displayName": "Schoen_xyz",
-      "username": "Schoen_xyz",
-      "avatar": "https://pbs.twimg.com/profile_images/2021329348180180996/bzN3Gosy_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-07T23:25:32.596Z",
-      "createdAt": "2026-08-07T23:25:32.596Z",
-      "relative_time": "17h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPJ_aY5WEAAsm4D?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/Schoen_xyz/status/2085869984685646013",
-      "url": "https://x.com/Schoen_xyz/status/2085869984685646013",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
