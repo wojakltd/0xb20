@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+cache",
+    "backendProvider": "laboratory+cache",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-12T21:50:28.764Z",
-    "durationMs": 57991,
+    "generatedAt": "2026-09-12T23:35:53.781Z",
+    "durationMs": 53910,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 811,
-    "postsCollected": 38,
+    "posts": 810,
+    "postsCollected": 810,
     "latestObservationAt": "2026-09-12T17:55:45.466Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -50,68 +50,66 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
-      }
-    ],
-    "coverage": [
-      {
-        "provider": "playwright",
-        "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "jessepollak",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
       },
       {
         "provider": "reader",
         "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 12 2026 23:52:26 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 12 2026 23:52:26 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 12 2026 23:52:26 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "message": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=j"
+      },
+      {
+        "provider": "rss",
+        "message": "Provider returned zero posts."
       }
     ],
+    "coverage": [],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
-      "status": "skipped",
+      "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-12T19:52:36.740Z",
-      "nextSyncAt": "2026-09-12T21:52:36.740Z",
+      "lastSyncAt": "2026-09-12T23:35:00.154Z",
+      "nextSyncAt": "2026-09-13T01:35:00.154Z",
       "importedPosts": 0,
       "accountsScanned": 1,
-      "skipped": true,
+      "skipped": false,
       "forced": false,
       "error": ""
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-12T19:52:36.740Z",
+    "lastLaboratorySyncAt": "2026-09-12T23:35:00.154Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-12T21:49:30.772Z",
-    "previousGeneratedAt": "2026-09-12T19:53:33.979Z"
+    "startedAt": "2026-09-12T23:34:59.871Z",
+    "previousGeneratedAt": "2026-09-12T21:50:28.764Z"
   },
   "posts": [
     {
@@ -29332,42 +29330,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/inversebrah/status/2088064331435085903",
       "url": "https://x.com/inversebrah/status/2088064331435085903",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "basedsnipez-2088020197491843080",
-      "author": "basedsnipez",
-      "displayName": "basedsnipez",
-      "username": "basedsnipez",
-      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-13T21:49:43.278Z",
-      "createdAt": "2026-08-13T21:49:43.278Z",
-      "relative_time": "9h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HPojTUjXkAA0ZuE?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/basedsnipez/status/2088020197491843080",
-      "url": "https://x.com/basedsnipez/status/2088020197491843080",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
