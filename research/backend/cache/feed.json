@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+cache",
+    "backendProvider": "laboratory+cache",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-15T06:59:47.622Z",
-    "durationMs": 72545,
+    "generatedAt": "2026-09-15T13:00:41.530Z",
+    "durationMs": 55912,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 727,
-    "postsCollected": 27,
+    "posts": 723,
+    "postsCollected": 723,
     "latestObservationAt": "2026-09-14T21:32:44.647Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -54,17 +54,31 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 15 2026 13:01:35 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 15 2026 13:01:35 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 15 2026 13:01:35 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
       },
       {
         "provider": "rss",
         "username": "base",
         "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
       },
       {
         "provider": "rss",
@@ -76,68 +90,14 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [
-      {
-        "provider": "playwright",
-        "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "jessepollak",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "reader",
-        "username": "base",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "jessepollak",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
-      }
-    ],
+    "coverage": [],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-15T06:58:35.364Z",
-      "nextSyncAt": "2026-09-15T08:58:35.364Z",
+      "lastSyncAt": "2026-09-15T12:59:46.018Z",
+      "nextSyncAt": "2026-09-15T14:59:46.018Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -146,10 +106,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-15T06:58:35.364Z",
+    "lastLaboratorySyncAt": "2026-09-15T12:59:46.018Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-15T06:58:35.077Z",
-    "previousGeneratedAt": "2026-09-15T00:06:20.538Z"
+    "startedAt": "2026-09-15T12:59:45.618Z",
+    "previousGeneratedAt": "2026-09-15T06:59:47.622Z"
   },
   "posts": [
     {
@@ -26205,153 +26165,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/inversebrah/status/2088976231043838232",
       "url": "https://x.com/inversebrah/status/2088976231043838232",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "inversebrah-2088934819300618656",
-      "author": "inversebrah",
-      "displayName": "inversebrah",
-      "username": "inversebrah",
-      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-16T10:24:06.110Z",
-      "createdAt": "2026-08-16T10:24:06.110Z",
-      "relative_time": "3h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HP1jJVbbYAARtdH?format=webp&name=medium",
-        "https://pbs.twimg.com/amplify_video_thumb/2088718541100920832/img/W6KVmFnuiSItDFXt.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/inversebrah/status/2088934819300618656",
-      "url": "https://x.com/inversebrah/status/2088934819300618656",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "0xb20lol-2088930966823911624",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "🧠⚡ @scematica IS STILL BUILDING\n\nFUD comes and goes. Building doesn’t. 🛠️\n\n$ScemaV2 is still active, dev is working, and the community is discussing the next steps for the project.\n\n🔹 Escrow Market already live\n🔹 Vaults are a major focus\n🔹 AI / Agentic infrastructure in development\n🔹 New ecosystem integrations\n🔹 Active community + ongoing development\n\nWe’re moving slowly but steadily toward the bonding curve 📈\nEarly-stage Solana projects are always high risk — but this is exactly where things can get interesting. 👀\n\n💬 Join the discussion:\nhttps://t.co/0GM8knWRqz\n\n🛒 Check $ScemaV2 on https://t.co/HSn7x8rhbj:\nhttps://t.co/rdewkQJgDw\n\n#Scematica #Solana #SolanaMemes #PumpFun #Crypto #Web3 #AI #DeFi #SolanaCrypto\n@Pumpfun @PumpfunEco @solana_devs",
-      "created_at": "2026-08-16T10:08:47.608Z",
-      "createdAt": "2026-08-16T10:08:47.608Z",
-      "relative_time": "5m ago",
-      "images": [
-        "https://pbs.twimg.com/media/HP1evRgbIAAnNLQ.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2088930966823911624",
-      "url": "https://x.com/0xb20lol/status/2088930966823911624",
-      "likes": 2,
-      "replies": 1,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2088930966823911624",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "xapi"
-    },
-    {
-      "id": "inversebrah-2088929486788341895",
-      "author": "inversebrah",
-      "displayName": "inversebrah",
-      "username": "inversebrah",
-      "avatar": "https://pbs.twimg.com/profile_images/2077933145668902912/7E4kQ4_s_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-16T10:02:54.740Z",
-      "createdAt": "2026-08-16T10:02:54.740Z",
-      "relative_time": "2h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HP1eRzNbsAAQ-f7?format=webp&name=small",
-        "https://pbs.twimg.com/media/HP1eSV7a0AAuDVT?format=webp&name=small",
-        "https://pbs.twimg.com/media/HP1eSz-aMAADIl5?format=webp&name=small"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/inversebrah/status/2088929486788341895",
-      "url": "https://x.com/inversebrah/status/2088929486788341895",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "basedsnipez-2088922411248808202",
-      "author": "basedsnipez",
-      "displayName": "basedsnipez",
-      "username": "basedsnipez",
-      "avatar": "https://pbs.twimg.com/profile_images/1998547955259723776/ZODGXtKi_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-16T09:34:47.800Z",
-      "createdAt": "2026-08-16T09:34:47.800Z",
-      "relative_time": "2h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HP1X3GJX0AAj-th?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/basedsnipez/status/2088922411248808202",
-      "url": "https://x.com/basedsnipez/status/2088922411248808202",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
