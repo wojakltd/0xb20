@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-19T19:47:49.285Z",
-    "durationMs": 55135,
+    "generatedAt": "2026-09-19T21:57:56.573Z",
+    "durationMs": 55692,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 510,
-    "postsCollected": 510,
+    "posts": 508,
+    "postsCollected": 508,
     "latestObservationAt": "2026-09-19T07:07:58.911Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -54,17 +54,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 20:33:35 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 22:34:56 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 20:33:35 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 22:34:56 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 20:33:35 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Sep 19 2026 22:34:56 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -96,8 +96,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-19T19:46:54.661Z",
-      "nextSyncAt": "2026-09-19T21:46:54.661Z",
+      "lastSyncAt": "2026-09-19T21:57:01.299Z",
+      "nextSyncAt": "2026-09-19T23:57:01.299Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -106,10 +106,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-19T19:46:54.661Z",
+    "lastLaboratorySyncAt": "2026-09-19T21:57:01.299Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-19T19:46:54.150Z",
-    "previousGeneratedAt": "2026-09-19T16:56:01.663Z"
+    "startedAt": "2026-09-19T21:57:00.881Z",
+    "previousGeneratedAt": "2026-09-19T19:47:49.285Z"
   },
   "posts": [
     {
@@ -18356,78 +18356,6 @@
       "replies": 0,
       "reposts": 0,
       "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "iruletrenches-2090552256198295572",
-      "author": "iruletrenches",
-      "displayName": "iruletrenches",
-      "username": "iruletrenches",
-      "avatar": "https://pbs.twimg.com/profile_images/2078738645960564736/FFLXbzN4_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-20T21:31:13.117Z",
-      "createdAt": "2026-08-20T21:31:13.117Z",
-      "relative_time": "3h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HQMiMmcXUAArZbH?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/iruletrenches/status/2090552256198295572",
-      "url": "https://x.com/iruletrenches/status/2090552256198295572",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "builders",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 0,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "playwright"
-    },
-    {
-      "id": "degentokenbase-2090542334140408291",
-      "author": "degentokenbase",
-      "displayName": "degentokenbase",
-      "username": "degentokenbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2027465157606363136/GJwS5tcj_normal.jpg",
-      "verified": false,
-      "text": "Observation captured without readable text.",
-      "created_at": "2026-08-20T20:51:47.514Z",
-      "createdAt": "2026-08-20T20:51:47.514Z",
-      "relative_time": "4d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HQMZK_nacAAClDm?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/degentokenbase/status/2090542334140408291",
-      "url": "https://x.com/degentokenbase/status/2090542334140408291",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "protocols",
       "network": "BASE",
       "partner": false,
       "partner_label": "",
