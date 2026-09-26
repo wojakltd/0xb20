@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-25T22:59:05.020Z",
-    "durationMs": 58725,
+    "generatedAt": "2026-09-26T02:38:00.485Z",
+    "durationMs": 78101,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 214,
@@ -90,7 +90,7 @@
         "username": "base",
         "parsed": 5,
         "returned": 5,
-        "attempts": 1
+        "attempts": 2
       },
       {
         "provider": "reader",
@@ -119,8 +119,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-25T22:58:06.637Z",
-      "nextSyncAt": "2026-09-26T00:58:06.637Z",
+      "lastSyncAt": "2026-09-26T02:36:42.716Z",
+      "nextSyncAt": "2026-09-26T04:36:42.716Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -129,10 +129,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-25T22:58:06.637Z",
+    "lastLaboratorySyncAt": "2026-09-26T02:36:42.716Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-25T22:58:06.295Z",
-    "previousGeneratedAt": "2026-09-25T19:44:12.689Z"
+    "startedAt": "2026-09-26T02:36:42.384Z",
+    "previousGeneratedAt": "2026-09-25T22:59:05.020Z"
   },
   "posts": [
     {
@@ -145,7 +145,7 @@
       "text": "where the #XRPArmy at",
       "created_at": "2026-09-25T14:59:18.511Z",
       "createdAt": "2026-09-25T14:59:18.511Z",
-      "relative_time": "7h ago",
+      "relative_time": "11h ago",
       "images": [
         "https://pbs.twimg.com/media/HS_25uPaUAAxtnx?format=webp&name=large"
       ],
@@ -181,7 +181,7 @@
       "text": "great overview of why onchain borrow rocks",
       "created_at": "2026-09-25T14:49:38.833Z",
       "createdAt": "2026-09-25T14:49:38.833Z",
-      "relative_time": "8h ago",
+      "relative_time": "11h ago",
       "images": [
         "https://pbs.twimg.com/media/HTEbcTVWwAIWzeS?format=webp&name=large"
       ],
@@ -217,7 +217,7 @@
       "text": "borrow against any tokenized stocks on @aave",
       "created_at": "2026-09-25T14:44:37.301Z",
       "createdAt": "2026-09-25T14:44:37.301Z",
-      "relative_time": "8h ago",
+      "relative_time": "11h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2103489580947185664/img/4TE4cBmVGtc1LXO-?format=webp&name=medium"
       ],
@@ -253,7 +253,7 @@
       "text": "Borrowing against Coinbase Tokenized Stocks is now available on @aave V4 Access USDC liquidity against eligible tokenized stocks on Base",
       "created_at": "2026-09-25T14:28:09.705Z",
       "createdAt": "2026-09-25T14:28:09.705Z",
-      "relative_time": "8h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HTEaftsXMAAEvLp?format=webp&name=large",
         "https://pbs.twimg.com/amplify_video_thumb/2103489580947185664/img/4TE4cBmVGtc1LXO-?format=webp&name=medium"
@@ -290,7 +290,7 @@
       "text": "48 hours with Brian in Singapore, spent meeting some of the incredible @baseapac builders 🇸🇬",
       "created_at": "2026-09-25T13:55:51.250Z",
       "createdAt": "2026-09-25T13:55:51.250Z",
-      "relative_time": "9h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2103427504761610240/img/D3ZUXjV_dZCU_CnZ?format=webp&name=medium"
       ],
@@ -326,7 +326,7 @@
       "text": "the builder stack for @base",
       "created_at": "2026-09-25T12:42:57.235Z",
       "createdAt": "2026-09-25T12:42:57.235Z",
-      "relative_time": "10h ago",
+      "relative_time": "13h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -532,7 +532,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Sub-second Sub-cent 24/7 141 75 597 51K",
+      "text": "Sub-second Sub-cent 24/7 141 75 601 52K",
       "created_at": "2026-09-24T13:49:21.583Z",
       "createdAt": "2026-09-24T13:49:21.583Z",
       "relative_time": "1d ago",
