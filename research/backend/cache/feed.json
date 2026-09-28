@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-28T00:09:12.946Z",
-    "durationMs": 55672,
+    "generatedAt": "2026-09-28T08:00:21.766Z",
+    "durationMs": 61351,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 192,
-    "postsCollected": 192,
+    "posts": 190,
+    "postsCollected": 16,
     "latestObservationAt": "2026-09-27T18:09:57.826Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -53,27 +53,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 28 2026 00:47:37 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 28 2026 00:47:37 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Sep 28 2026 00:47:37 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -82,22 +63,64 @@
       },
       {
         "provider": "rss",
-        "username": "jessepollak",
-        "message": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=j"
-      },
-      {
-        "provider": "rss",
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-28T00:08:17.539Z",
-      "nextSyncAt": "2026-09-28T02:08:17.539Z",
+      "lastSyncAt": "2026-09-28T07:59:20.662Z",
+      "nextSyncAt": "2026-09-28T09:59:20.662Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -106,10 +129,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-28T00:08:17.539Z",
+    "lastLaboratorySyncAt": "2026-09-28T07:59:20.662Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-28T00:08:17.273Z",
-    "previousGeneratedAt": "2026-09-27T21:04:45.472Z"
+    "startedAt": "2026-09-28T07:59:20.415Z",
+    "previousGeneratedAt": "2026-09-28T00:09:12.946Z"
   },
   "posts": [
     {
@@ -122,7 +145,7 @@
       "text": "++ revenue generating protocols making their tokens valuable",
       "created_at": "2026-09-27T18:09:57.826Z",
       "createdAt": "2026-09-27T18:09:57.826Z",
-      "relative_time": "2h ago",
+      "relative_time": "13h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -408,7 +431,9 @@
       "created_at": "2026-09-24T18:46:11.004Z",
       "createdAt": "2026-09-24T18:46:11.004Z",
       "relative_time": "3d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2091918227806842880/img/5ogu8J-53QOnRVjQ?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -543,7 +568,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Sub-second Sub-cent 24/7 143 82 623 55K",
+      "text": "Sub-second Sub-cent 24/7 145 84 628 56K",
       "created_at": "2026-09-24T13:49:21.583Z",
       "createdAt": "2026-09-24T13:49:21.583Z",
       "relative_time": "3d ago",
@@ -6817,76 +6842,6 @@
           "type": "quoted"
         }
       ],
-      "source": "xapi"
-    },
-    {
-      "id": "base-2093599871638860005",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "Article This Week on Base: Coinbase Tokenized Stocks, Powered by Base, and more News ■ Coinbase Tokenized Stocks are now live on Base! Offering 24/7 trading, DeFi composability, and 1:1 ownership of the underlying shares held in a regulated trust. ■ Base released the first... 106 165 788 320K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
-      "created_at": "2026-08-29T07:21:21.260Z",
-      "createdAt": "2026-08-29T07:21:21.260Z",
-      "relative_time": "2d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HQ3z9NKXgAEfYEH.jpg"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2093599871638860005",
-      "url": "https://x.com/base/status/2093599871638860005",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "0xb20lol-2093543028048957773",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": true,
-      "text": "GM 🌅\n\nThis is an experiment to find out if there are actually living people on the other side of the screen. 👀\nIf you’re reading this — drop a like or leave a comment. 🫡 Please :)\nI’m curious to figure something out…\nLet’s see how many of you are actually here. 🧪\n\n#GM #Web3 #Crypto #Solana #BuildInPublic #InternetCulture",
-      "created_at": "2026-08-29T03:35:28.692Z",
-      "createdAt": "2026-08-29T03:35:28.692Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2093543028048957773",
-      "url": "https://x.com/0xb20lol/status/2093543028048957773",
-      "likes": 1,
-      "replies": 1,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2093543028048957773",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
       "source": "xapi"
     }
   ]
