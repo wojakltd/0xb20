@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-29T17:18:40.518Z",
-    "durationMs": 55101,
+    "generatedAt": "2026-09-29T21:40:59.652Z",
+    "durationMs": 57415,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 193,
@@ -54,17 +54,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 17:51:10 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 22:15:44 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 17:51:10 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 22:15:44 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 17:51:10 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Sep 29 2026 22:15:44 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -96,8 +96,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-29T17:17:45.779Z",
-      "nextSyncAt": "2026-09-29T19:17:45.779Z",
+      "lastSyncAt": "2026-09-29T21:40:02.569Z",
+      "nextSyncAt": "2026-09-29T23:40:02.569Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -106,10 +106,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-29T17:17:45.779Z",
+    "lastLaboratorySyncAt": "2026-09-29T21:40:02.569Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-29T17:17:45.417Z",
-    "previousGeneratedAt": "2026-09-29T10:16:30.953Z"
+    "startedAt": "2026-09-29T21:40:02.237Z",
+    "previousGeneratedAt": "2026-09-29T17:18:40.518Z"
   },
   "posts": [
     {
