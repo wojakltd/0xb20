@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-29T03:22:01.261Z",
-    "durationMs": 77388,
+    "generatedAt": "2026-09-29T10:16:30.953Z",
+    "durationMs": 75479,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 194,
@@ -119,8 +119,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-29T03:20:44.271Z",
-      "nextSyncAt": "2026-09-29T05:20:44.271Z",
+      "lastSyncAt": "2026-09-29T10:15:15.745Z",
+      "nextSyncAt": "2026-09-29T12:15:15.745Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -129,10 +129,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-29T03:20:44.271Z",
+    "lastLaboratorySyncAt": "2026-09-29T10:15:15.745Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-29T03:20:43.872Z",
-    "previousGeneratedAt": "2026-09-28T22:47:13.297Z"
+    "startedAt": "2026-09-29T10:15:15.473Z",
+    "previousGeneratedAt": "2026-09-29T03:22:01.261Z"
   },
   "posts": [
     {
@@ -145,7 +145,7 @@
       "text": "saumya started out organically building builder community on base with FBI. he was an incredible leader and brought some of the best people into base, basically fully independently when we decided to double down on growing in India, he was the obvious choice. and now as we are",
       "created_at": "2026-09-28T16:56:37.872Z",
       "createdAt": "2026-09-28T16:56:37.872Z",
-      "relative_time": "10h ago",
+      "relative_time": "17h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -179,7 +179,7 @@
       "text": "Institutions are adopting stablecoins on Base",
       "created_at": "2026-09-28T16:43:48.477Z",
       "createdAt": "2026-09-28T16:43:48.477Z",
-      "relative_time": "10h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HTTgqvLXwAEZ5sF?format=webp&name=large"
       ],
@@ -212,10 +212,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "What apps are you trying on Base this week? 326 3 2 6 59 5 9 591 5 9 1 49K 4 9 K",
+      "text": "What apps are you trying on Base this week? 342 3 4 2 65 6 5 634 6 3 4 54K 5 4 K",
       "created_at": "2026-09-28T14:17:06.681Z",
       "createdAt": "2026-09-28T14:17:06.681Z",
-      "relative_time": "13h ago",
+      "relative_time": "19h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -249,7 +249,7 @@
       "text": "citi institutions can now accept stablecoins on @base big deal",
       "created_at": "2026-09-28T13:39:57.436Z",
       "createdAt": "2026-09-28T13:39:57.436Z",
-      "relative_time": "13h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HTTgqvLXwAEZ5sF?format=webp&name=large"
       ],
@@ -282,10 +282,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article Last Week on Base: DeFi all-time high, Tokenized Stocks on Aave, and more News: ■ Base's DeFi TVL hit a new all-time high of $6.2B. ■ Coinbase Tokenized Stocks' daily volume on Base reached a new all-time high of $71M. ■ @coinbase launched fixed-rate Bitcoin-backed loans... 101 1 0 1 153 1 5 3 669 6 6 9 79K 7 9 K",
+      "text": "Article Last Week on Base: DeFi all-time high, Tokenized Stocks on Aave, and more News: ■ Base's DeFi TVL hit a new all-time high of $6.2B. ■ Coinbase Tokenized Stocks' daily volume on Base reached a new all-time high of $71M. ■ @coinbase launched fixed-rate Bitcoin-backed loans... 103 1 0 3 157 1 5 7 690 6 9 0 82K 8 2 K",
       "created_at": "2026-09-28T08:17:25.818Z",
       "createdAt": "2026-09-28T08:17:25.818Z",
-      "relative_time": "19h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTShoJ-XgAA_PXN?format=webp&name=medium"
       ],
