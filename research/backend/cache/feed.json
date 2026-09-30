@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-30T00:55:16.739Z",
-    "durationMs": 57454,
+    "generatedAt": "2026-09-30T07:44:16.149Z",
+    "durationMs": 72237,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 204,
-    "postsCollected": 20,
-    "latestObservationAt": "2026-09-29T21:16:29.636Z",
+    "posts": 205,
+    "postsCollected": 10,
+    "latestObservationAt": "2026-09-30T01:39:13.047Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -50,6 +50,30 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
+      },
+      {
+        "provider": "rss",
+        "message": "Provider returned zero posts."
       }
     ],
     "coverage": [
@@ -74,16 +98,16 @@
       {
         "provider": "reader",
         "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
@@ -91,6 +115,20 @@
         "parsed": 5,
         "returned": 5,
         "attempts": 2
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -98,8 +136,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-30T00:54:19.524Z",
-      "nextSyncAt": "2026-09-30T02:54:19.524Z",
+      "lastSyncAt": "2026-09-30T07:43:04.179Z",
+      "nextSyncAt": "2026-09-30T09:43:04.179Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -108,12 +146,46 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-30T00:54:19.524Z",
+    "lastLaboratorySyncAt": "2026-09-30T07:43:04.179Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-30T00:54:19.285Z",
-    "previousGeneratedAt": "2026-09-29T21:40:59.652Z"
+    "startedAt": "2026-09-30T07:43:03.911Z",
+    "previousGeneratedAt": "2026-09-30T00:55:16.739Z"
   },
   "posts": [
+    {
+      "id": "jessepollak-2105110181772492888",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
+      "username": "jessepollak",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Y apenas estamos empezando 🇲🇽",
+      "created_at": "2026-09-30T01:39:13.047Z",
+      "createdAt": "2026-09-30T01:39:13.047Z",
+      "relative_time": "6h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/jessepollak/status/2105110181772492888",
+      "url": "https://x.com/jessepollak/status/2105110181772492888",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 1,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "buildonbase-2105044065234632995",
       "author": "Base Build",
@@ -160,7 +232,7 @@
       "text": "every asset will be tokenized on @base",
       "created_at": "2026-09-29T20:02:06.290Z",
       "createdAt": "2026-09-29T20:02:06.290Z",
-      "relative_time": "4h ago",
+      "relative_time": "11h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -230,7 +302,7 @@
       "text": "stablecoins are simply better money so cool to see salvadorans moving usdc onchain, across borders, in seconds with sivar base was built for exactly this",
       "created_at": "2026-09-29T16:59:40.359Z",
       "createdAt": "2026-09-29T16:59:40.359Z",
-      "relative_time": "7h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HTYokDlXwAEgb4w?format=webp&name=large"
       ],
