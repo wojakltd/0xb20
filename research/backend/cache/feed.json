@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-01T00:56:40.814Z",
-    "durationMs": 57637,
+    "generatedAt": "2026-10-01T08:03:20.366Z",
+    "durationMs": 57347,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 202,
-    "postsCollected": 202,
-    "latestObservationAt": "2026-09-30T13:57:03.148Z",
+    "posts": 208,
+    "postsCollected": 16,
+    "latestObservationAt": "2026-10-01T04:50:28.678Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -53,32 +53,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -90,15 +66,62 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-10-01T00:55:43.673Z",
-      "nextSyncAt": "2026-10-01T02:55:43.673Z",
-      "importedPosts": 0,
+      "lastSyncAt": "2026-10-01T08:02:23.301Z",
+      "nextSyncAt": "2026-10-01T10:02:23.301Z",
+      "importedPosts": 1,
       "accountsScanned": 1,
       "skipped": false,
       "forced": false,
@@ -106,12 +129,229 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-10-01T00:55:43.673Z",
-    "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-01T00:55:43.177Z",
-    "previousGeneratedAt": "2026-09-30T20:30:32.306Z"
+    "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
+    "laboratoryImportedPosts": 1,
+    "startedAt": "2026-10-01T08:02:23.019Z",
+    "previousGeneratedAt": "2026-10-01T00:56:40.814Z"
   },
   "posts": [
+    {
+      "id": "0xb20lol-2105520701922758921",
+      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
+      "username": "0xb20lol",
+      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
+      "verified": false,
+      "text": "🧠🤯 https://t.co/wqiA04rsog",
+      "created_at": "2026-10-01T04:50:28.678Z",
+      "createdAt": "2026-10-01T04:50:28.678Z",
+      "relative_time": "3h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/0xb20lol/status/2105520701922758921",
+      "url": "https://x.com/0xb20lol/status/2105520701922758921",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "laboratory",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 3,
+      "favorite": true,
+      "description": "Primary Laboratory relay and public experiment log.",
+      "website": "https://0xb20.lol",
+      "logo": "",
+      "conversation_id": "2105520701922758921",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [
+        {
+          "id": "2105507823358705763",
+          "type": "quoted"
+        }
+      ],
+      "source": "xapi"
+    },
+    {
+      "id": "buildonbase-2105381295719383259",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Introducing Base Cobalt, our third network upgrade of 2026 Validity Transactions and B20 enhancements are now live on mainnet Read the full breakdown ↓",
+      "created_at": "2026-09-30T19:36:31.649Z",
+      "createdAt": "2026-09-30T19:36:31.649Z",
+      "relative_time": "12h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HTZ9s44aoAAlrjY?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2105381295719383259",
+      "url": "https://x.com/buildonbase/status/2105381295719383259",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2105380890310492415",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Introducing Base Cobalt, our third network upgrade of 2026 Validity Transactions and B20 enhancements are now live on mainnet Read the full breakdown ↓",
+      "created_at": "2026-09-30T19:34:54.992Z",
+      "createdAt": "2026-09-30T19:34:54.992Z",
+      "relative_time": "12h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2105380046990921728/img/4mEBr5t7KER4Obv0?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2105380890310492415",
+      "url": "https://x.com/base/status/2105380890310492415",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2105379907006021953",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Article Introducing Base Cobalt tl;dr Base’s third upgrade, Cobalt, is now live on mainnet. Cobalt gives users greater control over their transactions with Validity Transactions and continues to establish Base as first-class asset... 30 36 192 30K",
+      "created_at": "2026-09-30T19:31:00.554Z",
+      "createdAt": "2026-09-30T19:31:00.554Z",
+      "relative_time": "12h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HTZ9s44aoAAlrjY?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2105379907006021953",
+      "url": "https://x.com/buildonbase/status/2105379907006021953",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2105366796265984442",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "OUSD is live and liquid on Base",
+      "created_at": "2026-09-30T18:38:54.710Z",
+      "createdAt": "2026-09-30T18:38:54.710Z",
+      "relative_time": "13h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2105366173973958656/img/eDIJ8ZP8Xq4e0Ih4?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2105366796265984442",
+      "url": "https://x.com/base/status/2105366796265984442",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2105326631258607714",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "/cobalt_waiting_room 120 51 498 42K",
+      "created_at": "2026-09-30T15:59:18.626Z",
+      "createdAt": "2026-09-30T15:59:18.626Z",
+      "relative_time": "16h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2105326631258607714",
+      "url": "https://x.com/base/status/2105326631258607714",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "jessepollak-2105295864034111639",
       "author": "jesse.base.eth",
@@ -156,7 +396,7 @@
       "text": "How will embodied AI reshape the world? @chris_anm01 from @axisrobotics and @brian_armstrong share their perspectives",
       "created_at": "2026-09-30T12:18:01.981Z",
       "createdAt": "2026-09-30T12:18:01.981Z",
-      "relative_time": "2h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2105270424091181057/img/JzF7gSvOepXuiqJN?format=webp&name=medium",
         "https://pbs.twimg.com/media/HTTfEgAaoAAdRdn?format=webp&name=medium"
@@ -227,7 +467,7 @@
       "text": "Base Dashboard has been updated to give you a clearer view of your app’s activity on Base Your Overview now focuses on trading, lending, and borrowing activity attributed to your app through Builder Codes Here’s what’s new ↓",
       "created_at": "2026-09-29T21:16:29.636Z",
       "createdAt": "2026-09-29T21:16:29.636Z",
-      "relative_time": "17h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTadTIFW4AE6t58?format=webp&name=large"
       ],
@@ -299,7 +539,7 @@
       "text": "We sat down with @itsbhaji, CEO of @centrifuge Bhaji believes that tokenization will be the new backbone of finance Discover why",
       "created_at": "2026-09-29T19:28:43.279Z",
       "createdAt": "2026-09-29T19:28:43.279Z",
-      "relative_time": "18h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTZgCjHW0AAZOYa?format=webp&name=medium"
       ],
@@ -371,7 +611,7 @@
       "text": "Base 🤝 Centrifuge Full episode dropping soon",
       "created_at": "2026-09-29T16:49:17.985Z",
       "createdAt": "2026-09-29T16:49:17.985Z",
-      "relative_time": "21h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTZcVohXgAA1j_P?format=webp&name=medium"
       ],
