@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-09-30T20:30:32.306Z",
-    "durationMs": 54426,
+    "generatedAt": "2026-10-01T00:56:40.814Z",
+    "durationMs": 57637,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 203,
-    "postsCollected": 203,
+    "posts": 202,
+    "postsCollected": 202,
     "latestObservationAt": "2026-09-30T13:57:03.148Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -54,17 +54,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 30 2026 20:49:43 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 30 2026 20:49:43 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Sep 30 2026 20:49:43 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 01 2026 01:28:33 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -96,8 +96,8 @@
       "apiStatus": "online",
       "status": "online",
       "refreshIntervalMinutes": 120,
-      "lastSyncAt": "2026-09-30T20:29:38.192Z",
-      "nextSyncAt": "2026-09-30T22:29:38.192Z",
+      "lastSyncAt": "2026-10-01T00:55:43.673Z",
+      "nextSyncAt": "2026-10-01T02:55:43.673Z",
       "importedPosts": 0,
       "accountsScanned": 1,
       "skipped": false,
@@ -106,10 +106,10 @@
     },
     "laboratoryProvider": "xapi",
     "apiStatus": "online",
-    "lastLaboratorySyncAt": "2026-09-30T20:29:38.192Z",
+    "lastLaboratorySyncAt": "2026-10-01T00:55:43.673Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-09-30T20:29:37.880Z",
-    "previousGeneratedAt": "2026-09-30T14:28:04.950Z"
+    "startedAt": "2026-10-01T00:55:43.177Z",
+    "previousGeneratedAt": "2026-09-30T20:30:32.306Z"
   },
   "posts": [
     {
@@ -7232,42 +7232,6 @@
       "partner": false,
       "partner_label": "",
       "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2094543206872674715",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "introducing longshot: a new prediction market on @base",
-      "created_at": "2026-08-31T21:49:49.906Z",
-      "createdAt": "2026-08-31T21:49:49.906Z",
-      "relative_time": "1d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2094444386121596928/img/-JWqs8J_Q6rQJimK?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2094543206872674715",
-      "url": "https://x.com/jessepollak/status/2094543206872674715",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
       "favorite": false,
       "description": "",
       "website": "",
