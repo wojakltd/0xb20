@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-02T17:04:36.694Z",
-    "durationMs": 57589,
+    "generatedAt": "2026-10-02T21:36:52.944Z",
+    "durationMs": 62740,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 205,
-    "postsCollected": 205,
-    "latestObservationAt": "2026-10-01T20:04:54.960Z",
+    "posts": 204,
+    "postsCollected": 15,
+    "latestObservationAt": "2026-10-02T14:02:47.746Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -59,21 +59,7 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Fri Oct 02 2026 17:48:56 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Fri Oct 02 2026 17:48:56 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Fri Oct 02 2026 17:48:56 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -82,20 +68,57 @@
       },
       {
         "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
-      },
-      {
-        "provider": "rss",
-        "username": "jessepollak",
-        "message": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=j"
-      },
-      {
-        "provider": "rss",
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -113,10 +136,80 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-02T17:03:39.105Z",
-    "previousGeneratedAt": "2026-10-02T10:10:47.778Z"
+    "startedAt": "2026-10-02T21:35:50.204Z",
+    "previousGeneratedAt": "2026-10-02T17:04:36.694Z"
   },
   "posts": [
+    {
+      "id": "jessepollak-2106022085114101798",
+      "author": "jesse.base.eth",
+      "displayName": "jesse.base.eth",
+      "username": "jessepollak",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "great overview of how two person engineering teams are accelerating at @base",
+      "created_at": "2026-10-02T14:02:47.746Z",
+      "createdAt": "2026-10-02T14:02:47.746Z",
+      "relative_time": "7h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/jessepollak/status/2106022085114101798",
+      "url": "https://x.com/jessepollak/status/2106022085114101798",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "team",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 1,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2105958159340712292",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "AiFi is here to stay @brian_armstrong and @everythingempty from @virtuals_io on the future of AiFi, and how it can accelerate the adoption of tokenized stocks Timestamps: 1:21 - The thesis for Butler 2:16 - The future of AiFi 4:51 - Accelerating adoption of tokenized stocks",
+      "created_at": "2026-10-02T09:48:46.654Z",
+      "createdAt": "2026-10-02T09:48:46.654Z",
+      "relative_time": "11h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HTdnw7VXgAAAums?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2105958159340712292",
+      "url": "https://x.com/buildonbase/status/2105958159340712292",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "base-2105750827788881927",
       "author": "Base",
@@ -163,7 +256,7 @@
       "text": "Congratulations to the Base Batches 004 teams The next 7 weeks are going to be transformative. We’re excited to support these builders on Base",
       "created_at": "2026-10-01T18:01:18.600Z",
       "createdAt": "2026-10-01T18:01:18.600Z",
-      "relative_time": "9h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2105719153252298752/img/rcMnAE_n6orsdR0X?format=webp&name=medium"
       ],
@@ -235,7 +328,7 @@
       "text": "Builder Roundtable 003 is live We're diving into memes and culture on Base with @Toshi, @degentokenbase, @BasecatOnBase, and @o1bluechip",
       "created_at": "2026-10-01T17:36:46.397Z",
       "createdAt": "2026-10-01T17:36:46.397Z",
-      "relative_time": "9h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTiQEBuWwAAtZ1Y?format=webp&name=large"
       ],
@@ -271,7 +364,7 @@
       "text": "north star is enabling 10m payments per second to enable business to capture the value of every page on the internet",
       "created_at": "2026-10-01T16:43:47.227Z",
       "createdAt": "2026-10-01T16:43:47.227Z",
-      "relative_time": "5h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTiRD0JWkAASfCw?format=webp&name=large"
       ],
@@ -307,7 +400,7 @@
       "text": "cool to see carry trade vaults for stocks on @base already starting to grow",
       "created_at": "2026-10-01T16:37:48.361Z",
       "createdAt": "2026-10-01T16:37:48.361Z",
-      "relative_time": "5h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2105564252606173184/img/XPmutnziWv0CI9l9?format=webp&name=medium"
       ],
@@ -343,7 +436,7 @@
       "text": "we are just getting started",
       "created_at": "2026-10-01T15:35:17.408Z",
       "createdAt": "2026-10-01T15:35:17.408Z",
-      "relative_time": "6h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTi4WxrWcAAtSgP?format=webp&name=large"
       ],
@@ -379,7 +472,7 @@
       "text": "Onchain Champions League Week 2 is underway Tune in to see this week's action ↓",
       "created_at": "2026-10-01T14:01:47.355Z",
       "createdAt": "2026-10-01T14:01:47.355Z",
-      "relative_time": "13h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -560,10 +653,8 @@
       "text": "I love AI (and halo)",
       "created_at": "2026-10-01T01:17:13.808Z",
       "createdAt": "2026-10-01T01:17:13.808Z",
-      "relative_time": "20h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2105416081074450432/img/cuA7lR5N35vw7w1O?format=webp&name=medium"
-      ],
+      "relative_time": "1d ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -632,7 +723,7 @@
       "text": "Introducing Base Cobalt, our third network upgrade of 2026 Validity Transactions and B20 enhancements are now live on mainnet Read the full breakdown ↓",
       "created_at": "2026-09-30T19:36:31.649Z",
       "createdAt": "2026-09-30T19:36:31.649Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HTZ9s44aoAAlrjY?format=webp&name=medium"
       ],
@@ -7238,114 +7329,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/base/status/2095434909326143718",
       "url": "https://x.com/base/status/2095434909326143718",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2095209512219410643",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "one week left to apply for @base batches 004",
-      "created_at": "2026-09-02T17:57:29.480Z",
-      "createdAt": "2026-09-02T17:57:29.480Z",
-      "relative_time": "1d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2095195408482111488/img/L3pSscrobPgEc0Xg?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2095209512219410643",
-      "url": "https://x.com/jessepollak/status/2095209512219410643",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "buildonbase-2095197820072440196",
-      "author": "Base Build",
-      "displayName": "Base Build",
-      "username": "buildonbase",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "One week left to apply to Base Batches 004!",
-      "created_at": "2026-09-02T17:11:01.855Z",
-      "createdAt": "2026-09-02T17:11:01.855Z",
-      "relative_time": "6d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2095195408482111488/img/L3pSscrobPgEc0Xg?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/buildonbase/status/2095197820072440196",
-      "url": "https://x.com/buildonbase/status/2095197820072440196",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2095197103517585702",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "Great things happen when you put builders from San Francisco in a room together Base Batches 004 applications close in 1 week Successful teams get $100K from the Base Ecosystem Fund, 8 weeks of mentorship, and a Demo Day in NYC to pitch to investors",
-      "created_at": "2026-09-02T17:08:11.015Z",
-      "createdAt": "2026-09-02T17:08:11.015Z",
-      "relative_time": "15h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2095195408482111488/img/L3pSscrobPgEc0Xg?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2095197103517585702",
-      "url": "https://x.com/base/status/2095197103517585702",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
