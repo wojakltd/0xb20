@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-03T00:50:38.940Z",
-    "durationMs": 56880,
+    "generatedAt": "2026-10-03T07:20:19.372Z",
+    "durationMs": 75428,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 204,
-    "postsCollected": 204,
+    "postsCollected": 10,
     "latestObservationAt": "2026-10-02T14:02:47.746Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -59,31 +59,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Oct 03 2026 01:32:13 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Oct 03 2026 01:32:13 GMT+0000 (Coordinated"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sat Oct 03 2026 01:32:13 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
         "username": "base",
         "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
       },
       {
         "provider": "rss",
@@ -95,7 +81,61 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -113,8 +153,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-03T00:49:42.059Z",
-    "previousGeneratedAt": "2026-10-02T21:36:52.944Z"
+    "startedAt": "2026-10-03T07:19:03.944Z",
+    "previousGeneratedAt": "2026-10-03T00:50:38.940Z"
   },
   "posts": [
     {
@@ -161,7 +201,7 @@
       "text": "AiFi is here to stay @brian_armstrong and @everythingempty from @virtuals_io on the future of AiFi, and how it can accelerate the adoption of tokenized stocks Timestamps: 1:21 - The thesis for Butler 2:16 - The future of AiFi 4:51 - Accelerating adoption of tokenized stocks",
       "created_at": "2026-10-02T09:48:46.654Z",
       "createdAt": "2026-10-02T09:48:46.654Z",
-      "relative_time": "11h ago",
+      "relative_time": "21h ago",
       "images": [
         "https://pbs.twimg.com/media/HTdnw7VXgAAAums?format=webp&name=medium"
       ],
