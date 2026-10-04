@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-04T07:36:27.216Z",
-    "durationMs": 55907,
+    "generatedAt": "2026-10-04T13:35:41.073Z",
+    "durationMs": 75279,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 200,
-    "postsCollected": 200,
+    "posts": 199,
+    "postsCollected": 15,
     "latestObservationAt": "2026-10-03T08:25:34.298Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -58,32 +58,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -95,7 +71,54 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -113,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-04T07:35:31.309Z",
-    "previousGeneratedAt": "2026-10-04T00:15:52.768Z"
+    "startedAt": "2026-10-04T13:34:25.793Z",
+    "previousGeneratedAt": "2026-10-04T07:36:27.216Z"
   },
   "posts": [
     {
@@ -124,10 +147,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Cobalt, Base Batches, and more News ■ 750+ teams applied to Base Batches 004, 10 were selected: @bitrepo_xyz, @contavcbr, @flovia402, @greekdotfi, @get_grow_app, @mercatus_ai, @rennfinance, @saturdaybank, @tribeca_xyz, and... 89 116 536 72K",
+      "text": "Article This Week on Base: Cobalt, Base Batches, and more News ■ 750+ teams applied to Base Batches 004, 10 were selected: @bitrepo_xyz, @contavcbr, @flovia402, @greekdotfi, @get_grow_app, @mercatus_ai, @rennfinance, @saturdaybank, @tribeca_xyz, and... 101 134 617 79K",
       "created_at": "2026-10-03T08:25:34.298Z",
       "createdAt": "2026-10-03T08:25:34.298Z",
-      "relative_time": "15h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HTsTuRNW0AAmNUd?format=webp&name=medium"
       ],
@@ -160,7 +183,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Stock markets close on weekends Base doesn't 151 66 712 53K",
+      "text": "Stock markets close on weekends Base doesn't 156 73 756 59K",
       "created_at": "2026-10-02T16:58:26.108Z",
       "createdAt": "2026-10-02T16:58:26.108Z",
       "relative_time": "1d ago",
@@ -267,7 +290,7 @@
       "text": "Virtuals 🤜🤛 Brian",
       "created_at": "2026-10-02T09:51:26.772Z",
       "createdAt": "2026-10-02T09:51:26.772Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2105958425385406464/img/FBIxcRQkxq-zAoX3?format=webp&name=medium",
         "https://pbs.twimg.com/media/HTdnw7VXgAAAums?format=webp&name=medium"
@@ -304,7 +327,7 @@
       "text": "AiFi is here to stay @brian_armstrong and @everythingempty from @virtuals_io on the future of AiFi, and how it can accelerate the adoption of tokenized stocks Timestamps: 1:21 - The thesis for Butler 2:16 - The future of AiFi 4:51 - Accelerating adoption of tokenized stocks",
       "created_at": "2026-10-02T09:48:46.654Z",
       "createdAt": "2026-10-02T09:48:46.654Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HTdnw7VXgAAAums?format=webp&name=medium"
       ],
@@ -7131,40 +7154,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/base/status/2095874519873233063",
       "url": "https://x.com/base/status/2095874519873233063",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2095789241217278040",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "AGM on shipping the right product \"Coinbase Tokenized Stocks are as close as you can get to actually owning a share. If Coinbase went bust tomorrow, you'd still own the shares\" \"We built the right product that sets us up for success for years from now\"",
-      "created_at": "2026-09-04T08:21:07.644Z",
-      "createdAt": "2026-09-04T08:21:07.644Z",
-      "relative_time": "17h ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2095789241217278040",
-      "url": "https://x.com/base/status/2095789241217278040",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
