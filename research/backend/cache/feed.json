@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+reader",
-    "backendProvider": "laboratory+reader",
+    "provider": "laboratory+cache",
+    "backendProvider": "laboratory+cache",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-04T00:15:52.768Z",
-    "durationMs": 73773,
+    "generatedAt": "2026-10-04T07:36:27.216Z",
+    "durationMs": 55907,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 200,
-    "postsCollected": 15,
+    "postsCollected": 200,
     "latestObservationAt": "2026-10-03T08:25:34.298Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -58,8 +58,32 @@
       },
       {
         "provider": "reader",
+        "username": "base",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader returned no parseable status posts."
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Sun Oct 04 2026 07:57:13 GMT+0000 (Coordinated"
+      },
+      {
+        "provider": "reader",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "rss",
+        "username": "base",
+        "message": "https://nitter.net/base/rss attempt 1/1: fetch failed | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: fetch failed | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=b"
       },
       {
         "provider": "rss",
@@ -71,54 +95,7 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [
-      {
-        "provider": "playwright",
-        "username": "base",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "buildonbase",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "playwright",
-        "username": "jessepollak",
-        "returned": 0,
-        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
-      },
-      {
-        "provider": "reader",
-        "username": "base",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "rss",
-        "username": "jessepollak",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/jessepollak/rss attempt 1/1: fetch failed | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
-      }
-    ],
+    "coverage": [],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -136,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-04T00:14:38.995Z",
-    "previousGeneratedAt": "2026-10-03T20:22:36.373Z"
+    "startedAt": "2026-10-04T07:35:31.309Z",
+    "previousGeneratedAt": "2026-10-04T00:15:52.768Z"
   },
   "posts": [
     {
