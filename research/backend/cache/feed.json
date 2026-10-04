@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-03T20:22:36.373Z",
-    "durationMs": 70542,
+    "generatedAt": "2026-10-04T00:15:52.768Z",
+    "durationMs": 73773,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 200,
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-03T20:21:25.831Z",
-    "previousGeneratedAt": "2026-10-03T17:42:35.906Z"
+    "startedAt": "2026-10-04T00:14:38.995Z",
+    "previousGeneratedAt": "2026-10-03T20:22:36.373Z"
   },
   "posts": [
     {
@@ -147,10 +147,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Cobalt, Base Batches, and more News ■ 750+ teams applied to Base Batches 004, 10 were selected: @bitrepo_xyz, @contavcbr, @flovia402, @greekdotfi, @get_grow_app, @mercatus_ai, @rennfinance, @saturdaybank, @tribeca_xyz, and... 88 113 519 69K",
+      "text": "Article This Week on Base: Cobalt, Base Batches, and more News ■ 750+ teams applied to Base Batches 004, 10 were selected: @bitrepo_xyz, @contavcbr, @flovia402, @greekdotfi, @get_grow_app, @mercatus_ai, @rennfinance, @saturdaybank, @tribeca_xyz, and... 89 116 536 72K",
       "created_at": "2026-10-03T08:25:34.298Z",
       "createdAt": "2026-10-03T08:25:34.298Z",
-      "relative_time": "11h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/media/HTsTuRNW0AAmNUd?format=webp&name=medium"
       ],
@@ -183,7 +183,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Stock markets close on weekends Base doesn't 150 65 697 51K",
+      "text": "Stock markets close on weekends Base doesn't 151 66 712 53K",
       "created_at": "2026-10-02T16:58:26.108Z",
       "createdAt": "2026-10-02T16:58:26.108Z",
       "relative_time": "1d ago",
@@ -903,9 +903,7 @@
       "created_at": "2026-09-30T19:34:54.992Z",
       "createdAt": "2026-09-30T19:34:54.992Z",
       "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2105380046990921728/img/4mEBr5t7KER4Obv0?format=webp&name=medium"
-      ],
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
