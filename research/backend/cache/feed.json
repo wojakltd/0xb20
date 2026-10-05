@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-05T00:21:17.744Z",
-    "durationMs": 54560,
+    "generatedAt": "2026-10-05T07:58:12.235Z",
+    "durationMs": 55618,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 189,
@@ -59,17 +59,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 01:05:11 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 08:45:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 01:05:11 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 08:45:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 01:05:11 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 05 2026 08:45:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -113,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-05T00:20:23.184Z",
-    "previousGeneratedAt": "2026-10-04T20:40:25.260Z"
+    "startedAt": "2026-10-05T07:57:16.617Z",
+    "previousGeneratedAt": "2026-10-05T00:21:17.744Z"
   },
   "posts": [
     {
