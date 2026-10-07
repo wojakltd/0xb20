@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-07T18:09:51.976Z",
-    "durationMs": 55910,
+    "generatedAt": "2026-10-07T23:57:18.994Z",
+    "durationMs": 55257,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 172,
-    "postsCollected": 172,
+    "posts": 171,
+    "postsCollected": 171,
     "latestObservationAt": "2026-10-03T08:25:34.298Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -59,17 +59,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Oct 07 2026 18:30:09 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 00:00:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Oct 07 2026 18:30:09 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 00:00:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Wed Oct 07 2026 18:30:09 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 00:00:08 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -113,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-07T18:08:56.066Z",
-    "previousGeneratedAt": "2026-10-07T10:43:27.762Z"
+    "startedAt": "2026-10-07T23:56:23.737Z",
+    "previousGeneratedAt": "2026-10-07T18:09:51.976Z"
   },
   "posts": [
     {
@@ -6153,40 +6153,6 @@
       "partner": false,
       "partner_label": "",
       "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2097051248126312802",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "ok i'm live building a global neobrokerage on base join twitch (in reply) if you want to chat",
-      "created_at": "2026-09-07T19:55:53.538Z",
-      "createdAt": "2026-09-07T19:55:53.538Z",
-      "relative_time": "2d ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2097051248126312802",
-      "url": "https://x.com/jessepollak/status/2097051248126312802",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
       "favorite": false,
       "description": "",
       "website": "",
