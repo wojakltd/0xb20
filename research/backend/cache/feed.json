@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-08T03:56:08.489Z",
-    "durationMs": 64793,
+    "generatedAt": "2026-10-08T11:03:58.318Z",
+    "durationMs": 57709,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 171,
-    "postsCollected": 171,
+    "posts": 170,
+    "postsCollected": 170,
     "latestObservationAt": "2026-10-03T08:25:34.298Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -59,17 +59,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 04:55:08 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 11:25:10 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 04:55:08 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 11:25:10 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 04:55:08 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 08 2026 11:25:10 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -113,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-08T03:55:03.696Z",
-    "previousGeneratedAt": "2026-10-07T23:57:18.994Z"
+    "startedAt": "2026-10-08T11:03:00.609Z",
+    "previousGeneratedAt": "2026-10-08T03:56:08.489Z"
   },
   "posts": [
     {
@@ -6109,42 +6109,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/base/status/2097303567618961760",
       "url": "https://x.com/base/status/2097303567618961760",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2097267694949044601",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "Joey from @ForecastFDN on the benefits of building on Base \"On the builder side, the Base team has been immensely supportive. Providing audit reports, connecting us with people, making intros\"",
-      "created_at": "2026-09-08T10:15:58.482Z",
-      "createdAt": "2026-09-08T10:15:58.482Z",
-      "relative_time": "13h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2097266731144126465/img/fhPtaRPOo0Gy0vOT?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2097267694949044601",
-      "url": "https://x.com/base/status/2097267694949044601",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
