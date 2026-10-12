@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-12T08:18:58.936Z",
-    "durationMs": 58256,
+    "generatedAt": "2026-10-12T19:31:56.280Z",
+    "durationMs": 57834,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 134,
-    "postsCollected": 134,
+    "posts": 132,
+    "postsCollected": 132,
     "latestObservationAt": "2026-10-03T08:25:34.298Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -59,17 +59,17 @@
       {
         "provider": "reader",
         "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 09:12:15 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 20:16:05 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 09:12:15 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 20:16:05 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 09:12:15 GMT+0000 (Coordinated"
+        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Mon Oct 12 2026 20:16:05 GMT+0000 (Coordinated"
       },
       {
         "provider": "reader",
@@ -113,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-12T08:18:00.680Z",
-    "previousGeneratedAt": "2026-10-12T00:51:37.932Z"
+    "startedAt": "2026-10-12T19:30:58.446Z",
+    "previousGeneratedAt": "2026-10-12T08:18:58.936Z"
   },
   "posts": [
     {
@@ -4787,78 +4787,6 @@
       "partner": false,
       "partner_label": "",
       "priority": 1,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2098832954609033313",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "0 to $100m in daily stock volume on @base in 26 days",
-      "created_at": "2026-09-12T17:55:45.466Z",
-      "createdAt": "2026-09-12T17:55:45.466Z",
-      "relative_time": "20h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HSCKPfrbQAAN61n?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2098832954609033313",
-      "url": "https://x.com/jessepollak/status/2098832954609033313",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2098699662500733021",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "Article This Week on Base: Coinbase Wallet, DeFi all-time high, and more News: ■ Base App is now @coinbasewallet! Built for speed. Trade anything, anywhere, without asking permission. ■ Base DeFi TVL reached an all-time high of $5.7B. Source: DeFi Llama. ■ @colosseum... 130 158 858 117K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
-      "created_at": "2026-09-12T09:06:06.151Z",
-      "createdAt": "2026-09-12T09:06:06.151Z",
-      "relative_time": "2d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HSAS5BhakAAfUub?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2098699662500733021",
-      "url": "https://x.com/base/status/2098699662500733021",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
       "favorite": false,
       "description": "",
       "website": "",
