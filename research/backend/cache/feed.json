@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-15T19:35:22.617Z",
-    "durationMs": 55767,
+    "generatedAt": "2026-10-15T22:48:17.548Z",
+    "durationMs": 63011,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 127,
-    "postsCollected": 127,
-    "latestObservationAt": "2026-10-15T13:58:56.403Z",
+    "posts": 131,
+    "postsCollected": 15,
+    "latestObservationAt": "2026-10-15T21:13:20.166Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -58,32 +58,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 15 2026 19:47:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 15 2026 19:47:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
         "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Thu Oct 15 2026 19:47:33 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
+        "message": "Reader returned no parseable status posts."
       },
       {
         "provider": "rss",
@@ -95,7 +71,54 @@
         "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -113,10 +136,154 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-15T19:34:26.850Z",
-    "previousGeneratedAt": "2026-10-15T14:34:13.916Z"
+    "startedAt": "2026-10-15T22:47:14.536Z",
+    "previousGeneratedAt": "2026-10-15T19:35:22.617Z"
   },
   "posts": [
+    {
+      "id": "base-2110841476389487090",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Buy and sell premium domains with stablecoins @atomHQ now supports stablecoin checkout and seller payouts on Base",
+      "created_at": "2026-10-15T21:13:20.166Z",
+      "createdAt": "2026-10-15T21:13:20.166Z",
+      "relative_time": "1h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HUs3BRIXQAAViPo?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2110841476389487090",
+      "url": "https://x.com/base/status/2110841476389487090",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2110791921589227714",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "We caught up with @izqui9, co-founder and CEO of @itstuyo He believes the concept of a checking and savings account has run its course Find out why",
+      "created_at": "2026-10-15T17:56:25.381Z",
+      "createdAt": "2026-10-15T17:56:25.381Z",
+      "relative_time": "4h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HUquK7KWYAAgvwH?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2110791921589227714",
+      "url": "https://x.com/base/status/2110791921589227714",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2110786723789807935",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "Builder Roundtable 004 is live We're diving into RWAs on Base with @multiplifi, @BirchHill_io, @byzanlink, @cityprotocolHQ, and @MidasRWA ↓",
+      "created_at": "2026-10-15T17:35:46.129Z",
+      "createdAt": "2026-10-15T17:35:46.129Z",
+      "relative_time": "5h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HUq5RwmXUAAhTJp?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2110786723789807935",
+      "url": "https://x.com/buildonbase/status/2110786723789807935",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2110760855558127988",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "What are the Base Batches 004 teams building? Find out below ↓ Starting with @Flovia402",
+      "created_at": "2026-10-15T15:52:58.662Z",
+      "createdAt": "2026-10-15T15:52:58.662Z",
+      "relative_time": "6h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HTr0Z7UXQAAk5nk?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2110760855558127988",
+      "url": "https://x.com/base/status/2110760855558127988",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "buildonbase-2110732157044044145",
       "author": "Base Build",
@@ -124,10 +291,10 @@
       "username": "buildonbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "The final week of Onchain Champions League is live. Tune in to see the ultimate showdown ↓ 4 7 19 3.2K",
+      "text": "The final week of Onchain Champions League is live. Tune in to see the ultimate showdown ↓",
       "created_at": "2026-10-15T13:58:56.403Z",
       "createdAt": "2026-10-15T13:58:56.403Z",
-      "relative_time": "34m ago",
+      "relative_time": "8h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -161,7 +328,7 @@
       "text": "Treasuries, private credit, and real estate are moving onchain In Builder Roundtable 004, we're talking RWAs with @multiplifi, @BirchHill_io, @byzanlink, @cityprotocolHQ, and @MidasRWA 5:30 PM UTC / 1:30 PM ET / 10:30 AM PT",
       "created_at": "2026-10-15T12:03:46.075Z",
       "createdAt": "2026-10-15T12:03:46.075Z",
-      "relative_time": "2h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/media/HUq5RwmXUAAhTJp?format=webp&name=large"
       ],
@@ -170,6 +337,42 @@
       "videoPreview": "",
       "post_url": "https://x.com/buildonbase/status/2110703173027422368",
       "url": "https://x.com/buildonbase/status/2110703173027422368",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2110686087169626442",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "AGM on the launch of tokenized stocks \"We had our first $100 million day in trading volume on Aerodrome\" \"We're not even fully launched. Imagine once it's inside the actual retail app\"",
+      "created_at": "2026-10-15T10:55:52.489Z",
+      "createdAt": "2026-10-15T10:55:52.489Z",
+      "relative_time": "11h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2110685591360684032/img/FTHrOQV3WTmQrbRK?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2110686087169626442",
+      "url": "https://x.com/base/status/2110686087169626442",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -335,7 +538,7 @@
       "text": "Introducing Earn & Borrow An end-to-end stack to offer your customers stablecoin yield and loans against their crypto",
       "created_at": "2026-10-13T17:04:56.802Z",
       "createdAt": "2026-10-13T17:04:56.802Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -551,7 +754,7 @@
       "text": "The recent Cobalt upgrade introduced Dynamic Upgrades Base upgrade timestamps are now stored in a contract on Ethereum, and every Base node reads them for the next upgrade",
       "created_at": "2026-10-09T20:22:40.961Z",
       "createdAt": "2026-10-09T20:22:40.961Z",
-      "relative_time": "5d ago",
+      "relative_time": "6d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2108652858677903360/img/_159GooKY0wnYk1w?format=webp&name=medium"
       ],
@@ -4566,40 +4769,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/jessepollak/status/2099998249591734534",
       "url": "https://x.com/jessepollak/status/2099998249591734534",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2099983084636741945",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "base meme trenches got funny again nice 151 30 416 32K",
-      "created_at": "2026-09-15T22:05:57.833Z",
-      "createdAt": "2026-09-15T22:05:57.833Z",
-      "relative_time": "4h ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2099983084636741945",
-      "url": "https://x.com/jessepollak/status/2099983084636741945",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
