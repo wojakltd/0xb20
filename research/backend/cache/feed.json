@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-16T02:19:42.591Z",
-    "durationMs": 77183,
+    "generatedAt": "2026-10-16T08:37:23.498Z",
+    "durationMs": 53725,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 128,
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-16T02:18:25.408Z",
-    "previousGeneratedAt": "2026-10-15T22:48:17.548Z"
+    "startedAt": "2026-10-16T08:36:29.773Z",
+    "previousGeneratedAt": "2026-10-16T02:19:42.591Z"
   },
   "posts": [
     {
@@ -150,7 +150,7 @@
       "text": "Buy and sell premium domains with stablecoins @atomHQ now supports stablecoin checkout and seller payouts on Base",
       "created_at": "2026-10-15T21:13:20.166Z",
       "createdAt": "2026-10-15T21:13:20.166Z",
-      "relative_time": "5h ago",
+      "relative_time": "11h ago",
       "images": [
         "https://pbs.twimg.com/media/HUs3BRIXQAAViPo?format=webp&name=large"
       ],
@@ -186,10 +186,8 @@
       "text": "We caught up with @izqui9, co-founder and CEO of @itstuyo He believes the concept of a checking and savings account has run its course Find out why",
       "created_at": "2026-10-15T17:56:25.381Z",
       "createdAt": "2026-10-15T17:56:25.381Z",
-      "relative_time": "8h ago",
-      "images": [
-        "https://pbs.twimg.com/media/HUquK7KWYAAgvwH?format=webp&name=medium"
-      ],
+      "relative_time": "14h ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -222,7 +220,7 @@
       "text": "Builder Roundtable 004 is live We're diving into RWAs on Base with @multiplifi, @BirchHill_io, @byzanlink, @cityprotocolHQ, and @MidasRWA ↓",
       "created_at": "2026-10-15T17:35:46.129Z",
       "createdAt": "2026-10-15T17:35:46.129Z",
-      "relative_time": "8h ago",
+      "relative_time": "15h ago",
       "images": [
         "https://pbs.twimg.com/media/HUq5RwmXUAAhTJp?format=webp&name=large"
       ],
@@ -258,7 +256,7 @@
       "text": "What are the Base Batches 004 teams building? Find out below ↓ Starting with @Flovia402",
       "created_at": "2026-10-15T15:52:58.662Z",
       "createdAt": "2026-10-15T15:52:58.662Z",
-      "relative_time": "10h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HTr0Z7UXQAAk5nk?format=webp&name=large"
       ],
@@ -294,7 +292,7 @@
       "text": "The final week of Onchain Champions League is live. Tune in to see the ultimate showdown ↓",
       "created_at": "2026-10-15T13:58:56.403Z",
       "createdAt": "2026-10-15T13:58:56.403Z",
-      "relative_time": "12h ago",
+      "relative_time": "18h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -328,7 +326,7 @@
       "text": "Treasuries, private credit, and real estate are moving onchain In Builder Roundtable 004, we're talking RWAs with @multiplifi, @BirchHill_io, @byzanlink, @cityprotocolHQ, and @MidasRWA 5:30 PM UTC / 1:30 PM ET / 10:30 AM PT",
       "created_at": "2026-10-15T12:03:46.075Z",
       "createdAt": "2026-10-15T12:03:46.075Z",
-      "relative_time": "14h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HUq5RwmXUAAhTJp?format=webp&name=large"
       ],
@@ -364,7 +362,7 @@
       "text": "AGM on the launch of tokenized stocks \"We had our first $100 million day in trading volume on Aerodrome\" \"We're not even fully launched. Imagine once it's inside the actual retail app\"",
       "created_at": "2026-10-15T10:55:52.489Z",
       "createdAt": "2026-10-15T10:55:52.489Z",
-      "relative_time": "15h ago",
+      "relative_time": "21h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2110685591360684032/img/FTHrOQV3WTmQrbRK?format=webp&name=medium"
       ],
