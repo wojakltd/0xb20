@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-17T08:09:36.936Z",
-    "durationMs": 65717,
+    "generatedAt": "2026-10-17T13:22:43.482Z",
+    "durationMs": 58336,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 126,
     "postsCollected": 15,
-    "latestObservationAt": "2026-10-16T21:30:04.454Z",
+    "latestObservationAt": "2026-10-17T09:50:05.707Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -136,10 +136,46 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-17T08:08:31.219Z",
-    "previousGeneratedAt": "2026-10-17T02:11:53.439Z"
+    "startedAt": "2026-10-17T13:21:45.146Z",
+    "previousGeneratedAt": "2026-10-17T08:09:36.936Z"
   },
   "posts": [
+    {
+      "id": "base-2111394308897030346",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 37 15 147 20K",
+      "created_at": "2026-10-17T09:50:05.707Z",
+      "createdAt": "2026-10-17T09:50:05.707Z",
+      "relative_time": "3h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HU0rQ6HWAAAJjIY?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2111394308897030346",
+      "url": "https://x.com/base/status/2111394308897030346",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "base-2111208076544188737",
       "author": "Base",
@@ -150,10 +186,8 @@
       "text": "One account for spending and earning @itstuyo challenges the idea of needing a checking and savings account Find out how ↓",
       "created_at": "2026-10-16T21:30:04.454Z",
       "createdAt": "2026-10-16T21:30:04.454Z",
-      "relative_time": "10h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2111196995637641216/img/VqxxjaRSz8u4krs0?format=webp&name=medium"
-      ],
+      "relative_time": "15h ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -186,7 +220,7 @@
       "text": "Signed transactions on Base can now wait for the right moment With Cobalt, Validity Transactions let you attach conditions, like a balance, a storage value or a block number The transaction only lands while they hold. If they never do, it never lands and you pay nothing",
       "created_at": "2026-10-16T18:58:24.186Z",
       "createdAt": "2026-10-16T18:58:24.186Z",
-      "relative_time": "13h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111168733381304320/img/mN2_vUgSb6egr_W_?format=webp&name=medium"
       ],
@@ -222,7 +256,7 @@
       "text": "Stablecoins are for sending and spending @marqeta is bringing stablecoin-backed cards to enterprise customers, with settlement on Base",
       "created_at": "2026-10-16T18:12:30.010Z",
       "createdAt": "2026-10-16T18:12:30.010Z",
-      "relative_time": "13h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HUxXOYnX0AA-uaV?format=webp&name=large"
       ],
@@ -258,10 +292,8 @@
       "text": "Singapore was based",
       "created_at": "2026-10-16T15:55:32.508Z",
       "createdAt": "2026-10-16T15:55:32.508Z",
-      "relative_time": "16h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2111123156286963712/img/uD8g3_wAGzXQ5ZF_?format=webp&name=medium"
-      ],
+      "relative_time": "21h ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -294,10 +326,8 @@
       "text": "Xen explains how projects on Base can build new financial products with tokenized stocks \"You can trade stocks 24/7 on @aeroxyz, invest in a managed portfolio on @Bitwise, borrow against your stocks on @aave. You can even have an agent manage your position with @bankrbot\"",
       "created_at": "2026-10-16T13:26:26.190Z",
       "createdAt": "2026-10-16T13:26:26.190Z",
-      "relative_time": "18h ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2111085657535713280/img/k6Ys4Jl2e90EU13g?format=webp&name=medium"
-      ],
+      "relative_time": "23h ago",
+      "images": [],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -578,7 +608,7 @@
       "text": "Treasuries, private credit, and real estate are moving onchain In Builder Roundtable 004, we're talking RWAs with @multiplifi, @BirchHill_io, @byzanlink, @cityprotocolHQ, and @MidasRWA 5:30 PM UTC / 1:30 PM ET / 10:30 AM PT",
       "created_at": "2026-10-15T12:03:46.075Z",
       "createdAt": "2026-10-15T12:03:46.075Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/media/HUq5RwmXUAAhTJp?format=webp&name=large"
       ],
@@ -893,7 +923,7 @@
       "text": "Nothing beats a room full of builders Great energy and feedback at our builder meetup in Singapore during Token2049",
       "created_at": "2026-10-13T09:20:57.372Z",
       "createdAt": "2026-10-13T09:20:57.372Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/media/HUf90HlXQAADtaW?format=webp&name=large",
         "https://pbs.twimg.com/media/HUf90HnW8AAV9RJ?format=webp&name=large",
@@ -4567,40 +4597,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/base/status/2100578967421944055",
       "url": "https://x.com/base/status/2100578967421944055",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2100517885311320442",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "What’s the most underrated app on Base? 327 45 662 73K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
-      "created_at": "2026-09-17T09:31:04.250Z",
-      "createdAt": "2026-09-17T09:31:04.250Z",
-      "relative_time": "1d ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2100517885311320442",
-      "url": "https://x.com/base/status/2100517885311320442",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
