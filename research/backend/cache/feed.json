@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-17T19:52:51.278Z",
-    "durationMs": 73073,
+    "generatedAt": "2026-10-17T21:54:17.058Z",
+    "durationMs": 60989,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 121,
-    "postsCollected": 14,
+    "posts": 119,
+    "postsCollected": 12,
     "latestObservationAt": "2026-10-17T09:50:05.707Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-17T19:51:38.204Z",
-    "previousGeneratedAt": "2026-10-17T16:46:05.802Z"
+    "startedAt": "2026-10-17T21:53:16.069Z",
+    "previousGeneratedAt": "2026-10-17T19:52:51.278Z"
   },
   "posts": [
     {
@@ -147,10 +147,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 65 47 258 32K",
+      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 69 49 273 33K",
       "created_at": "2026-10-17T09:50:05.707Z",
       "createdAt": "2026-10-17T09:50:05.707Z",
-      "relative_time": "10h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HU0rQ6HWAAAJjIY?format=webp&name=medium"
       ],
@@ -186,7 +186,7 @@
       "text": "One account for spending and earning @itstuyo challenges the idea of needing a checking and savings account Find out how ↓",
       "created_at": "2026-10-16T21:30:04.454Z",
       "createdAt": "2026-10-16T21:30:04.454Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111196995637641216/img/VqxxjaRSz8u4krs0?format=webp&name=medium"
       ],
@@ -4358,84 +4358,6 @@
       "referenced_tweets": [
         {
           "id": "2100717623566843959",
-          "type": "quoted"
-        }
-      ],
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2100699080846623011",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": false,
-      "text": "They seem alive... Fucking #AImemes. https://t.co/e51aWhs07R",
-      "created_at": "2026-09-17T21:31:04.632Z",
-      "createdAt": "2026-09-17T21:31:04.632Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2100699080846623011",
-      "url": "https://x.com/0xb20lol/status/2100699080846623011",
-      "likes": 3,
-      "replies": 0,
-      "reposts": 1,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2100699080846623011",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [
-        {
-          "id": "2100692337105989774",
-          "type": "quoted"
-        }
-      ],
-      "source": "xapi"
-    },
-    {
-      "id": "0xb20lol-2100684730450800863",
-      "author": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "displayName": "0xb20 ✧ WOJAK.LTD ✧ base.eth",
-      "username": "0xb20lol",
-      "avatar": "https://pbs.twimg.com/profile_images/2077478535971983360/PRTfcBxj_normal.jpg",
-      "verified": false,
-      "text": "The token has been launched. https://t.co/5Q1N7PeWfs",
-      "created_at": "2026-09-17T20:34:03.231Z",
-      "createdAt": "2026-09-17T20:34:03.231Z",
-      "relative_time": "1h ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/0xb20lol/status/2100684730450800863",
-      "url": "https://x.com/0xb20lol/status/2100684730450800863",
-      "likes": 4,
-      "replies": 0,
-      "reposts": 0,
-      "category": "laboratory",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 3,
-      "favorite": true,
-      "description": "Primary Laboratory relay and public experiment log.",
-      "website": "https://0xb20.lol",
-      "logo": "",
-      "conversation_id": "2100684730450800863",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [
-        {
-          "id": "2100676666158658020",
           "type": "quoted"
         }
       ],
