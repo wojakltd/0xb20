@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-17T02:11:53.439Z",
-    "durationMs": 61353,
+    "generatedAt": "2026-10-17T08:09:36.936Z",
+    "durationMs": 65717,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 126,
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-17T02:10:52.086Z",
-    "previousGeneratedAt": "2026-10-16T22:21:27.323Z"
+    "startedAt": "2026-10-17T08:08:31.219Z",
+    "previousGeneratedAt": "2026-10-17T02:11:53.439Z"
   },
   "posts": [
     {
@@ -150,7 +150,7 @@
       "text": "One account for spending and earning @itstuyo challenges the idea of needing a checking and savings account Find out how ↓",
       "created_at": "2026-10-16T21:30:04.454Z",
       "createdAt": "2026-10-16T21:30:04.454Z",
-      "relative_time": "4h ago",
+      "relative_time": "10h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111196995637641216/img/VqxxjaRSz8u4krs0?format=webp&name=medium"
       ],
@@ -186,7 +186,7 @@
       "text": "Signed transactions on Base can now wait for the right moment With Cobalt, Validity Transactions let you attach conditions, like a balance, a storage value or a block number The transaction only lands while they hold. If they never do, it never lands and you pay nothing",
       "created_at": "2026-10-16T18:58:24.186Z",
       "createdAt": "2026-10-16T18:58:24.186Z",
-      "relative_time": "7h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111168733381304320/img/mN2_vUgSb6egr_W_?format=webp&name=medium"
       ],
@@ -222,7 +222,7 @@
       "text": "Stablecoins are for sending and spending @marqeta is bringing stablecoin-backed cards to enterprise customers, with settlement on Base",
       "created_at": "2026-10-16T18:12:30.010Z",
       "createdAt": "2026-10-16T18:12:30.010Z",
-      "relative_time": "7h ago",
+      "relative_time": "13h ago",
       "images": [
         "https://pbs.twimg.com/media/HUxXOYnX0AA-uaV?format=webp&name=large"
       ],
@@ -258,7 +258,7 @@
       "text": "Singapore was based",
       "created_at": "2026-10-16T15:55:32.508Z",
       "createdAt": "2026-10-16T15:55:32.508Z",
-      "relative_time": "10h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111123156286963712/img/uD8g3_wAGzXQ5ZF_?format=webp&name=medium"
       ],
@@ -294,7 +294,7 @@
       "text": "Xen explains how projects on Base can build new financial products with tokenized stocks \"You can trade stocks 24/7 on @aeroxyz, invest in a managed portfolio on @Bitwise, borrow against your stocks on @aave. You can even have an agent manage your position with @bankrbot\"",
       "created_at": "2026-10-16T13:26:26.190Z",
       "createdAt": "2026-10-16T13:26:26.190Z",
-      "relative_time": "12h ago",
+      "relative_time": "18h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111085657535713280/img/k6Ys4Jl2e90EU13g?format=webp&name=medium"
       ],
@@ -330,7 +330,7 @@
       "text": "AGM explains agentic payments and x402 \"This agentic payment thing is cool. My agent goes out into the world and spends money\" \"Rather than having 100 subscriptions, you just incrementally get whatever information you need\"",
       "created_at": "2026-10-16T11:27:16.797Z",
       "createdAt": "2026-10-16T11:27:16.797Z",
-      "relative_time": "14h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111056245377454081/img/71mZTugoSFdGf5Ms?format=webp&name=medium"
       ],
