@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-18T02:12:03.207Z",
-    "durationMs": 81318,
+    "generatedAt": "2026-10-18T08:26:33.742Z",
+    "durationMs": 65622,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 118,
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-18T02:10:41.888Z",
-    "previousGeneratedAt": "2026-10-17T23:39:47.595Z"
+    "startedAt": "2026-10-18T08:25:28.120Z",
+    "previousGeneratedAt": "2026-10-18T02:12:03.207Z"
   },
   "posts": [
     {
@@ -147,10 +147,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 74 50 286 36K",
+      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 79 55 310 40K",
       "created_at": "2026-10-17T09:50:05.707Z",
       "createdAt": "2026-10-17T09:50:05.707Z",
-      "relative_time": "16h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HU0rQ6HWAAAJjIY?format=webp&name=medium"
       ],
@@ -187,7 +187,9 @@
       "created_at": "2026-10-16T21:30:04.454Z",
       "createdAt": "2026-10-16T21:30:04.454Z",
       "relative_time": "1d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2111196995637641216/img/VqxxjaRSz8u4krs0?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -293,7 +295,9 @@
       "created_at": "2026-10-16T15:55:32.508Z",
       "createdAt": "2026-10-16T15:55:32.508Z",
       "relative_time": "1d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2111123156286963712/img/uD8g3_wAGzXQ5ZF_?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
@@ -327,7 +331,9 @@
       "created_at": "2026-10-16T13:26:26.190Z",
       "createdAt": "2026-10-16T13:26:26.190Z",
       "relative_time": "1d ago",
-      "images": [],
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2111085657535713280/img/k6Ys4Jl2e90EU13g?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
