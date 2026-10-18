@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-18T19:53:13.147Z",
-    "durationMs": 52913,
+    "generatedAt": "2026-10-18T22:05:08.006Z",
+    "durationMs": 52685,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 117,
@@ -115,8 +115,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-18T19:52:20.234Z",
-    "previousGeneratedAt": "2026-10-18T17:01:15.651Z"
+    "startedAt": "2026-10-18T22:04:15.321Z",
+    "previousGeneratedAt": "2026-10-18T19:53:13.147Z"
   },
   "posts": [
     {
@@ -129,7 +129,7 @@
       "text": "big week on @base",
       "created_at": "2026-10-18T18:02:05.283Z",
       "createdAt": "2026-10-18T18:02:05.283Z",
-      "relative_time": "1h ago",
+      "relative_time": "4h ago",
       "images": [
         "https://pbs.twimg.com/media/HU0rQ6HWAAAJjIY?format=webp&name=medium"
       ],
@@ -162,10 +162,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Base is the blockchain for agentic finance. 158 42 475 27K",
+      "text": "Base is the blockchain for agentic finance. 166 47 532 30K",
       "created_at": "2026-10-18T15:47:54.290Z",
       "createdAt": "2026-10-18T15:47:54.290Z",
-      "relative_time": "4h ago",
+      "relative_time": "6h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -199,7 +199,7 @@
       "text": "我们正在 Base 上打造全球股票市场。",
       "created_at": "2026-10-18T14:15:06.518Z",
       "createdAt": "2026-10-18T14:15:06.518Z",
-      "relative_time": "5h ago",
+      "relative_time": "7h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -230,10 +230,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Who's trading tokenized stocks this weekend? 86 25 297 30K",
+      "text": "Who's trading tokenized stocks this weekend? 93 26 319 33K",
       "created_at": "2026-10-18T14:10:13.828Z",
       "createdAt": "2026-10-18T14:10:13.828Z",
-      "relative_time": "5h ago",
+      "relative_time": "7h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -267,7 +267,7 @@
       "text": "We’re working on making Base the most AI-enabled chain - so you can get more done with your money, and make more informed decisions.",
       "created_at": "2026-10-18T14:01:04.915Z",
       "createdAt": "2026-10-18T14:01:04.915Z",
-      "relative_time": "5h ago",
+      "relative_time": "8h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -301,7 +301,7 @@
       "text": "stockmemes are good for grandma and grandpa too",
       "created_at": "2026-10-18T13:51:44.234Z",
       "createdAt": "2026-10-18T13:51:44.234Z",
-      "relative_time": "6h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111817168098586624/img/73AjJkh6LRTP_zqL?format=webp&name=medium"
       ],
@@ -334,7 +334,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 92 73 367 52K",
+      "text": "Article This Week on Base: Earn & Borrow, DeFi TVL, and more News ■ Base introduced Earn & Borrow, an end-to-end stack to offer apps and fintechs stablecoin yield and loans against their crypto. ■ Base is now ranked second among all networks by DeFi TVL with 92 74 377 55K",
       "created_at": "2026-10-17T09:50:05.707Z",
       "createdAt": "2026-10-17T09:50:05.707Z",
       "relative_time": "1d ago",
@@ -373,8 +373,10 @@
       "text": "One account for spending and earning @itstuyo challenges the idea of needing a checking and savings account Find out how ↓",
       "created_at": "2026-10-16T21:30:04.454Z",
       "createdAt": "2026-10-16T21:30:04.454Z",
-      "relative_time": "1d ago",
-      "images": [],
+      "relative_time": "2d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2111196995637641216/img/VqxxjaRSz8u4krs0?format=webp&name=medium"
+      ],
       "video": "",
       "video_preview": "",
       "videoPreview": "",
