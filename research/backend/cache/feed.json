@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": 2,
-    "provider": "laboratory+cache",
-    "backendProvider": "laboratory+cache",
+    "provider": "laboratory+reader",
+    "backendProvider": "laboratory+reader",
     "providerOrder": [
       "laboratory",
       "playwright",
@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-20T06:53:18.027Z",
-    "durationMs": 55145,
+    "generatedAt": "2026-10-20T13:09:57.259Z",
+    "durationMs": 55375,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 126,
-    "postsCollected": 126,
-    "latestObservationAt": "2026-10-19T22:36:22.186Z",
+    "posts": 128,
+    "postsCollected": 16,
+    "latestObservationAt": "2026-10-20T11:37:05.223Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -55,47 +55,49 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "reader",
-        "username": "base",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Oct 20 2026 07:47:28 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Oct 20 2026 07:47:28 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "username": "jessepollak",
-        "message": "Reader HTTP 403: {\"data\":null,\"code\":403,\"name\":\"AbuseAlleviationError\",\"status\":40305,\"message\":\"Anonymous access to domain twitter.com blocked until Tue Oct 20 2026 07:47:28 GMT+0000 (Coordinated"
-      },
-      {
-        "provider": "reader",
-        "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
-      },
-      {
-        "provider": "rss",
-        "username": "jessepollak",
-        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
-      },
-      {
-        "provider": "rss",
-        "message": "Provider returned zero posts."
       }
     ],
-    "coverage": [],
+    "coverage": [
+      {
+        "provider": "playwright",
+        "username": "base",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "buildonbase",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "playwright",
+        "username": "jessepollak",
+        "returned": 0,
+        "error": "timeline: page.waitForSelector: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('article, [data-testid=\"primaryColumn\"], [data-testid=\"emptyState\"]') to be visible\n"
+      },
+      {
+        "provider": "reader",
+        "username": "base",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
+      }
+    ],
     "laboratory": {
       "provider": "xapi",
       "apiStatus": "failed",
@@ -113,10 +115,78 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-20T06:52:22.882Z",
-    "previousGeneratedAt": "2026-10-20T00:50:35.049Z"
+    "startedAt": "2026-10-20T13:09:01.884Z",
+    "previousGeneratedAt": "2026-10-20T06:53:18.027Z"
   },
   "posts": [
+    {
+      "id": "base-2112508397895729212",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Finance is better onchain 93",
+      "created_at": "2026-10-20T11:37:05.223Z",
+      "createdAt": "2026-10-20T11:37:05.223Z",
+      "relative_time": "1h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2112508397895729212",
+      "url": "https://x.com/base/status/2112508397895729212",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2112471691725062500",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "2s → 200ms",
+      "created_at": "2026-10-20T09:11:13.790Z",
+      "createdAt": "2026-10-20T09:11:13.790Z",
+      "relative_time": "3h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2112471691725062500",
+      "url": "https://x.com/buildonbase/status/2112471691725062500",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "jessepollak-2112311923958280466",
       "author": "jesse.base.eth",
@@ -124,10 +194,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "if you're a USD stablecoin issuer and you're interested in growing volume + demand, one emerging market that is still wide open is onchain FX - and @base has 22 non-dollar currencies we'd love to support you to test and learn with liquidity deployments 36 7 85 9.9K",
+      "text": "if you're a USD stablecoin issuer and you're interested in growing volume + demand, one emerging market that is still wide open is onchain FX - and @base has 22 non-dollar currencies we'd love to support you to test and learn with liquidity deployments 65 17 245 21K",
       "created_at": "2026-10-19T22:36:22.186Z",
       "createdAt": "2026-10-19T22:36:22.186Z",
-      "relative_time": "2h ago",
+      "relative_time": "14h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -161,7 +231,7 @@
       "text": "FX is starting to scale on @base",
       "created_at": "2026-10-19T22:33:56.937Z",
       "createdAt": "2026-10-19T22:33:56.937Z",
-      "relative_time": "2h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HU1gTB8asAAiNkC?format=webp&name=large",
         "https://pbs.twimg.com/media/HU1gTCDaUAEHgub?format=webp&name=large"
@@ -198,7 +268,7 @@
       "text": "2s → 200ms",
       "created_at": "2026-10-19T21:47:40.235Z",
       "createdAt": "2026-10-19T21:47:40.235Z",
-      "relative_time": "3h ago",
+      "relative_time": "15h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -232,7 +302,7 @@
       "text": "What’s on the tv? Coming soon",
       "created_at": "2026-10-19T19:28:07.834Z",
       "createdAt": "2026-10-19T19:28:07.834Z",
-      "relative_time": "5h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HVBFYL-WsAA8GeK?format=webp&name=large"
       ],
@@ -268,7 +338,7 @@
       "text": "anyone can now send money home on @ThunesPayments using @base",
       "created_at": "2026-10-19T17:45:50.902Z",
       "createdAt": "2026-10-19T17:45:50.902Z",
-      "relative_time": "7h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HVAfwCnXYAAjcdl?format=webp&name=large"
       ],
@@ -304,7 +374,7 @@
       "text": "Stablecoins are reshaping cross-border payments @ThunesPayments is integrating stablecoins across its global payout network on Base",
       "created_at": "2026-10-19T16:44:28.195Z",
       "createdAt": "2026-10-19T16:44:28.195Z",
-      "relative_time": "8h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/media/HVAfwCnXYAAjcdl?format=webp&name=large"
       ],
@@ -340,7 +410,7 @@
       "text": "thank you to the based advocates, starting with @wbnns there's never been more of a need for people to onboard people to @base, lead from the front, and care for each other. as the formal program ends, our work to make build the global economy is just getting started onwards",
       "created_at": "2026-10-19T16:38:14.296Z",
       "createdAt": "2026-10-19T16:38:14.296Z",
-      "relative_time": "8h ago",
+      "relative_time": "20h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112179883245723649/img/cFuWZ5IWXGNiuNtJ?format=webp&name=medium"
       ],
@@ -376,7 +446,7 @@
       "text": "Builders 🤝 Traders",
       "created_at": "2026-10-19T14:57:34.930Z",
       "createdAt": "2026-10-19T14:57:34.930Z",
-      "relative_time": "9h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112195250907414528/img/0CzPWiba-5I1uhLK?format=webp&name=medium"
       ],
@@ -412,7 +482,7 @@
       "text": "Tokenized stocks in, USDC out No long forms, no waiting. Just DeFi on Base",
       "created_at": "2026-10-19T13:17:35.053Z",
       "createdAt": "2026-10-19T13:17:35.053Z",
-      "relative_time": "11h ago",
+      "relative_time": "23h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -446,7 +516,7 @@
       "text": "Base is the blockchain for agentic finance.",
       "created_at": "2026-10-19T13:06:00.424Z",
       "createdAt": "2026-10-19T13:06:00.424Z",
-      "relative_time": "11h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -1599,7 +1669,7 @@
       "text": "Nothing beats a room full of builders Great energy and feedback at our builder meetup in Singapore during Token2049",
       "created_at": "2026-10-13T09:20:57.372Z",
       "createdAt": "2026-10-13T09:20:57.372Z",
-      "relative_time": "6d ago",
+      "relative_time": "7d ago",
       "images": [
         "https://pbs.twimg.com/media/HUf90HlXQAADtaW?format=webp&name=large",
         "https://pbs.twimg.com/media/HUf90HnW8AAV9RJ?format=webp&name=large",
