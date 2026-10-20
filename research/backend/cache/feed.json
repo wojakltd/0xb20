@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-20T18:13:08.096Z",
-    "durationMs": 50371,
+    "generatedAt": "2026-10-20T22:51:03.533Z",
+    "durationMs": 53486,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 129,
-    "postsCollected": 16,
-    "latestObservationAt": "2026-10-20T17:34:50.908Z",
+    "posts": 131,
+    "postsCollected": 11,
+    "latestObservationAt": "2026-10-20T20:25:11.994Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -54,6 +54,20 @@
       },
       {
         "provider": "playwright",
+        "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "reader",
+        "username": "jessepollak",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "message": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jesse"
+      },
+      {
+        "provider": "rss",
         "message": "Provider returned zero posts."
       }
     ],
@@ -93,9 +107,16 @@
       {
         "provider": "reader",
         "username": "jessepollak",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "jessepollak",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/jessepollak/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/jessepollak/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/jessepollak/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/jessepollak attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=jessepollak attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -115,10 +136,82 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-20T18:12:17.725Z",
-    "previousGeneratedAt": "2026-10-20T13:09:57.259Z"
+    "startedAt": "2026-10-20T22:50:10.047Z",
+    "previousGeneratedAt": "2026-10-20T18:13:08.096Z"
   },
   "posts": [
+    {
+      "id": "base-2112641301845828066",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Base Meme Summit is back A community-run event for memecoins on Base Streaming live on October 22 8:30am PT | 11:30am ET | 3:30pm UTC",
+      "created_at": "2026-10-20T20:25:11.994Z",
+      "createdAt": "2026-10-20T20:25:11.994Z",
+      "relative_time": "2h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HVGbwJ3XQAA9uyU?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2112641301845828066",
+      "url": "https://x.com/base/status/2112641301845828066",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2112624434981085525",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "It's earnings season Trade tokenized stocks 24/7 on Base",
+      "created_at": "2026-10-20T19:18:10.620Z",
+      "createdAt": "2026-10-20T19:18:10.620Z",
+      "relative_time": "3h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HVGMuQ9XkAAIwK_?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2112624434981085525",
+      "url": "https://x.com/base/status/2112624434981085525",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "base-2112598431504196047",
       "author": "Base",
@@ -129,7 +222,7 @@
       "text": "Mastercard is building agent payments with Cloudflare Agent Pay for Machines lets AI agents pay for digital services using x402 on Base",
       "created_at": "2026-10-20T17:34:50.908Z",
       "createdAt": "2026-10-20T17:34:50.908Z",
-      "relative_time": "38m ago",
+      "relative_time": "5h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112598304957595648/img/rJ7Vmy9qfW6EOlEm?format=webp&name=medium"
       ],
@@ -165,7 +258,7 @@
       "text": "Stablecoins are better money Sending $200 in USDC on Base costs roughly 86% less than traditional services, per new research from Coinbase and @TheBlockCo",
       "created_at": "2026-10-20T13:54:47.983Z",
       "createdAt": "2026-10-20T13:54:47.983Z",
-      "relative_time": "4h ago",
+      "relative_time": "8h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112542481585717251/img/EmSw7eiY3RTLw-AG?format=webp&name=medium",
         "https://pbs.twimg.com/media/HVE8WWmXEAALl-_?format=webp&name=large"
@@ -199,10 +292,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Finance is better onchain 164 34 579 41K",
+      "text": "Finance is better onchain 182 44 702 47K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
       "created_at": "2026-10-20T11:37:05.223Z",
       "createdAt": "2026-10-20T11:37:05.223Z",
-      "relative_time": "6h ago",
+      "relative_time": "11h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -233,10 +326,10 @@
       "username": "buildonbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "2s → 200ms",
+      "text": "2s → 200ms [](https://twitter.com/jessepollak)jesse.base.eth[](https://twitter.com/base) @jessepollak Oct 19 2s → 200ms Quote",
       "created_at": "2026-10-20T09:11:13.790Z",
       "createdAt": "2026-10-20T09:11:13.790Z",
-      "relative_time": "9h ago",
+      "relative_time": "13h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -516,7 +609,7 @@
       "username": "buildonbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Builders 🤝 Traders",
+      "text": "Builders 🤝 Traders [](https://twitter.com/verantaxyz)Veranta @verantaxyz Oct 19 Builders 🤝 Traders Last week's Onchain Champions League brought together some of the people building and living the next wave of onchain trading experiences on @base Some familiar faces and what they're up to 👇",
       "created_at": "2026-10-19T14:57:34.930Z",
       "createdAt": "2026-10-19T14:57:34.930Z",
       "relative_time": "1d ago",
@@ -586,7 +679,7 @@
       "username": "buildonbase",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Base is the blockchain for agentic finance.",
+      "text": "Base is the blockchain for agentic finance. [](https://twitter.com/jessepollak)jesse.base.eth[](https://twitter.com/base) @jessepollak Oct 18 Base is the blockchain for agentic finance. 28 17 180 20K",
       "created_at": "2026-10-19T13:06:00.424Z",
       "createdAt": "2026-10-19T13:06:00.424Z",
       "relative_time": "1d ago",
@@ -971,7 +1064,7 @@
       "text": "Signed transactions on Base can now wait for the right moment With Cobalt, Validity Transactions let you attach conditions, like a balance, a storage value or a block number The transaction only lands while they hold. If they never do, it never lands and you pay nothing",
       "created_at": "2026-10-16T18:58:24.186Z",
       "createdAt": "2026-10-16T18:58:24.186Z",
-      "relative_time": "3d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2111168733381304320/img/mN2_vUgSb6egr_W_?format=webp&name=medium"
       ],
