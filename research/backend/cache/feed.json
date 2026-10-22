@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-22T02:32:21.248Z",
-    "durationMs": 67647,
+    "generatedAt": "2026-10-22T09:03:20.450Z",
+    "durationMs": 57122,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 129,
-    "postsCollected": 6,
-    "latestObservationAt": "2026-10-21T18:08:55.236Z",
+    "posts": 132,
+    "postsCollected": 11,
+    "latestObservationAt": "2026-10-22T07:02:37.734Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -58,18 +58,8 @@
       },
       {
         "provider": "reader",
-        "username": "base",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "reader",
         "username": "buildonbase",
         "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
@@ -103,9 +93,9 @@
       {
         "provider": "reader",
         "username": "base",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
@@ -120,13 +110,6 @@
         "parsed": 5,
         "returned": 5,
         "attempts": 1
-      },
-      {
-        "provider": "rss",
-        "username": "base",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
       },
       {
         "provider": "rss",
@@ -153,10 +136,82 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-22T02:31:13.601Z",
-    "previousGeneratedAt": "2026-10-21T22:55:10.609Z"
+    "startedAt": "2026-10-22T09:02:23.328Z",
+    "previousGeneratedAt": "2026-10-22T02:32:21.248Z"
   },
   "posts": [
+    {
+      "id": "base-2113164103971983693",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "The @gmgnai Base Track is live [](https://twitter.com/gmgnai)GMGN.Ai @gmgnai 21h BASE TRACK IS COMING TO #GGC . Starting TODAY through October 26, we're taking the competition to @base . Trade Base coins and climb the leaderboard. $20,000 prize for the track winner 1 Fast-track entry to the GGC London Finals A shot at winning an Aston Martin Vantage Tune in",
+      "created_at": "2026-10-22T07:02:37.734Z",
+      "createdAt": "2026-10-22T07:02:37.734Z",
+      "relative_time": "2h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HVJsFPVasAAhpWN?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2113164103971983693",
+      "url": "https://x.com/base/status/2113164103971983693",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2113009938658361446",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Tesla and Meta reported their third-quarter earnings after the market closed today $TSLAc and $METAc trade 24/7 on Base",
+      "created_at": "2026-10-21T20:50:01.859Z",
+      "createdAt": "2026-10-21T20:50:01.859Z",
+      "relative_time": "12h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HVLp4hSbMAAOHsx?format=webp&name=large"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2113009938658361446",
+      "url": "https://x.com/base/status/2113009938658361446",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "jessepollak-2112969393902936285",
       "author": "jesse.base.eth",
@@ -167,7 +222,7 @@
       "text": "200ms blocks live on testnet, mainnet soon",
       "created_at": "2026-10-21T18:08:55.236Z",
       "createdAt": "2026-10-21T18:08:55.236Z",
-      "relative_time": "8h ago",
+      "relative_time": "14h ago",
       "images": [
         "https://pbs.twimg.com/media/HVLGYB0bsAETAFU?format=webp&name=large"
       ],
@@ -194,16 +249,52 @@
       "source": "reader"
     },
     {
+      "id": "base-2112948397392961546",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "The financial system is running on outdated rails Aave is changing that Full episode tomorrow",
+      "created_at": "2026-10-21T16:45:29.278Z",
+      "createdAt": "2026-10-21T16:45:29.278Z",
+      "relative_time": "16h ago",
+      "images": [
+        "https://pbs.twimg.com/media/HVKzJ6WWQAANtIh?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2112948397392961546",
+      "url": "https://x.com/base/status/2112948397392961546",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
       "id": "jessepollak-2112946547868754269",
       "author": "jesse.base.eth",
       "displayName": "jesse.base.eth",
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Big day for Aero 🛫 80 65 847 35K",
+      "text": "Big day for Aero 🛫 85 69 944 42K",
       "created_at": "2026-10-21T16:38:08.317Z",
       "createdAt": "2026-10-21T16:38:08.317Z",
-      "relative_time": "9h ago",
+      "relative_time": "16h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -237,7 +328,7 @@
       "text": "Observation captured without readable text.",
       "created_at": "2026-10-21T16:17:08.077Z",
       "createdAt": "2026-10-21T16:17:08.077Z",
-      "relative_time": "10h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/media/HVKs4COboAAgFEP?format=webp&name=large"
       ],
@@ -270,10 +361,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "agree if you are building a Base-native market making desk or tools please get in touch infinite opportunity in the years ahead [](https://twitter.com/lmrankhan)Imran[](https://twitter.com/alliance) @lmrankhan 10h With the amount of new trading products and novel defi primitives being launched, demand for market makers, liquid funds and general liquidity providers is growing rapidly. There simply isn't enough liquidity, risk capital, or market making infra to support the pace of the new 38 6 166 17K",
+      "text": "agree if you are building a Base-native market making desk or tools please get in touch infinite opportunity in the years ahead [](https://twitter.com/lmrankhan)Imran[](https://twitter.com/alliance) @lmrankhan 16h With the amount of new trading products and novel defi primitives being launched, demand for market makers, liquid funds and general liquidity providers is growing rapidly. There simply isn't enough liquidity, risk capital, or market making infra to support the pace of the new 43 8 195 20K",
       "created_at": "2026-10-21T16:14:57.416Z",
       "createdAt": "2026-10-21T16:14:57.416Z",
-      "relative_time": "10h ago",
+      "relative_time": "16h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -304,10 +395,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "what teams building on @base are going to devcon? 70 16 232 19K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp.",
+      "text": "what teams building on @base are going to devcon? 77 16 265 22K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
       "created_at": "2026-10-21T15:36:49.531Z",
       "createdAt": "2026-10-21T15:36:49.531Z",
-      "relative_time": "10h ago",
+      "relative_time": "17h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -338,10 +429,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Agentic finance is based 124 32 404 31K",
+      "text": "Agentic finance is based 177 71 747 56K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
       "created_at": "2026-10-21T10:57:12.522Z",
       "createdAt": "2026-10-21T10:57:12.522Z",
-      "relative_time": "3h ago",
+      "relative_time": "22h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -375,7 +466,7 @@
       "text": "Base Meme Summit is back A community-run event for memecoins on Base Streaming live on October 22 8:30am PT | 11:30am ET | 3:30pm UTC",
       "created_at": "2026-10-20T20:25:11.994Z",
       "createdAt": "2026-10-20T20:25:11.994Z",
-      "relative_time": "18h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HVGbwJ3XQAA9uyU?format=webp&name=large"
       ],
