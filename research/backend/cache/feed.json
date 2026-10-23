@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-23T19:45:28.789Z",
-    "durationMs": 62346,
+    "generatedAt": "2026-10-23T22:46:28.845Z",
+    "durationMs": 69114,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 126,
@@ -153,8 +153,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-23T19:44:26.443Z",
-    "previousGeneratedAt": "2026-10-23T14:43:20.411Z"
+    "startedAt": "2026-10-23T22:45:19.731Z",
+    "previousGeneratedAt": "2026-10-23T19:45:28.789Z"
   },
   "posts": [
     {
@@ -167,7 +167,7 @@
       "text": "live from money2020: base is the fast, cheap, global way to make money work for your customers",
       "created_at": "2026-10-23T16:31:17.300Z",
       "createdAt": "2026-10-23T16:31:17.300Z",
-      "relative_time": "3h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113669489695117312/img/vTUzMYizgGAHsJ0k?format=webp&name=medium"
       ],
@@ -203,7 +203,7 @@
       "text": "AI labs got years of free data from the internet I think that changes next year",
       "created_at": "2026-10-23T14:14:01.528Z",
       "createdAt": "2026-10-23T14:14:01.528Z",
-      "relative_time": "5h ago",
+      "relative_time": "8h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -237,7 +237,7 @@
       "text": "crypto and AI are converging at the perfect time",
       "created_at": "2026-10-22T23:40:00.256Z",
       "createdAt": "2026-10-22T23:40:00.256Z",
-      "relative_time": "20h ago",
+      "relative_time": "23h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113343446140567552/img/dq2Ux0QJRX9k5-Qr?format=webp&name=medium"
       ],
