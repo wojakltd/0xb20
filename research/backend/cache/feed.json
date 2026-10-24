@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-24T02:34:47.513Z",
-    "durationMs": 58784,
+    "generatedAt": "2026-10-24T08:31:30.439Z",
+    "durationMs": 54819,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 126,
-    "postsCollected": 6,
+    "posts": 128,
+    "postsCollected": 11,
     "latestObservationAt": "2026-10-23T16:31:17.300Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -62,19 +62,9 @@
         "message": "Reader returned no parseable status posts."
       },
       {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
         "provider": "rss",
         "username": "base",
         "message": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
       },
       {
         "provider": "rss",
@@ -110,9 +100,9 @@
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
@@ -127,13 +117,6 @@
         "parsed": 0,
         "returned": 0,
         "error": "https://nitter.net/base/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/base/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/base/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/base attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=base attempt 1/1: HTTP 521"
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -153,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-24T02:33:48.728Z",
-    "previousGeneratedAt": "2026-10-23T22:46:28.845Z"
+    "startedAt": "2026-10-24T08:30:35.620Z",
+    "previousGeneratedAt": "2026-10-24T02:34:47.513Z"
   },
   "posts": [
     {
@@ -167,7 +150,7 @@
       "text": "live from money2020: base is the fast, cheap, global way to make money work for your customers",
       "created_at": "2026-10-23T16:31:17.300Z",
       "createdAt": "2026-10-23T16:31:17.300Z",
-      "relative_time": "10h ago",
+      "relative_time": "16h ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113669489695117312/img/vTUzMYizgGAHsJ0k?format=webp&name=medium"
       ],
@@ -203,7 +186,7 @@
       "text": "AI labs got years of free data from the internet I think that changes next year",
       "created_at": "2026-10-23T14:14:01.528Z",
       "createdAt": "2026-10-23T14:14:01.528Z",
-      "relative_time": "12h ago",
+      "relative_time": "18h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -326,6 +309,40 @@
       "partner": false,
       "partner_label": "",
       "priority": 1,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2113269432709792212",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "The Onchain Champions League Final is underway. It's down to the wire. Tune in to see the final showdown ↓",
+      "created_at": "2026-10-22T14:01:10.062Z",
+      "createdAt": "2026-10-22T14:01:10.062Z",
+      "relative_time": "1d ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2113269432709792212",
+      "url": "https://x.com/buildonbase/status/2113269432709792212",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
       "favorite": false,
       "description": "",
       "website": "",
@@ -460,6 +477,42 @@
       "videoPreview": "",
       "post_url": "https://x.com/base/status/2113009938658361446",
       "url": "https://x.com/base/status/2113009938658361446",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "buildonbase-2112993690130018724",
+      "author": "Base Build",
+      "displayName": "Base Build",
+      "username": "buildonbase",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
+      "verified": false,
+      "text": "In NYC at Coinbase HQ, @verantaxyz presented what's next for trading on Base \"Bringing it to thousands of real-world assets, which is where the world is going\" \"An all-weather exchange where humans and agents can coexist and trade together any asset anywhere\"",
+      "created_at": "2026-10-21T19:45:27.908Z",
+      "createdAt": "2026-10-21T19:45:27.908Z",
+      "relative_time": "2d ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2112993322809585664/img/2P0VnT-vjSGrjAs9?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/buildonbase/status/2112993690130018724",
+      "url": "https://x.com/buildonbase/status/2112993690130018724",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -910,7 +963,7 @@
       "text": "2s → 200ms [](https://twitter.com/jessepollak)jesse.base.eth[](https://twitter.com/base) @jessepollak Oct 19 2s → 200ms Quote",
       "created_at": "2026-10-20T09:11:13.790Z",
       "createdAt": "2026-10-20T09:11:13.790Z",
-      "relative_time": "1d ago",
+      "relative_time": "3d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -1193,7 +1246,7 @@
       "text": "Builders 🤝 Traders [](https://twitter.com/verantaxyz)Veranta @verantaxyz Oct 19 Builders 🤝 Traders Last week's Onchain Champions League brought together some of the people building and living the next wave of onchain trading experiences on @base Some familiar faces and what they're up to 👇",
       "created_at": "2026-10-19T14:57:34.930Z",
       "createdAt": "2026-10-19T14:57:34.930Z",
-      "relative_time": "1d ago",
+      "relative_time": "4d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112195250907414528/img/0CzPWiba-5I1uhLK?format=webp&name=medium"
       ],
@@ -2416,7 +2469,7 @@
       "text": "Nothing beats a room full of builders Great energy and feedback at our builder meetup in Singapore during Token2049",
       "created_at": "2026-10-13T09:20:57.372Z",
       "createdAt": "2026-10-13T09:20:57.372Z",
-      "relative_time": "8d ago",
+      "relative_time": "10d ago",
       "images": [
         "https://pbs.twimg.com/media/HUf90HlXQAADtaW?format=webp&name=large",
         "https://pbs.twimg.com/media/HUf90HnW8AAV9RJ?format=webp&name=large",
