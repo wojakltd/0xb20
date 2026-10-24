@@ -11,11 +11,11 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-24T20:00:31.335Z",
-    "durationMs": 56135,
+    "generatedAt": "2026-10-24T22:23:14.516Z",
+    "durationMs": 57849,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 128,
+    "posts": 127,
     "postsCollected": 11,
     "latestObservationAt": "2026-10-24T15:46:31.202Z",
     "refreshIntervalMinutes": 120,
@@ -136,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-24T19:59:35.200Z",
-    "previousGeneratedAt": "2026-10-24T17:06:48.817Z"
+    "startedAt": "2026-10-24T22:22:16.667Z",
+    "previousGeneratedAt": "2026-10-24T20:00:31.335Z"
   },
   "posts": [
     {
@@ -147,10 +147,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "ok based [](https://twitter.com/base)Base @base 9h",
+      "text": "ok based [](https://twitter.com/base)Base @base 12h",
       "created_at": "2026-10-24T15:46:31.202Z",
       "createdAt": "2026-10-24T15:46:31.202Z",
-      "relative_time": "4h ago",
+      "relative_time": "6h ago",
       "images": [
         "https://pbs.twimg.com/media/HVYxRsGXkAAYLDx?format=webp&name=medium"
       ],
@@ -183,10 +183,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 99 106 503 61K",
+      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 102 109 540 65K",
       "created_at": "2026-10-24T10:03:21.740Z",
       "createdAt": "2026-10-24T10:03:21.740Z",
-      "relative_time": "9h ago",
+      "relative_time": "12h ago",
       "images": [
         "https://pbs.twimg.com/media/HVYxRsGXkAAYLDx?format=webp&name=medium"
       ],
@@ -222,7 +222,7 @@
       "text": "A simpler way for agents to pay Mastercard is helping bring the next wave of agentic finance Powered by x402 and USDC, settled on Base",
       "created_at": "2026-10-23T21:06:39.924Z",
       "createdAt": "2026-10-23T21:06:39.924Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113738654204170240/img/XAXOWmOJ91jSOE9l?format=webp&name=medium"
       ],
@@ -327,7 +327,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "200ms blocks Coming soon to Base mainnet 185 103 961 66K",
+      "text": "200ms blocks Coming soon to Base mainnet 189 104 972 67K",
       "created_at": "2026-10-23T13:29:39.989Z",
       "createdAt": "2026-10-23T13:29:39.989Z",
       "relative_time": "1d ago",
@@ -4615,42 +4615,6 @@
       "videoPreview": "",
       "post_url": "https://x.com/jessepollak/status/2103465277195489321",
       "url": "https://x.com/jessepollak/status/2103465277195489321",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2103214146703810632",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "Shoutout to all the Base enjoyers who never left",
-      "created_at": "2026-09-24T20:05:03.060Z",
-      "createdAt": "2026-09-24T20:05:03.060Z",
-      "relative_time": "2d ago",
-      "images": [
-        "https://pbs.twimg.com/media/HS_yWH1acAEQ3j2?format=webp&name=large"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2103214146703810632",
-      "url": "https://x.com/jessepollak/status/2103214146703810632",
       "likes": 0,
       "replies": 0,
       "reposts": 0,
