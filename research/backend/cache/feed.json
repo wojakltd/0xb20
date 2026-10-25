@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-25T08:50:33.977Z",
-    "durationMs": 51317,
+    "generatedAt": "2026-10-25T14:02:14.809Z",
+    "durationMs": 44005,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 127,
-    "postsCollected": 11,
+    "posts": 125,
+    "postsCollected": 16,
     "latestObservationAt": "2026-10-24T15:46:31.202Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -55,20 +55,6 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
-      },
-      {
-        "provider": "reader",
-        "username": "buildonbase",
-        "message": "Reader returned no parseable status posts."
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
-      },
-      {
-        "provider": "rss",
-        "message": "Provider returned zero posts."
       }
     ],
     "coverage": [
@@ -100,9 +86,9 @@
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "Reader returned no parseable status posts."
+        "parsed": 5,
+        "returned": 5,
+        "attempts": 1
       },
       {
         "provider": "reader",
@@ -110,13 +96,6 @@
         "parsed": 5,
         "returned": 5,
         "attempts": 1
-      },
-      {
-        "provider": "rss",
-        "username": "buildonbase",
-        "parsed": 0,
-        "returned": 0,
-        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -136,8 +115,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-25T08:49:42.659Z",
-    "previousGeneratedAt": "2026-10-25T02:22:34.205Z"
+    "startedAt": "2026-10-25T14:01:30.803Z",
+    "previousGeneratedAt": "2026-10-25T08:50:33.977Z"
   },
   "posts": [
     {
@@ -147,10 +126,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "ok based [](https://twitter.com/base)Base @base 22h",
+      "text": "ok based [](https://twitter.com/base)Base @base Oct 24",
       "created_at": "2026-10-24T15:46:31.202Z",
       "createdAt": "2026-10-24T15:46:31.202Z",
-      "relative_time": "17h ago",
+      "relative_time": "22h ago",
       "images": [
         "https://pbs.twimg.com/media/HVYxRsGXkAAYLDx?format=webp&name=medium"
       ],
@@ -183,10 +162,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 121 119 599 72K",
+      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 124 120 621 75K",
       "created_at": "2026-10-24T10:03:21.740Z",
       "createdAt": "2026-10-24T10:03:21.740Z",
-      "relative_time": "22h ago",
+      "relative_time": "1d ago",
       "images": [
         "https://pbs.twimg.com/media/HVYxRsGXkAAYLDx?format=webp&name=medium"
       ],
@@ -327,10 +306,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "200ms blocks Coming soon to Base mainnet 195 106 1K 70K",
+      "text": "200ms blocks Coming soon to Base mainnet 197 112 1K 72K",
       "created_at": "2026-10-23T13:29:39.989Z",
       "createdAt": "2026-10-23T13:29:39.989Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -364,7 +343,7 @@
       "text": "Borrow against your tokenized stocks With stock-backed loans, @aave is giving eligible investors new ways to use tokenized stocks as collateral and borrow USDC Find out how ↓",
       "created_at": "2026-10-23T09:58:30.169Z",
       "createdAt": "2026-10-23T09:58:30.169Z",
-      "relative_time": "1d ago",
+      "relative_time": "2d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113570701642706944/img/SuQAXT2jX-9Zy2ub?format=webp&name=medium"
       ],
@@ -544,7 +523,7 @@
       "text": "The Onchain Champions League Final is underway. It's down to the wire. Tune in to see the final showdown ↓",
       "created_at": "2026-10-22T14:01:10.062Z",
       "createdAt": "2026-10-22T14:01:10.062Z",
-      "relative_time": "1d ago",
+      "relative_time": "3d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -720,7 +699,7 @@
       "text": "In NYC at Coinbase HQ, @verantaxyz presented what's next for trading on Base \"Bringing it to thousands of real-world assets, which is where the world is going\" \"An all-weather exchange where humans and agents can coexist and trade together any asset anywhere\"",
       "created_at": "2026-10-21T19:45:27.908Z",
       "createdAt": "2026-10-21T19:45:27.908Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112993322809585664/img/2P0VnT-vjSGrjAs9?format=webp&name=medium"
       ],
@@ -1179,7 +1158,7 @@
       "text": "2s → 200ms [](https://twitter.com/jessepollak)jesse.base.eth[](https://twitter.com/base) @jessepollak Oct 19 2s → 200ms Quote",
       "created_at": "2026-10-20T09:11:13.790Z",
       "createdAt": "2026-10-20T09:11:13.790Z",
-      "relative_time": "3d ago",
+      "relative_time": "5d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -1462,7 +1441,7 @@
       "text": "Builders 🤝 Traders [](https://twitter.com/verantaxyz)Veranta @verantaxyz Oct 19 Builders 🤝 Traders Last week's Onchain Champions League brought together some of the people building and living the next wave of onchain trading experiences on @base Some familiar faces and what they're up to 👇",
       "created_at": "2026-10-19T14:57:34.930Z",
       "createdAt": "2026-10-19T14:57:34.930Z",
-      "relative_time": "4d ago",
+      "relative_time": "5d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2112195250907414528/img/0CzPWiba-5I1uhLK?format=webp&name=medium"
       ],
@@ -2685,7 +2664,7 @@
       "text": "Nothing beats a room full of builders Great energy and feedback at our builder meetup in Singapore during Token2049",
       "created_at": "2026-10-13T09:20:57.372Z",
       "createdAt": "2026-10-13T09:20:57.372Z",
-      "relative_time": "10d ago",
+      "relative_time": "12d ago",
       "images": [
         "https://pbs.twimg.com/media/HUf90HlXQAADtaW?format=webp&name=large",
         "https://pbs.twimg.com/media/HUf90HnW8AAV9RJ?format=webp&name=large",
@@ -4553,76 +4532,6 @@
       "partner": false,
       "partner_label": "",
       "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "base-2103483623143870788",
-      "author": "Base",
-      "displayName": "Base",
-      "username": "base",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
-      "verified": false,
-      "text": "48 hours with Brian in Singapore, spent meeting some of the incredible @baseapac builders 🇸🇬",
-      "created_at": "2026-09-25T13:55:51.250Z",
-      "createdAt": "2026-09-25T13:55:51.250Z",
-      "relative_time": "3d ago",
-      "images": [
-        "https://pbs.twimg.com/amplify_video_thumb/2103427504761610240/img/D3ZUXjV_dZCU_CnZ?format=webp&name=medium"
-      ],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/base/status/2103483623143870788",
-      "url": "https://x.com/base/status/2103483623143870788",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "official",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 2,
-      "favorite": false,
-      "description": "",
-      "website": "",
-      "logo": "",
-      "conversation_id": "",
-      "in_reply_to_user_id": "",
-      "referenced_tweets": [],
-      "source": "reader"
-    },
-    {
-      "id": "jessepollak-2103465277195489321",
-      "author": "jesse.base.eth",
-      "displayName": "jesse.base.eth",
-      "username": "jessepollak",
-      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
-      "verified": false,
-      "text": "the builder stack for @base",
-      "created_at": "2026-09-25T12:42:57.235Z",
-      "createdAt": "2026-09-25T12:42:57.235Z",
-      "relative_time": "2d ago",
-      "images": [],
-      "video": "",
-      "video_preview": "",
-      "videoPreview": "",
-      "post_url": "https://x.com/jessepollak/status/2103465277195489321",
-      "url": "https://x.com/jessepollak/status/2103465277195489321",
-      "likes": 0,
-      "replies": 0,
-      "reposts": 0,
-      "category": "team",
-      "network": "BASE",
-      "partner": false,
-      "partner_label": "",
-      "priority": 1,
       "favorite": false,
       "description": "",
       "website": "",
