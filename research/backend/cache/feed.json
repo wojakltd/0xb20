@@ -11,12 +11,12 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-25T22:11:32.882Z",
-    "durationMs": 44755,
+    "generatedAt": "2026-10-26T02:22:40.287Z",
+    "durationMs": 53681,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 122,
-    "postsCollected": 16,
+    "postsCollected": 11,
     "latestObservationAt": "2026-10-25T17:09:40.824Z",
     "refreshIntervalMinutes": 120,
     "networks": [
@@ -55,6 +55,20 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
+      },
+      {
+        "provider": "rss",
+        "message": "Provider returned zero posts."
       }
     ],
     "coverage": [
@@ -86,9 +100,9 @@
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
@@ -96,6 +110,13 @@
         "parsed": 5,
         "returned": 5,
         "attempts": 1
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -115,8 +136,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-25T22:10:48.127Z",
-    "previousGeneratedAt": "2026-10-25T18:38:38.774Z"
+    "startedAt": "2026-10-26T02:21:46.606Z",
+    "previousGeneratedAt": "2026-10-25T22:11:32.882Z"
   },
   "posts": [
     {
@@ -126,10 +147,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Tune in on October 26 to the Base Day livestream with @gmgnai [](https://twitter.com/gmgnai)GMGN.Ai @gmgnai 11h Oct 26 is Base Day, the last day of the GGC Online Qualifier. @jessepollak joins to talk Base, memes on Base, and how the team sees long-tail assets. Base Track winner: $20K + a London Green Pass. 7 AM PT / 10 AM ET / 14:00 UTC / 10 PM HKT On X and twitch.tv/gmgn_ai",
+      "text": "Tune in on October 26 to the Base Day livestream with @gmgnai [](https://twitter.com/gmgnai)GMGN.Ai @gmgnai 15h Oct 26 is Base Day, the last day of the GGC Online Qualifier. @jessepollak joins to talk Base, memes on Base, and how the team sees long-tail assets. Base Track winner: $20K + a London Green Pass. 7 AM PT / 10 AM ET / 14:00 UTC / 10 PM HKT On X and twitch.tv/gmgn_ai",
       "created_at": "2026-10-25T17:09:40.824Z",
       "createdAt": "2026-10-25T17:09:40.824Z",
-      "relative_time": "5h ago",
+      "relative_time": "9h ago",
       "images": [
         "https://pbs.twimg.com/media/HVeG5_zaMAAVEZW?format=webp&name=large"
       ],
@@ -162,10 +183,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "24/7 markets are based 138 67 505 42K",
+      "text": "24/7 markets are based 145 76 558 48K",
       "created_at": "2026-10-25T14:47:29.522Z",
       "createdAt": "2026-10-25T14:47:29.522Z",
-      "relative_time": "7h ago",
+      "relative_time": "11h ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -232,7 +253,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 131 176 663 82K",
+      "text": "Article This Week on Base: Meme Summit, Mastercard, and more News ■ The Base Meme Summit, a community-run event for memecoins on Base took place this week on @hubzzhq. ■ Mag 7 tokenized stock holders deposited $9.57M and borrowed $4.08M USDC on @Aave on Base. 131 179 669 83K",
       "created_at": "2026-10-24T10:03:21.740Z",
       "createdAt": "2026-10-24T10:03:21.740Z",
       "relative_time": "1d ago",
@@ -376,7 +397,7 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "200ms blocks Coming soon to Base mainnet 199 182 1K 74K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp.",
+      "text": "200ms blocks Coming soon to Base mainnet 199 182 1K 75K ## Log in or sign up for X See what’s happening and join the conversation Continue with phoneContinue with Apple Continue with Google Continue with Google Continue with Google. Opens in new tab or Log in with username or email Terms·Privacy·Cookies·Accessibility·Ads Info·More© 2026 X Corp. Scan to get the app",
       "created_at": "2026-10-23T13:29:39.989Z",
       "createdAt": "2026-10-23T13:29:39.989Z",
       "relative_time": "2d ago",
@@ -449,7 +470,7 @@
       "text": "crypto and AI are converging at the perfect time",
       "created_at": "2026-10-22T23:40:00.256Z",
       "createdAt": "2026-10-22T23:40:00.256Z",
-      "relative_time": "2d ago",
+      "relative_time": "3d ago",
       "images": [
         "https://pbs.twimg.com/amplify_video_thumb/2113343446140567552/img/dq2Ux0QJRX9k5-Qr?format=webp&name=medium"
       ],
