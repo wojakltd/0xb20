@@ -11,13 +11,13 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-27T09:28:18.553Z",
-    "durationMs": 45524,
+    "generatedAt": "2026-10-27T15:38:10.150Z",
+    "durationMs": 53308,
     "accounts": 36,
     "accountsScanned": 36,
-    "posts": 131,
-    "postsCollected": 16,
-    "latestObservationAt": "2026-10-26T22:30:00.620Z",
+    "posts": 134,
+    "postsCollected": 11,
+    "latestObservationAt": "2026-10-27T14:24:25.278Z",
     "refreshIntervalMinutes": 120,
     "networks": [
       "BASE"
@@ -55,6 +55,20 @@
       {
         "provider": "playwright",
         "message": "Provider returned zero posts."
+      },
+      {
+        "provider": "reader",
+        "username": "buildonbase",
+        "message": "Reader returned no parseable status posts."
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "message": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=build"
+      },
+      {
+        "provider": "rss",
+        "message": "Provider returned zero posts."
       }
     ],
     "coverage": [
@@ -86,9 +100,9 @@
       {
         "provider": "reader",
         "username": "buildonbase",
-        "parsed": 5,
-        "returned": 5,
-        "attempts": 1
+        "parsed": 0,
+        "returned": 0,
+        "error": "Reader returned no parseable status posts."
       },
       {
         "provider": "reader",
@@ -96,6 +110,13 @@
         "parsed": 5,
         "returned": 5,
         "attempts": 1
+      },
+      {
+        "provider": "rss",
+        "username": "buildonbase",
+        "parsed": 0,
+        "returned": 0,
+        "error": "https://nitter.net/buildonbase/rss attempt 1/1: HTTP 410 | https://nitter.poast.org/buildonbase/rss attempt 1/1: fetch failed | https://nitter.privacydev.net/buildonbase/rss attempt 1/1: fetch failed | https://rsshub.app/twitter/user/buildonbase attempt 1/1: HTTP 404 | https://twitrss.me/twitter_user_to_rss/?user=buildonbase attempt 1/1: HTTP 521"
       }
     ],
     "laboratory": {
@@ -115,10 +136,114 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-27T09:27:33.029Z",
-    "previousGeneratedAt": "2026-10-27T02:57:55.527Z"
+    "startedAt": "2026-10-27T15:37:16.842Z",
+    "previousGeneratedAt": "2026-10-27T09:28:18.553Z"
   },
   "posts": [
+    {
+      "id": "base-2115087223997559097",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "The Base team will be out in force during @EFDevcon Mumbai We have workshops, office hours, and a community day for builders in India Sign up for our events ↓ 19 10 93 18K",
+      "created_at": "2026-10-27T14:24:25.278Z",
+      "createdAt": "2026-10-27T14:24:25.278Z",
+      "relative_time": "1h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2115087223997559097",
+      "url": "https://x.com/base/status/2115087223997559097",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2115068238531104935",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Somewhere a bank is closed right now 103 31 295 22K",
+      "created_at": "2026-10-27T13:08:58.790Z",
+      "createdAt": "2026-10-27T13:08:58.790Z",
+      "relative_time": "2h ago",
+      "images": [],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2115068238531104935",
+      "url": "https://x.com/base/status/2115068238531104935",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
+    {
+      "id": "base-2115018088336982186",
+      "author": "Base",
+      "displayName": "Base",
+      "username": "base",
+      "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
+      "verified": false,
+      "text": "Season 2 of the Builder Grant Program is live Get a $5,000 grant for building on Base ↓",
+      "created_at": "2026-10-27T09:49:42.052Z",
+      "createdAt": "2026-10-27T09:49:42.052Z",
+      "relative_time": "5h ago",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2115017682047102976/img/syK_Fdz7RX8gVbLh?format=webp&name=medium"
+      ],
+      "video": "",
+      "video_preview": "",
+      "videoPreview": "",
+      "post_url": "https://x.com/base/status/2115018088336982186",
+      "url": "https://x.com/base/status/2115018088336982186",
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "category": "official",
+      "network": "BASE",
+      "partner": false,
+      "partner_label": "",
+      "priority": 2,
+      "favorite": false,
+      "description": "",
+      "website": "",
+      "logo": "",
+      "conversation_id": "",
+      "in_reply_to_user_id": "",
+      "referenced_tweets": [],
+      "source": "reader"
+    },
     {
       "id": "jessepollak-2114847038613643482",
       "author": "jesse.base.eth",
@@ -129,7 +254,7 @@
       "text": "stocks are the new onramp to defi on @base [](https://twitter.com/Amir_rz_k)amir“ @Amir_rz_k Oct 24 Holders of tokenized Mag 7 stocks deposited $9.57M on Aave on @base and borrowed $4.08M $USDC. 3 out of every 4 of them were new to @aave. Mastercard also launched Agent Pay for Machines on Base with Cloudflare: AI agents pay for digital services using x402. According to",
       "created_at": "2026-10-26T22:30:00.620Z",
       "createdAt": "2026-10-26T22:30:00.620Z",
-      "relative_time": "10h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HVZFsTJaYAAFW69?format=webp&name=large"
       ],
@@ -162,10 +287,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "Pon tus pesos a trabajar, estés donde estés. [](https://twitter.com/Bitso)Bitso @Bitso 12h ¿Y si tus stablecoins pudieran más? 👀 Te presentamos #Bóvedas: hasta 10% en MXNB y hasta 5% en USDC. Descubre de lo que tu dinero es capaz con Bóvedas en Bitso. Bóvedas: impulsadas por @Morpho, en @base y curadas por @gauntlet_xyz.",
+      "text": "Pon tus pesos a trabajar, estés donde estés. [](https://twitter.com/Bitso)Bitso @Bitso 18h ¿Y si tus stablecoins pudieran más? 👀 Te presentamos #Bóvedas: hasta 10% en MXNB y hasta 5% en USDC. Descubre de lo que tu dinero es capaz con Bóvedas en Bitso. Bóvedas: impulsadas por @Morpho, en @base y curadas por @gauntlet_xyz.",
       "created_at": "2026-10-26T22:03:07.085Z",
       "createdAt": "2026-10-26T22:03:07.085Z",
-      "relative_time": "11h ago",
+      "relative_time": "17h ago",
       "images": [
         "https://pbs.twimg.com/media/HVldk9ZW8AAA1lU?format=webp&name=medium"
       ],
@@ -198,10 +323,10 @@
       "username": "base",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_400x400.jpg",
       "verified": false,
-      "text": "YC sent $500K in USDC on a Friday night The banks were closed. Base wasn't [](https://twitter.com/Mochatradeapp)Mochatrade @Mochatradeapp 13h",
+      "text": "YC sent $500K in USDC on a Friday night The banks were closed. Base wasn't [](https://twitter.com/Mochatradeapp)Mochatrade @Mochatradeapp 19h",
       "created_at": "2026-10-26T19:55:58.568Z",
       "createdAt": "2026-10-26T19:55:58.568Z",
-      "relative_time": "13h ago",
+      "relative_time": "19h ago",
       "images": [
         "https://pbs.twimg.com/media/HVlHzU8akAEO8EH?format=webp&name=medium"
       ],
@@ -268,10 +393,10 @@
       "username": "jessepollak",
       "avatar": "https://pbs.twimg.com/profile_images/2060695832840556549/R0s33fMN_normal.jpg",
       "verified": false,
-      "text": "build something valuable [](https://twitter.com/blknoiz06)Ansem 🐂🀄️[](https://twitter.com/BullpenFi) @blknoiz06 20h it has become complete counter-consensus to be bullish onchain now, have never seen sentiment this bad & ive been here ~9 years crypto twitter has forgotten that it requires actual work on the builder side to make coins do well, so many traders complaining about lower ceilings 94 26 259 19K",
+      "text": "build something valuable [](https://twitter.com/blknoiz06)Ansem 🐂🀄️[](https://twitter.com/BullpenFi) @blknoiz06 Oct 26 it has become complete counter-consensus to be bullish onchain now, have never seen sentiment this bad & ive been here ~9 years crypto twitter has forgotten that it requires actual work on the builder side to make coins do well, so many traders complaining about lower ceilings 99 29 282 21K",
       "created_at": "2026-10-26T14:52:30.139Z",
       "createdAt": "2026-10-26T14:52:30.139Z",
-      "relative_time": "18h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
@@ -339,7 +464,7 @@
       "text": "Introducing the Trencher Grant Program Get up to $5,000 for leading a community or creating content about Base culture Learn more ↓",
       "created_at": "2026-10-26T13:24:38.113Z",
       "createdAt": "2026-10-26T13:24:38.113Z",
-      "relative_time": "20h ago",
+      "relative_time": "1d ago",
       "images": [],
       "video": "",
       "video_preview": "",
