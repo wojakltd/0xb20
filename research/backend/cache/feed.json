@@ -11,8 +11,8 @@
       "cache",
       "sample"
     ],
-    "generatedAt": "2026-10-27T20:20:20.722Z",
-    "durationMs": 81557,
+    "generatedAt": "2026-10-28T00:51:05.883Z",
+    "durationMs": 69659,
     "accounts": 36,
     "accountsScanned": 36,
     "posts": 133,
@@ -113,8 +113,8 @@
     "apiStatus": "failed",
     "lastLaboratorySyncAt": "2026-10-01T08:02:23.301Z",
     "laboratoryImportedPosts": 0,
-    "startedAt": "2026-10-27T20:18:59.165Z",
-    "previousGeneratedAt": "2026-10-27T15:38:10.150Z"
+    "startedAt": "2026-10-28T00:49:56.224Z",
+    "previousGeneratedAt": "2026-10-27T20:20:20.722Z"
   },
   "posts": [
     {
